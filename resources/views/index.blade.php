@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Traveler - hot tours for best vacations</title>
+<title>SS Events</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Your description">
-<meta name="keywords" content="Your keywords">
-<meta name="author" content="Your name">
+<meta name="author" content="Hassan Aabidi">
 <link rel="icon" href="{{ url('images/favicon.ico')}}" type="image/x-icon">
 <link rel="shortcut icon" href="{{ url('images/favicon.ico')}}" type="image/x-icon" />
 
