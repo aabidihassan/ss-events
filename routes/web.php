@@ -20,6 +20,24 @@ Route::get('/test', function () {
     return view('index');
 });
 
+Route::get('/mariage', function () {
+    return view('mariage');
+});
+Route::get('/anniversaire', function () {
+    return view('anniv');
+});
+Route::get('/soiree', function () {
+    return view('soiree');
+});
+Route::get('/seminaire', function () {
+    return view('Seminaire');
+});
+
+
+Route::get('/fournisseur', function () {
+    return view('profil-for');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
