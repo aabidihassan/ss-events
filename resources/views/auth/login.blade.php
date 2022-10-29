@@ -1,57 +1,52 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>S'Authentifier</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{{ url('auth/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')}}">
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{{ url('auth/css/style.css')}}">
+	</head>
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
+	<body>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+		<div class="wrapper">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="auth/images/registration-form-6.jpg" alt="">
+				</div>
+				<form method="POST" action="{{ route('login') }}" >
+                @csrf
+					<h3>S'authentifier</h3>
+                    @if($errors->get('username'))
+                    <div class="alert alert-danger" role="alert">les informations sont incorrects!!</div>
+                    @endif
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
+                    <div class="form-row">
+                    <div class="form-holder" style="width:100%; margin-top:5%;">
+                        <input type="text" id="username" class="form-control" placeholder="Nom d'utilisateur" name="username" required autocomplete="off">
+					</div>
+                    </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                    <div class="form-row">
+                    <div class="form-holder" style="width:100%; margin-top:5%;">
+						<input type="password" id="password" class="form-control" placeholder="Mot de passe" name="password" required autocomplete="new-password">
+					</div>
+                    </div>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                    <button type="submit" style="margin-top:9%;">Authentifier
+						<i class="zmdi zmdi-long-arrow-right"></i>
+					</button>
+				</form>
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
+			</div>
+		</div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+		<script src="{{ url('auth/js/jquery-3.3.1.min.js')}}"></script>
+		<script src="{{ url('auth/js/main.js')}}"></script>
+	</body>
+</html>

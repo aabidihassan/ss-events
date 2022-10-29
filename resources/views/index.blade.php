@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>SS Events</title>
+<title>Traveler - hot tours for best vacations</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Hassan Aabidi">
 <link rel="icon" href="{{ url('images/favicon.ico')}}" type="image/x-icon">
 <link rel="shortcut icon" href="{{ url('images/favicon.ico')}}" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 <link rel="stylesheet" href="{{ url('css/bootstrap.css')}}" type="text/css" media="screen">
 <link rel="stylesheet" href="{{ url('css/bootstrap-responsive.css')}}" type="text/css" media="screen">
@@ -115,37 +116,22 @@ $(window).load(function() {
 <div class="row">
 <div class="span12">
 <div class="header_inner clearfix">
-	<div class="logo_wrapper"><a href="index.html" class="logo"><img src="{{ url('images/logo.png')}}" alt=""></a></div>
+	<div  class="title"   ><a href="index.html" class="title">SERV-fêtes</a></div>
 	<div class="menu_wrapper">
 		<div class="navbar navbar_">
 			<div class="navbar-inner navbar-inner_">
-				<a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_">main menu</a>
+				<a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_"></a>
 				<div class="nav-collapse nav-collapse_ collapse">
 					<ul class="nav sf-menu clearfix">
 						<li class="active"><a href="index.html">home</a></li>
+						<li><a href="index-2.html">Prestaire</a></li>
 						<li><a href="index-1.html">news</a></li>
-						<li><a href="index-2.html">hot tours</a></li>
-						<li class="sub-menu sub-menu-1"><a href="index-3.html">destinations<em></em></a>
-							<ul>
-								<li class="sub-menu sub-menu-2"><a href="index-3.html">Asia</a>
-									<ul>
-										<li><a href="index-3.html">lorem ipsum dolor</a></li>
-										<li><a href="index-3.html">sit amet</a></li>
-										<li><a href="index-3.html">adipiscing elit</a></li>
-										<li><a href="index-3.html">nunc suscipit</a></li>
-										<li><a href="404.html">404 page not found</a></li>
-									</ul>
-								</li>
-								<li><a href="index-3.html">Europe</a></li>
-								<li><a href="index-3.html">America</a></li>
-								<li><a href="index-3.html">Africa</a></li>
-								<li><a href="index-3.html">Australia</a></li>
-								<li><a href="index-3.html">Islands</a></li>
-							</ul>
-						</li>
-						<li><a href="index-4.html">services</a></li>
-						<li><a href="index-5.html">gallery</a></li>
-						<li><a href="index-6.html">contacts</a></li>
+                        @if(!auth()->check())
+						<li><a href="/login"> <i class="bi bi-box-arrow-in-right"></i>  Se Connecter</a></li>
+						<li><a href="/register">Inscription</a></li>
+                        @else
+                        <li><a href="/dashboard">Profile</a></li>
+                        @endif
 					</ul>
 				</div>
 			</div>
@@ -166,8 +152,19 @@ $(window).load(function() {
 					<div class="slider_bot1_inner">
 						<div class="search-form-wrapper clearfix">
 							<form id="search-form" action="search.php" method="GET" accept-charset="utf-8" class="navbar-form" >
-								<input type="text" name="s" value='Search tours right now:' onBlur="if(this.value=='') this.value='Search tours right now:'" onFocus="if(this.value =='Search tours right now:' ) this.value=''">
-								<a href="#" onClick="document.getElementById('search-form').submit()">find!</a>
+							<div class="row">
+  								<div class="span3">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>Open this select menu</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+								<div class="span3">
+									<a href="#" onClick="document.getElementById('search-form').submit()">Recharcher</a>
+								</div>
+							</div>
 							</form>
 						</div>
 					</div>
@@ -175,97 +172,40 @@ $(window).load(function() {
 			</div>
 		</div>
 	</div>
-	<div class="slider_bot2">
-		<div class="container">
-			<div class="row">
-				<div class="span12">
-					<div class="slider_bot2_inner clearfix">
-						<div class="banner0">
-							<a href="index-2.html"><img src="images/banner0.png" alt="" class="img"></a>
-						</div>
-						<ul class="banners clearfix">
-							<li>
-								<a href="index-2.html">
-									<div class="txt1">Luxury Hotels</div>
-									<div class="txt2">Lorem ipsum dolor sit amet conse ctetur.</div>
-								</a>
-							</li>
-							<li>
-								<a href="index-3.html">
-									<div class="txt1">Top Destinations</div>
-									<div class="txt2">Lorem ipsum dolor sit amet conse ctetur.</div>
-								</a>
-							</li>
-							<li>
-								<a href="index-5.html">
-									<div class="txt1">Photo Gallery</div>
-									<div class="txt2">Lorem ipsum dolor sit amet conse ctetur.</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 </div>
 <div id="camera_wrap">
 	<div data-src="images/slide01.jpg">
 		<div class="camera_caption fadeIn">
-			<div class="txt1">Ocean hot tours</div>
+			<div class="txt1">Mariage</div>
 			<div class="clearfix"></div>
-			<div class="txt2">for best vacations</div>
-			<div class="clearfix"></div>
-			<a href="#" class="button0">go!</a>
+			<a href="/mariage" class="button0">go!</a>
 		</div>
 	</div>
 	<div data-src="images/slide02.jpg">
 		<div class="camera_caption fadeIn">
-			<div class="txt1">hot tours</div>
+			<div class="txt1">Seminaire</div>
+
 			<div class="clearfix"></div>
-			<div class="txt2">for best vacations</div>
-			<div class="clearfix"></div>
-			<a href="#" class="button0">go!</a>
+			<a href="/seminaire" class="button0">go!</a>
 		</div>
 	</div>
 	<div data-src="images/slide03.jpg">
 		<div class="camera_caption fadeIn">
-			<div class="txt1">Sacre-Coeur hot tours</div>
+			<div class="txt1">Anniversaire</div>
+
 			<div class="clearfix"></div>
-			<div class="txt2">for best vacations</div>
-			<div class="clearfix"></div>
-			<a href="#" class="button0">go!</a>
+			<a href="/anniversaire" class="button0">go!</a>
 		</div>
 	</div>
     <div data-src="images/slide04.jpg">
 		<div class="camera_caption fadeIn">
-			<div class="txt1">Tbilisi hot tours</div>
+			<div class="txt1">Soirée</div>
 			<div class="clearfix"></div>
-			<div class="txt2">for best vacations</div>
-			<div class="clearfix"></div>
-			<a href="#" class="button0">go!</a>
-		</div>
-	</div>
 
-    <div data-src="images/slide05.jpg">
-		<div class="camera_caption fadeIn">
-			<div class="txt1">Paris hot tours</div>
-			<div class="clearfix"></div>
-			<div class="txt2">for best vacations</div>
-			<div class="clearfix"></div>
-			<a href="#" class="button0">go!</a>
+			<a href="/soiree" class="button0">go!</a>
 		</div>
 	</div>
-    <div data-src="images/slide06.jpg">
-		<div class="camera_caption fadeIn">
-			<div class="txt1">Prague hot tours</div>
-			<div class="clearfix"></div>
-			<div class="txt2">for best vacations</div>
-			<div class="clearfix"></div>
-			<a href="#" class="button0">go!</a>
-		</div>
-	</div>
-
 
 </div>
 </div>
@@ -318,7 +258,7 @@ $(window).load(function() {
 <div class="row">
 <div class="span12">
 <div id="slider3">
-<div class="slider3-title">Hot Tours</div>
+<div class="slider3-title">New</div>
 <a class="prev" href="#"></a>
 <a class="next" href="#"></a>
 <div class="carousel-box row">
@@ -333,13 +273,13 @@ $(window).load(function() {
 									<img src="images/carousel01.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">EDEN HOTEL & SPA</div>
-									<div class="txt2">Sri Lanka</div>
+									<div class="txt1">TRAITEUR 1</div>
+									<div class="txt2">AGADIR</div>
 									<img src="images/stars5.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											MARIAGE<br>SOIREE<br>7 ANNEVIRSAIRE
 										</div>
 										<div class="txt3_2"><span>$</span>2230</div>
 									</div>
@@ -356,13 +296,13 @@ $(window).load(function() {
 									<img src="images/carousel02.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">NAITHONBURI</div>
-									<div class="txt2">Thailand</div>
+									<div class="txt1">TRAITEUR 2</div>
+									<div class="txt2">MARAKKECH</div>
 									<img src="images/stars3.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											SOIREE
 										</div>
 										<div class="txt3_2"><span>$</span>1290</div>
 									</div>
@@ -379,13 +319,13 @@ $(window).load(function() {
 									<img src="images/carousel03.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">CRYSTAL WATERWORLD </div>
+									<div class="txt1">TRAITEURE 4 </div>
 									<div class="txt2">Turkey</div>
 									<img src="images/stars4.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											MARAIGE<br>ANNEVERSAIRE<br>SOIREE
 										</div>
 										<div class="txt3_2"><span>$</span>2120</div>
 									</div>
@@ -402,15 +342,15 @@ $(window).load(function() {
 									<img src="images/carousel04.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">ADAARAN SELECT MEE...</div>
-									<div class="txt2">Maldives</div>
+									<div class="txt1">TRAITEURE 3 </div>
+									<div class="txt2">Turkey</div>
 									<img src="images/stars4.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											MARAIGE<br>ANNEVERSAIRE<br>SOIREE
 										</div>
-										<div class="txt3_2"><span>$</span>2300</div>
+										<div class="txt3_2"><span>$</span>2120</div>
 									</div>
 								</div>
 							</a>
@@ -425,15 +365,15 @@ $(window).load(function() {
 									<img src="images/carousel01.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">EDEN HOTEL & SPA</div>
-									<div class="txt2">Sri Lanka</div>
-									<img src="images/stars2.png" alt="" class="stars">
+									<div class="txt1">TRAITEURE 2 </div>
+									<div class="txt2">Turkey</div>
+									<img src="images/stars4.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											MARAIGE<br>ANNEVERSAIRE<br>SOIREE
 										</div>
-										<div class="txt3_2"><span>$</span>1230</div>
+										<div class="txt3_2"><span>$</span>2120</div>
 									</div>
 								</div>
 							</a>
@@ -448,15 +388,15 @@ $(window).load(function() {
 									<img src="images/carousel02.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">NAITHONBURI</div>
-									<div class="txt2">Thailand</div>
-									<img src="images/stars5.png" alt="" class="stars">
+									<div class="txt1">TRAITEURE 6 </div>
+									<div class="txt2">Turkey</div>
+									<img src="images/stars4.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											MARAIGE<br>ANNEVERSAIRE<br>SOIREE
 										</div>
-										<div class="txt3_2"><span>$</span>1090</div>
+										<div class="txt3_2"><span>$</span>2120</div>
 									</div>
 								</div>
 							</a>
@@ -471,15 +411,15 @@ $(window).load(function() {
 									<img src="images/carousel03.jpg" alt="" class="img">
 								</figure>
 								<div class="caption">
-									<div class="txt1">CRYSTAL WATERWORLD </div>
+									<div class="txt1">TRAITEURE 11 </div>
 									<div class="txt2">Turkey</div>
-									<img src="images/stars1.png" alt="" class="stars">
+									<img src="images/stars4.png" alt="" class="stars">
 									<div class="carousel_line"></div>
 									<div class="txt3 clearfix">
 										<div class="txt3_1">
-											DBL, Standard,<br>2AD, All Inclusive<br>7 night
+											MARAIGE<br>ANNEVERSAIRE<br>SOIREE
 										</div>
-										<div class="txt3_2"><span>$</span>759</div>
+										<div class="txt3_2"><span>$</span>2120</div>
 									</div>
 								</div>
 							</a>

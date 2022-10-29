@@ -1,64 +1,76 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v6 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{{ url('auth/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')}}">
 
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{{ url('auth/css/style.css')}}">
+	</head>
 
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+	<body>
 
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
+		<div class="wrapper">
+			<div class="inner" style="width:80%">
+				<div class="image-holder">
+					<img src="auth/images/registration-form-6.jpg" alt="">
+				</div>
+				<form method="POST" action="{{ route('register') }}" autocomplete="off" >
+                @csrf
+					<h3>Creer un compte</h3>
+                    @if(session()->has('message'))
+                    <div class="alert alert-success" role="alert">les informations sont bien enregistrées, on va vous communiquer par la suite!</div>
+                    @endif
+                    <div class="form-row">
+						<div class="form-holder" style="width:100%">
+							<select name="type" id="type" class="form-control" required>
+								<option value="client" selected>Client</option>
+								<option value="pre">Fournisseur</option>
+							</select>
+							<i class="zmdi zmdi-chevron-down"></i>
+						</div>
+					</div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
+					<div class="form-row">
+						<input type="text" class="form-control" placeholder="Nom" name="nom" required>
+						<input type="text" class="form-control" placeholder="Prenom" name="prenom" required>
+					</div>
+                    <div class="form-row">
+						<input type="tel" class="form-control" placeholder="Telephone" name="phone" required>
+						<input type="email" class="form-control" placeholder="E-Mail" name="email" required>
+					</div>
+                    <div class="form-row">
+						<input type="text" id="username" class="form-control" placeholder="Nom d'utilisateur" name="username" required autocomplete="off">
+						<input type="password" id="password" class="form-control" placeholder="Mot de passe" name="password" required autocomplete="new-password">
+					</div>
+					<textarea name="adresse" id="adresse" placeholder="Adresse" class="form-control" style="height: 70px;" required></textarea>
+					<button type="submit">Creer un compte
+						<i class="zmdi zmdi-long-arrow-right"></i>
+					</button>
+				</form>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+			</div>
+		</div>
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+		<script src="{{ url('auth/js/jquery-3.3.1.min.js')}}"></script>
+		<script src="{{ url('auth/js/main.js')}}"></script>
+        <script>
+            $('#type').on('change', function(){
+                console.log($(this).val())
+                if($(this).val() == 'pre'){
+                    $('#username').hide().removeAttr('required');
+                    $('#password').hide().removeAttr('required');
+                    $('#adresse').hide().removeAttr('required');
+                }else{
+                    $('#username').show().attr('required', 'true');
+                    $('#password').show().attr('required', 'true');
+                    $('#adresse').show().attr('required', 'true');
+                }
+            })
+        </script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

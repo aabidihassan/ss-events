@@ -25,7 +25,7 @@ body{ background: #f7f5f1; border:0; font: 13px Arial, Helvetica, sans-serif; co
 .subpage #slider > .img{width: 100%;position: relative;z-index: 1;}
 .subpage #slider > .img img{width: 100%;position: relative;z-index: 1;}
 .slider_bot{width: 100%; position: absolute; left: 0; bottom: 0; z-index: 20;}
-.slider_bot1{height: 46px; background: url(../images/px1.png);position: relative;}
+.slider_bot1{height: 150px; background: url(../images/px1.png);position:relative;}
 .slider_bot2{height: 96px; background: url(../images/px2.png);position: relative;}
 .slider_bot2_inner{position: relative;}
 
@@ -50,6 +50,8 @@ body{ background: #f7f5f1; border:0; font: 13px Arial, Helvetica, sans-serif; co
 .next:hover{opacity: 1; filter: alpha(opacity=100);}
 
 .slider3-title{font-family: 'Playfair Display SC'; font-weight: 700; font-size: 30px; line-height: 30px; color: #bd4541; text-transform: uppercase; padding-bottom: 25px; text-align: center;}
+.title{font-family: 'Playfair Display SC'; font-weight: 700; font-size: 30px; line-height: 30px; color: #ffffff; text-transform: uppercase; padding-bottom: 25px;}
+
 .carousel-box{position: relative;}
 .carousel-box .inner{position: relative; overflow: hidden;}
 .carousel.main{position: relative; overflow: hidden; width: 960px; margin: 0; padding: 0;}
@@ -489,6 +491,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 	#slider3 .carousel.main{width: 320px;}
 
 	.slider3-title{font-size: 16px;}
+	.title{font-size: 16px;}
 
 	.thumb1 .figure_wrapper{float: none; margin-right: 0;}
 	.thumb1 figure img{width: 100%;}
