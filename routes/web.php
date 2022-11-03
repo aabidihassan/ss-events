@@ -20,8 +20,8 @@ Route::get('/test', function () {
     return view('client.profile');
 });
 
-Route::get('/mariage', function () {
-    return view('mariage');
+Route::get('/services', function () {
+    return view('client.services');
 });
 Route::get('/anniversaire', function () {
     return view('anniv');
@@ -34,8 +34,8 @@ Route::get('/seminaire', function () {
 });
 
 
-Route::get('/fournisseur', function () {
-    return view('profil-for');
+Route::get('/fournisseurs', function () {
+    return view('client.fournisseur');
 });
 
 Route::get('/contact', function () {

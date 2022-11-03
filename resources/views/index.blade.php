@@ -6,22 +6,42 @@
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="img/mariage.png" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
-                            <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
+                            <h1 class="display-3 text-white mb-md-4">Mariage</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">go!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <img class="w-100" src="img/soiree.png" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
+                            <h1 class="display-3 text-white mb-md-4">soirée</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">go!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <img class="w-100" src="img/seminaire.png" style=" width: 100%; height: 50%;" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
+                            <h1 class="display-3 text-white mb-md-4">seminaire</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">go!</a>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <img class="w-100" src="img/annv.png" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
-                            <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
+                            <h1 class="display-3 text-white mb-md-4">Anniversaire</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">go!</a>
                         </div>
                     </div>
                 </div>
@@ -92,6 +112,40 @@
         </div>
     </div>
     <!-- Booking End -->
+
+    <!-- Service Start -->
+    <div style="margin-top:-5%" class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
+                <h1 >Tours & Travel Services</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
+                        <h5 class="mb-2">Travel Guide</h5>
+                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
+                        <h5 class="mb-2">Ticket Booking</h5>
+                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
+                        <h5 class="mb-2">Hotel Booking</h5>
+                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
 
 
     <!-- About Start -->
@@ -236,40 +290,7 @@
     <!-- Destination Start -->
 
 
-    <!-- Service Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
-                <h1>Tours & Travel Services</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
-                        <h5 class="mb-2">Travel Guide</h5>
-                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
-                        <h5 class="mb-2">Ticket Booking</h5>
-                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
-                        <h5 class="mb-2">Hotel Booking</h5>
-                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
+   
 
     <!-- Packages Start -->
     <div class="container-fluid py-5">
