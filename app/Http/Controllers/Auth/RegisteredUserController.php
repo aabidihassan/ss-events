@@ -58,6 +58,7 @@ class RegisteredUserController extends Controller
                 'type' => 'client',
                 'id_user' => $client->id
             ]);
+            $request->session()->put('profile', $client);
 
             event(new Registered($user));
 
