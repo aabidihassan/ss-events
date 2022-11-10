@@ -55,6 +55,10 @@
                             <a href="/register" class="nav-item nav-link">Inscription</a>
                         @else
                             <a href="/dashboard" class="nav-item nav-link">Profile</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <input class="nav-item nav-link" type="submit" style="background:none; border:none;" value="Deconnexion" />
+                            </form>
                         @endif
                     </div>
                 </div>
