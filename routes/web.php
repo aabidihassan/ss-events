@@ -33,7 +33,9 @@ Route::get('/soiree', function () {
 Route::get('/seminaire', function () {
     return view('Seminaire');
 });
-
+Route::get('/admin', function () {
+    return view('admin.admin');
+});
 
 Route::get('/fournisseurs', function () {
     return view('client.fournisseur');
