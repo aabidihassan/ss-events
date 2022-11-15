@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,14 @@ Route::get('/seminaire', function () {
 Route::get('/fournisseurs', function () {
     return view('client.fournisseur');
 });
+
+Route::get('/admin/services', function () {
+    if(auth()->user()->type == 'admin') return view('admin.services');
+})->middleware(['auth'])->name('editCompte');
+
+Route::get('/admin/pres', function () {
+    if(auth()->user()->type == 'admin') return PresController::getPres();
+})->middleware(['auth'])->name('editCompte');
 
 Route::get('/contact', function () {
     return view('register');
