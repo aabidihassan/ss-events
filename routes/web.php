@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PresController;
+use App\Http\Controllers\FournisseurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,9 @@ Route::get('/soiree', function () {
 Route::get('/seminaire', function () {
     return view('Seminaire');
 });
-
+Route::get('/admin', function () {
+    return view('admin.admin');
+});
 
 Route::get('/fournisseurs', function () {
     return view('client.fournisseur');
@@ -48,12 +51,20 @@ Route::get('/admin/pres', function () {
     if(auth()->user()->type == 'admin') return PresController::getPres();
 })->middleware(['auth'])->name('editCompte');
 
+Route::get('/admin/pres/decline/{id}', [PresController::class, 'decline'])->middleware(['auth']);
+Route::get('/admin/pres/accept/{id}', [PresController::class, 'accept'])->middleware(['auth']);
+
+Route::get('/admin/fournisseurs', function () {
+    if(auth()->user()->type == 'admin') return FournisseurController::getAll();
+})->middleware(['auth'])->name('editCompte');
+
 Route::get('/contact', function () {
     return view('register');
 });
 
 Route::get('/dashboard', function () {
     if(auth()->user()->type == 'client') return view('client.profile');
+    if(auth()->user()->type == 'admin') return redirect('/admin/pres');
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

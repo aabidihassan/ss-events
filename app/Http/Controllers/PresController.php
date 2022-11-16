@@ -14,13 +14,13 @@ class PresController extends Controller
         return view('admin.pres', ["data"=>$data]);
     }
 
-    public static function accept(Request $req){
-        $pre = Prefournisseur::where('id', $req->id)->first();
+    public function accept($id){
+        $pre = Prefournisseur::where('id', $id)->first();
         $fournisseur = new Fournisseur();
         $fournisseur->nom = $pre->nom;
         $fournisseur->prenom = $pre->prenom;
         $fournisseur->email = $pre->email;
-        $fournisseur->phone = $pre->phone;
+        $fournisseur->telephone = $pre->telephone;
         $fournisseur->statut = 1;
         $fournisseur->save();
         $user = new User();
@@ -29,13 +29,13 @@ class PresController extends Controller
         $user->type = 'fournisseur';
         $user->id_user = $fournisseur->id;
         $user->save();
-        Prefournisseur::where('id', $req->id)->delete();
+        Prefournisseur::where('id', $id)->delete();
         $data = Prefournisseur::all();
         return view('admin.pres', ["data"=>$data]);
     }
 
-    public static function decline(Request $req){
-        Prefournisseur::where('id', $req->id)->update(['active', 0]);
+    public function decline($id){
+        Prefournisseur::where('id', $id)->update(['statut'=>1]);
         $data = Prefournisseur::all();
         return view('admin.pres', ["data"=>$data]);
     }

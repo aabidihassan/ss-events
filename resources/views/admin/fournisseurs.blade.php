@@ -1,5 +1,5 @@
 @extends('layouts.adminmenu')
-@section('title', 'Pre Fournisseurs')
+@section('title', 'Fournisseurs')
 @section('content')
 <div class="container mt-4">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -10,6 +10,7 @@
                         <th>Email</th>
                         <th>Telephone</th>
                         <th>statut</th>
+                        <th>Nb vues</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -21,14 +22,16 @@
                         <td>{{$l->email}}</td>
                         <td>{{$l->telephone}}</td>
                         <td>
-                            @if($l->statut) Refuse
-                            @else En attent
+                            @if($l->statut) Actif
+                            @else Desactive
                             @endIf
                         </td>
+                        <td>{{$l->vues}}</td>
                         <td>
-                            @if(!$l->statut)
-                            <a href="{{ '/admin/pres/accept/' . $l->id }}" class="btn btn-primary">Accepter</a>
-                            <a href="{{ '/admin/pres/decline/' . $l->id }}" class="btn btn-danger">Refuser</a>
+                            @if($l->statut)
+                            <a href="{{ '/admin/pres/decline/' . $l->id }}" class="btn btn-danger">Desactiver</a>
+                            @else
+                            <a href="{{ '/admin/pres/accept/' . $l->id }}" class="btn btn-primary">Activer</a>
                             @endIf
                         </td>
                     </tr>
