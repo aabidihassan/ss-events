@@ -30,13 +30,11 @@ class PresController extends Controller
         $user->id_user = $fournisseur->id;
         $user->save();
         Prefournisseur::where('id', $id)->delete();
-        $data = Prefournisseur::all();
-        return view('admin.pres', ["data"=>$data]);
+        return redirect('/admin/pres');
     }
 
     public function decline($id){
         Prefournisseur::where('id', $id)->update(['statut'=>1]);
-        $data = Prefournisseur::all();
-        return view('admin.pres', ["data"=>$data]);
+        return redirect('/admin/pres');
     }
 }

@@ -29,9 +29,9 @@
                         <td>{{$l->vues}}</td>
                         <td>
                             @if($l->statut)
-                            <a href="{{ '/admin/pres/decline/' . $l->id }}" class="btn btn-danger">Desactiver</a>
+                            <a href="{{ '/admin/fournisseurs/desactivate/' . $l->id }}" class="btn btn-danger">Desactiver</a>
                             @else
-                            <a href="{{ '/admin/pres/accept/' . $l->id }}" class="btn btn-primary">Activer</a>
+                            <a href="{{ '/admin/fournisseurs/activate/' . $l->id }}" class="btn btn-primary">Activer</a>
                             @endIf
                         </td>
                     </tr>

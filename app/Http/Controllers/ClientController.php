@@ -14,13 +14,11 @@ class ClientController extends Controller
 
     public function desactivate($id){
         Client::where('id', $id)->update(['statut'=>0]);
-        $data = Client::all();
-        return view('admin.clients', ["data"=>$data]);
+        return redirect('/admin/clients');
     }
 
     public function activate($id){
         Client::where('id', $id)->update(['statut'=>1]);
-        $data = Client::all();
-        return view('admin.clients', ["data"=>$data]);
+        return redirect('/admin/clients');
     }
 }

@@ -59,6 +59,9 @@ Route::get('/admin/fournisseurs', function () {
     if(auth()->user()->type == 'admin') return FournisseurController::getAll();
 })->middleware(['auth']);
 
+Route::get('/admin/fournisseurs/desactivate/{id}', [FournisseurController::class, 'desactivate'])->middleware(['auth']);
+Route::get('/admin/fournisseurs/activate/{id}', [FournisseurController::class, 'activate'])->middleware(['auth']);
+
 Route::get('/admin/clients', function () {
     if(auth()->user()->type == 'admin') return ClientController::getAll();
 })->middleware(['auth']);

@@ -12,15 +12,13 @@ class FournisseurController extends Controller
         return view('admin.fournisseurs', ["data"=>$data]);
     }
 
-    public static function desactivate(){
-        Fournisseur::where('id', $req->id)->update(['statut', 0]);
-        $data = Fournisseur::all();
-        return view('admin.fournisseurs', ["data"=>$data]);
+    public function desactivate($id){
+        Fournisseur::where('id', $id)->update(['statut'=>0]);
+        return redirect('/admin/fournisseurs');
     }
 
-    public static function activate(){
-        Fournisseur::where('id', $req->id)->update(['statut', 1]);
-        $data = Fournisseur::all();
-        return view('admin.fournisseurs', ["data"=>$data]);
+    public function activate($id){
+        Fournisseur::where('id', $id)->update(['statut'=>1]);
+        return redirect('/admin/fournisseurs');
     }
 }
