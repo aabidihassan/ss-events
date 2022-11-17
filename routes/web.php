@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PresController;
 use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,14 @@ Route::get('/admin/pres/accept/{id}', [PresController::class, 'accept'])->middle
 
 Route::get('/admin/fournisseurs', function () {
     if(auth()->user()->type == 'admin') return FournisseurController::getAll();
-})->middleware(['auth'])->name('editCompte');
+})->middleware(['auth']);
+
+Route::get('/admin/clients', function () {
+    if(auth()->user()->type == 'admin') return ClientController::getAll();
+})->middleware(['auth']);
+
+Route::get('/admin/clients/desactivate/{id}', [ClientController::class, 'desactivate'])->middleware(['auth']);
+Route::get('/admin/clients/activate/{id}', [ClientController::class, 'activate'])->middleware(['auth']);
 
 Route::get('/contact', function () {
     return view('register');
