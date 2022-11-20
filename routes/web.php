@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PresController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,13 @@ Route::get('/admin/fournisseurs', function () {
 Route::get('/admin/fournisseurs/desactivate/{id}', [FournisseurController::class, 'desactivate'])->middleware(['auth']);
 Route::get('/admin/fournisseurs/activate/{id}', [FournisseurController::class, 'activate'])->middleware(['auth']);
 
+Route::get('/admin/services', function () {
+    if(auth()->user()->type == 'admin') return ServiceController::getAll();
+})->middleware(['auth']);
+
+Route::get('/admin/services/desactivate/{id}', [ServiceController::class, 'desactivate'])->middleware(['auth']);
+Route::get('/admin/services/activate/{id}', [ServiceController::class, 'activate'])->middleware(['auth']);
+
 Route::get('/admin/clients', function () {
     if(auth()->user()->type == 'admin') return ClientController::getAll();
 })->middleware(['auth']);
@@ -76,7 +84,7 @@ Route::get('/contact', function () {
 Route::get('/dashboard', function () {
     if(auth()->user()->type == 'client') return view('client.profile');
     if(auth()->user()->type == 'admin') return redirect('/admin/pres');
-    return view('dashboard');
+    return view('fournisseurs.profile');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

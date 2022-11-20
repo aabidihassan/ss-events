@@ -6,6 +6,10 @@
     <title>EVENTS | Espace admin</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Favicon -->
     <link href="{{ url('img/favicon.ico')}}" rel="icon">
     <!-- CSS only -->
@@ -65,7 +69,7 @@
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px">
                 <h3 class="display-4 text-white text-uppercase mt-4">@yield('title')</h3>
                 <div class="d-inline-flex text-white">
-                    <p class="m-0 text-uppercase"><a class="text-white" href="/">Espace admin</a></p>
+                    <p class="m-0 text-uppercase"><a class="text-white" href="/admin/pres">Espace admin</a></p>
                     <i class="fa fa-angle-double-right pt-1 px-3"></i>
                     <p class="m-0 text-uppercase">@yield('title')</p>
                 </div>

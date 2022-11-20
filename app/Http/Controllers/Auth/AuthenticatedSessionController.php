@@ -37,8 +37,9 @@ class AuthenticatedSessionController extends Controller
         if(auth()->user()->type == 'client'){
             $client = Client::where('id', auth()->user()->id_user)->first();
             $request->session()->put('profile', $client);
-        }else{
-
+        }elseif(auth()->user()->type == 'fournisseur'){
+            $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
+            $request->session()->put('profile', $fournisseur);
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

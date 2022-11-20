@@ -6,7 +6,7 @@
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/mariage.png" alt="Image">
+                    <img class="w-100" src="img/mariage.png" alt="Image" height="600">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="carousel-item ">
-                    <img class="w-100" src="img/soiree.png" alt="Image">
+                    <img class="w-100" src="img/soiree.png" alt="Image" height="600">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="carousel-item ">
-                    <img class="w-100" src="img/seminaire.png" style=" width: 100%; height: 50%;" alt="Image">
+                    <img class="w-100" src="img/seminaire.png" alt="Image" height="600">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/annv.png" alt="Image">
+                    <img class="w-100" src="img/annv.png" alt="Image" height="600">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Trouvé un assistant pour votre</h4>
@@ -68,17 +68,37 @@
                 <div class="row align-items-center" style="min-height: 60px;">
                     <div class="col-md-10">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3 mb-md-0">
                                     <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Destination</option>
+                                        <option selected>Type d'evenement</option>
                                         <option value="1">Destination 1</option>
                                         <option value="2">Destination 1</option>
                                         <option value="3">Destination 1</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Service</option>
+                                        <option value="1">Destination 1</option>
+                                        <option value="2">Destination 1</option>
+                                        <option value="3">Destination 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Ville</option>
+                                        <option value="1">Destination 1</option>
+                                        <option value="2">Destination 1</option>
+                                        <option value="3">Destination 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-3">
                                 <div class="mb-3 mb-md-0">
                                     <div class="date" id="date1" data-target-input="nearest">
                                         <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
@@ -101,11 +121,11 @@
                                         <option value="3">Duration 1</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
+                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Chercher</button>
                     </div>
                 </div>
             </div>
@@ -290,7 +310,7 @@
     <!-- Destination Start -->
 
 
-   
+
 
     <!-- Packages Start -->
     <div class="container-fluid py-5">
