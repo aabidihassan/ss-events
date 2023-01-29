@@ -5,9 +5,36 @@
     <!-- Packages Start -->
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
-           
+
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+                @foreach ($fournisseurs as $fournisseur)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="package-item bg-white mb-2">
+                            <a href="#">
+                                <img class="img-fluid" src="fournisseurs/{{ $fournisseur->photo }}" alt=""
+                                    style="height: 250px; width:100%">
+                            </a>
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <small class="m-0"><i
+                                            class="fa fa-map-marker-alt text-primary mr-2"></i>{{ $fournisseur->citie }}</small>
+                                    <small class="m-0"><i
+                                            class="fa fa-bullseye text-primary mr-2"></i>{{ $fournisseur->service }}</small>
+                                    <small class="m-0"><i
+                                            class="fa fa-eye text-primary mr-2"></i>{{ $fournisseur->vues }}</small>
+                                </div>
+                                <a class="h5 text-decoration-none" href="">{{ $fournisseur->raison }}</a>
+                                <div class="border-top mt-2 pt-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5
+                                            <small>(250)</small></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-lg-4 col-md-6 mb-4">
                     <div class="package-item bg-white mb-2">
                         <img class="img-fluid" src="img/package-1.jpg" alt="">
                         <div class="p-4">
@@ -120,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

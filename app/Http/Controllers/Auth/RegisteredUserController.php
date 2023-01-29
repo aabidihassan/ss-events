@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
             $pre->prenom = $request->prenom;
             $pre->email = $request->email;
             $pre->telephone = $request->phone;
+            $pre->statut = false;
             $pre->save();
             return redirect()->back()->with(['message' => 'done']);
         }else{

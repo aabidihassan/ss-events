@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Client;
 use App\Models\Fournisseur;
+use App\Models\Citie;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -40,6 +41,8 @@ class AuthenticatedSessionController extends Controller
         }elseif(auth()->user()->type == 'fournisseur'){
             $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
             $request->session()->put('profile', $fournisseur);
+            $cities = Citie::all();
+            $request->session()->put('cities', $cities);
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

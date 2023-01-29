@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Prefournisseur;
 use App\Models\Fournisseur;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class PresController extends Controller
 {
@@ -29,6 +30,7 @@ class PresController extends Controller
         $user->type = 'fournisseur';
         $user->id_user = $fournisseur->id;
         $user->save();
+        $this->createFolder($user->id);
         Prefournisseur::where('id', $id)->delete();
         return redirect('/admin/pres');
     }
@@ -36,5 +38,13 @@ class PresController extends Controller
     public function decline($id){
         Prefournisseur::where('id', $id)->update(['statut'=>1]);
         return redirect('/admin/pres');
+    }
+
+    public function createFolder($id)
+    {
+        $path = public_path('fournisseurs/'.$id);
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
     }
 }

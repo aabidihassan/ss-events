@@ -6,7 +6,8 @@ use App\Http\Controllers\PresController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ServiceController;
-
+use App\Http\Controllers\IndexController;
+require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ use App\Http\Controllers\ServiceController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return IndexController::index();
 });
 Route::get('/test', function () {
     return view('client.profile');
@@ -41,8 +42,8 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 
-Route::get('/fournisseurs', function () {
-    return view('client.fournisseur');
+Route::get('/fournisseur', function () {
+    return FournisseurController::index();
 });
 
 Route::get('/admin/services', function () {
@@ -84,11 +85,15 @@ Route::get('/contact', function () {
 Route::get('/dashboard', function () {
     if(auth()->user()->type == 'client') return view('client.profile');
     if(auth()->user()->type == 'admin') return redirect('/admin/pres');
-    return view('fournisseurs.profile');
+    return FournisseurController::profile();
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
 
 
 Route::post('/editCompte',[ProfileController::class,'editCompte'])->middleware(['auth'])->name('editCompte');
 Route::post('/editProfile',[ProfileController::class,'editProfile'])->middleware(['auth'])->name('editProfile');
+Route::post('image/store', [ProfileController::class, 'store'])->middleware(['auth'])->name('image.store');
+Route::post('profile_picture/update', [ProfileController::class, 'updateProfilePicture'])->middleware(['auth'])->name('profile_picture.update');
+
+
+Route::post('/search',[FournisseurController::class,'search'])->name('search');
