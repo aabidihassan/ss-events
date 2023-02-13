@@ -276,7 +276,7 @@
             <div class="row">
                 @foreach ($fournisseurs as $fournisseur)
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="package-item bg-white mb-2">
+                        <div class="package-item bg-white mb-2" style="height: 410px;">
                             <a href="#">
                                 <img class="img-fluid" src="fournisseurs/{{ $fournisseur->photo }}" alt=""
                                     style="height: 250px; width:100%">
@@ -296,6 +296,7 @@
                                         <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5
                                             <small>(250)</small>
                                         </h6>
+                                        <button class="btn btn-sm btn-secondary ml-auto" style="width:30%; margin-top:-2%">Voir</button>
                                     </div>
                                 </div>
                             </div>

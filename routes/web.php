@@ -32,6 +32,9 @@ Route::get('/services', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/detail', function () {
+    return view('fournisseurs.presentation');
+});
 Route::get('/admin', function () {
     return view('admin.admin');
 });
