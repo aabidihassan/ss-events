@@ -68,7 +68,7 @@
                 <div class="row align-items-center" style="min-height: 60px;">
                     <form method="POST" action="{{ route('search') }}">
                         @csrf
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="mb-md-0">
@@ -90,10 +90,10 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <input class="btn btn-primary btn-block mb-md-0" type="submit"
-                                    style="height: 47px; margin-top: -2px;" value="Chercher">
+                                <div class="col-md-2">
+                                    <input class="btn btn-primary btn-block mb-md-0" type="submit"
+                                        style="height: 47px; margin-top: -2px;" value="Chercher">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -101,6 +101,7 @@
             </div>
         </div>
     </div>
+
     <!-- Booking End -->
 
     <!-- Service Start -->

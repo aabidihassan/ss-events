@@ -2,11 +2,12 @@
 @section('containner')
 @section('title', 'Inscription')
 
+
     <!-- Contact Start -->
-    <div class="container-fluid py-5" style="margin-top:-5%;">
+    <div id="client-register" class="container-fluid py-5" style="margin-top:-2%; display:none;">
         <div class="container py-5">
             <div class="text-center mb-1 pb-3">
-                <h2>Créer un compte</h2>
+                <h2>Créer un compte Client</h2>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -17,12 +18,12 @@
                             @if(session()->has('message'))
                                 <div class="alert alert-success" role="alert">les informations sont bien enregistrées, on va vous communiquer par la suite!</div>
                             @endif
-                            <div class="mb-3 mb-md-0">
+                            <!-- <div class="mb-3 mb-md-0">
                                 <select class="custom-select px-4" name="type" id="type" style="height: 47px;">
                                     <option value="client"  selected>Client</option>
                                     <option value="pre">Fournisseur</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-row mt-3">
                                 <div class="control-group col-sm-6">
                                     <input type="text" class="form-control p-4" placeholder="Nom" name="nom"
@@ -67,14 +68,42 @@
                                 Vous avez deja un compte? <a href="/login">Authentifier par ici!</a>
                             </div>
                             <div class="text-center mt-3">
-                                <button class="btn btn-primary py-3 px-4" type="submit">Creer un compte</button>
+                                <button class="btn btn-primary" type="submit">Creer un compte</button>
+                            </div>
+                            <div class="text-center mt-3">
+                                Vous etes un prestataire évenementiel ? <a href="/register-fournisseur">Référencer votre entreprise par ici!</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div> 
+
+
+<div class="card-group">
+  <div class="card">
+    <img src="../../img/event.jpg" class="card-img-top" alt="Connect with Customer">
+    <div class="card-body">
+      <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
+      <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
+      <a href="#" class="btn btn-primary cli">Créer un compte client</a>
     </div>
+  </div>
+  
+  <div class="card">
+    <img src="../../img/prestataire0.jpg" class="card-img-top" alt="Connect with Seller">
+    <div class="card-body">
+      <h5 class="card-title">Vous etes un prestataire évenementiel ?</h5>
+      <p class="card-text">Créez votre fiche lieu et recevez vos premières demandes de devis</p>
+      <a href="/register-fournisseur" class="btn btn-primary prest">Référencer mon entreprise</a>
+    </div>
+  </div>
+</div>
+
+
+
+
     <!-- Contact End -->
 @stop
 
@@ -82,18 +111,26 @@
 @section('script')
 
     <script>
-            $('#type').on('change', function(){
-                console.log($(this).val())
-                if($(this).val() == 'pre'){
-                    $('#username').hide().removeAttr('required');
-                    $('#password').hide().removeAttr('required');
-                    $('#adresse').hide().removeAttr('required');
-                }else{
-                    $('#username').show().attr('required', 'true');
-                    $('#password').show().attr('required', 'true');
-                    $('#adresse').show().attr('required', 'true');
-                }
-            })
+
+        document.querySelector('.cli').addEventListener('click', function() {
+            document.querySelector('.card-group').style.display = 'none';
+            document.querySelector('#client-register').style.display = 'block';
+        });
+
+            // $('#type').on('change', function(){
+            //     console.log($(this).val())
+            //     if($(this).val() == 'pre'){
+            //         $('#username').hide().removeAttr('required');
+            //         $('#password').hide().removeAttr('required');
+            //         $('#adresse').hide().removeAttr('required');
+            //     }else{
+            //         $('#username').show().attr('required', 'true');
+            //         $('#password').show().attr('required', 'true');
+            //         $('#adresse').show().attr('required', 'true');
+            //     }
+            // })
         </script>
 
 @stop
+
+
