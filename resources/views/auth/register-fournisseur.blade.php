@@ -4,109 +4,24 @@
 
 <style>
   .card {
-    min-width: 300px;
-    height: auto;
+
     overflow: hidden;
     border-radius: 15px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 20px 20px;
     box-shadow: 0 10px 15px rgba(0,0,0,0.3);
     transition: .5s;
-  }
-  .card:hover {
-    transform:scale(1.1);
-  }
-  .card_red, .card_red .title .fa {
-    background: linear-gradient(-45deg, #ffec61, #f321d7);
-  }
-  .card_violet, .card_violet .title .fa  {
-    background: linear-gradient(-45deg, #f403d1, #64b5f6);
-  }
-  .card_three, .card_three .title .fa  {
-    background: linear-gradient(-45deg, #24ff72, #9a4eff);
-  }
-
-  .card:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background: rgba(255, 255, 255, .1);
-    z-index: 1;
-    transform: skewY(-5deg) scale(1.5);
-  }
-
-  .title .fa {
-    color: #fff;
-    font-size: 60px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 100px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
-  }
-  .title h2 {
-    position: relative;
-    margin: 20px 0 0;
-    padding: 0;
-    color: #fff;
-    font-size: 28px;
-    z-index: 2;
-  }
-  .price {
-    position: relative;
-    z-index: 2;
-  }
-  .price h4 {
-    margin: 0;
-    padding: 20px 0;
-    color: #fff;
-    font-size: 60px;
-  }
-  .option {
-    position: relative;
-    z-index: 2;
-  }
-  .option ul {
-    margin: 0;
-    padding: 0;
-  }
-  .option ul li {
-    margin: 0 0 10px;
-    padding: 0;
-    list-style: none;
-    color: #fff;
-    font-size: 16px;
-  }
-  .card a {
-    display: block;
-    position: relative;
-    z-index: 2;
-    background-color: #fff;
-    color: #262ff;
-    width: 150px;
-    height: 40px;
-    text-align: center;
-    margin: 20px auto 0;
-    line-height: 40px;
-    border-radius: 40px;
-    font-size: 16px;
-    cursor: pointer;
-    text-decoration: none;
-  box-shadow: 0 5px 10px rgba(0,0,0, .1);
   }
 
 </style> 
 
     <div class="wrapper">
         <div class="container">
-            <div class="row">
+        <h2 class="text-center">Améliorez votre présence en ligne !</h2>
 
-                <h1 class="text-center">Améliorez votre présence en ligne !</h1>
-                <div class="col-md-4">
+            <div class="row mt-5">
+
+                <div class="col-md-4 ">
                     <div class="card shadow-sm">
                         <img src="../../img/visibility.png" />
                         <div class="card-body">
@@ -140,6 +55,82 @@
         </div>
     </div>
 
+        <!-- Feature Start -->
+    <div class="container-fluid pb-5">
+        <div class="container pb-5">
+         <h2 class="text-center">Quels sont nos services ?</h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Competitive Pricing</h5>
+                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-award text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Best Services</h5>
+                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-globe text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Worldwide Coverage</h5>
+                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Competitive Pricing</h5>
+                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-award text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Best Services</h5>
+                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-globe text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Worldwide Coverage</h5>
+                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Registration Start -->
     <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
         <div class="container py-5">
@@ -158,107 +149,286 @@
                         <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
                     </ul>
                 </div>
-                <div class="col-lg-5">
-                    <div class="card border-0">
-                        <div class="card-header bg-primary text-center p-4">
-                            <h1 class="text-white m-0">Sign Up Now</h1>
+                  <div class="col-lg-5">
+                    <div class="card" style="background-color: rgba(0,0,0,.7)">
+                        <div class="text-center">
+                        <h2 class="card-title pt-2 text-white">
+                          <strong>Accès prestataire</strong>
+                        </h2>
                         </div>
-                        <div class="card-body rounded-bottom bg-white p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control p-4" placeholder="Your name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Select a destination</option>
-                                        <option value="1">destination 1</option>
-                                        <option value="2">destination 1</option>
-                                        <option value="3">destination 1</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                            <div>
+                                <button class="btn btn-primary btn-block py-3">Inscrivez-vous</button>
+                            </div>
+                  </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Registration End -->
 
-<section>
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="card card_red text-center">
-            <div class="title">
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-              <h2>Basic</h2>
-            </div>
-            <div class="price">
-              <h4><sup>$</sup>25</h4>
-            </div>
-            <div class="option">
-              <ul>
-                <li><i class="fa fa-check" aria-hidden="true"></i>10 GB Space</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>3 Domain Names</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>20 Emails Addresse</li>
-                <li><i class="fa fa-times" aria-hidden="true"></i>Live Support</li>
-                </ul>
-            </div>
-            <a href="#">Order Now</a>
+
+<!-- <div class="container">
+  <div class="row">
+  <div class="col-4">
+      <div class="card text-center mb-4">
+        <div class="card-body">
+          <h2 class="text-primary">1 Mois</h2>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor tincidunt.</p>
+           <ul class="list-group list-group-flush">
+            <li class="list-group-item">Feature 1</li>
+            <li class="list-group-item">Feature 2</li>
+            <li class="list-group-item">Feature 3</li>
+          </ul> 
+          <div class="card-footer bg-transparent border-primary">
+            <h4 class="text-primary">1500 DH</h4> 
+            <a href="#" class="btn btn-primary">Profiter</a>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="card card_violet text-center">
-            <div class="title">
-              <i class="fa fa-plane" aria-hidden="true"></i>
-              <h2>Premium</h2>
-            </div>
-            <div class="price">
-              <h4><sup>$</sup>25</h4>
-            </div>
-            <div class="option">
-              <ul>
-                <li><i class="fa fa-check" aria-hidden="true"></i>10 GB Space</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>3 Domain Names</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>20 Emails Addresse</li>
-                <li><i class="fa fa-times" aria-hidden="true"></i>Live Support</li>
-                </ul>
-            </div>
-            <a href="#">Order Now</a>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-center mb-4">
+        <div class="card-body">
+          <h2 class="text-primary">3 Mois</h2>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor tincidunt.</p>
+
+          <div class="card-footer bg-transparent border-primary">
+            <h4 class="text-primary">4000 DH</h4> 
+            <a href="#" class="btn btn-primary">Profiter</a>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="card card_three text-center">
-            <div class="title">
-              <i class="fa fa-rocket" aria-hidden="true"></i>
-              <h2>Standart</h2>
-            </div>
-            <div class="price">
-              <h4><sup>$</sup>50</h4>
-            </div>
-            <div class="option">
-              <ul>
-                <li><i class="fa fa-check" aria-hidden="true"></i>50 GB Space</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>5 Domain Names</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i>20 Emails Addresse</li>
-                <li><i class="fa fa-times" aria-hidden="true"></i>Live Support</li>
-                </ul>
-            </div>
-            <a href="#">Order Now</a>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-center mb-4">
+        <div class="card-body">
+          <h2 class="text-primary">6 Mois</h2>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor tincidunt.</p>
+  
+          <div class="card-footer bg-transparent border-primary">
+            <h4 class="text-primary">7000 DH</h4> 
+            <a href="#" class="btn btn-primary">Profiter</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div> -->
+
+
+
+
+
+<style>
+
+
+
+.pricingTable {
+    text-align: center;
+    background: #fff;
+    margin: 0 10px;
+    box-shadow: 0 0 10px #ababab;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    color: #cad0de;
+    transform: scale(1);
+    transition: all .5s ease 0s
+}
+
+.pricingTable:hover {
+    transform: scale(1.05);
+    z-index: 1
+}
+
+.pricingTable .pricingTable-header {
+    padding: 40px 0;
+    background: #f5f6f9;
+    border-radius: 10px 10px 50% 50%;
+    transition: all .5s ease 0s
+}
+
+.pricingTable:hover .pricingTable-header {
+    background: #ff9624
+}
+
+.pricingTable .pricingTable-header i {
+    font-size: 50px;
+    color: #858c9a;
+    margin-bottom: 10px;
+    transition: all .5s ease 0s
+}
+
+.pricingTable .price-value {
+    font-size: 35px;
+    color: #ff9624;
+    transition: all .5s ease 0s
+}
+
+.pricingTable .month {
+    display: block;
+    font-size: 14px;
+    color: #cad0de
+}
+
+.pricingTable:hover .month,
+.pricingTable:hover .price-value,
+.pricingTable:hover .pricingTable-header i {
+    color: #fff
+}
+
+.pricingTable .heading {
+    font-size: 24px;
+    color: #ff9624;
+    margin-bottom: 20px;
+    text-transform: uppercase
+}
+
+.pricingTable .pricing-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px
+}
+
+.pricingTable .pricing-content ul li {
+    line-height: 30px;
+    color: #a7a8aa
+}
+
+.pricingTable .pricingTable-signup a {
+    display: inline-block;
+    font-size: 15px;
+    color: #fff;
+    padding: 10px 35px;
+    border-radius: 20px;
+    background: #ffa442;
+    text-transform: uppercase;
+    transition: all .3s ease 0s
+}
+
+.pricingTable .pricingTable-signup a:hover {
+    box-shadow: 0 0 10px #ffa442
+}
+
+.pricingTable.blue .heading,
+.pricingTable.blue .price-value {
+    color: #4b64ff
+}
+
+.pricingTable.blue .pricingTable-signup a,
+.pricingTable.blue:hover .pricingTable-header {
+    background: #4b64ff
+}
+
+.pricingTable.blue .pricingTable-signup a:hover {
+    box-shadow: 0 0 10px #4b64ff
+}
+
+.pricingTable.red .heading,
+.pricingTable.red .price-value {
+    color: #ff4b4b
+}
+
+.pricingTable.red .pricingTable-signup a,
+.pricingTable.red:hover .pricingTable-header {
+    background: #ff4b4b
+}
+
+.pricingTable.red .pricingTable-signup a:hover {
+    box-shadow: 0 0 10px #ff4b4b
+}
+
+.pricingTable.green .heading,
+.pricingTable.green .price-value {
+    color: #40c952
+}
+
+.pricingTable.green .pricingTable-signup a,
+.pricingTable.green:hover .pricingTable-header {
+    background: #40c952
+}
+
+.pricingTable.green .pricingTable-signup a:hover {
+    box-shadow: 0 0 10px #40c952
+}
+
+.pricingTable.blue:hover .price-value,
+.pricingTable.green:hover .price-value,
+.pricingTable.red:hover .price-value {
+    color: #fff
+}
+
+@media screen and (max-width:990px) {
+    .pricingTable {
+        margin: 0 0 20px
+    }
+}</style>
+
+<div class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <div class="price-value"> $10.00 <span class="month">per month</span> </div>
+                    </div>
+                    <h3 class="heading">Standard</h3>
+                    <div class="pricing-content">
+                        <ul>
+                            <li><b>50GB</b> Disk Space</li>
+                            <li><b>50</b> Email Accounts</li>
+                            <li><b>50GB</b> Monthly Bandwidth</li>
+                            <li><b>10</b> subdomains</li>
+                            <li><b>15</b> Domains</li>
+                        </ul>
+                    </div>
+                    <div class="pricingTable-signup">
+                        <a href="#">sign up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable green">
+                    <div class="pricingTable-header">
+                        <div class="price-value"> $20.00 <span class="month">per month</span> </div>
+                    </div>
+                    <h3 class="heading">Business</h3>
+                    <div class="pricing-content">
+                        <ul>
+                            <li><b>60GB</b> Disk Space</li>
+                            <li><b>60</b> Email Accounts</li>
+                            <li><b>60GB</b> Monthly Bandwidth</li>
+                            <li><b>15</b> subdomains</li>
+                            <li><b>20</b> Domains</li>
+                        </ul>
+                    </div>
+                    <div class="pricingTable-signup">
+                        <a href="#">sign up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable blue">
+                    <div class="pricingTable-header">
+                        <div class="price-value"> $30.00 <span class="month">per month</span> </div>
+                    </div>
+                    <h3 class="heading">Premium</h3>
+                    <div class="pricing-content">
+                        <ul>
+                            <li><b>70GB</b> Disk Space</li>
+                            <li><b>70</b> Email Accounts</li>
+                            <li><b>70GB</b> Monthly Bandwidth</li>
+                            <li><b>20</b> subdomains</li>
+                            <li><b>25</b> Domains</li>
+                        </ul>
+                    </div>
+                    <div class="pricingTable-signup">
+                        <a href="#">sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @stop
