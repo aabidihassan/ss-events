@@ -44,7 +44,7 @@
 <body>
     <!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
-        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+        <div class="position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
                     <h1 class="m-0 text-primary"><span class="text-dark">EVENTS</span>KECH</h1>
@@ -57,6 +57,7 @@
                         <a href="/" class="nav-item nav-link" id="accueil">Accueil</a>
                         <a href="/fournisseur" class="nav-item nav-link">Fournisseurs</a>
                         <a href="/services" class="nav-item nav-link">Services</a>
+                        <a href="/about" class="nav-item nav-link">À propos de nous</a>
                         {{-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
@@ -68,8 +69,14 @@
                             </div>
                         </div> --}}
                         @if (!auth()->check())
-                            <a href="/login" class="nav-item nav-link">Connexion</a>
-                            <a href="/register" class="nav-item nav-link">Inscription</a>
+                            <a href="/register-fournisseur" class="nav-item nav-link">Espace Prestataires</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Compte</a>
+                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="/login" class="nav-item nav-link">Connexion</a>
+                                <a href="/register" class="nav-item nav-link">Inscription</a>
+                                </div>
+                            </div>
                         @else
                             <a href="/dashboard" class="nav-item nav-link">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">
@@ -92,7 +99,7 @@
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                    <h1 class="text-primary"><span class="text-white">EVENTS</span>KECH</h1>
                 </a>
                 <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed
                     vero lorem dolor dolor</p>
@@ -107,33 +114,24 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Nos Services</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i
-                            class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i
-                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Traiteur</a>
+                    <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Photographie</a>
+                    <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Groupe Musical</a>
+                    <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Assisté Marie</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Nos Pages</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i
-                            class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i
-                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Accueil</a>
+                    <a class="text-white-50 mb-2" href="/fournisseur"><i class="fa fa-angle-right mr-2"></i>Fournisseurs</a>
+                    <a class="text-white-50 mb-2" href="/about"><i class="fa fa-angle-right mr-2"></i>À propos de nous</a>
+                    <a class="text-white-50 mb-2" href="/register-fournisseur"><i class="fa fa-angle-right mr-2"></i>Espace Prestataire</a>
+                    <a class="text-white-50 mb-2" href="/login"><i class="fa fa-angle-right mr-2"></i>Compte</a>
                 </div>
-            </div>
+            {{-- </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
@@ -149,18 +147,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
         style="border-color: rgba(256, 256, 256, .1) !important;">
         <div class="row">
             <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</a>
+                <p class="m-0 text-white-50">Copyright &copy; <a href="#">events.com</a>. All Rights Reserved.</a>
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+                <p class="m-0 text-white-50">Designed by <a href="https://www.linkedin.com/in/hassan-aabidi/" target="_blank">HY</a>
                 </p>
             </div>
         </div>

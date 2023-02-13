@@ -29,14 +29,8 @@ Route::get('/test', function () {
 Route::get('/services', function () {
     return view('client.services');
 });
-Route::get('/anniversaire', function () {
-    return view('anniv');
-});
-Route::get('/soiree', function () {
-    return view('soiree');
-});
-Route::get('/seminaire', function () {
-    return view('Seminaire');
+Route::get('/about', function () {
+    return view('about');
 });
 Route::get('/admin', function () {
     return view('admin.admin');

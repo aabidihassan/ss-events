@@ -24,6 +24,7 @@
                                     <option value="pre">Fournisseur</option>
                                 </select>
                             </div> -->
+                            <input type="text" value="client" hidden/>
                             <div class="form-row mt-3">
                                 <div class="control-group col-sm-6">
                                     <input type="text" class="form-control p-4" placeholder="Nom" name="nom"
@@ -78,7 +79,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 
 <div class="card-group">
@@ -90,7 +91,7 @@
       <a href="#" class="btn btn-primary cli">Créer un compte client</a>
     </div>
   </div>
-  
+
   <div class="card">
     <img src="../../img/prestataire0.jpg" class="card-img-top" alt="Connect with Seller">
     <div class="card-body">
