@@ -120,6 +120,8 @@
                     <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Photographie</a>
                     <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Groupe Musical</a>
                     <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Assisté Marie</a>
+                    <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Makeup Artist</a>
+                    <a class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Locals</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">

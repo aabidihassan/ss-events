@@ -5932,6 +5932,26 @@ a.close.disabled {
   transition: opacity 0.15s ease;
 }
 
+@media (max-width: 576px) {
+    .pagination-lg .page-link {
+        font-size: 1rem;
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+@media (min-width: 576px) {
+    .pagination-lg .page-link {
+        font-size: 1.25rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .pagination-lg {
+        width: 50%;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .carousel-control-prev,
   .carousel-control-next {
@@ -9795,7 +9815,7 @@ h6,
   .card-group {
       flex-direction: column;
   }
-  
+
   .card {
       width: 80%;
   }
@@ -9828,7 +9848,7 @@ h6,
   color: #333;
 }
 
-.card-text { 
+.card-text {
   font-size: 16px;
   color: gray;
   margin-bottom: 20px;

@@ -37,6 +37,47 @@
                     </div>
                 </div>
             @endforeach
+
+            @php
+                $num_pages = 10; // Replace with the actual number of pages
+                $current_page = 5;
+
+                $prev_disabled = $current_page == 1 ? 'disabled' : '';
+                $next_disabled = $current_page == $num_pages ? 'disabled' : '';
+            @endphp
+
+            <div class="d-flex justify-content-center mt-2">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-lg" style="width: 70%;">
+                        <li class="page-item {{ $prev_disabled }}">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+
+                        @if ($num_pages > 7)
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            @if ($current_page > 4)
+                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                            @endif
+                            @for ($i = max(2, $current_page - 2); $i <= min($current_page + 2, $num_pages - 1); $i++)
+                                <li class="page-item {{ $i == $current_page ? 'active' : '' }}"><a class="page-link"
+                                        href="#">{{ $i }}</a></li>
+                            @endfor
+                            @if ($current_page < $num_pages - 3)
+                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                            @endif
+                        @else
+                            @for ($i = 1; $i <= $num_pages; $i++)
+                                <li class="page-item {{ $i == $current_page ? 'active' : '' }}"><a class="page-link"
+                                        href="#">{{ $i }}</a></li>
+                            @endfor
+                        @endif
+
+                        <li class="page-item {{ $next_disabled }}">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             {{-- <div class="col-lg-4 col-md-6 mb-4">
                     <div class="package-item bg-white mb-2">
                         <img class="img-fluid" src="img/package-1.jpg" alt="">
