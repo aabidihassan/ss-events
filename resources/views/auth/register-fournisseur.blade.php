@@ -137,16 +137,14 @@
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
                     <div class="mb-4">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
-                        <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Offre limitée</h6>
+                        <h1 class="text-white"><span class="text-primary">4 mois</span> gratuit</h1>
                     </div>
-                    <p class="text-white">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor</p>
+                    <p class="text-white">Inscrivez-vous dès maintenant pour bénéficier de cette offre exceptionnelle et commencez à explorer toutes les fonctionnalités et avantages de notre plateforme. </p>
                     <ul class="list-inline text-white m-0">
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Augmenter votre visibilité.</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Trouver de nouveaux clients.</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Économisez de l'argent.</li>
                     </ul>
                 </div>
                   <div class="col-lg-5">
