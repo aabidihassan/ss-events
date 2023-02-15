@@ -13,7 +13,7 @@
     transition: .5s;
   }
 
-</style> 
+</style>
 
     <div class="wrapper">
         <div class="container">
@@ -66,8 +66,8 @@
                             <i class="fa fa-2x fa-money-check-alt text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Competitive Pricing</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                            <h5 class="">Augmentez votre portée</h5>
+                            <p class="m-0">Augmenter votre visibilité en ligne et toucher un public plus large.</p>
                         </div>
                     </div>
                 </div>
@@ -77,8 +77,8 @@
                             <i class="fa fa-2x fa-award text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Best Services</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                            <h5 class="">Gagnez en crédibilité</h5>
+                            <p class="m-0">Bénéficier d'un système de notation et d'avis sur votre plateforme.</p>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                             <i class="fa fa-2x fa-globe text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Worldwide Coverage</h5>
+                            <h5 class="">Gagnez du temps</h5>
                             <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
                         </div>
                     </div>
@@ -101,8 +101,8 @@
                             <i class="fa fa-2x fa-money-check-alt text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Competitive Pricing</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                            <h5 class="">Économisez de l'argent</h5>
+                            <p class="m-0">Économiser de l'argent en évitant les coûts de publicité traditionnels</p>
                         </div>
                     </div>
                 </div>
@@ -178,9 +178,9 @@
             <li class="list-group-item">Feature 1</li>
             <li class="list-group-item">Feature 2</li>
             <li class="list-group-item">Feature 3</li>
-          </ul> 
+          </ul>
           <div class="card-footer bg-transparent border-primary">
-            <h4 class="text-primary">1500 DH</h4> 
+            <h4 class="text-primary">1500 DH</h4>
             <a href="#" class="btn btn-primary">Profiter</a>
           </div>
         </div>
@@ -193,7 +193,7 @@
           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor tincidunt.</p>
 
           <div class="card-footer bg-transparent border-primary">
-            <h4 class="text-primary">4000 DH</h4> 
+            <h4 class="text-primary">4000 DH</h4>
             <a href="#" class="btn btn-primary">Profiter</a>
           </div>
         </div>
@@ -204,9 +204,9 @@
         <div class="card-body">
           <h2 class="text-primary">6 Mois</h2>
           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor tincidunt.</p>
-  
+
           <div class="card-footer bg-transparent border-primary">
-            <h4 class="text-primary">7000 DH</h4> 
+            <h4 class="text-primary">7000 DH</h4>
             <a href="#" class="btn btn-primary">Profiter</a>
           </div>
         </div>

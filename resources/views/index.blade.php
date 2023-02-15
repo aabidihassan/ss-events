@@ -102,91 +102,64 @@
         </div>
     </div>
 
-    <!-- Booking End -->
-
-    <!-- Service Start -->
-    {{-- <div style="margin-top:-5%" class="container-fluid py-5">
+    <div class="container-fluid py-5" style="margin-top: -9%;">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
-                <h1 >Tours & Travel Services</h1>
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Avantages</h6>
+                <h1>Tours & Travel Services</h1>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
                         <i class="fa fa-2x fa-route mx-auto mb-4"></i>
-                        <h5 class="mb-2">Travel Guide</h5>
-                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                        <h5 class="mb-2">Gagnez du temps</h5>
+                        <p class="m-0">Economiser du temps en utilisant une plateforme en ligne pour trouver des prestataires de services</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
                         <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
-                        <h5 class="mb-2">Ticket Booking</h5>
-                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                        <h5 class="mb-2">Gagnez en confiance</h5>
+                        <p class="m-0">Consulter les avis et les notations des autres clients pour trouver des prestataires de services de qualité.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
                         <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
-                        <h5 class="mb-2">Hotel Booking</h5>
-                        <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                        <h5 class="mb-2">Économisez de l'argent</h5>
+                        <p class="m-0">Economiser de l'argent en comparant les prix des différents prestataires de services.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> --}}
-    <!-- Service End -->
-
-
-    <!-- Feature Start -->
-    <div class="container-fluid pb-5">
-        <div class="container pb-5">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3"
-                            style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-money-check-alt text-white"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <h5 class="">Competitive Pricing</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
-                        </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
+                        <h5 class="mb-2">Économisez de l'énergie</h5>
+                        <p class="m-0">Economiser de l'énergie en utilisant une plateforme en ligne pour trouver des prestataires de services</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3"
-                            style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-award text-white"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <h5 class="">Best Services</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
-                        </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
+                        <h5 class="mb-2">Bénéficiez d'un support client</h5>
+                        <p class="m-0">Bénéficier d'un support client pour répondre à vos questions et résoudre les problèmes éventuels.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3"
-                            style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-globe text-white"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <h5 class="">Worldwide Coverage</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
-                        </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
+                        <h5 class="mb-2">Prestataires variées</h5>
+                        <p class="m-0">Un large choix de prestataires de services pour répondre à tous vos besoins.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Feature End -->
 
 
     <!-- Destination Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5" style="margin-top: -8%;">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
