@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ContactUsController;
 require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
@@ -96,3 +97,5 @@ Route::post('profile_picture/update', [ProfileController::class, 'updateProfileP
 
 Route::post('/search',[FournisseurController::class,'search'])->name('search');
 Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
+
+Route::post('/contact', [ContactUsController::class, 'submitContactForm'])->name('contact');
