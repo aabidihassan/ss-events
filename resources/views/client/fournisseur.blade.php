@@ -6,9 +6,16 @@
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
 
-        <div class="row">
+        <div class="row parent-Item-Fornisseur">
+            @php
+                $nub_Items = 6 ;// Number of Items in page view
+                $nubFr = 0;
+            @endphp
             @foreach ($fournisseurs as $fournisseur)
-                <div class="col-lg-4 col-md-6 mb-4">
+                @php
+                    $nubFr++;
+                @endphp
+                <div class="col-lg-4 col-md-6 mb-4 item-fornisseur {{ $nubFr >= $nub_Items+1  ? 'd-none' : '' }}">
                     <div class="package-item bg-white mb-2" style="height: 410px;">
                         <a href="#">
                             <img class="img-fluid" src="fournisseurs/{{ $fournisseur->photo }}" alt=""
@@ -37,11 +44,12 @@
                     </div>
                 </div>
             @endforeach
-
             @php
-                $num_pages = 10; // Replace with the actual number of pages
-                $current_page = 5;
-
+                
+                $num_pages = intval($nubFr/$nub_Items) ; // Replace with the actual number of pages
+                if(($nubFr % $nub_Items) !=0);
+                    $num_pages++;
+                $current_page = 1;
                 $prev_disabled = $current_page == 1 ? 'disabled' : '';
                 $next_disabled = $current_page == $num_pages ? 'disabled' : '';
             @endphp
@@ -49,11 +57,27 @@
             <div class="d-flex justify-content-center mt-2">
                 <nav aria-label="Page navigation">
                     <ul class="pagination pagination-lg" style="width: 70%;">
-                        <li class="page-item {{ $prev_disabled }}">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        <li class="page-item btn-previous {{ $prev_disabled }}">
+                            <a class="page-link " href="#" tabindex="-1" aria-disabled="true">Previous</a>
                         </li>
-
                         @if ($num_pages > 7)
+                            @for ($i = 1; $i <= $num_pages; $i++)
+                                @if ($i < 5)
+                                    <li class="page-item get_Fornisseur {{ $i == $current_page ? 'active' : '' }}"><a class="page-link"
+                                        href="#">{{ $i }}</a></li>
+                                @else
+                                    <li class="page-item get_Fornisseur d-none" ><a class="page-link"
+                                        href="#">{{ $i }}</a></li>
+                                @endif
+                            @endfor
+                        @else
+                            @for ($i = 1; $i <= $num_pages; $i++)
+                                <li class="page-item get_Fornisseur {{ $i == $current_page ? 'active' : '' }}"><a class="page-link"
+                                        href="#">{{ $i }}</a></li>
+                            @endfor
+                        @endif
+
+                       {{-- @if ($num_pages > 7)
                             <li class="page-item"><a class="page-link" href="#">1</a></li>
                             @if ($current_page > 4)
                                 <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
@@ -70,10 +94,9 @@
                                 <li class="page-item {{ $i == $current_page ? 'active' : '' }}"><a class="page-link"
                                         href="#">{{ $i }}</a></li>
                             @endfor
-                        @endif
-
-                        <li class="page-item {{ $next_disabled }}">
-                            <a class="page-link" href="#">Next</a>
+                        @endif--}}
+                        <li class="page-item btn-next ">
+                            <a class="page-link" href="#">Next </a>
                         </li>
                     </ul>
                 </nav>
@@ -196,9 +219,99 @@
     </div>
 </div>
 <!-- Packages End -->
-
-
-
-
-
 @stop
+
+@section('script')
+    <script>
+        $(function() {
+            $('.get_Fornisseur').click(function () {
+                current_item = $('.get_Fornisseur').filter('.active');
+                $('.get_Fornisseur').removeClass("active");
+                $(this).addClass("active");
+                $(this).removeClass("d-none");
+                if ($(this).prev().hasClass("btn-previous"))
+                    $(this).prev().addClass("disabled");
+                else{
+                    $(this).prev().removeClass("d-none");
+                    $('.btn-previous').removeClass("disabled");
+                }
+                if ($(this).next().hasClass("btn-next")) 
+                    $(this).next().addClass("disabled");
+                else{
+                    $('.btn-next').removeClass("disabled");
+                    $(this).next().removeClass("d-none");
+                }
+                if ($(this).children().eq(0).text() > current_item.children().eq(0).text()) {
+                    index = 1;
+                    while ($('.get_Fornisseur').filter('.d-none').children().length < 6) {
+                        $('.pagination').children().eq(index).addClass('d-none');
+                        index++;
+                    }
+                }
+                if ($(this).children().eq(0).text() < current_item.children().eq(0).text()) {
+                    index = $('.get_Fornisseur').children().length;
+                    while ($('.get_Fornisseur').filter('.d-none').children().length < 6) {
+                        $('.pagination').children().eq(index).addClass('d-none');
+                        index--;
+                    }
+                }
+                getItemsFournisseur();
+            });
+            
+            $('.btn-previous').click(function () {
+                current_item = $('.get_Fornisseur').filter('.active');
+                if(!current_item.prev().hasClass("btn-previous"))
+                {
+                    current_item.removeClass('active');
+                    current_item.prev().addClass('active');
+                }
+                else
+                    $(this).addClass("disabled");
+                if (current_item.prev().prev().hasClass("btn-previous")) 
+                    $(this).addClass("disabled");
+                
+                if (current_item.prev().prev().hasClass('d-none')) {
+                    current_item.prev().prev().removeClass('d-none');
+                    console.log($('.get_Fornisseur').filter('.d-none').children().length);
+                    index = $('.get_Fornisseur').children().length;
+                    while ($('.get_Fornisseur').filter('.d-none').children().length < 6) {
+                        $('.pagination').children().eq(index).addClass('d-none');
+                        index--;
+                    }
+                }
+                $('.btn-next').removeClass('disabled');
+                getItemsFournisseur();
+            });
+
+            $('.btn-next').click(function () {
+                current_item = $('.get_Fornisseur').filter('.active');
+                if(!current_item.next().hasClass("btn-next"))
+                {
+                    current_item.removeClass('active');
+                    current_item.next().addClass("active");
+                }else
+                    $(this).addClass("disabled");
+                if (current_item.next().next().hasClass("btn-next")) 
+                    $(this).addClass("disabled");
+                if (current_item.next().next().hasClass('d-none')) {
+                    current_item.next().next().removeClass('d-none');
+                    index = 1;
+                    while ($('.get_Fornisseur').filter('.d-none').children().length < 6) {
+                        $('.pagination').children().eq(index).addClass('d-none');
+                        index++;
+                    }
+                }   
+                $('.btn-previous').removeClass('disabled');
+                getItemsFournisseur(); 
+            });
+            
+            function getItemsFournisseur() {
+                $('.item-fornisseur').addClass("d-none");
+                last_Item = $('.get_Fornisseur').filter('.active').children(0).text();
+                for (let index = ((last_Item*6)-6); index < last_Item*6; index++) {
+                    $(".parent-Item-Fornisseur").children().eq(index).removeClass("d-none");
+                }
+            }
+        });
+    </script>
+@endsection
