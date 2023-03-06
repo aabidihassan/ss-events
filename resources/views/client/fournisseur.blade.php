@@ -5,7 +5,42 @@
 <!-- Packages Start -->
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
-
+        <div class="bg-light shadow mb-4" style="padding: 30px;">
+            <div class="row align-items-center" style="min-height: 60px;">
+                <form method="POST" action="{{ route('search') }}">
+                    @csrf
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="mb-md-0">
+                                    <select name="service" class="custom-select px-4" style="height: 47px;">
+                                        <option disabled selected>Choisir un service</option>
+                                       {{-- @foreach ($services as $service)
+                                            <option value="{{ $service->libelle }}">{{ $service->libelle }}</option>
+                                        @endforeach--}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-md-0">
+                                    <select name="citie" class="custom-select px-4" style="height: 47px;">
+                                        <option disabled selected>Choisir une ville</option>
+                                       {{--}} @foreach ($cities as $citie)
+                                            <option value="{{ $citie->name }}">{{ $citie->name }}</option>
+                                        @endforeach--}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="btn btn-primary btn-block mb-md-0" type="submit"
+                                    style="height: 47px; margin-top: -2px;" value="Chercher">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
         <div class="row parent-Item-Fornisseur">
             @php
                 $nub_Items = 6 ;// Number of Items in page view
