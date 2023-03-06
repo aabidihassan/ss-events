@@ -16,12 +16,16 @@ class FournisseurController extends Controller
 
     public static function index(){
         $data = Fournisseur::where('statut', true)->get();
-        return view('client.fournisseur', ["fournisseurs"=>$data]);
+        $services = Service::all();
+        $cities = Citie::all();
+        return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities]);
     }
 
     public function search(Request $req){
         $data = Fournisseur::where('statut', true)->where('service', $req->service)->where('citie', $req->citie)->get();
-        return view('client.fournisseur', ["fournisseurs"=>$data]);
+        $services = Service::all();
+        $cities = Citie::all();
+        return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities]);
     }
 
     public function desactivate($id){

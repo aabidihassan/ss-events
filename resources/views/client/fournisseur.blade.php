@@ -15,9 +15,9 @@
                                 <div class="mb-md-0">
                                     <select name="service" class="custom-select px-4" style="height: 47px;">
                                         <option disabled selected>Choisir un service</option>
-                                       {{-- @foreach ($services as $service)
+                                       @foreach ($services as $service)
                                             <option value="{{ $service->libelle }}">{{ $service->libelle }}</option>
-                                        @endforeach--}}
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -25,9 +25,9 @@
                                 <div class="mb-md-0">
                                     <select name="citie" class="custom-select px-4" style="height: 47px;">
                                         <option disabled selected>Choisir une ville</option>
-                                       {{--}} @foreach ($cities as $citie)
+                                        @foreach ($cities as $citie)
                                             <option value="{{ $citie->name }}">{{ $citie->name }}</option>
-                                        @endforeach--}}
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
