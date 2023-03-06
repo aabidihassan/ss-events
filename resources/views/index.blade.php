@@ -106,49 +106,54 @@
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Avantages</h6>
-                <h1>Tours & Travel Services</h1>
+                <h1>Découvrez Nos Avantages</h1>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
-                        <h5 class="mb-2">Gagnez du temps</h5>
-                        <p class="m-0">Economiser du temps en utilisant une plateforme en ligne pour trouver des prestataires de services</p>
+                        <i class="fas fa-stopwatch fa-2x mx-auto mb-4"></i>
+                        <h5 class="mb-2">Économisez du temps</h5>
+                        <p class="m-0">Économisez du temps en utilisant une plateforme en ligne pour trouver des
+                            prestataires de services.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
+                        <i class="fas fa-check-circle fa-2x mx-auto mb-4"></i>
                         <h5 class="mb-2">Gagnez en confiance</h5>
-                        <p class="m-0">Consulter les avis et les notations des autres clients pour trouver des prestataires de services de qualité.</p>
+                        <p class="m-0">Consultez les avis et les notations des autres clients pour trouver des
+                            prestataires de services de qualité.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
+                        <i class="fas fa-money-bill-wave fa-2x mx-auto mb-4"></i>
                         <h5 class="mb-2">Économisez de l'argent</h5>
-                        <p class="m-0">Economiser de l'argent en comparant les prix des différents prestataires de services.</p>
+                        <p class="m-0">Économisez de l'argent en comparant les prix des différents prestataires de
+                            services.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
+                        <i class="fas fa-bolt fa-2x mx-auto mb-4"></i>
                         <h5 class="mb-2">Économisez de l'énergie</h5>
-                        <p class="m-0">Economiser de l'énergie en utilisant une plateforme en ligne pour trouver des prestataires de services</p>
+                        <p class="m-0">Économisez de l'énergie en utilisant une plateforme en ligne pour trouver des
+                            prestataires de services.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
-                        <h5 class="mb-2">Bénéficiez d'un support client</h5>
-                        <p class="m-0">Bénéficier d'un support client pour répondre à vos questions et résoudre les problèmes éventuels.</p>
+                        <i class="fas fa-headset fa-2x mx-auto mb-4"></i>
+                        <h5 class="mb-2">Obtenez du support client</h5>
+                        <p class="m-0">Obtenez du support client pour répondre à vos questions et résoudre les problèmes
+                            éventuels.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
+                        <i class="fas fa-2x fa-list-alt mx-auto mb-4"></i>
                         <h5 class="mb-2">Prestataires variées</h5>
                         <p class="m-0">Un large choix de prestataires de services pour répondre à tous vos besoins.</p>
                     </div>
@@ -287,21 +292,22 @@
         }
     </style>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary  close-btn" data-dismiss="modal">close</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary  close-btn" data-dismiss="modal">close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -352,12 +358,11 @@
 
 @section('script')
     <script>
-
         $(function() {
-            var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'),'keyboard');
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), 'keyboard');
             $('#newsletter-form').on('submit', function(e) {
                 e.preventDefault();
-                
+
                 myModal.show();
                 $.ajax({
                     type: 'POST',
@@ -374,9 +379,9 @@
                 });
             });
             $('.close-btn').click(function() {
-                    myModal.hide();
-                    $('.modal-body').html("");
-                });
+                myModal.hide();
+                $('.modal-body').html("");
+            });
         });
     </script>
 @endsection
