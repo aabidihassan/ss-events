@@ -7,53 +7,55 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonial</h6>
-                <h1>What Say Our Clients</h1>
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">TÉMOIGNAGE</h6>
+                <h1>Que Disent Nos Clients</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
+
+                <!-- Témoignage 1 -->
                 <div class="text-center pb-4">
                     <img class="img-fluid mx-auto" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;">
                     <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod
-                            eos labore diam
-                        </p>
-                        <h5 class="text-truncate">Client Name</h5>
-                        <span>Profession</span>
+                        <p class="mt-5">"J'ai utilisé ce service pour la première fois et j'ai été vraiment impressionné
+                            par la qualité du travail fourni."</p>
+                        <h5 class="text-truncate">Jean Dupont</h5>
                     </div>
                 </div>
-                <div class="text-center">
+
+                <!-- Témoignage 2 -->
+                <div class="text-center pb-4">
                     <img class="img-fluid mx-auto" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;">
                     <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod
-                            eos labore diam
-                        </p>
-                        <h5 class="text-truncate">Client Name</h5>
-                        <span>Profession</span>
+                        <p class="mt-5">"Je suis un client fidèle de ce service depuis plusieurs années maintenant et je
+                            suis toujours satisfait des résultats."</p>
+                        <h5 class="text-truncate">Marie Martin</h5>
                     </div>
                 </div>
-                <div class="text-center">
+
+                <!-- Témoignage 3 -->
+                <div class="text-center pb-4">
                     <img class="img-fluid mx-auto" src="img/testimonial-3.jpg" style="width: 100px; height: 100px;">
                     <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod
-                            eos labore diam
-                        </p>
-                        <h5 class="text-truncate">Client Name</h5>
-                        <span>Profession</span>
+                        <p class="mt-5">"Je recommande vivement ce service à tous ceux qui cherchent une solution
+                            professionnelle et abordable."</p>
+                        <h5 class="text-truncate">Pierre Durand</h5>
                     </div>
                 </div>
-                <div class="text-center">
+
+                <!-- Témoignage 4 -->
+                <div class="text-center pb-4">
                     <img class="img-fluid mx-auto" src="img/testimonial-4.jpg" style="width: 100px; height: 100px;">
                     <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod
-                            eos labore diam
-                        </p>
-                        <h5 class="text-truncate">Client Name</h5>
-                        <span>Profession</span>
+                        <p class="mt-5">"Le service est rapide, fiable et efficace. Je le recommande à tous ceux qui ont
+                            besoin d'un travail de qualité."</p>
+                        <h5 class="text-truncate">Sophie Dubois</h5>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
     <!-- Testimonial End -->
 
     <!-- Registration Start -->
