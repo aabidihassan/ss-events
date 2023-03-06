@@ -286,9 +286,25 @@
             background-repeat: no-repeat;
         }
     </style>
-
-    <div id="result"></div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary  close-btn" data-dismiss="modal">close</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row d-flex justify-content-center align-items-center rows" id="newsletter">
 
@@ -336,22 +352,31 @@
 
 @section('script')
     <script>
+
         $(function() {
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'),'keyboard');
             $('#newsletter-form').on('submit', function(e) {
                 e.preventDefault();
+                
+                myModal.show();
                 $.ajax({
                     type: 'POST',
                     url: '/subscribe',
                     data: $('#newsletter-form').serialize(),
                     success: function(response) {
                         $('#newsletter-form')[0].reset();
-                        $('#result').html(response);
+                        $('.modal-body').html(response);
                     },
                     error: function(xhr) {
-                        console.log(xhr.responseText);
+                        const obj = JSON.parse(xhr.responseText);
+                        $('.modal-body').html(obj.message);
                     }
                 });
             });
+            $('.close-btn').click(function() {
+                    myModal.hide();
+                    $('.modal-body').html("");
+                });
         });
     </script>
 @endsection
