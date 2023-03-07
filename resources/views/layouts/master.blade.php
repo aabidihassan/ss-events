@@ -58,16 +58,6 @@
                         <a href="/fournisseur" class="nav-item nav-link">Fournisseurs</a>
                         <a href="/services" class="nav-item nav-link">Services</a>
                         <a href="/about" class="nav-item nav-link">À propos de nous</a>
-                        {{-- <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="single.html" class="dropdown-item">Blog Detail</a>
-                                <a href="destination.html" class="dropdown-item">Destination</a>
-                                <a href="guide.html" class="dropdown-item">Travel Guides</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </div> --}}
                         @if (!auth()->check())
                             <a href="/register-fournisseur" class="nav-item nav-link">Espace Prestataires</a>
                             <div class="nav-item dropdown">
@@ -195,6 +185,8 @@
     <script src="{{ url('https://code.jquery.com/jquery-3.5.1.js') }}"></script>
     <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
     <script>
         $(function() {
 

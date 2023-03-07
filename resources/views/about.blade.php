@@ -1,7 +1,7 @@
 @extends('layouts.pages')
 @section('title', 'A propos')
 @section('containner')
-    <link href="{{ asset('css/aboutus.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/contactus.css') }}" rel="stylesheet">
 
     <!-- Testimonial Start -->
     <div class="container-fluid py-5">
@@ -55,7 +55,6 @@
             </div>
         </div>
     </div>
-
     <!-- Testimonial End -->
 
     <!-- Registration Start -->
@@ -93,35 +92,112 @@
     <!-- Registration End -->
 
 
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <div class="wrapper" style="width: 80%; padding:2%;">
-        <div class="inner" style="background-image: url('img/registration-form-2.jpeg');">
-            <form method="post" action="{{ route('contact') }}">
-                @csrf
-                <h3>contactez-nous</h3>
-                <div class="form-group">
-                    <div class="form-wrapper">
-                        <label for="">Prenom</label>
-                        <input type="text" name="prenom" class="form-control" required>
+    <div class="container-fluid py-5" style="margin-top: -5%">
+        <div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="wrapper">
+                <div class="row no-gutters mb-5">
+                    <div class="col-md-7">
+                        <div class="contact-wrap w-100 p-md-5 p-4">
+                            <h3 class="mb-4">Nous Contacter</h3>
+                            <div id="form-message-warning" class="mb-4"></div>
+                            @if (session('success'))
+                                <div id="form-message-success" class="mb-4">
+                                    Your message was sent, thank you!
+                                </div>
+                            @endif
+                            <form method="POST" id="contactForm" name="contactForm" class="contactForm"
+                                action="{{ route('contact') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="label" for="name">Nom</label>
+                                            <input type="text" class="form-control" name="nom" id="name"
+                                                placeholder="Nom">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="label" for="email">Prenom</label>
+                                            <input type="text" class="form-control" name="prenom" id="email"
+                                                placeholder="Prenom">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="label" for="subject">E-Mail</label>
+                                            <input type="email" class="form-control" name="email" id="subject"
+                                                placeholder="E-Mail">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="label" for="#">Message</label>
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="submit" value="Envoyer le Message" class="btn btn-primary">
+                                            <div class="submitting"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-wrapper">
-                        <label for="">Nom</label>
-                        <input type="text" name="nom" class="form-control" required>
+                    <div class="col-md-5 d-flex align-items-stretch">
+                        <div id="map">
+                        </div>
                     </div>
                 </div>
-                <div class="form-wrapper">
-                    <label for="">Email</label>
-                    <input type="text" name="email" class="form-control" required>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="dbox w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="fa fa-map-marker"></span>
+                            </div>
+                            <div class="text">
+                                <p></span> Gueliz, Marrakech, Maroc</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="dbox w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                            <div class="text">
+                                <p><a href="tel://1234567920">+ 212 600-000000</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="dbox w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="fa fa-envelope"></span>
+                            </div>
+                            <div class="text">
+                                <p><a href="mailto:sseventskech@gmail.com">sseventskech@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="dbox w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="fa fa-globe"></span>
+                            </div>
+                            <div class="text">
+                                <p><a href="eventkech.com">www.eventkech.com</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-wrapper">
-                    <label for="">Message</label>
-                    <textarea class="form-control" name="message" rows="6" required></textarea>
-                </div>
-                <button>Envoyer</button>
-            </form>
+            </div>
         </div>
+    </div>
+    </div>
     </div>
 @stop
