@@ -102,32 +102,33 @@
         <!-- Add Comment Form -->
         <h4 class="mt-4">Add Comment</h4>
         <form id="addCommit">
+            @csrf
             <div class="form-group">
                 <label for="comment">Votre Commentaire :</label>
-                <textarea class="form-control mb-2" id="commentaire" required rows="3" ></textarea>
-            
-                <label for="rating_1" class="hover-lb lb-1">
+                <textarea class="form-control mb-2" name="commentaire" id="commentaire" required rows="3" ></textarea>
+                <input name="rating" type="radio" class="d-none" checked  value="0" id="rating_0">
+                <label for="rating_1" class="hover-lb lb-1" >
                     <span class="star" data-value="1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                         </svg>
                     </span>
                 </label>
-                <input name="rating" type="radio" class="d-none" value="1" id="rating_1">
+                <input name="rating" type="radio" class="d-none"  value="1" id="rating_1">
                 <label for="rating_2" class="hover-lb lb-2">
                     <span class="star" data-value="2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg>
                 </span></label>
-                <input name="rating" type="radio" class="d-none" value="2" id="rating_2">
+                <input name="rating" type="radio" class="d-none"  value="2" id="rating_2">
                 <label for="rating_3" class="hover-lb lb-3">
                     <span class="star" data-value="3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg>
                 </span></label>
-                <input name="rating" type="radio" class="d-none" value="3" id="rating_3">
+                <input name="rating" type="radio" class="d-none"  value="3" id="rating_3">
                 <label for="rating_4" class="hover-lb lb-4">
                     <span class="star" data-value="4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
@@ -135,7 +136,7 @@
                         </svg>
                     </span>
                 </label>
-                <input name="rating" type="radio" class="d-none" value="4" id="rating_4">
+                <input name="rating" type="radio" class="d-none"  value="4" id="rating_4">
                 <label for="rating_5" class="hover-lb lb-5">
                     <span class="star" data-value="5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
@@ -143,8 +144,8 @@
                         </svg>
                     </span>
                 </label>
-                <input name="rating" type="radio" class="d-none" value="5" id="rating_5">
-                <input name="fournisseur" disabled class="d-none" readonly value="{{$fournisseur[0]->id}}">
+                <input name="rating" type="radio" class="d-none"  value="5" id="rating_5">
+                <input name="fournisseur" class="d-none" readonly value="{{$fournisseur[0]->id}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -176,14 +177,23 @@
         <script>
             $(function(){
                 $('.hover-lb').click(function () {
-                    $('.hover-lb').off( "mouseenter mouseleave" );
-                    $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');
-                    $(this).children(0).children(0).attr('fill','GOLD');
-                    i = $(this).children(0).attr('data-value');
-                    for (let index = 0; index < i; index++) {
-                        $( '.lb-'+index).children(0).children(0).attr('fill','GOLD');
+                    if ($(this).hasClass('actv')){
+                        $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');//you can add while for keep first start active when all stars active
+                        $(this).children(0).children(0).attr('fill','#FA86C4');
+                        $(this).removeClass('actv')
+                    }
+                    else{
+                        $('.hover-lb').off( "mouseenter mouseleave" );
+                        $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');
+                        $(this).children(0).children(0).attr('fill','GOLD');
+                        i = $(this).children(0).attr('data-value');
+                        for (let index = 1; index < i; index++) {
+                            $( '.lb-'+index).children(0).children(0).attr('fill','GOLD');
+                        }
+                        $('.lb-1').addClass('actv');
                     }
                 });
+ 
                $('.hover-lb').mouseenter(function () {
                     $(this).children(0).children(0).attr('fill','GOLD');
                     i = $(this).children(0).attr('data-value');
@@ -225,18 +235,22 @@
 
                 var myModal = new bootstrap.Modal(document.getElementById('ModalErreur'), 'keyboard');
                 $('#addCommit').on('submit', function(e) {
+
                     e.preventDefault();
                     $.ajax({
                         type: 'POST',
-                        url: '/feedback',
-                        data: $('#addCommit').serialize(),
+                        url: '{{ route('addFeedback') }}',
+                        data: $(this).serialize(),
                         success: function(response) {
-                            $('#commentaire')[0].reset();
+                            console.log(response);
+                            $('#addCommit')[0].reset();
                             $('.modal-body').html(response);
+                            $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');
                         },
                         error: function(xhr) {
                             const obj = JSON.parse(xhr.responseText);
-                            $('.modal-body').html(obj.message);
+                            console.log(obj);
+                            //$('.modal-body').html(obj.message);
                         }
                     });
                 });

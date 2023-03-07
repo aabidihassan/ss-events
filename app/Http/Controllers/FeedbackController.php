@@ -10,12 +10,15 @@ class FeedbackController extends Controller
 {
     public function addCommit(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|unique:newsletter_emails,email'
-        ]);
 
-        NewsletterEmail::create($request->all());
+        $feedback = new Feedback;
+        $feedback->id_client = 11;
+        $feedback->id_fournisseur = $request->fournisseur;
+        $feedback->commentaire = $request->commentaire;
+        $feedback->rating = $request->rating;
+         
+        $feedback->save(); 
 
-        return 'Thank you for subscribing!';
+        return response()->json(['success' => true]);
     }
 }
