@@ -78,7 +78,7 @@
             <!-- Single comment -->
             <div class="row mb-4">
                 <div class="col-md-2">
-                    <img src="https://via.placeholder.com/150" alt="User Profile Picture" class="img-fluid rounded-circle">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User Profile Picture" class="img-fluid rounded-circle">
                 </div>
                 <div class="col-md-10">
                     <div class="d-flex justify-content-between">

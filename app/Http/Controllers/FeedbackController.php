@@ -12,11 +12,10 @@ class FeedbackController extends Controller
     {
 
         $feedback = new Feedback;
-        $feedback->id_client = 11;
+        $feedback->id_client = session('profile')->id;
         $feedback->id_fournisseur = $request->fournisseur;
         $feedback->commentaire = $request->commentaire;
         $feedback->rating = $request->rating;
-         
         $feedback->save(); 
 
         return response()->json(['success' => true]);
