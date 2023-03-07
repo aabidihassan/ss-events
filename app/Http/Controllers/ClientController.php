@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Fournisseur;
-
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -26,6 +26,7 @@ class ClientController extends Controller
     public static function showFournisseur($id)
     {
         $data = Fournisseur::where('statut', true)->where('id', $id)->get();
-        return view('client.detailsFournisseur', ["fournisseur"=>$data]);   
+        $feedbacks = Feedback::where('id_fournisseur',$id)->get();
+        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks]);   
     }
 }

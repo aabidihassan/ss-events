@@ -72,8 +72,9 @@
     <div class="container mt-4">
         <h2>Comments</h2>
         <hr>
-        @for ($i =0 ; $i <= 100; $i++) 
         <div class="comment-list">
+        @foreach ($feedbacks as $feedback)
+        
             <!-- Single comment -->
             <div class="row mb-4">
                 <div class="col-md-2">
@@ -92,19 +93,20 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo at eros lobortis interdum. Nunc id ipsum id risus finibus fringilla non ut orci.</p>
                 </div>
             </div>
+        
+        @endforeach
         </div>
-        @endfor
         <div class="d-grid gap-2 col-6 mx-auto">
             <a href="#" class="btn  load-more active" role="button" data-bs-toggle="button" aria-pressed="true">Voir plus >></a>
         </div>
         <!-- Add Comment Form -->
         <h4 class="mt-4">Add Comment</h4>
-        <form>
+        <form id="addCommit">
             <div class="form-group">
-                <label for="comment">Your Comment</label>
-                <textarea class="form-control mb-2" id="comment" rows="3"></textarea>
+                <label for="comment">Votre Commentaire :</label>
+                <textarea class="form-control mb-2" id="commentaire" required rows="3" ></textarea>
             
-                <label for="rating_1" class="hover-lb lb-1 ck-lb">
+                <label for="rating_1" class="hover-lb lb-1">
                     <span class="star" data-value="1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -112,21 +114,21 @@
                     </span>
                 </label>
                 <input name="rating" type="radio" class="d-none" value="1" id="rating_1">
-                <label for="rating_2" class="hover-lb lb-2 ck-lb">
+                <label for="rating_2" class="hover-lb lb-2">
                     <span class="star" data-value="2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg>
                 </span></label>
                 <input name="rating" type="radio" class="d-none" value="2" id="rating_2">
-                <label for="rating_3" class="hover-lb lb-3 ck-lb">
+                <label for="rating_3" class="hover-lb lb-3">
                     <span class="star" data-value="3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg>
                 </span></label>
                 <input name="rating" type="radio" class="d-none" value="3" id="rating_3">
-                <label for="rating_4" class="hover-lb lb-4 ck-lb">
+                <label for="rating_4" class="hover-lb lb-4">
                     <span class="star" data-value="4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -134,7 +136,7 @@
                     </span>
                 </label>
                 <input name="rating" type="radio" class="d-none" value="4" id="rating_4">
-                <label for="rating_5" class="hover-lb lb-5 ck-lb">
+                <label for="rating_5" class="hover-lb lb-5">
                     <span class="star" data-value="5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -142,10 +144,32 @@
                     </span>
                 </label>
                 <input name="rating" type="radio" class="d-none" value="5" id="rating_5">
+                <input name="fournisseur" disabled class="d-none" readonly value="{{$fournisseur[0]->id}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="ModalErreur" tabindex="-1" role="dialog" aria-labelledby="ModalErreurTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalErreurTitle">Modal title</h5>
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary  close-btn" data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+
   @stop
 
   @section('script')
@@ -176,8 +200,8 @@
                 });
                 
                 // Set number of comments and comments per page
-                var numComments = 100;
-                var commentsPerPage = 10;
+                var numComments = $(".comment-list").children().length;
+                var commentsPerPage = 8;
                 // Calculate number of pages
                 var numPages = Math.ceil(numComments / commentsPerPage);
                 // Hide all comments after the first page
@@ -197,6 +221,28 @@
                     if (currentCount + commentsPerPage >= numComments) {
                     $(".load-more").hide();
                     }
+                });
+
+                var myModal = new bootstrap.Modal(document.getElementById('ModalErreur'), 'keyboard');
+                $('#addCommit').on('submit', function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/feedback',
+                        data: $('#addCommit').serialize(),
+                        success: function(response) {
+                            $('#commentaire')[0].reset();
+                            $('.modal-body').html(response);
+                        },
+                        error: function(xhr) {
+                            const obj = JSON.parse(xhr.responseText);
+                            $('.modal-body').html(obj.message);
+                        }
+                    });
+                });
+                $('.close-btn').click(function() {
+                    myModal.hide();
+                    $('.modal-body').html("");
                 });
             });
         </script>

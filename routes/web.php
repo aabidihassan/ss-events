@@ -9,6 +9,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\FeedbackController;
 require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +105,5 @@ Route::get('/detailsFournisseur/{id}',function ($id)
 {
  return ClientController::showFournisseur($id);
 });
+
+Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['auth'])->name('feedback');
