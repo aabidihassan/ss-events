@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="container mt-4">
-        <h2>Comments</h2>
+        <h2>Comments : {{ $feedbacks->count()}}</h2>
         <hr>
         <div class="comment-list">
         @foreach ($feedbacks as $feedback)
@@ -82,15 +82,15 @@
                 </div>
                 <div class="col-md-10">
                     <div class="d-flex justify-content-between">
-                    <h5>User {{ $i}}</h5>
-                    <small class="text-muted">1 hour ago date</small>
+                    <h5>{{ $feedback->nom}} {{ $feedback->prenom}}</h5>
+                    <small class="text-muted">{{ $feedback->dateCommit}}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex">
-                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5</h6>
+                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{ $feedback->rating}}</h6>
                         </div>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo at eros lobortis interdum. Nunc id ipsum id risus finibus fringilla non ut orci.</p>
+                    <p>{{ $feedback->commentaire}}</p>
                 </div>
             </div>
         

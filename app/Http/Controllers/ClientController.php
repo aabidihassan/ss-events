@@ -26,7 +26,11 @@ class ClientController extends Controller
     public static function showFournisseur($id)
     {
         $data = Fournisseur::where('statut', true)->where('id', $id)->get();
-        $feedbacks = Feedback::where('id_fournisseur',$id)->get();
+        $feedbacks = Feedback::join('clients','clients.id','=','feedback.id_client')
+                            ->select('feedback.*','clients.nom','clients.prenom')
+                            ->where('id_fournisseur',$id)
+                            ->get();
+        
         return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks]);   
     }
 }
