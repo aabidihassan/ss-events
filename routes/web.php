@@ -99,3 +99,8 @@ Route::post('/search',[FournisseurController::class,'search'])->name('search');
 Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 
 Route::post('/contact', [ContactUsController::class, 'submitContactForm'])->name('contact');
+
+Route::get('/detailsFournisseur/{id}',function ($id)
+{
+ return ClientController::showFournisseur($id);
+});
