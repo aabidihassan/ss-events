@@ -2,8 +2,8 @@
 @section('containner')
 @section('title', 'Detail')
 
-    <div class="container my-5">
-        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+    <div class="container my-2">
+        <div class="row p-2 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1">{{$fournisseur[0]->raison}}</h1>
                 <p class="lead">Raison : {{$fournisseur[0]->raison}}.</p>
@@ -51,10 +51,6 @@
                         </li>
                     @endif
                 </ul>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" data-toggle="modal" data-target="#EvaluationModal">Evaluation</button>
-                    {{--<button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>--}}
-                </div>
             </div>
             <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
                 <img class="rounded-lg-3" src="/fournisseurs/{{ $fournisseur[0]->photo }}" alt="" width="720">
@@ -62,109 +58,146 @@
         </div>
     </div>
 
-  <div class="container px-4 py-5" id="custom-cards">
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        @foreach (File::allFiles(public_path('fournisseurs/6/')) as $file)
-        <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('{{ asset('fournisseurs/6/' . $file->getFilename()) }}');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                <li class="me-auto">
-                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                </li>
-                <li class="d-flex align-items-center me-3">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                    <small>Earth</small>
-                </li>
-                <li class="d-flex align-items-center">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                    <small>3d</small>
-                </li>
-                </ul>
-            </div>
-            </div>
+    <div class="container px-4 py-2" id="custom-cards">
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            @foreach (File::allFiles(public_path('fournisseurs/6/')) as $file)
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
+                  <img style="width: 100%;height: 100%;object-fit: cover;" src="{{ asset('fournisseurs/6/' . $file->getFilename()) }}" />
+                </div>
+              </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="EvaluationModal" tabindex="-1" role="dialog" aria-labelledby="EvaluationModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="EvaluationModalTitle">Evaluation fournisseur</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div class="container mt-4">
+        <h2>Comments</h2>
+        <hr>
+        @for ($i =0 ; $i <= 100; $i++) 
+        <div class="comment-list">
+            <!-- Single comment -->
+            <div class="row mb-4">
+                <div class="col-md-2">
+                    <img src="https://via.placeholder.com/150" alt="User Profile Picture" class="img-fluid rounded-circle">
+                </div>
+                <div class="col-md-10">
+                    <div class="d-flex justify-content-between">
+                    <h5>User {{ $i}}</h5>
+                    <small class="text-muted">1 hour ago date</small>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5</h6>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo at eros lobortis interdum. Nunc id ipsum id risus finibus fringilla non ut orci.</p>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <label for="rating_1" class="hover-lb">
-                <span class="star" data-value="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                </span>
-            </label>
-            <input name="rating" type="radio" class="d-none" value="1" id="rating_1">
-            <label for="rating_2">
-                <span class="star" data-value="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-            </span></label>
-            <input name="rating" type="radio" class="d-none" value="2" id="rating_2">
-            <label for="rating_3">
-                <span class="star" data-value="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-            </span></label>
-            <input name="rating" type="radio" class="d-none" value="3" id="rating_3">
-            <label for="rating_4">
-                <span class="star" data-value="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                </span>
-            </label>
-            <input name="rating" type="radio" class="d-none" value="4" id="rating_4">
-            <label for="rating_5">
-                <span class="star" data-value="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                </span>
-            </label>
-            <input name="rating" type="radio" class="d-none" value="5" id="rating_5">
+        @endfor
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a href="#" class="btn  load-more active" role="button" data-bs-toggle="button" aria-pressed="true">Voir plus >></a>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
-        </div>
-      </div>
+        <!-- Add Comment Form -->
+        <h4 class="mt-4">Add Comment</h4>
+        <form>
+            <div class="form-group">
+                <label for="comment">Your Comment</label>
+                <textarea class="form-control mb-2" id="comment" rows="3"></textarea>
+            
+                <label for="rating_1" class="hover-lb lb-1 ck-lb">
+                    <span class="star" data-value="1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    </span>
+                </label>
+                <input name="rating" type="radio" class="d-none" value="1" id="rating_1">
+                <label for="rating_2" class="hover-lb lb-2 ck-lb">
+                    <span class="star" data-value="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </span></label>
+                <input name="rating" type="radio" class="d-none" value="2" id="rating_2">
+                <label for="rating_3" class="hover-lb lb-3 ck-lb">
+                    <span class="star" data-value="3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </span></label>
+                <input name="rating" type="radio" class="d-none" value="3" id="rating_3">
+                <label for="rating_4" class="hover-lb lb-4 ck-lb">
+                    <span class="star" data-value="4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    </span>
+                </label>
+                <input name="rating" type="radio" class="d-none" value="4" id="rating_4">
+                <label for="rating_5" class="hover-lb lb-5 ck-lb">
+                    <span class="star" data-value="5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4" class="bi bi-star-fill" viewBox="0 0 16 16" >
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    </span>
+                </label>
+                <input name="rating" type="radio" class="d-none" value="5" id="rating_5">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-  </div>
-      {{--
-    
-    @foreach (File::allFiles(public_path('fournisseurs/' . auth()->user()->id . '/')) as $file)
-                            <div class="card p-1" style="width: 14rem;">
-                                <img class="card-img-top"
-                                    src="{{ asset('fournisseurs/' . auth()->user()->id . '/' . $file->getFilename()) }}"
-                                    style="height: 200px;">
-                                <button type="button" class="btn btn-primary mt-1 ml-3 mr-3 set-profile-picture"
-                                    style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Choisir photo
-                                    de profile</button>
-                            </div>
-                        @endforeach
-        --}}
   @stop
 
   @section('script')
         <script>
             $(function(){
+                $('.hover-lb').click(function () {
+                    $('.hover-lb').off( "mouseenter mouseleave" );
+                    $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');
+                    $(this).children(0).children(0).attr('fill','GOLD');
+                    i = $(this).children(0).attr('data-value');
+                    for (let index = 0; index < i; index++) {
+                        $( '.lb-'+index).children(0).children(0).attr('fill','GOLD');
+                    }
+                });
+               $('.hover-lb').mouseenter(function () {
+                    $(this).children(0).children(0).attr('fill','GOLD');
+                    i = $(this).children(0).attr('data-value');
+                    for (let index = 0; index < i; index++) {
+                        $( '.lb-'+index).children(0).children(0).attr('fill','GOLD');
+                    }
+                })
+                .mouseleave(function () {
+                    $(this).children(0).children(0).attr('fill','#FA86C4');
+                    i = $(this).children(0).attr('data-value');
+                    for (let index = 0; index < i; index++) {
+                        $('.lb-'+index).children(0).children(0).attr('fill','#FA86C4');
+                    }
+                });
                 
+                // Set number of comments and comments per page
+                var numComments = 100;
+                var commentsPerPage = 10;
+                // Calculate number of pages
+                var numPages = Math.ceil(numComments / commentsPerPage);
+                // Hide all comments after the first page
+                $(".comment-list > div").slice(commentsPerPage).hide();
+                // Hide the "Load More" button if there is only one page
+                if (numPages <= 1) {
+                    $(".load-more").hide();
+                }
+                // Handle "Load More" button clicks
+                $(".load-more").click(function() {
+                    // Get the current number of visible comments
+                    var currentCount = $(".comment-list > div:visible").length;
+                    // Show the next set of comments
+                    $(".comment-list > div").slice(currentCount, currentCount + commentsPerPage).show();
+                    
+                    // Hide the "Load More" button if we have reached the last page
+                    if (currentCount + commentsPerPage >= numComments) {
+                    $(".load-more").hide();
+                    }
+                });
             });
         </script>
   @endsection
