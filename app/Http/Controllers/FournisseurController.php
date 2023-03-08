@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Fournisseur;
 use App\Models\Citie;
 use App\Models\Service;
-
+use App\Models\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FournisseurController extends Controller
 {
@@ -18,7 +19,10 @@ class FournisseurController extends Controller
         $data = Fournisseur::where('statut', true)->get();
         $services = Service::all();
         $cities = Citie::all();
-        return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities]);
+        $avgsRatings = Feedback::select('id_fournisseur', DB::raw('ROUND(avg(rating),1) as average'), DB::raw('count(*) as count'))
+                            ->groupBy('id_fournisseur')
+                            ->get();
+        return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities,"avgsRatings" => $avgsRatings ]);
     }
 
     public function search(Request $req){

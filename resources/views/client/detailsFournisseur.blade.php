@@ -5,7 +5,11 @@
     <div class="container my-2">
         <div class="row p-2 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                <h1 class="display-4 fw-bold lh-1">{{$fournisseur[0]->raison}}</h1>
+                <h1 class="display-4 fw-bold lh-1"> {{$fournisseur[0]->raison}} </h1>
+                <h4 class="fw-bold m-0">
+                    <i class="fa fa-star text-primary mr-2"></i>{{$avgRating->average}}
+                    <small>({{$avgRating->count}})</small> 
+                <h4 class="m-0">
                 <p class="lead">Raison : {{$fournisseur[0]->raison}}.</p>
                 <p class="lead">Email : {{$fournisseur[0]->email}}.</p>
                 <p class="lead">Telephone : {{$fournisseur[0]->telephone}}.</p>

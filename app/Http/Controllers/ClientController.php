@@ -5,6 +5,7 @@ use App\Models\Client;
 use App\Models\Fournisseur;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -30,7 +31,11 @@ class ClientController extends Controller
                             ->select('feedback.*','clients.nom','clients.prenom')
                             ->where('id_fournisseur',$id)
                             ->get();
+        $avgRating = Feedback::select('id_fournisseur', DB::raw('ROUND(avg(rating),1) as average'), DB::raw('count(*) as count'))
+                                ->groupBy('id_fournisseur')
+                                ->where('id_fournisseur',$id)
+                                ->get();
         
-        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks]);   
+        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating[0] ]);   
     }
 }
