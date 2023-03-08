@@ -17,7 +17,7 @@
 
     <hr class="sidebar-divider">
     <li class="nav-item active">
-        <a class="nav-link" href="/profile">
+        <a class="nav-link" href="/feedbacks">
             <i class="fas fa-fw fa-comment-alt"></i>
             <span>Feedbacks</span></a>
     </li>

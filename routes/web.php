@@ -113,3 +113,7 @@ Route::get('/back', function () {
 Route::get('/feedbacks', function () {
     if(auth()->user()->type == 'fournisseur') return FeedbackController::getFeedbacks();
 })->middleware(['auth']);
+
+Route::get('/dashboard2', function () {
+    if(auth()->user()->type == 'fournisseur') return view('backoffice.prestataires.dashboard');
+})->middleware(['auth']);
