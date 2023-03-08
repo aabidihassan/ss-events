@@ -106,4 +106,4 @@ Route::get('/detailsFournisseur/{id}',function ($id)
  return ClientController::showFournisseur($id);
 });
 
-Route::post('/feedback',[FeedbackController::class, 'addCommit'])->name('addFeedback');//->middleware(['auth'])
+Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['auth'])->name('addFeedback');

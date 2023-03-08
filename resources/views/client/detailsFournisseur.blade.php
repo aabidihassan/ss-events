@@ -155,16 +155,16 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalErreurTitle">Modal title</h5>
+                    <h5 class="modal-title" id="ModalErreurTitle">Message Erreur</h5>
                     <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary  close-btn" data-dismiss="modal">close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <a type="button" id="conx" href="/login" class="btn btn-primary">Connecter-Vous</a>
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@
                     
                     // Hide the "Load More" button if we have reached the last page
                     if (currentCount + commentsPerPage >= numComments) {
-                    $(".load-more").hide();
+                        $(".load-more").hide();
                     }
                 });
 
@@ -237,27 +237,65 @@
                 $('#addCommit').on('submit', function(e) {
 
                     e.preventDefault();
+                    dataCom = $(this).serialize();
                     $.ajax({
                         type: 'POST',
                         url: '{{ route('addFeedback') }}',
-                        data: $(this).serialize(),
+                        data: dataCom,
                         success: function(response) {
-                            console.log(response);
-                            $('#addCommit')[0].reset();
-                            $('.modal-body').html(response);
-                            $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');
+                            try {
+                                $('#addCommit')[0].reset();
+                                $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');
+                                if (response.hasOwnProperty('error')) {
+                                    $('.modal-body').html(response.error);  
+                                    myModal.show(); 
+                                    $('#conx').hide();
+                                }
+                            } catch (error) {
+                                
+                            }
                         },
                         error: function(xhr) {
-                            const obj = JSON.parse(xhr.responseText);
-                            console.log(obj);
-                            //$('.modal-body').html(obj.message);
+                            try {
+                                obj = JSON.parse(xhr.responseText);
+                                myModal.show();
+                                if(obj.message == "Unauthenticated."){
+                                    $('.modal-body').html("Veuillez vous connecter pour ajouter un commentaire");
+                                }
+                            } catch (e) {
+                                console.error('Error parsing response:', xhr.responseText);
+                            }
+
                         }
                     });
                 });
-                $('.close-btn').click(function() {
+                $('#conx').click(function() {
                     myModal.hide();
+                    $('#addCommit')[0].reset();
                     $('.modal-body').html("");
                 });
+                $('#addCommit').on('reset', function(e)
+                {
+                    $('.hover-lb').children(0).children(0).attr('fill','#FA86C4');   
+                });
+                                            //add this commentaire o the list
+                                            /*$('.comment-list').prepend('<div class="row mb-4">'+
+                                                            '<div class="col-md-2">'+
+                                                                '<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User Profile Picture" class="img-fluid rounded-circle">'+
+                                                            '</div>'+
+                                                            '<div class="col-md-10">'+
+                                                                '<div class="d-flex justify-content-between">'+
+                                                                '<h5>'+ dataCom.nom +' '+ dataCom.prenom +'</h5>'+
+                                                                '<small class="text-muted">'+ dataCom.now() +'</small>' +
+                                                                '</div>'+
+                                                                '<div class="d-flex justify-content-between align-items-center">'+
+                                                                    '<div class="d-flex">'+
+                                                                        '<h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>'+ dataCom.rating +'</h6>'+
+                                                                    '</div>'+
+                                                                '</div>'+
+                                                                '<p>'+ dataCom.commentaire +'</p>'+
+                                                            '</div>'+
+                                                        '</div>');*/
             });
         </script>
   @endsection
