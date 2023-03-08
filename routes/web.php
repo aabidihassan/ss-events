@@ -25,9 +25,6 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
     return IndexController::index();
 });
-Route::get('/test', function () {
-    return view('client.profile');
-});
 
 Route::get('/services', function () {
     return view('client.services');
@@ -107,3 +104,8 @@ Route::get('/detailsFournisseur/{id}',function ($id)
 });
 
 Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['auth'])->name('addFeedback');
+
+//Backoffice
+Route::get('/back', function () {
+    return view('backoffice.prestataires.dashboard');
+});
