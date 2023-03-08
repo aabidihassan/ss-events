@@ -22,4 +22,11 @@
             <span>Feedbacks</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="/abonnement">
+            <i class="fas fa-fw fa-gem"></i>
+            <span>Abonnement</span></a>
+    </li>
+
 @endsection

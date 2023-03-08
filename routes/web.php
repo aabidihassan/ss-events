@@ -109,3 +109,7 @@ Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['
 Route::get('/back', function () {
     return view('backoffice.prestataires.dashboard');
 });
+
+Route::get('/feedbacks', function () {
+    if(auth()->user()->type == 'fournisseur') return FeedbackController::getFeedbacks();
+})->middleware(['auth']);

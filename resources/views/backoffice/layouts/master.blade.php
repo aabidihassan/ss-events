@@ -19,6 +19,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ url('backoffice/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="{{ url('backoffice/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -84,8 +87,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="{{ url('backoffice/img/undraw_profile.svg') }}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{session('profile')->nom . ' ' . session('profile')->prenom }}</span>
+                                <img class="img-profile rounded-circle" src="{{ asset('fournisseurs/' . session('profile')->photo) }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -163,10 +166,13 @@
 
     <!-- Page level plugins -->
     <script src="{{ url('backoffice/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ url('backoffice/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('backoffice/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{ url('backoffice/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ url('backoffice/js/demo/datatables-demo.js') }}"></script>
 </body>
 
 </html>
