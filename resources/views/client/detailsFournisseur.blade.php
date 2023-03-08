@@ -111,7 +111,7 @@
             @csrf
             <div class="form-group">
                 <label for="comment">Votre Commentaire :</label>
-                <textarea class="form-control mb-2" name="commentaire" id="commentaire" required rows="3" ></textarea>
+                <textarea class="form-control mb-2" name="commentaire" id="commentaire"  rows="3" ></textarea>
                 <input name="rating" type="radio" class="d-none" checked  value="0" id="rating_0">
                 <label for="rating_1" class="hover-lb lb-1" >
                     <span class="star" data-value="1">

@@ -76,64 +76,117 @@
             </div>
             <div class="col-lg-8">
                 <div class="card">
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('editProfile') }}">
-                            @csrf
-                            <h5 class="text-center">Les informations personnels</h5>
-                            <div class="row mb-3 mt-4">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Nom</h6>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link active nav-card-header" href="#personal-info">Personal Info</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link nav-card-header" href="#contact-info">Feedback Table</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="card-body">
+                          <div id="personal-info">
+                            <!-- personal info fields here -->
+                            <form method="POST" action="{{ route('editProfile') }}">
+                              @csrf
+                              <h5 class="text-center">Les informations personnels</h5>
+                              <div class="row mb-3 mt-4">
+                                  <div class="col-sm-3">
+                                      <h6 class="mb-0">Nom</h6>
+                                  </div>
+                                  <div class="col-sm-9 text-secondary">
+                                      <input type="text" class="form-control" name="nom"
+                                          value="{{ session('profile')->nom }}">
+                                  </div>
+                              </div>
+                              <div class="row mb-3">
+                                  <div class="col-sm-3">
+                                      <h6 class="mb-0">Prenom</h6>
+                                  </div>
+                                  <div class="col-sm-9 text-secondary">
+                                      <input type="text" class="form-control" name="prenom"
+                                          value="{{ session('profile')->prenom }}">
+                                  </div>
+                              </div>
+                              <div class="row mb-3">
+                                  <div class="col-sm-3">
+                                      <h6 class="mb-0">Email</h6>
+                                  </div>
+                                  <div class="col-sm-9 text-secondary">
+                                      <input type="text" class="form-control" name="email"
+                                          value="{{ session('profile')->email }}">
+                                  </div>
+                              </div>
+                              <div class="row mb-3">
+                                  <div class="col-sm-3">
+                                      <h6 class="mb-0">Telephone</h6>
+                                  </div>
+                                  <div class="col-sm-9 text-secondary">
+                                      <input type="text" class="form-control" name="telephone"
+                                          value="{{ session('profile')->telephone }}">
+                                  </div>
+                              </div>
+                              <div class="row mb-3">
+                                  <div class="col-sm-3">
+                                      <h6 class="mb-0">Address</h6>
+                                  </div>
+                                  <div class="col-sm-9 text-secondary">
+                                      <textarea class="form-control py-3 px-4" rows="3" name="adresse" id="adresse" placeholder="Adresse"
+                                          required="required" data-validation-required-message="Veuillez entrer votre adresse">{{ session('profile')->adresse }}</textarea>
+                                  </div>
+                              </div>
+                              <div class="row mt-4">
+                                  <div class="col-sm-3"></div>
+                                  <div class="col-sm-9 text-secondary">
+                                      <input type="submit" class="btn btn-primary px-4" value="Modifier">
+                                  </div>
+                              </div>
+                          </form>
+                          </div>
+                          <div id="contact-info" style="display: none;">
+                            <!-- contact info fields here -->
+                                <div class="table-responsive">
+                                  <table class="table table-bordered table-hover">
+                                    <thead class="thead-light">
+                                      <tr>
+                                        <th>Fournisseur</th>
+                                        <th>Commentaire</th>
+                                        <th>Date</th>
+                                        <th>Rating</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for ($i = 0; $i < 8; $i++)
+                                        <tr>
+                                            <td>{{$i}}</td>
+                                            <td>for exemple only! for exemple only!</td>
+                                            <td>2022-01-01</td>
+                                            <td>5</td>
+                                          </tr>
+                                        @endfor
+                                      <!-- Add more rows for additional feedback -->
+                                    </tbody>
+                                  </table>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" name="nom"
-                                        value="{{ session('profile')->nom }}">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Prenom</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" name="prenom"
-                                        value="{{ session('profile')->prenom }}">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Email</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" name="email"
-                                        value="{{ session('profile')->email }}">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Telephone</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" name="telephone"
-                                        value="{{ session('profile')->telephone }}">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Address</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <textarea class="form-control py-3 px-4" rows="3" name="adresse" id="adresse" placeholder="Adresse"
-                                        required="required" data-validation-required-message="Veuillez entrer votre adresse">{{ session('profile')->adresse }}</textarea>
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Modifier">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                                <nav>
+                                  <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="#">Next</a>
+                                    </li>
+                                  </ul>
+                                </nav>
+                          </div>
+                      </div>  
                 </div>
+            </div>
                 <!-- <div class="row">
       <div class="col-sm-12">
        <div class="card">
@@ -169,3 +222,19 @@
 </div>
 
 @stop
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.nav-card-header').click(function(e) {
+                e.preventDefault();
+                $('.nav-card-header').removeClass('active');
+                $(this).addClass('active');
+                var target = $(this).attr('href');
+                $('.card-body > div').hide();
+                $(target).show();
+            });
+        });
+        
+    </script>
+@endsection
