@@ -35,7 +35,7 @@ class ClientController extends Controller
                                 ->groupBy('id_fournisseur')
                                 ->where('id_fournisseur',$id)
                                 ->get();
-        
+        Fournisseur::where('id', $id)->increment('vues');
         return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating[0] ]);   
     }
 }
