@@ -34,12 +34,12 @@ class FournisseurController extends Controller
 
     public function desactivate($id){
         Fournisseur::where('id', $id)->update(['statut'=>0]);
-        return redirect('/admin/fournisseurs');
+        return redirect('/administrator/fournisseurs');
     }
 
     public function activate($id){
         Fournisseur::where('id', $id)->update(['statut'=>1]);
-        return redirect('/admin/fournisseurs');
+        return redirect('/administrator/fournisseurs');
     }
 
     public static function getProfile(){

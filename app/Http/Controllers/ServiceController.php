@@ -14,11 +14,27 @@ class ServiceController extends Controller
 
     public function desactivate($id){
         Service::where('id', $id)->update(['statut'=>0]);
-        return redirect('/admin/services');
+        return redirect('/administrator/services');
     }
 
     public function activate($id){
         Service::where('id', $id)->update(['statut'=>1]);
-        return redirect('/admin/services');
+        return redirect('/administrator/services');
+    }
+
+    public function addService(Request $request)
+    {
+        try {
+            $service = new Service;
+            $service->libelle = $request->input('libelle');
+            //$email = $request->input('description');
+            $service->save();
+            return redirect('/administrator/services');
+        }catch (Exception $e) {
+            $errorMessage = (string) $e->getMessage();
+            return response()->json([
+                'error' => $errorMessage
+            ]);
+        }
     }
 }

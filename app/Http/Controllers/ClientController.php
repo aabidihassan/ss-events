@@ -17,12 +17,12 @@ class ClientController extends Controller
 
     public function desactivate($id){
         Client::where('id', $id)->update(['statut'=>0]);
-        return redirect('/admin/clients');
+        return redirect('/administrator/clients');
     }
 
     public function activate($id){
         Client::where('id', $id)->update(['statut'=>1]);
-        return redirect('/admin/clients');
+        return redirect('/administrator/clients');
     }
 
     public static function showFournisseur($id)

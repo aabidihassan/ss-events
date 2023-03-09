@@ -16,8 +16,7 @@
                         <th>Email</th>
                         <th>Telephone</th>
                         <th>statut</th>
-                        <th>Nb vues</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

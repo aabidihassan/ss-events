@@ -110,5 +110,5 @@ Route::get('/admin/services/desactivate/{id}', [ServiceController::class, 'desac
 Route::get('/admin/services/activate/{id}', [ServiceController::class, 'activate'])->middleware(['auth']);
 Route::get('/admin/clients/desactivate/{id}', [ClientController::class, 'desactivate'])->middleware(['auth']);
 Route::get('/admin/clients/activate/{id}', [ClientController::class, 'activate'])->middleware(['auth']);
-
+Route::post('/administrator/services/addService', [ServiceController::class ,'addService'])->middleware(['auth'])->name('addService');
 //End Routes Back office for administrator

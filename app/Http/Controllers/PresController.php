@@ -32,12 +32,12 @@ class PresController extends Controller
         $user->save();
         $this->createFolder($user->id);
         Prefournisseur::where('id', $id)->delete();
-        return redirect('/admin/pres');
+        return redirect('/administrator/prefournisseurs');
     }
 
     public function decline($id){
         Prefournisseur::where('id', $id)->update(['statut'=>1]);
-        return redirect('/admin/pres');
+        return redirect('/administrator/prefournisseurs');
     }
 
     public function createFolder($id)

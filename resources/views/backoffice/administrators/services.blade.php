@@ -6,8 +6,8 @@
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Liste de Services</h6>
         <div class="dropdown no-arrow">
-            <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#myModal">
-                Creer un service
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                {{__('Créer un service')}}
             </button>
         </div>
     </div>
@@ -46,28 +46,34 @@
         </div>
     </div>
 </div>
-<!-- The Modal -->
-<div class="modal" id="myModal">
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{__('Formulaire pour ajouter un nouveau service')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{route('addService')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{__('Libelle :')}}</label>
+                        <input type="text" class="form-control" required id="recipient-name" name="libelle">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">{{__('Description :')}}</label>
+                        <textarea class="form-control" id="message-text" name="description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">{{__('Fermer')}}</button>
+                    <button type="submit" class="btn btn-success">{{__('Ajouter')}}</button>
+                </div>
+            </form>
         </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
     </div>
 </div>
 @stop
