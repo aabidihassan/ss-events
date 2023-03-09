@@ -12,7 +12,7 @@ class FournisseurController extends Controller
 {
     public static function getAll(){
         $data = Fournisseur::all();
-        return view('admin.fournisseurs', ["data"=>$data]);
+        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data]);
     }
 
     public static function index(){
@@ -29,7 +29,7 @@ class FournisseurController extends Controller
         $data = Fournisseur::where('statut', true)->where('service', $req->service)->where('citie', $req->citie)->get();
         $services = Service::all();
         $cities = Citie::all();
-        return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities]);
+        return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities ,"avgsRatings" => 0]);
     }
 
     public function desactivate($id){
@@ -42,12 +42,6 @@ class FournisseurController extends Controller
         return redirect('/admin/fournisseurs');
     }
 
-    public static function profile(){
-        $cities = Citie::all();
-        $services = Service::all();
-        return view('fournisseurs.profile', ["cities"=>$cities, "services"=>$services]);
-    }
-
     public static function getProfile(){
         $cities = Citie::all();
         $services = Service::all();
@@ -55,10 +49,5 @@ class FournisseurController extends Controller
     }
     public static function getAbonnement(){
         return view('backoffice.prestataires.abonnement');
-    }
-
-    public static function getAllF(){
-        $data = Fournisseur::all();
-        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data]);
     }
 }

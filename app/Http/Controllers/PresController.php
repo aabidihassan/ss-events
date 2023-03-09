@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\File;
 class PresController extends Controller
 {
     public static function getPres(){
-        $data = Prefournisseur::all();
-        return view('admin.pres', ["data"=>$data]);
+        $prefournisseurs = Prefournisseur::all();
+        return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs]);
     }
 
     public function accept($id){
@@ -46,10 +46,5 @@ class PresController extends Controller
         if (!File::exists($path)) {
             File::makeDirectory($path, 0777, true, true);
         }
-    }
-    
-    public static function getPreF(){
-        $prefournisseurs = Prefournisseur::all();
-        return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs]);
     }
 }

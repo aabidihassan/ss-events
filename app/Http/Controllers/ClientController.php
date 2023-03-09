@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 class ClientController extends Controller
 {
     public static function getAll(){
-        $data = Client::all();
-        return view('admin.clients', ["data"=>$data]);
+        $clients = Client::all();
+        return view('backoffice.administrators.clients', ["clients"=>$clients]);
     }
 
     public function desactivate($id){
@@ -39,10 +39,5 @@ class ClientController extends Controller
         Fournisseur::where('id', $id)->increment('vues');
         $idFileImages = User::select('id')->where('type', 'fournisseur')->where('id_user',$id)->get();
         return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages ]);   
-    }
-
-    public static function getAllC(){
-        $clients = Client::all();
-        return view('backoffice.administrators.clients', ["clients"=>$clients]);
     }
 }

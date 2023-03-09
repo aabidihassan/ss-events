@@ -68,13 +68,15 @@
                             <a class="h5 text-decoration-none" href="detailsFournisseur/{{$fournisseur->id}}">{{ $fournisseur->raison }}</a>
                             <div class="border-top mt-2 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    @foreach ($avgsRatings as $avgRatingFournisseur)
-                                        @if ($avgRatingFournisseur->id_fournisseur == $fournisseur->id)
-                                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{$avgRatingFournisseur->average}}
-                                                <small>({{$avgRatingFournisseur->count}})</small>
-                                            </h6>
-                                        @endif
-                                    @endforeach
+                                    @if ($avgsRatings)
+                                        @foreach ($avgsRatings as $avgRatingFournisseur)
+                                            @if ($avgRatingFournisseur->id_fournisseur == $fournisseur->id)
+                                                <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{$avgRatingFournisseur->average}}
+                                                    <small>({{$avgRatingFournisseur->count}})</small>
+                                                </h6>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                     <a href="detailsFournisseur/{{$fournisseur->id}}" class="btn btn-sm btn-secondary ml-auto"
                                         style="width:30%; margin-top:-2%">Voir</a>
                                 </div>

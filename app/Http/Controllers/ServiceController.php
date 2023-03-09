@@ -8,8 +8,8 @@ use App\Models\Service;
 class ServiceController extends Controller
 {
     public static function getAll(){
-        $data = Service::all();
-        return view('admin.services', ["data"=>$data]);
+        $services = Service::all();
+        return view('backoffice.administrators.services', ["services"=>$services]);
     }
 
     public function desactivate($id){
@@ -20,10 +20,5 @@ class ServiceController extends Controller
     public function activate($id){
         Service::where('id', $id)->update(['statut'=>1]);
         return redirect('/admin/services');
-    }
-
-    public static function getAllS(){
-        $services = Service::all();
-        return view('backoffice.administrators.services', ["services"=>$services]);
     }
 }
