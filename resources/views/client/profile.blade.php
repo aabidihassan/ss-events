@@ -87,7 +87,7 @@
                         </ul>
                       </div>
                       <div class="card-body">
-                          <div id="personal-info">
+                          <div id="personal-info" class="content-body-card">
                             <!-- personal info fields here -->
                             <form method="POST" action="{{ route('editProfile') }}">
                               @csrf
@@ -145,8 +145,8 @@
                               </div>
                           </form>
                           </div>
-                          <div id="contact-info" style="display: none;">
-                            <!-- contact info fields here -->
+                          <div id="contact-info" class="content-body-card" style="display: none;">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                   <table class="table table-bordered table-hover">
                                     <thead class="thead-light">
@@ -158,7 +158,7 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                        @for ($i = 0; $i < 8; $i++)
+                                        @for ($i = 0; $i < 20; $i++)
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td>for exemple only! for exemple only!</td>
@@ -166,23 +166,10 @@
                                             <td>5</td>
                                           </tr>
                                         @endfor
-                                      <!-- Add more rows for additional feedback -->
                                     </tbody>
                                   </table>
                                 </div>
-                                <nav>
-                                  <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled">
-                                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                      <a class="page-link" href="#">Next</a>
-                                    </li>
-                                  </ul>
-                                </nav>
+                            </div>
                           </div>
                       </div>  
                 </div>
@@ -231,7 +218,7 @@
                 $('.nav-card-header').removeClass('active');
                 $(this).addClass('active');
                 var target = $(this).attr('href');
-                $('.card-body > div').hide();
+                $('.content-body-card').hide();
                 $(target).show();
             });
         });

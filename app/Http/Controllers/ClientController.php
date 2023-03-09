@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Fournisseur;
 use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,7 @@ class ClientController extends Controller
                                 ->where('id_fournisseur',$id)
                                 ->get();
         Fournisseur::where('id', $id)->increment('vues');
-        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first() ]);   
+        $idFileImages = User::select('id')->where('type', 'fournisseur')->where('id_user',$id)->get();
+        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages ]);   
     }
 }
