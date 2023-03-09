@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="AABIDI Hassan">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Dashboard</title>
 
@@ -49,7 +50,8 @@
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); this.closest('form').submit();">
                         <i class="fas fa-fw fa-sign-out-alt fa-rotate-180"></i>
                         <span>{{ __('Déconnexion') }}</span>
                     </a>
@@ -92,19 +94,20 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @if (auth()->user()->type == 'fournisseur')
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    {{session('profile')->nom . ' ' . session('profile')->prenom }}</span>
-                                <img class="img-profile rounded-circle" src="{{ asset('fournisseurs/' . session('profile')->photo) }}">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        {{ session('profile')->nom . ' ' . session('profile')->prenom }}</span>
+                                    <img class="img-profile rounded-circle"
+                                        src="{{ asset('fournisseurs/' . session('profile')->photo) }}">
                                 @else
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                    <img class="img-profile rounded-circle"
+                                        src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin">
                                 @endif
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Déconnexion
                                 </a>
@@ -155,13 +158,16 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">{{ __('Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.')}}</div>
+                <div class="modal-body">
+                    {{ __('Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.') }}
+                </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ __('Annuler') }}</button>
+                    <button class="btn btn-secondary" type="button"
+                        data-dismiss="modal">{{ __('Annuler') }}</button>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a class="btn btn-primary"
-                            href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> {{ __('Déconnexion') }}
                         </a>
                     </form>
@@ -189,6 +195,14 @@
     <script src="{{ url('backoffice/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/chart-pie-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/datatables-demo.js') }}"></script>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 
     @yield('script')
 </body>
