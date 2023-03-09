@@ -54,7 +54,7 @@ Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['
 Route::get('/dashboard', function () {
     if(auth()->user()->type == 'client') return ClientController::profile();
     if(auth()->user()->type == 'admin') return redirect('/administrator');
-    return FournisseurController::getProfile();
+    return view('backoffice.prestataires.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/editCompte',[ProfileController::class,'editCompte'])->middleware(['auth'])->name('editCompte');
 Route::post('/editProfile',[ProfileController::class,'editProfile'])->middleware(['auth'])->name('editProfile');
@@ -69,9 +69,6 @@ Route::get('/back', function () {
 Route::get('/feedbacks', function () {
     if(auth()->user()->type == 'fournisseur') return FeedbackController::getFeedbacks();
 })->middleware(['auth'])->name('fournisseur-feedback');
-Route::get('/dashboard2', function () {
-    if(auth()->user()->type == 'fournisseur') return view('backoffice.prestataires.dashboard');
-})->middleware(['auth'])->name('fournisseur-dashboard');
 Route::get('/profile', function () {
     if(auth()->user()->type == 'fournisseur') return FournisseurController::getProfile();
 })->middleware(['auth'])->name('fournisseur-profile');

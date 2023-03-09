@@ -2,12 +2,6 @@
 
 @section('menu')
 
-    <li class="nav-item active">
-        <a class="nav-link" href="{{route('fournisseur-dashboard')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
     <hr class="sidebar-divider">
     <li class="nav-item active">
         <a class="nav-link" href="{{route('fournisseur-profile')}}">

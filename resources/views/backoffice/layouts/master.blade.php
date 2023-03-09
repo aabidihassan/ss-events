@@ -44,10 +44,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
             @yield('menu')
 
             <hr class="sidebar-divider">
-            <li class="nav-item">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Accueil</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link" href="{{ route('logout') }}"
@@ -59,7 +72,7 @@
             </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline" style="margin-top : 60%;">
+            <div class="text-center d-none d-md-inline mt-2">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
