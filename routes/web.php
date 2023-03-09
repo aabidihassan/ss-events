@@ -39,13 +39,12 @@ Route::get('/fournisseur', function () {
 Route::get('/contact', function () {
     return view('register');
 });
-Route::get('/detailsFournisseur/{id}',function ($id)
-{
- return ClientController::showFournisseur($id);
-});
+Route::get('/fournisseur/{id}',function ($id){
+    return ClientController::showFournisseur($id);
+})->name('detailsFournisseur');
 Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 Route::post('/contact', [ContactUsController::class, 'submitContactForm'])->name('contact');
-Route::post('/search',[FournisseurController::class,'search'])->name('search');
+Route::post('/fournisseur',[FournisseurController::class,'search'])->name('search');
 
 //End Route Public
 

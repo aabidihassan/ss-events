@@ -54,7 +54,7 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0 menu">
                         <a href="/" class="nav-item nav-link" id="accueil">Accueil</a>
-                        <a href="/fournisseur" class="nav-item nav-link">Fournisseurs</a>
+                        <a href="/fournisseur" class="nav-item nav-link dtf">Fournisseurs</a>
                         <a href="/services" class="nav-item nav-link">Services</a>
                         <a href="/about" class="nav-item nav-link">À propos de nous</a>
                         @if (!auth()->check())

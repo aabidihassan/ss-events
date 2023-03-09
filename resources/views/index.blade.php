@@ -238,7 +238,7 @@
                 @foreach ($fournisseurs as $fournisseur)
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="package-item bg-white mb-2" style="height: 410px;">
-                            <a href="detailsFournisseur/{{$fournisseur->id}}">
+                            <a href="fournisseur/{{$fournisseur->id}}">
                                 <img class="img-fluid" src="fournisseurs/{{ $fournisseur->photo }}" alt=""
                                     style="height: 250px; width:100%">
                             </a>
@@ -251,7 +251,7 @@
                                     <small class="m-0"><i
                                             class="fa fa-eye text-primary mr-2"></i>{{ $fournisseur->vues }}</small>
                                 </div>
-                                <a class="h5 text-decoration-none" href="detailsFournisseur/{{$fournisseur->id}}">{{ $fournisseur->raison }}</a>
+                                <a class="h5 text-decoration-none" href="fournisseur/{{$fournisseur->id}}">{{ $fournisseur->raison }}</a>
                                 <div class="border-top mt-2 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <?php  $avgF = collect($avgsRatings)->where('id_fournisseur', $fournisseur->id)->first(); ?>
@@ -260,7 +260,7 @@
                                                 <small>({{$avgF->count}})</small>
                                             </h6>
                                         @endif
-                                        <a href="detailsFournisseur/{{$fournisseur->id}}" class="btn btn-sm btn-secondary ml-auto"
+                                        <a href="fournisseur/{{$fournisseur->id}}" class="btn btn-sm btn-secondary ml-auto"
                                             style="width:30%; margin-top:-2%">Voir</a>
                                     </div>
                                 </div>

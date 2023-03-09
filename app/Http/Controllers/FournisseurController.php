@@ -26,9 +26,15 @@ class FournisseurController extends Controller
     }
 
     public function search(Request $req){
-        $data = Fournisseur::where('statut', true)->where('service', $req->service)->where('citie', $req->citie)->get();
+        if (empty($req->service) && isset($req->citie))
+            $data = Fournisseur::where('statut', true)->where('citie', $req->citie)->get();
+        elseif (empty($req->citie) && isset($req->service))
+            $data = Fournisseur::where('statut', true)->where('service', $req->service)->get();
+        else 
+            $data = Fournisseur::where('statut', true)->where('service', $req->service)->where('citie', $req->citie)->get();
         $services = Service::all();
         $cities = Citie::all();
+        //return $req;
         return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities ,"avgsRatings" => 0]);
     }
 

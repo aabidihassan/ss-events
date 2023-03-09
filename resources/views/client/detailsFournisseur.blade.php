@@ -249,6 +249,7 @@
 @section('script')
 <script>
     $(function() {
+        $('.dtf').addClass("active");
         $('.hover-lb').click(function() {
             if ($(this).hasClass('actv')) {
                 $('.hover-lb').children(0).children(0).attr('fill',
@@ -351,6 +352,7 @@
         $('#addCommit').on('reset', function(e) {
             $('.hover-lb').children(0).children(0).attr('fill', '#FA86C4');
         });
+       
     });
 </script>
 @endsection
