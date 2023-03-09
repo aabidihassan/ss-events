@@ -41,7 +41,7 @@ Route::get('/contact', function () {
 });
 Route::get('/fournisseur/{id}',function ($id){
     return ClientController::showFournisseur($id);
-})->name('detailsFournisseur');
+})->middleware(['auth'])->name('detailsFournisseur');
 Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 Route::post('/contact', [ContactUsController::class, 'submitContactForm'])->name('contact');
 Route::post('/fournisseur',[FournisseurController::class,'search'])->name('search');

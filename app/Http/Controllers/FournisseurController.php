@@ -34,7 +34,6 @@ class FournisseurController extends Controller
             $data = Fournisseur::where('statut', true)->where('service', $req->service)->where('citie', $req->citie)->get();
         $services = Service::all();
         $cities = Citie::all();
-        //return $req;
         return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities ,"avgsRatings" => 0]);
     }
 
