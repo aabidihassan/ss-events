@@ -47,9 +47,12 @@
 
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="/profile">
-                    <i class="fas fa-fw fa-sign-out-alt fa-rotate-180"></i>
-                    <span>Deconnexion</span></a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="fas fa-fw fa-sign-out-alt fa-rotate-180"></i> {{ __('Déconnexion') }}
+                    </a>
+                </form>
             </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -102,7 +105,7 @@
                                 <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Déconnexion
                                 </a>
                             </div>
                         </li>
@@ -151,10 +154,16 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">{{ __('Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.')}}</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ __('Annuler') }}</button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="btn btn-primary"
+                            href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> {{ __('Déconnexion') }}
+                        </a>
+                    </form>
                 </div>
             </div>
         </div>
