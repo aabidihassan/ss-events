@@ -22,7 +22,7 @@ require __DIR__.'/auth.php';
 |
 */
 
-// Routes Public 
+// Routes Public
 
 Route::get('/', function () {
     return IndexController::index();
@@ -49,11 +49,11 @@ Route::post('/search',[FournisseurController::class,'search'])->name('search');
 
 //End Route Public
 
-//Routes For client 
+//Routes For client
 
 Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['auth'])->name('addFeedback');
 Route::get('/dashboard', function () {
-    if(auth()->user()->type == 'client') return view('client.profile');
+    if(auth()->user()->type == 'client') return ClientController::profile();
     if(auth()->user()->type == 'admin') return redirect('/administrator');
     return FournisseurController::getProfile();
 })->middleware(['auth', 'verified'])->name('dashboard');

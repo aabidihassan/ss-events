@@ -36,7 +36,6 @@ class FeedbackController extends Controller
     public static function getFeedbacks()
     {
         $user = Auth::user();
-        //dd(session()->all());
 
         $feedbacks = Feedback::join('clients', 'feedback.id_client', '=', 'clients.id')
                             ->where('feedback.id_fournisseur', $user->id_user)

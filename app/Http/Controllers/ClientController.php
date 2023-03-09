@@ -38,6 +38,16 @@ class ClientController extends Controller
                                 ->get();
         Fournisseur::where('id', $id)->increment('vues');
         $idFileImages = User::select('id')->where('type', 'fournisseur')->where('id_user',$id)->get();
-        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages ]);   
+        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages ]);
+    }
+
+    public static function profile(){
+
+        $feedbacks = Feedback::join('fournisseurs', 'feedback.id_fournisseur', '=', 'fournisseurs.id')
+                            ->where('feedback.id_client', session('profile')->id)
+                            ->select('feedback.*', 'fournisseurs.raison')
+                            ->get();
+
+        return view('client.profile', ["feedbacks"=>$feedbacks]);
     }
 }

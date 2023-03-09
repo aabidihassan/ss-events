@@ -9,7 +9,7 @@
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"
+                        <img src="{{ asset('fournisseurs/' . session('profile')->photo) }}" alt="Admin"
                             class="rounded-circle p-1 bg-primary" width="110">
                         <div class="mt-3">
                             <h4 class="mb-3">{{ session('profile')->nom }} {{ session('profile')->prenom }} </h4>
