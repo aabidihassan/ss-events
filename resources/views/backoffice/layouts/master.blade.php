@@ -173,6 +173,8 @@
     <script src="{{ url('backoffice/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/chart-pie-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/datatables-demo.js') }}"></script>
+
+    @yield('script');
 </body>
 
 </html>
