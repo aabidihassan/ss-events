@@ -1,7 +1,5 @@
 @extends('backoffice.layouts.administrator')
-
 @section('title', 'Dashboard')
-
 @section('content')
 
     <!-- Content Row -->
@@ -90,6 +88,12 @@
         </div>
     </div>
 
-    <!-- Content Row -->
+@endsection
 
+@section('script')
+<script>
+    $(document).ready(function() {
+
+    });
+</script>
 @endsection

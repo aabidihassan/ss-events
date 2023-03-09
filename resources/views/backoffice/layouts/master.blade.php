@@ -46,11 +46,12 @@
             @yield('menu')
 
             <hr class="sidebar-divider">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                        <i class="fas fa-fw fa-sign-out-alt fa-rotate-180"></i> {{ __('Déconnexion') }}
+                        <i class="fas fa-fw fa-sign-out-alt fa-rotate-180"></i>
+                        <span>{{ __('Déconnexion') }}</span>
                     </a>
                 </form>
             </li>
@@ -189,7 +190,7 @@
     <script src="{{ url('backoffice/js/demo/chart-pie-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/datatables-demo.js') }}"></script>
 
-    @yield('script');
+    @yield('script')
 </body>
 
 </html>
