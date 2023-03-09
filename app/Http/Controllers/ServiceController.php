@@ -21,4 +21,9 @@ class ServiceController extends Controller
         Service::where('id', $id)->update(['statut'=>1]);
         return redirect('/admin/services');
     }
+
+    public static function getAllS(){
+        $services = Service::all();
+        return view('backoffice.administrators.services', ["services"=>$services]);
+    }
 }

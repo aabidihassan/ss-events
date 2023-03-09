@@ -125,3 +125,29 @@ Route::get('/profile', function () {
 Route::get('/abonnement', function () {
     if(auth()->user()->type == 'fournisseur') return FournisseurController::getAbonnement();
 })->middleware(['auth'])->name('abonnement');
+
+//back admin
+
+Route::get('/administrator', function () {
+    if(auth()->user()->type == 'admin')  return view('backoffice.administrators.dashboard');
+ })->middleware(['auth'])->name('adminbackOffice');
+
+Route::get('/administrator/profile', function () {
+    if(auth()->user()->type == 'admin') return view('backoffice.administrators.profile');
+})->middleware(['auth'])->name('adminProfile');
+
+Route::get('/administrator/services', function () {
+    if(auth()->user()->type == 'admin') return ServiceController::getAllS();
+})->middleware(['auth'])->name('adminService');
+
+Route::get('/administrator/prefournisseurs', function () {
+    if(auth()->user()->type == 'admin') return PresController::getPreF();
+})->middleware(['auth'])->name('adminPreFournisseur');
+
+Route::get('/administrator/fournisseurs', function () {
+    if(auth()->user()->type == 'admin') return FournisseurController::getAllF();
+})->middleware(['auth'])->name('adminFournisseur');
+
+Route::get('/administrator/clients', function () {
+    if(auth()->user()->type == 'admin') return ClientController::getAllC();
+})->middleware(['auth'])->name('adminClient');

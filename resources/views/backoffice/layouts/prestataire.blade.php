@@ -24,7 +24,7 @@
 
     <hr class="sidebar-divider">
     <li class="nav-item active">
-        <a class="nav-link" href="/abonnement">
+        <a class="nav-link" href="{{route('abonnement')}}">
             <i class="fas fa-fw fa-gem"></i>
             <span>Abonnement</span></a>
     </li>

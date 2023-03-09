@@ -56,4 +56,9 @@ class FournisseurController extends Controller
     public static function getAbonnement(){
         return view('backoffice.prestataires.abonnement');
     }
+
+    public static function getAllF(){
+        $data = Fournisseur::all();
+        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data]);
+    }
 }

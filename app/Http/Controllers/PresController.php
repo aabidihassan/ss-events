@@ -47,4 +47,9 @@ class PresController extends Controller
             File::makeDirectory($path, 0777, true, true);
         }
     }
+    
+    public static function getPreF(){
+        $prefournisseurs = Prefournisseur::all();
+        return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs]);
+    }
 }

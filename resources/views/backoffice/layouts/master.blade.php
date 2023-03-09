@@ -87,8 +87,14 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{session('profile')->nom . ' ' . session('profile')->prenom }}</span>
+                                @if (auth()->user()->type == 'fournisseur')
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {{session('profile')->nom . ' ' . session('profile')->prenom }}</span>
                                 <img class="img-profile rounded-circle" src="{{ asset('fournisseurs/' . session('profile')->photo) }}">
+                                @else
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <img class="img-profile rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin">
+                                @endif
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -40,4 +40,9 @@ class ClientController extends Controller
         $idFileImages = User::select('id')->where('type', 'fournisseur')->where('id_user',$id)->get();
         return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages ]);   
     }
+
+    public static function getAllC(){
+        $clients = Client::all();
+        return view('backoffice.administrators.clients', ["clients"=>$clients]);
+    }
 }
