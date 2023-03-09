@@ -333,13 +333,11 @@
         });
         $('.nav-card-header').click(function(e) {
             e.preventDefault();
-            console.log("hi");
             $('.nav-card-header').removeClass('active');
             $(this).addClass('active');
             var target = $(this).attr('href');
             $('.content-body-card').hide();
             $(target).show();
-            console.log(target);
             if (target == "#galerie")
                 $("#btn-sub-info").hide();
             else
