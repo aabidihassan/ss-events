@@ -47,4 +47,10 @@ class FournisseurController extends Controller
         $services = Service::all();
         return view('fournisseurs.profile', ["cities"=>$cities, "services"=>$services]);
     }
+
+    public static function getProfile(){
+        $cities = Citie::all();
+        $services = Service::all();
+        return view('backoffice.prestataires.profile', ["cities"=>$cities, "services"=>$services]);
+    }
 }
