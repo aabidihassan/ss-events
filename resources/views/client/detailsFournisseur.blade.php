@@ -100,19 +100,26 @@
         </div>
     </div>
 </div>
-@if (is_dir(public_path('fournisseurs/{{ $idFileImages[0]->id }}/')))
-    <div class="container px-4 py-2" id="custom-cards">
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            @foreach (File::allFiles(public_path('fournisseurs/{{ $idFileImages[0]->id }}/')) as $file)
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-                        <img style="width: 100%;height: 100%;object-fit: cover;"
-                            src="{{ asset('fournisseurs/' . $idFileImages[0]->id . '/' . $file->getFilename()) }}" />
-                    </div>
-                </div>
-            @endforeach
+@php
+   if(!$idFileImages->isEmpty()) 
+   {
+        $path = public_path('fournisseurs/' .$idFileImages[0]->id . '/');
+        $files = [];
+        $files = File::allFiles($path);
+   }
+@endphp
+@if(!empty($files))
+<div class="container px-4 py-2" id="custom-cards">
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        @foreach ($files as $file)
+        <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
+            <img style="width: 100%;height: 100%;object-fit: cover;" src="{{ asset('fournisseurs/' . $idFileImages[0]->id . '/' . $file->getFilename()) }}" />
+            </div>
         </div>
+        @endforeach
     </div>
+</div>
 @endif
 <div class="container mt-4">
     <h2>Comments : {{ $feedbacks->count() }}</h2>
