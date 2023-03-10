@@ -9,12 +9,12 @@
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="{{ asset('fournisseurs/' . session('profile')->photo) }}" alt="Admin"
+                        <img src="{{ asset('fournisseurs/' . $fournisseur->photo) }}" alt="Admin"
                             class="rounded-circle p-1 bg-primary" width="110">
                         <div class="mt-3">
-                            <h4 class="mb-3">{{ session('profile')->nom }} {{ session('profile')->prenom }} </h4>
-                            <p class="text-muted font-size-sm">{{ session('profile')->telephone }}</p>
-                            <p class="text-muted font-size-sm">{{ session('profile')->email }}</p>
+                            <h4 class="mb-3">{{ $fournisseur->nom }} {{ $fournisseur->prenom }} </h4>
+                            <p class="text-muted font-size-sm">{{ $fournisseur->telephone }}</p>
+                            <p class="text-muted font-size-sm">{{ $fournisseur->email }}</p>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" name="nom"
-                                    value="{{ session('profile')->nom }}">
+                                    value="{{ $fournisseur->nom }}">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" name="prenom"
-                                    value="{{ session('profile')->prenom }}">
+                                    value="{{ $fournisseur->prenom }}">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" name="email"
-                                    value="{{ session('profile')->email }}">
+                                    value="{{ $fournisseur->email }}">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" name="telephone"
-                                    value="{{ session('profile')->telephone }}">
+                                    value="{{ $fournisseur->telephone }}">
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" name="raison" placeholder="Raison"
-                                    value="{{ session('profile')->raison }}">
+                                    value="{{ $fournisseur->raison }}">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -131,7 +131,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" name="email2" placeholder="E-Mail"
-                                    value="{{ session('profile')->email2 }}">
+                                    value="{{ $fournisseur->email2 }}">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -140,7 +140,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" placeholder="Telephone" name="telephone2"
-                                    value="{{ session('profile')->telephone2 }}">
+                                    value="{{ $fournisseur->telephone2 }}">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -151,7 +151,7 @@
                                 <select name="citie" class="form-control" id="dropdown">
                                     <option disabled selected>Choisir une ville</option>
                                     @foreach($cities as $citie)
-                                    <option value="{{ $citie->name }}" {{ session('profile')->citie == $citie->name ? 'selected' : '' }}>{{ $citie->name }}</option>
+                                    <option value="{{ $citie->name }}" {{ $fournisseur->citie == $citie->name ? 'selected' : '' }}>{{ $citie->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -164,7 +164,7 @@
                                 <select name="service" class="form-control" id="dropdown">
                                     <option disabled selected>Choisir un service</option>
                                     @foreach($services as $service)
-                                    <option value="{{ $service->libelle }}" {{ session('profile')->service == $service->libelle ? 'selected' : '' }}>{{ $service->libelle }}</option>
+                                    <option value="{{ $service->libelle }}" {{ $fournisseur->service == $service->libelle ? 'selected' : '' }}>{{ $service->libelle }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -175,7 +175,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <textarea class="form-control py-3 px-4" rows="2" name="adresse" id="adresse" placeholder="Adresse"
-                                    data-validation-required-message="Veuillez entrer votre adresse">{{ session('profile')->adresse }}</textarea>
+                                    data-validation-required-message="Veuillez entrer votre adresse">{{ $fournisseur->adresse }}</textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -184,7 +184,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <textarea class="form-control py-3 px-4" rows="6" name="description" id="description"
-                                    placeholder="Description" data-validation-required-message="Veuillez entrer votre adresse">{{ session('profile')->description }}</textarea>
+                                    placeholder="Description" data-validation-required-message="Veuillez entrer votre adresse">{{ $fournisseur->description }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                             </div>
                             <div class="col text-secondary">
                                 <input type="text" class="form-control" placeholder="Lien Facebook"
-                                    name="fb" value="{{ session('profile')->fb }}">
+                                    name="fb" value="{{ $fournisseur->fb }}">
                             </div>
                             <div class="col text-secondary mt-4">
                                 <h6>
@@ -220,7 +220,7 @@
                             </div>
                             <div class="col text-secondary">
                                 <input type="text" class="form-control" name="whatsapp"
-                                    placeholder="Lien WhatsApp" value="{{ session('profile')->whatsapp }}">
+                                    placeholder="Lien WhatsApp" value="{{ $fournisseur->whatsapp }}">
                             </div>
                             <div class="col text-secondary mt-4">
                                 <h6>
@@ -239,7 +239,7 @@
                             </div>
                             <div class="col text-secondary">
                                 <input type="text" class="form-control" name="insta"
-                                    placeholder="Lien Instagram" value="{{ session('profile')->insta }}">
+                                    placeholder="Lien Instagram" value="{{ $fournisseur->insta }}">
                             </div>
                         </div>
                     </div>

@@ -50,7 +50,8 @@ class FournisseurController extends Controller
     public static function getProfile(){
         $cities = Citie::all();
         $services = Service::all();
-        return view('backoffice.prestataires.profile', ["cities"=>$cities, "services"=>$services]);
+        $fournisseur = Fournisseur::select('*')->where('id',session('profile')->id)->get();
+        return view('backoffice.prestataires.profile', [ "fournisseur" => $fournisseur->first() ,"cities"=>$cities, "services"=>$services]);
     }
     public static function getAbonnement(){
         return view('backoffice.prestataires.abonnement');
