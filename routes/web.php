@@ -64,16 +64,24 @@ Route::post('/editProfile',[ProfileController::class,'editProfile'])->middleware
 //Routes Back office for fournisseur
 
 Route::get('/back', function () {
-    if(auth()->user()->type == 'fournisseur') return view('backoffice.prestataires.dashboard');
+    if(auth()->user()->type == 'fournisseur') 
+        return view('backoffice.prestataires.dashboard');
+    return redirect('/');
 })->middleware(['auth'])->name('back');
 Route::get('/feedbacks', function () {
-    if(auth()->user()->type == 'fournisseur') return FeedbackController::getFeedbacks();
+    if(auth()->user()->type == 'fournisseur') 
+        return FeedbackController::getFeedbacks();
+    return redirect('/');
 })->middleware(['auth'])->name('fournisseur-feedback');
 Route::get('/profile', function () {
-    if(auth()->user()->type == 'fournisseur') return FournisseurController::getProfile();
+    if(auth()->user()->type == 'fournisseur')
+        return FournisseurController::getProfile();
+    return redirect('/');
 })->middleware(['auth'])->name('fournisseur-profile');
 Route::get('/abonnement', function () {
-    if(auth()->user()->type == 'fournisseur') return FournisseurController::getAbonnement();
+    if(auth()->user()->type == 'fournisseur') 
+        return FournisseurController::getAbonnement();
+    return redirect('/');
 })->middleware(['auth'])->name('fournisseur-abonnement');
 Route::post('image/store', [ProfileController::class, 'store'])->middleware(['auth'])->name('image.store');
 Route::post('profile_picture/update', [ProfileController::class, 'updateProfilePicture'])->middleware(['auth'])->name('profile_picture.update');
@@ -81,22 +89,34 @@ Route::post('profile_picture/update', [ProfileController::class, 'updateProfileP
 //Routes Back office for administrator
 
 Route::get('/administrator', function () {
-    if(auth()->user()->type == 'admin')  return IndexController::adminDashboard();
+    if(auth()->user()->type == 'admin')  
+        return IndexController::adminDashboard();
+    return redirect('/');
 })->middleware(['auth'])->name('adminbackOffice');
 Route::get('/administrator/profile', function () {
-    if(auth()->user()->type == 'admin') return view('backoffice.administrators.profile');
+    if(auth()->user()->type == 'admin') 
+        return view('backoffice.administrators.profile');
+    return redirect('/');
 })->middleware(['auth'])->name('adminProfile');
 Route::get('/administrator/services', function () {
-    if(auth()->user()->type == 'admin') return ServiceController::getAll();
+    if(auth()->user()->type == 'admin') 
+        return ServiceController::getAll();
+    return redirect('/');
 })->middleware(['auth'])->name('adminService');
 Route::get('/administrator/prefournisseurs', function () {
-    if(auth()->user()->type == 'admin') return PresController::getPres();
+    if(auth()->user()->type == 'admin') 
+        return PresController::getPres();
+    return redirect('/');
 })->middleware(['auth'])->name('adminPreFournisseur');
 Route::get('/administrator/fournisseurs', function () {
-    if(auth()->user()->type == 'admin') return FournisseurController::getAll();
+    if(auth()->user()->type == 'admin') 
+        return FournisseurController::getAll();
+    return redirect('/');
 })->middleware(['auth'])->name('adminFournisseur');
 Route::get('/administrator/clients', function () {
-    if(auth()->user()->type == 'admin') return ClientController::getAll();
+    if(auth()->user()->type == 'admin') 
+        return ClientController::getAll();
+    return redirect('/');
 })->middleware(['auth'])->name('adminClient');
 Route::get('/admin/pres/decline/{id}', [PresController::class, 'decline'])->middleware(['auth']);
 Route::get('/admin/pres/accept/{id}', [PresController::class, 'accept'])->middleware(['auth']);
