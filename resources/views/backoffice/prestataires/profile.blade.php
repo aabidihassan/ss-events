@@ -3,6 +3,9 @@
 
 @section('content')
 <div class="row">
+     @if (session()->has('message'))
+    <div class="alert alert-success" role="alert">les informations sont bien enregistrées!</div>
+    @endif
     <div class="col-xl-4 col-lg-5">
         <div class="card shadow mb-4">
             <!-- Card Body -->

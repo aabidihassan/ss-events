@@ -47,7 +47,7 @@ class ClientController extends Controller
                             ->where('feedback.id_client', session('profile')->id)
                             ->select('feedback.*', 'fournisseurs.raison')
                             ->get();
-
-        return view('client.profile', ["feedbacks"=>$feedbacks]);
+        $client = Client::select('*')->where('id',session('profile')->id)->get();
+        return view('client.profile', ["client" => $client->first(), "feedbacks"=>$feedbacks]);
     }
 }

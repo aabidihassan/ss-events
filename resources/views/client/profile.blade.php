@@ -15,9 +15,9 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"
                                 class="rounded-circle p-1 bg-primary" width="110">
                             <div class="mt-3">
-                                <h4 class="mb-3">{{ session('profile')->nom }} {{ session('profile')->prenom }} </h4>
-                                <p class="text-muted font-size-sm">{{ session('profile')->telephone }}</p>
-                                <p class="text-muted font-size-sm">{{ session('profile')->email }}</p>
+                                <h4 class="mb-3">{{ $client->nom }} {{ $client->prenom }} </h4>
+                                <p class="text-muted font-size-sm">{{ $client->telephone }}</p>
+                                <p class="text-muted font-size-sm">{{ $client->email }}</p>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" name="nom"
-                                            value="{{ session('profile')->nom }}">
+                                            value="{{ $client->nom }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" name="prenom"
-                                            value="{{ session('profile')->prenom }}">
+                                            value="{{ $client->prenom }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" name="email"
-                                            value="{{ session('profile')->email }}">
+                                            value="{{ $client->email }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" name="telephone"
-                                            value="{{ session('profile')->telephone }}">
+                                            value="{{ $client->telephone }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <textarea class="form-control py-3 px-4" rows="3" name="adresse" id="adresse" placeholder="Adresse"
-                                            required="required" data-validation-required-message="Veuillez entrer votre adresse">{{ session('profile')->adresse }}</textarea>
+                                            required="required" data-validation-required-message="Veuillez entrer votre adresse">{{ $client->adresse }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
@@ -124,7 +124,7 @@
                         <div id="contact-info" class="content-body-card" style="display: none;">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover">
+                                    <table class="table table-bordered table-hover" d="dataTable">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>Fournisseur</th>
