@@ -22,4 +22,13 @@ class IndexController extends Controller
                                     ->get();
         return view('index', ["cities"=>$cities, "services"=>$services, "fournisseurs"=>$fournisseurs, "avgsRatings" => $avgsRatings]);
     }
+
+    public static function adminDashboard()
+    {
+        $data = Fournisseur::select(
+            DB::raw('SUM(CASE WHEN statut = 1 THEN 1 ELSE 0 END) as trueCount'),
+            DB::raw('SUM(CASE WHEN statut = 0 THEN 1 ELSE 0 END) as falseCount')
+        )->first();
+        return view('backoffice.administrators.dashboard',['data'=>$data]);
+    }
 }

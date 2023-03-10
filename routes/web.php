@@ -81,7 +81,7 @@ Route::post('profile_picture/update', [ProfileController::class, 'updateProfileP
 //Routes Back office for administrator
 
 Route::get('/administrator', function () {
-    if(auth()->user()->type == 'admin')  return view('backoffice.administrators.dashboard');
+    if(auth()->user()->type == 'admin')  return IndexController::adminDashboard();
 })->middleware(['auth'])->name('adminbackOffice');
 Route::get('/administrator/profile', function () {
     if(auth()->user()->type == 'admin') return view('backoffice.administrators.profile');

@@ -27,7 +27,7 @@ class ServiceController extends Controller
         try {
             $service = new Service;
             $service->libelle = $request->input('libelle');
-            $email = $request->input('description');
+            //$service = $request->input('description');
             $service->save();
             return redirect('/administrator/services');
         }catch (Exception $e) {
