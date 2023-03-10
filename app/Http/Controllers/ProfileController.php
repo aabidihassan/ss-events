@@ -20,7 +20,7 @@ class ProfileController extends Controller
             ->update(['nom'=>$req->nom, 'prenom'=>$req->prenom, 'email'=>$req->email,'telephone'=>$req->telephone,
             'citie'=>$req->citie, 'service'=>$req->service,
             'raison'=>$req->raison, 'adresse'=>$req->adresse, 'email2'=>$req->email2, 'telephone2'=>$req->telephone2, 'description'=>$req->description,
-            'fb'=>$req->fb, 'whatsapp'=>$req->whatsapp, 'insta'=>$req->insta, 'twitter'=>$req->twitter]);
+            'fb'=>$req->fb, 'whatsapp'=>$req->whatsapp, 'insta'=>$req->insta]);
             $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
             $req->session()->put('profile', $fournisseur);
         }

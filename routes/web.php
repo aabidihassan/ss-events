@@ -45,7 +45,7 @@ Route::get('/fournisseur/{id}',function ($id){
 Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 Route::post('/contact', [ContactUsController::class, 'submitContactForm'])->name('contact');
 Route::post('/fournisseur',[FournisseurController::class,'search'])->name('search');
-
+Route::post('/incrementContactWhatsApp', [FournisseurController::class, 'incrementContactWhatsApp'])->middleware(['auth'])->name('incrementCW');
 //End Route Public
 
 //Routes For client
