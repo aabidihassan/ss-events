@@ -44,7 +44,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item active">
+            <li class="nav-item active bn-ac">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -53,14 +53,14 @@
             @yield('menu')
 
             <hr class="sidebar-divider">
-            <li class="nav-item active">
+            <li class="nav-item bn-ac">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Accueil</span></a>
             </li>
 
             <hr class="sidebar-divider">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link" href="{{ route('logout') }}"

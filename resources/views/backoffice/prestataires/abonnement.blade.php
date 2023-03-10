@@ -131,6 +131,8 @@
 @section('script')
 <script>
     $(document).ready(function() {
+        $('.bn-ac').removeClass('active');
+        $(".bn-ac").eq(3).addClass('active');
         $('.nav-card-header').click(function(e) {
             e.preventDefault();
             $('.nav-card-header').removeClass('active');
@@ -139,7 +141,7 @@
             $('.content-body-card').hide();
             $(target).show();
         });
+
     });
 </script>
 @endsection
-

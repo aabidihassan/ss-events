@@ -77,9 +77,14 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Feedbacks</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">4.5</div>
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Feedbacks</div>
+                            @if (!$avgRating->isEmpty())
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ $avgRating[0]->average }}
+                                    <i class="fa fa-star text-primary mr-2"></i>
+                                    <small>({{ $avgRating[0]->count }})</small>
+                                </div>
+                            @endif
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -89,7 +94,13 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- Content Row -->
-
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('.bn-ac').removeClass('active');
+            $(".bn-ac").eq(0).addClass('active'); 
+        });
+    </script>
 @endsection

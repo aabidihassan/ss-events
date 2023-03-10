@@ -55,4 +55,13 @@ class FournisseurController extends Controller
     public static function getAbonnement(){
         return view('backoffice.prestataires.abonnement');
     }
+
+    public static function mydash()
+    {
+        $avgRating = Feedback::select('id_fournisseur', DB::raw('ROUND(avg(rating),1) as average'), DB::raw('count(*) as count'))
+                                ->groupBy('id_fournisseur')
+                                ->where('id_fournisseur',session('profile')->id)
+                                ->get();
+        return view('backoffice.prestataires.dashboard', ["avgRating"=>$avgRating]);
+    }
 }

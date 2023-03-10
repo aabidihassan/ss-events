@@ -54,7 +54,7 @@ Route::post('/feedback',[FeedbackController::class, 'addCommit'])->middleware(['
 Route::get('/dashboard', function () {
     if(auth()->user()->type == 'client') return ClientController::profile();
     if(auth()->user()->type == 'admin') return redirect('/administrator');
-    return view('backoffice.prestataires.dashboard');
+    return FournisseurController::mydash();
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/editCompte',[ProfileController::class,'editCompte'])->middleware(['auth'])->name('editCompte');
 Route::post('/editProfile',[ProfileController::class,'editProfile'])->middleware(['auth'])->name('editProfile');

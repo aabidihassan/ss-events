@@ -15,7 +15,7 @@ class FeedbackController extends Controller
         try {
             $feedback = new Feedback;
             if (property_exists(session('profile'), 'service'))
-                throw new Exception("Votre compte n'est pas valide pour ajouter un commentaire".session('profile')->getAll()->json());
+                throw new Exception("Votre compte n'est pas valide pour ajouter un commentaire");
             $feedback->id_client = session('profile')->id;
             $feedback->id_fournisseur = $request->fournisseur;
             if (!empty($request->commentaire))

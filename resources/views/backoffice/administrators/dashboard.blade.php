@@ -93,7 +93,8 @@
 @section('script')
 <script>
     $(document).ready(function() {
-
+        $('.bn-ac').removeClass('active');
+        $(".bn-ac").eq(0).addClass('active');
     });
 </script>
 @endsection

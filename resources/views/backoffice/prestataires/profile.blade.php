@@ -298,6 +298,8 @@
 @section('script')
 <script>
     $(document).ready(function() {
+        $('.bn-ac').removeClass('active');
+        $(".bn-ac").eq(1).addClass('active');
         $('#submit-image').click(function() {
             let image = $('#image-input')[0].files[0];
             let formData = new FormData();
@@ -346,4 +348,3 @@
     });
 </script>
 @endsection
-

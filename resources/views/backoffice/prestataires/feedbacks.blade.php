@@ -45,3 +45,12 @@
     </div>
 
 @endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('.bn-ac').removeClass('active');
+        $(".bn-ac").eq(2).addClass('active');
+    });
+</script>
+@endsection
