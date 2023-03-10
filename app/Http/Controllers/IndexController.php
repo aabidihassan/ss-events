@@ -7,6 +7,7 @@ use App\Models\Citie;
 use App\Models\Service;
 use App\Models\Fournisseur;
 use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -30,5 +31,17 @@ class IndexController extends Controller
             DB::raw('SUM(CASE WHEN statut = 0 THEN 1 ELSE 0 END) as falseCount')
         )->first();
         return view('backoffice.administrators.dashboard',['data'=>$data]);
+    }
+
+    public static function checkUser(Request $request)
+    {
+        try {
+            $data = User::where('username',$request->username)->first();
+            if ($data)
+                return true;
+        } catch (\Exception $e) {
+            return $e->message;
+        }
+        return false;
     }
 }

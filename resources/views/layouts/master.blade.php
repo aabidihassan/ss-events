@@ -58,7 +58,7 @@
                         <a href="/services" class="nav-item nav-link">Services</a>
                         <a href="/about" class="nav-item nav-link">À propos de nous</a>
                         @if (!auth()->check())
-                            <a href="/register-fournisseur" class="nav-item nav-link">Espace Prestataires</a>
+                            <a href="{{route('espace-fournisseur')}}" class="nav-item nav-link">Espace Prestataires</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Compte</a>
                                 <div class="dropdown-menu border-0 rounded-0 m-0">

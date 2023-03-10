@@ -46,6 +46,17 @@ Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('sub
 Route::post('/contact', [ContactUsController::class, 'submitContactForm'])->name('contact');
 Route::post('/fournisseur',[FournisseurController::class,'search'])->name('search');
 Route::post('/incrementContactWhatsApp', [FournisseurController::class, 'incrementContactWhatsApp'])->middleware(['auth'])->name('incrementCW');
+Route::get('/register-fournisseur', function () {
+    return view('auth.register-fournisseur');
+})->name('register-fournisseur');
+
+Route::get('/espace-fournisseur', function () {
+    return view('fournisseurs.espace-fournisseur');
+})->name('espace-fournisseur');
+
+Route::post('/check-username', [IndexController::class, 'checkUser'])->name('checkUsername');
+
+
 //End Route Public
 
 //Routes For client
