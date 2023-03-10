@@ -15,7 +15,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Nombre de vues</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{session('profile')->vues}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$fournisseur->vues}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-eye fa-2x text-gray-300"></i>
@@ -33,7 +33,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Nombre de contacts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{session('profile')->countContact}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$fournisseur->countContact}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-envelope fa-2x text-gray-300"></i>

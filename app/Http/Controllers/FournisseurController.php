@@ -62,14 +62,17 @@ class FournisseurController extends Controller
                                 ->groupBy('id_fournisseur')
                                 ->where('id_fournisseur',session('profile')->id)
                                 ->get();
-        return view('backoffice.prestataires.dashboard', ["avgRating"=>$avgRating]);
+        $fournisseur = Fournisseur::select('*')
+                                ->where('id',session('profile')->id)
+                                ->get();
+        return view('backoffice.prestataires.dashboard', ["fournisseur" => $fournisseur->first(),"avgRating"=>$avgRating]);
     }
 
     public static function incrementContactWhatsApp(Request $req){
         try {
-            Fournisseur::where('id', $req->id)->increment('countContact');   
+            if(auth()->user()->type === 'client')
+                Fournisseur::where('id', $req->id)->increment('countContact');
         } catch (\Exception $e) {
-            Log::error('An error occurred: ' . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
         return response()->json(['message' => 'Good']);
