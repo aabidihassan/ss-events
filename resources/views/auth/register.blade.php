@@ -295,7 +295,7 @@
                                 <div class="control-group row">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-secondary active col-md-12">
-                                            <input type="radio" name="options" id="option6month" autocomplete="off" checked> 
+                                            <input type="radio" name="options" value="6" id="option6month" autocomplete="off" checked> 
                                             <div class="pricingTable green">
                                                 <div class="pricingTable-header">
                                                     <div class="price-value"> $10.00 <span class="month">per month</span> </div>
@@ -310,7 +310,7 @@
                                             </div>
                                         </label>
                                         <label class="btn btn-secondary col-md-12">
-                                          <input type="radio" name="options" id="option12month" autocomplete="off"> 
+                                          <input type="radio" name="options" value="12" id="option12month" autocomplete="off"> 
                                           <div class="pricingTable blue">
                                             <div class="pricingTable-header">
                                                 <div class="price-value"> $20.00 <span class="month">per month</span> </div>
