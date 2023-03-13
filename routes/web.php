@@ -10,6 +10,8 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\AbonnementsController;
 require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
@@ -129,6 +131,20 @@ Route::get('/administrator/clients', function () {
         return ClientController::getAll();
     return redirect('/');
 })->middleware(['auth'])->name('adminClient');
+
+Route::get('/administrator/classes', function () {
+    if(auth()->user()->type == 'admin') 
+        return ClasseController::getAll();
+    return redirect('/');
+})->middleware(['auth'])->name('adminClasses');
+
+Route::get('/administrator/abonnements', function () {
+    if(auth()->user()->type == 'admin') 
+        return AbonnementsController::getAll();
+    return redirect('/');
+})->middleware(['auth'])->name('adminAbonnements');
+
+
 Route::get('/admin/pres/decline/{id}', [PresController::class, 'decline'])->middleware(['auth']);
 Route::get('/admin/pres/accept/{id}', [PresController::class, 'accept'])->middleware(['auth']);
 Route::get('/admin/fournisseurs/desactivate/{id}', [FournisseurController::class, 'desactivate'])->middleware(['auth']);
@@ -138,4 +154,6 @@ Route::get('/admin/services/activate/{id}', [ServiceController::class, 'activate
 Route::get('/admin/clients/desactivate/{id}', [ClientController::class, 'desactivate'])->middleware(['auth']);
 Route::get('/admin/clients/activate/{id}', [ClientController::class, 'activate'])->middleware(['auth']);
 Route::post('/administrator/services/addService', [ServiceController::class ,'addService'])->middleware(['auth'])->name('addService');
+
+Route::post('/administrator/addClasse', [ClasseController::class ,'create'])->middleware(['auth'])->name('addClasse');
 //End Routes Back office for administrator
