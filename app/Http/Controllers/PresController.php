@@ -8,6 +8,7 @@ use App\Models\Fournisseur;
 use App\Models\User;
 use App\Models\Service;
 use Illuminate\Support\Facades\File;
+use App\Http\Controllers\FileSystem;
 
 class PresController extends Controller
 {
@@ -35,8 +36,9 @@ class PresController extends Controller
             $user->type = 'fournisseur';
             $user->id_user = $fournisseur->id;
             $user->save();
-            $this->createFolder($user->id);
             Prefournisseur::where('id', $req->id_prefournisseur)->delete();
+            //$this->createFolder($user->id);
+            //PresController::class->createFolder($user->id);           
             return redirect('/administrator/prefournisseurs');
         } catch (\Exception $e) {
             $errorMessage = (string) $e->getMessage();

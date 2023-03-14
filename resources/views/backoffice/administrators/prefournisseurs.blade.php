@@ -69,9 +69,9 @@
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label">{{__('Classe :')}}</label>
-                        <select class="form-control form-control-lg" name="classe" id="SelService">
-                            <option>...</option>
+                        <label for="message-text" class="col-form-label">{{__('Services :')}}</label>
+                        <select class="form-control form-control-lg" name="classe" id="SelService" required>
+                            <option value="">{{__('-- Veuillez choisir une service --')}}</option>
                             @foreach ($services as $service)
                             <option value="{{$service->id}}" prix="{{$service->prix_monthly}}">{{$service->libelle}} ({{$service->prix_monthly}} {{__('MAD')}})</option>
                             @endforeach
