@@ -357,6 +357,16 @@
 
 @section('script')
     <script>
+        var currentUrl = window.location.href;
+        console.log(currentUrl);
+        if (currentUrl.includes("client")) {
+                document.querySelector('.card-group').style.display = 'none';
+                document.querySelector('#client-register').style.display = 'block';
+        }
+        if (currentUrl.includes("prefournisseur")) {
+            document.querySelector('.card-group').style.display = 'none';
+            document.querySelector('#prefournisseur-register').style.display = 'block';
+        }
         document.querySelector('.cli').addEventListener('click', function() {
             document.querySelector('.card-group').style.display = 'none';
             document.querySelector('#client-register').style.display = 'block';

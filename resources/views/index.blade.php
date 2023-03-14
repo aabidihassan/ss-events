@@ -225,10 +225,27 @@
     <!-- Destination Start -->
 
 
-
+    <div class="card-group">
+        <div class="card">
+            <img src="../../img/event.jpg" class="card-img-top" alt="Connect with Customer">
+            <div class="card-body">
+            <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
+            <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
+            <a href="{{route('register')}}#cilent" class="btn btn-primary cli">Créer un compte client</a>
+            </div>
+        </div>      
+        <div class="card">
+            <img src="../../img/prestataire0.jpg" class="card-img-top" alt="Connect with Seller">
+            <div class="card-body">
+                <h5 class="card-title">Vous etes un prestataire évenementiel ?</h5>
+                <p class="card-text">Créez votre fiche lieu et recevez vos premières demandes de devis</p>
+                <a href="{{route('register')}}#prefournisseur" class="btn btn-primary prest clickPre">Référencer mon entreprise</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Packages Start -->
-    <div class="container-fluid py-5" style="margin-top: -7%">
+    <div class="container-fluid py-5" >
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Prestateurs</h6>
