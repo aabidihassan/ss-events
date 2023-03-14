@@ -254,12 +254,12 @@
                             <input type="text" value="client" hidden/>
                                 <div class="form-row mt-3">
                                     <div class="control-group col-sm-6">
-                                        <input type="text" class="form-control p-4" placeholder="Nom" name="nom"
+                                        <input type="text" class="form-control p-4" placeholder="Nom" name="nom" id="nom"
                                             required="required" data-validation-required-message="Veuillez entrer votre nom" />
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="control-group col-sm-6">
-                                        <input type="text" class="form-control p-4" placeholder="Prenom" name="prenom"
+                                        <input type="text" class="form-control p-4" placeholder="Prenom" name="prenom" id="prenom"
                                             required="required" data-validation-required-message="Veuillez entrer votre prenom" />
                                         <p class="help-block text-danger"></p>
                                     </div>
@@ -275,16 +275,6 @@
                                             required="required" data-validation-required-message="Veuillez entrer votre E-Mail" />
                                         <p class="help-block text-danger"></p>
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <input type="text" class="form-control p-4" id="usernamecheck" name="username" placeholder="Nom d'utilisateur"
-                                        required="required" data-validation-required-message="Veuillez entrer un nom d'utilisateur" autocomplete="off" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="control-group">
-                                    <input type="password" class="form-control p-4" id="password" name="password" placeholder="Mot de passe"
-                                        required="required" data-validation-required-message="Veuillez entrer un mot de passe" autocomplete="new-password" />
-                                    <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group">
                                     <textarea class="form-control py-3 px-4" rows="2" name="adresse" id="adresse" placeholder="Adresse"
@@ -363,18 +353,10 @@
     </div>
   </div>
 </div>
-
-
-
-
-    <!-- Contact End -->
 @stop
 
-
 @section('script')
-
     <script>
-
         document.querySelector('.cli').addEventListener('click', function() {
             document.querySelector('.card-group').style.display = 'none';
             document.querySelector('#client-register').style.display = 'block';
@@ -384,28 +366,6 @@
             document.querySelector('#prefournisseur-register').style.display = 'block';
         });
         $(document).ready(function () {
-            $('#usernamecheck').change(function () {
-                var user = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ route('checkUsername') }}',
-                    data: {'username' : user},
-                    success: function(response) {
-                        if (response) {
-                            $('#usernamecheck').addClass('is-invalid');
-                            $('#usernamecheck').siblings('.help-block').text('Veuillez entrer un nom d\'utilisateur');
-                            $('#btnSub').prop('disabled', true);
-                        }else{
-                            $('#usernamecheck').removeClass('is-invalid');
-                            $('#usernamecheck').siblings('.help-block').text('');
-                            $('#btnSub').prop('disabled', false);
-                        }
-                    },
-                    error: function(xhr) {
-                        console.log( JSON.parse(xhr.responseText));
-                    }
-                }); 
-            });
             $('.green').click(function () {
                 $('.pricingTable').removeClass('clicked');
                 $('.blue').children().eq(0).css('background','#f5f6f9');
@@ -421,9 +381,7 @@
                 $(this).addClass("clicked");
             });
             $('.green').click();
-            });
-
-
+        });
             // $('#type').on('change', function(){
             //     console.log($(this).val())
             //     if($(this).val() == 'pre'){
@@ -437,7 +395,6 @@
             //     }
             // })
         </script>
-
 @stop
 
 

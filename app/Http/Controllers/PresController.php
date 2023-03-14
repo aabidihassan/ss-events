@@ -30,8 +30,8 @@ class PresController extends Controller
             $fournisseur->statut = 1;
             $fournisseur->save();
             $user = new User();
-            $user->username = $pre->username;
-            $user->password = $pre->password;
+            $user->username = $pre->nom.$pre->prenom;
+            $user->password = \Hash::make($user->username);
             $user->type = 'fournisseur';
             $user->id_user = $fournisseur->id;
             $user->save();

@@ -33,17 +33,4 @@ class IndexController extends Controller
         )->first();
         return view('backoffice.administrators.dashboard',['data'=>$data]);
     }
-
-    public static function checkUser(Request $request)
-    {
-        try {
-            $data = User::where('username',$request->username)->first();
-            $data2 = Prefournisseur::where('username',$request->username)->first();
-            if ($data || $data2)
-                return true;
-        } catch (\Exception $e) {
-            return $e->message;
-        }
-        return false;
-    }
 }
