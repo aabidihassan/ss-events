@@ -277,7 +277,7 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <input type="text" class="form-control p-4" id="username" name="username" placeholder="Nom d'utilisateur"
+                                    <input type="text" class="form-control p-4" id="usernamecheck" name="username" placeholder="Nom d'utilisateur"
                                         required="required" data-validation-required-message="Veuillez entrer un nom d'utilisateur" autocomplete="off" />
                                     <p class="help-block text-danger"></p>
                                 </div>
@@ -384,7 +384,7 @@
             document.querySelector('#prefournisseur-register').style.display = 'block';
         });
         $(document).ready(function () {
-            $('#username').change(function () {
+            $('#usernamecheck').change(function () {
                 var user = $(this).val();
                 $.ajax({
                     type: 'POST',
@@ -392,12 +392,12 @@
                     data: {'username' : user},
                     success: function(response) {
                         if (response) {
-                            $('#username').addClass('is-invalid');
-                            $('#username').siblings('.help-block').text('Veuillez entrer un nom d\'utilisateur');
+                            $('#usernamecheck').addClass('is-invalid');
+                            $('#usernamecheck').siblings('.help-block').text('Veuillez entrer un nom d\'utilisateur');
                             $('#btnSub').prop('disabled', true);
                         }else{
-                            $('#username').removeClass('is-invalid');
-                            $('#username').siblings('.help-block').text('');
+                            $('#usernamecheck').removeClass('is-invalid');
+                            $('#usernamecheck').siblings('.help-block').text('');
                             $('#btnSub').prop('disabled', false);
                         }
                     },

@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th>Libelle</th>
-                        <th>Description</th>
+                        <th>Classe</th>
                         <th>Statut</th>
                         <th>Action</th>
                     </tr>
@@ -26,7 +26,7 @@
                     @foreach($services as $l)
                     <tr>
                         <td>{{$l->libelle}}</td>
-                        <td>{{$l->description}}</td>
+                        <td>{{$l->type}} ({{$l->prix_monthly}} MAD)</td>
                         <td>
                             @if($l->statut) Actif
                             @else Desactive
@@ -66,6 +66,14 @@
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">{{__('Description :')}}</label>
                         <textarea class="form-control" id="message-text" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">{{__('Services:')}}</label>
+                        <select class="form-control form-control-lg" name="classe">
+                            @foreach ($classes as $classe)
+                            <option value="{{$classe->id}}">{{$classe->type}} ({{$classe->prix_monthly}} {{__('MAD')}})</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

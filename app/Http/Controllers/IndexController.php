@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\Fournisseur;
 use App\Models\Feedback;
 use App\Models\User;
+use App\Models\Prefournisseur;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -37,7 +38,8 @@ class IndexController extends Controller
     {
         try {
             $data = User::where('username',$request->username)->first();
-            if ($data)
+            $data2 = Prefournisseur::where('username',$request->username)->first();
+            if ($data || $data2)
                 return true;
         } catch (\Exception $e) {
             return $e->message;

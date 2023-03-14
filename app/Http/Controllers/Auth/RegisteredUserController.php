@@ -44,6 +44,8 @@ class RegisteredUserController extends Controller
             $pre->telephone = $request->phone;
             $pre->statut = false;
             $pre->optionAb = $request->options;
+            $pre->password = \Hash::make($request->password);
+            $pre->username = $request->username;
             $pre->save();
             return redirect()->back()->with(['message' => 'done']);
         }else{

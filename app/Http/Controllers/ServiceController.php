@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\classe;
 
 class ServiceController extends Controller
 {
     public static function getAll(){
-        $services = Service::all();
-        return view('backoffice.administrators.services', ["services"=>$services]);
+        $services = Service::join('classes','classes.id','=','services.id_classe')
+                            ->select('services.*','classes.*')
+                            ->get();
+        $classes = classe::all();
+        return view('backoffice.administrators.services', ["services"=>$services, "classes"=>$classes]);
     }
 
     public function desactivate($id){
@@ -26,7 +30,8 @@ class ServiceController extends Controller
     {
         try {
             $service = new Service;
-            $service->libelle = $request->input('libelle');
+            $service->libelle = $request->libelle;
+            $service->id_classe = $request->classe;
             //$service = $request->input('description');
             $service->save();
             return redirect('/administrator/services');

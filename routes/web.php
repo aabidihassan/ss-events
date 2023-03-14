@@ -146,7 +146,9 @@ Route::get('/administrator/abonnements', function () {
 
 
 Route::get('/admin/pres/decline/{id}', [PresController::class, 'decline'])->middleware(['auth']);
-Route::get('/admin/pres/accept/{id}', [PresController::class, 'accept'])->middleware(['auth']);
+
+Route::post('/administrator/prefournisseurs/accecptFournisseur', [PresController::class , 'accept'])->middleware(['auth'])->name("accecptFournisseur");
+
 Route::get('/admin/fournisseurs/desactivate/{id}', [FournisseurController::class, 'desactivate'])->middleware(['auth']);
 Route::get('/admin/fournisseurs/activate/{id}', [FournisseurController::class, 'activate'])->middleware(['auth']);
 Route::get('/admin/services/desactivate/{id}', [ServiceController::class, 'desactivate'])->middleware(['auth']);
