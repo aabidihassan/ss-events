@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dateEND" class="col-form-label">{{__('Date Fin d\'abonnement avec 4 gratuit : ')}}</label>
+                        <label for="dateEND" class="col-form-label" name="end_date">{{__('Date Fin d\'abonnement avec 4 gratuit : ')}}</label>
                         <input type="date" readonly id="dateEnd" class="form-control" >
                     </div>
                 </div>
@@ -112,7 +112,12 @@
             $('#ditail').html(data.email + "<br>" + data.telephone + "<br>" );
             $('#numbreMonth').val(data.optionAb);
             $('#staticBackdrop').modal('show');
-            
+            currentDate = new Date(); 
+            var x = ($('#numbreMonth').val() *1)+4;
+            futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
+            formattedDate = futureDate.toISOString().slice(0,10); 
+            document.getElementById("dateEnd").value = formattedDate;
+            console.log($(this).attr('data-fournisseur'));
         })
         $('#SelService').change(function () {
            $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());

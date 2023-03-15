@@ -5,6 +5,7 @@ use App\Models\Fournisseur;
 use App\Models\Citie;
 use App\Models\Service;
 use App\Models\Feedback;
+use App\Models\abonnements;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +55,8 @@ class FournisseurController extends Controller
         return view('backoffice.prestataires.profile', [ "fournisseur" => $fournisseur->first() ,"cities"=>$cities, "services"=>$services]);
     }
     public static function getAbonnement(){
-        return view('backoffice.prestataires.abonnement');
+       $abonnements = abonnements::where('id_fournisseur',session('profile')->id)->get(); 
+       return view('backoffice.prestataires.abonnement',['abonnements'=>$abonnements]);
     }
 
     public static function mydash()

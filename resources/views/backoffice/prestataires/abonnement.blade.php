@@ -48,14 +48,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i = 0 ; $i < 10 ; $i++)
+                            @foreach ($abonnements as $abo)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$abo->number_month}} -{{$abo->id_fournisseur}} -{{session('profile')->id}} </td>
+                                    <td>{{$abo->start_date}}</td>
+                                    <td>{{$abo->end_date}}</td>
+                                    <td>
+                                        @php
+                                           /* $startDate = strtotime($abo->start_date);
+                                            $endDate = strtotime($abo->end_date);
+                                            $dateToCheck = strtotime(new DateTime());
+
+                                            if (strtotime($currentDate->format('Y-m-d')) >= strtotime($startDate->format('Y-m-d')) && strtotime($currentDate->format('Y-m-d')) <= strtotime($endDate->format('Y-m-d'))){
+                                                echo '<span class="text-success"><i class="fas fa-check-circle"></i> Active</span>.';
+                                            } else {
+                                                echo '<span class="text-success"><i class="fa-solid fa-circle-xmark"></i> Désactive</span>.';
+                                            }*/echo '<span class="text-success"><i class="fas fa-check-circle"></i> Active</span>.';
+                                        @endphp 
+                                    </td>
                                 </tr>
-                            @endfor
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

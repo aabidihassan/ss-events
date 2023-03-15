@@ -84,6 +84,12 @@
                                     <i class="fa fa-star text-primary mr-2"></i>
                                     <small>({{ $avgRating[0]->count }})</small>
                                 </div>
+                            @else
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    0
+                                    <i class="fa fa-star text-primary mr-2"></i>
+                                    <small>(0)</small>
+                                </div>   
                             @endif
                         </div>
                         <div class="col-auto">

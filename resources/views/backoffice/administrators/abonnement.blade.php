@@ -1,5 +1,5 @@
 @extends('backoffice.layouts.administrator')
-@section('title', 'Classes')
+@section('title', 'Abonnements')
 @section('content')
 
 <div class="card shadow mb-4">
@@ -27,8 +27,8 @@
                         <td>{{$a->type}}</td>
                         <td>{{$a->prix_monthly}}</td>
                         <td>
-                            <a href="{{ '/admin/classes/delete/' . $a->id }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ '/admin/classes/activate/' . $a->id }}" class="btn btn-primary">Modéfier</a>
+                            <a href="" class="btn btn-danger">Supprimer</a>
+                            <a href="" class="btn btn-primary">Modéfier</a>
                         </td>
                     </tr>
                     @endforeach
