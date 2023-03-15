@@ -41,7 +41,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Type Abonnement</th>
+                                <th>Nombre des mois</th>
                                 <th>Date d'ctivation</th>
                                 <th>Date d'expiration</th>
                                 <th>État d'abonnement</th>
@@ -50,20 +50,19 @@
                         <tbody>
                             @foreach ($abonnements as $abo)
                                 <tr>
-                                    <td>{{$abo->number_month}} -{{$abo->id_fournisseur}} -{{session('profile')->id}} </td>
+                                    <td>{{$abo->number_month}}</td>
                                     <td>{{$abo->start_date}}</td>
                                     <td>{{$abo->end_date}}</td>
                                     <td>
                                         @php
-                                           /* $startDate = strtotime($abo->start_date);
+                                            $startDate = strtotime($abo->start_date);
                                             $endDate = strtotime($abo->end_date);
-                                            $dateToCheck = strtotime(new DateTime());
-
-                                            if (strtotime($currentDate->format('Y-m-d')) >= strtotime($startDate->format('Y-m-d')) && strtotime($currentDate->format('Y-m-d')) <= strtotime($endDate->format('Y-m-d'))){
+                                            $dateToCheck = strtotime('now');
+                                            if ($dateToCheck >= $startDate && $dateToCheck <= $endDate) {
                                                 echo '<span class="text-success"><i class="fas fa-check-circle"></i> Active</span>.';
                                             } else {
-                                                echo '<span class="text-success"><i class="fa-solid fa-circle-xmark"></i> Désactive</span>.';
-                                            }*/echo '<span class="text-success"><i class="fas fa-check-circle"></i> Active</span>.';
+                                                echo '<span class="text-danger"><i class="fas fa-times-circle"></i> Désactive</span>';
+                                            }
                                         @endphp 
                                     </td>
                                 </tr>

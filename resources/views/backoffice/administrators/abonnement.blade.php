@@ -16,21 +16,32 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Type</th>
-                        <th>Prix Monthly</th>
-                        <th>Action</th>
+                        <th>Nombre des mois</th>
+                        <th>Date d'ctivation</th>
+                        <th>Date d'expiration</th>
+                        <th>État d'abonnement</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($abonnements as $a)
-                    <tr>
-                        <td>{{$a->type}}</td>
-                        <td>{{$a->prix_monthly}}</td>
-                        <td>
-                            <a href="" class="btn btn-danger">Supprimer</a>
-                            <a href="" class="btn btn-primary">Modéfier</a>
-                        </td>
-                    </tr>
+                    @foreach($abonnements as $abo)
+                        <tr>
+                            <td>{{$abo->number_month}}</td>
+                            <td>{{$abo->start_date}}</td>
+                            <td>{{$abo->end_date}}</td>
+                            <td>
+                                @php
+                                    $startDate = strtotime($abo->start_date);
+                                    $endDate = strtotime($abo->end_date);
+                                    $dateToCheck = strtotime('now');
+
+                                    if ($dateToCheck >= $startDate && $dateToCheck <= $endDate) {
+                                        echo '<span class="text-success"><i class="fas fa-check-circle"></i> Active</span>.';
+                                    } else {
+                                        echo '<span class="text-danger"><i class="fas fa-times-circle"></i> Désactive</span>';
+                                    }
+                                @endphp 
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
