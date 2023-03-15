@@ -37,8 +37,10 @@ class PresController extends Controller
             $user->id_user = $fournisseur->id;
             $user->save();
             Prefournisseur::where('id', $req->id_prefournisseur)->delete();
-            //$this->createFolder($user->id);
-            //PresController::class->createFolder($user->id);           
+            $path = public_path('fournisseurs/'.$user->id);
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0777, true, true);
+            }          
             return redirect('/administrator/prefournisseurs');
         } catch (\Exception $e) {
             $errorMessage = (string) $e->getMessage();
@@ -53,11 +55,4 @@ class PresController extends Controller
         return redirect('/administrator/prefournisseurs');
     }
 
-    public function createFolder($id)
-    {
-        $path = public_path('fournisseurs/'.$id);
-        if (!File::exists($path)) {
-            File::makeDirectory($path, 0777, true, true);
-        }
-    }
 }
