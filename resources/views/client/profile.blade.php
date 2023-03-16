@@ -70,14 +70,14 @@
                                 <h5 class="text-center">Les informations personnels</h5>
                                 <div class="row mb-3 mt-4">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Nom</h6>
+                                        <h6 class="mb-0">Nom Complet</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" name="nom"
                                             value="{{ $client->nom }}">
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <!--div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Prenom</h6>
                                     </div>
@@ -85,7 +85,7 @@
                                         <input type="text" class="form-control" name="prenom"
                                             value="{{ $client->prenom }}">
                                     </div>
-                                </div>
+                                </div-->
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Email</h6>

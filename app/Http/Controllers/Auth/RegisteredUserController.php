@@ -49,10 +49,7 @@ class RegisteredUserController extends Controller
         }else{
             $client = new Client;
             $client->nom = $request->nom;
-            $client->prenom = $request->prenom;
-            $client->email = $request->email;
             $client->telephone = $request->phone;
-            $client->adresse = $request->adresse;
             $client->save();
             $user = User::create([
                 'username' => $request->username,

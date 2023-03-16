@@ -173,36 +173,16 @@
                             @if(session()->has('message'))
                                 <div class="alert alert-success" role="alert">les informations sont bien enregistrées, on va vous communiquer par la suite!</div>
                             @endif
-                            <!-- <div class="mb-3 mb-md-0">
-                                <select class="custom-select px-4" name="type" id="type" style="height: 47px;">
-                                    <option value="client"  selected>Client</option>
-                                    <option value="pre">Fournisseur</option>
-                                </select>
-                            </div> -->
                             <input type="text" value="client" hidden/>
-                            <div class="form-row mt-3">
-                                <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" placeholder="Nom" name="nom"
-                                        required="required" data-validation-required-message="Veuillez entrer votre nom" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" placeholder="Prenom" name="prenom"
-                                        required="required" data-validation-required-message="Veuillez entrer votre prenom" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4" placeholder="Nom complet" name="nom" required="required" 
+                                    data-validation-required-message="Veuillez entrer votre nom complet" />
+                                <p class="help-block text-danger"></p>
                             </div>
-                            <div class="form-row">
-                                <div class="control-group col-sm-6">
-                                    <input type="tel" class="form-control p-4" placeholder="Telephone" name="phone"
-                                        required="required" data-validation-required-message="Veuillez entrer votre NºTelephone" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" placeholder="E-Mail" name="email"
-                                        required="required" data-validation-required-message="Veuillez entrer votre E-Mail" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
+                            <div class="control-group">
+                                <input type="tel" class="form-control p-4" placeholder="Telephone" name="phone" required="required" 
+                                    data-validation-required-message="Veuillez entrer votre NºTelephone" />
+                                <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
                                 <input type="text" class="form-control p-4" id="username" name="username" placeholder="Nom d'utilisateur"
@@ -212,12 +192,6 @@
                             <div class="control-group">
                                 <input type="password" class="form-control p-4" id="password" name="password" placeholder="Mot de passe"
                                     required="required" data-validation-required-message="Veuillez entrer un mot de passe" autocomplete="new-password" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="2" name="adresse" id="adresse" placeholder="Adresse"
-                                    required="required"
-                                    data-validation-required-message="Veuillez entrer votre adresse"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="mt-3">
@@ -275,12 +249,6 @@
                                             required="required" data-validation-required-message="Veuillez entrer votre E-Mail" />
                                         <p class="help-block text-danger"></p>
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <textarea class="form-control py-3 px-4" rows="2" name="adresse" id="adresse" placeholder="Adresse"
-                                        required="required"
-                                        data-validation-required-message="Veuillez entrer votre adresse"></textarea>
-                                    <p class="help-block text-danger"></p>
                                 </div>          
                                 <div class="control-group row">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -334,39 +302,39 @@
         </div>
     </div>
 
-<div class="card-group">
-  <div class="card">
-    <img src="../../img/event.jpg" class="card-img-top" alt="Connect with Customer">
-    <div class="card-body">
-      <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
-      <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
-      <a href="#" class="btn btn-primary cli">Créer un compte client</a>
+<div class="card-group" style="display:none;">
+    <div class="card">
+        <img src="../../img/event.jpg" class="card-img-top" alt="Connect with Customer">
+        <div class="card-body">
+        <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
+        <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
+        <a href="#" class="btn btn-primary cli">Créer un compte client</a>
+        </div>
     </div>
-  </div>
 
-  <div class="card">
-    <img src="../../img/prestataire0.jpg" class="card-img-top" alt="Connect with Seller">
-    <div class="card-body">
-      <h5 class="card-title">Vous etes un prestataire évenementiel ?</h5>
-      <p class="card-text">Créez votre fiche lieu et recevez vos premières demandes de devis</p>
-      <a href="#" class="btn btn-primary prest clickPre">Référencer mon entreprise</a>
+    <div class="card" >
+        <img src="../../img/prestataire0.jpg" class="card-img-top" alt="Connect with Seller">
+        <div class="card-body">
+        <h5 class="card-title">Vous etes un prestataire évenementiel ?</h5>
+        <p class="card-text">Créez votre fiche lieu et recevez vos premières demandes de devis</p>
+        <a href="#" class="btn btn-primary prest clickPre">Référencer mon entreprise</a>
+        </div>
     </div>
-  </div>
 </div>
 @stop
 
 @section('script')
     <script>
         var currentUrl = window.location.href;
-        console.log(currentUrl);
         if (currentUrl.includes("client")) {
                 document.querySelector('.card-group').style.display = 'none';
                 document.querySelector('#client-register').style.display = 'block';
         }
-        if (currentUrl.includes("prefournisseur")) {
+        else if (currentUrl.includes("prefournisseur")) {
             document.querySelector('.card-group').style.display = 'none';
             document.querySelector('#prefournisseur-register').style.display = 'block';
-        }
+        } else
+            document.querySelector('.card-group').style.display = 'flex';
         document.querySelector('.cli').addEventListener('click', function() {
             document.querySelector('.card-group').style.display = 'none';
             document.querySelector('#client-register').style.display = 'block';

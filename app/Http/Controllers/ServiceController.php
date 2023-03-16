@@ -29,12 +29,22 @@ class ServiceController extends Controller
     public function addService(Request $request)
     {
         try {
-            $service = new Service;
-            $service->libelle = $request->libelle;
-            $service->id_classe = $request->classe;
-            //$service = $request->input('description');
-            $service->save();
-            return redirect('/administrator/services');
+            $data = Service::where('libelle',$request->libelle)->first();
+            $message = null;
+            if ($data) {
+                $message = 0;
+            }else {
+                $service = new Service;
+                $service->libelle = $request->libelle;
+                $service->id_classe = $request->classe;
+                $service->save();
+                $message = 1;
+            }
+            $services = Service::join('classes','classes.id','=','services.id_classe')
+                            ->select('services.*','classes.*')
+                            ->get();
+            $classes = classe::all();
+            return view('backoffice.administrators.services',["services"=>$services, "classes"=>$classes,'message'=>$message]);
         }catch (Exception $e) {
             $errorMessage = (string) $e->getMessage();
             return response()->json([

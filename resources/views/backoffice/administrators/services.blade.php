@@ -2,6 +2,23 @@
 @section('title', 'Services')
 @section('content')
 
+@isset($message)
+@if ($message == 0)
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Service !</strong> Libelle déjà existe.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@elseif($message == 1)
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Service !</strong>à été ajouté.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif    
+@endisset
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Liste des Services</h6>

@@ -49,7 +49,7 @@
 <script>
     $(document).ready(function() {
         $('.bn-ac').removeClass('active');
-        $(".bn-ac").eq(7).addClass('active');
+        $(".bn-ac").eq(5).addClass('active');
         $('.nav-card-header').click(function(e) {
             e.preventDefault();
             $('.nav-card-header').removeClass('active');

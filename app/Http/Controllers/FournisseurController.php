@@ -86,7 +86,7 @@ class FournisseurController extends Controller
     public static function createAbonnement(Request $req)
     {
         try {
-       
+            Fournisseur::where('id', $req->id_prefournisseur)->update(['statut'=>1]);
             $serviceID = Service::where('libelle',$req->service)->first();
             $abonnement = new abonnements();
             $abonnement->id_service = $serviceID->id;
@@ -95,7 +95,7 @@ class FournisseurController extends Controller
             $abonnement->end_date = $req->end_date;
             $abonnement->number_month =  $req->numbreMonth;
             $abonnement->save();
-            return redirect('/administrator/prefournisseurs');
+            return redirect('/administrator/fournisseurs');
         } catch (\Exception $e) {
             $errorMessage = (string) $e->getMessage();
             return response()->json([

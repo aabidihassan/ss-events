@@ -8,7 +8,9 @@ use App\Models\Service;
 use App\Models\Fournisseur;
 use App\Models\Feedback;
 use App\Models\User;
+use App\Models\Client;
 use App\Models\Prefournisseur;
+use App\Models\NewsletterEmail;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -31,6 +33,9 @@ class IndexController extends Controller
             DB::raw('SUM(CASE WHEN statut = 1 THEN 1 ELSE 0 END) as trueCount'),
             DB::raw('SUM(CASE WHEN statut = 0 THEN 1 ELSE 0 END) as falseCount')
         )->first();
-        return view('backoffice.administrators.dashboard',['data'=>$data]);
+        $dataClient = Client::select('*')->get()->count();
+        $dataNewsL = NewsletterEmail::select('*')->get()->count();
+        $dataFeedback = Feedback::select('*')->get()->count();
+        return view('backoffice.administrators.dashboard',['data'=>$data, 'dataClient'=>$dataClient, 'dataNewsL'=>$dataNewsL, 'dataFeedback'=>$dataFeedback]);
     }
 }

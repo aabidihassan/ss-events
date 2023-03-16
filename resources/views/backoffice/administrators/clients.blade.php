@@ -53,7 +53,7 @@
 <script>
     $(document).ready(function() {
         $('.bn-ac').removeClass('active');
-        $(".bn-ac").eq(5).addClass('active');
+        $(".bn-ac").eq(7).addClass('active');
     });
 </script>
 @endsection

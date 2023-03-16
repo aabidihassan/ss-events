@@ -231,7 +231,7 @@
             <div class="card-body">
             <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
             <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
-            <a href="{{route('register')}}#cilent" class="btn btn-primary cli">Créer un compte client</a>
+            <a href="{{route('register')}}#client" class="btn btn-primary cli">Créer un compte client</a>
             </div>
         </div>      
         <div class="card">

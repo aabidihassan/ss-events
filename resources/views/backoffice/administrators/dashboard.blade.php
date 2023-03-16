@@ -13,7 +13,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Nombre de Clients</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dataClient}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -46,8 +46,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Nombre de contacts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                Le nombre d'abonnés à la newsletter</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dataNewsL}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-envelope fa-2x text-gray-300"></i>
@@ -65,7 +65,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Total Feedbacks</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">45</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dataFeedback}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -95,10 +95,10 @@
                     </div>
                     <div class="mt-4 text-center small">
                         <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Client
+                            <i class="fas fa-circle text-primary"></i> Fornisseur active
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Fornisseur
+                            <i class="fas fa-circle text-success"></i> Fornisseur désactive
                         </span>
                     </div>
                 </div>

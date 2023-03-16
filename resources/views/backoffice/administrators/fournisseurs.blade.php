@@ -37,9 +37,8 @@
                             @if($l->statut)
                             <a href="{{ '/admin/fournisseurs/desactivate/' . $l->id }}" class="btn btn-danger">Desactiver</a>
                             @else
-                            <a href="{{ '/admin/fournisseurs/activate/' . $l->id }}" class="btn btn-primary">Activer</a>
+                            <a class="btn btn-primary btn-Accepter" data-fournisseur="{{$l}}">Activer</a>
                             @endIf
-                            <a href="#" class="btn btn-primary btn-Accepter" data-fournisseur="{{$l}}" >Réabonnement</a>&nbsp;
                         </td>
                     </tr>
                     @endforeach
@@ -96,7 +95,7 @@
 <script>
     $(document).ready(function() {
         $('.bn-ac').removeClass('active');
-        $(".bn-ac").eq(3).addClass('active');
+        $(".bn-ac").eq(4).addClass('active');
         $('.btn-Accepter').click(function () {
             data = JSON.parse($(this).attr('data-fournisseur'));
             $('#id_prefournisseur').val(data.id);
@@ -106,7 +105,7 @@
             $('#numbreMonth').val(data.optionAb);
             $('#staticBackdrop').modal('show');
             currentDate = new Date(); 
-            var x = ($('#numbreMonth').val() *1)+4;
+            var x = ($('#numbreMonth').val() *1);
             futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
             formattedDate = futureDate.toISOString().slice(0,10); 
             document.getElementById("dateEnd").value = formattedDate;
