@@ -158,4 +158,6 @@ Route::get('/admin/clients/activate/{id}', [ClientController::class, 'activate']
 Route::post('/administrator/services/addService', [ServiceController::class ,'addService'])->middleware(['auth'])->name('addService');
 
 Route::post('/administrator/addClasse', [ClasseController::class ,'create'])->middleware(['auth'])->name('addClasse');
+Route::post('/administrator/addAbonnement', [FournisseurController::class ,'createAbonnement'])->middleware(['auth'])->name('createAbonnement');
+
 //End Routes Back office for administrator

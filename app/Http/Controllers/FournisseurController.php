@@ -8,12 +8,14 @@ use App\Models\Feedback;
 use App\Models\abonnements;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class FournisseurController extends Controller
 {
     public static function getAll(){
         $data = Fournisseur::all();
-        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data]);
+        $services = Service::all();
+        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data, "services"=>$services]);
     }
 
     public static function index(){
@@ -79,5 +81,26 @@ class FournisseurController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
         return response()->json(['message' => 'Good']);
+    }
+
+    public static function createAbonnement(Request $req)
+    {
+        try {
+       
+            $serviceID = Service::where('libelle',$req->service)->first();
+            $abonnement = new abonnements();
+            $abonnement->id_service = $serviceID->id;
+            $abonnement->id_fournisseur = $req->id_prefournisseur;
+            $abonnement->start_date = Carbon::now();
+            $abonnement->end_date = $req->end_date;
+            $abonnement->number_month =  $req->numbreMonth;
+            $abonnement->save();
+            return redirect('/administrator/prefournisseurs');
+        } catch (\Exception $e) {
+            $errorMessage = (string) $e->getMessage();
+            return response()->json([
+                'error' => $errorMessage
+            ]);
+        }
     }
 }

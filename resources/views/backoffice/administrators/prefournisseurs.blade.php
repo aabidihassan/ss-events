@@ -85,8 +85,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dateEND" class="col-form-label" name="end_date">{{__('Date Fin d\'abonnement avec 4 gratuit : ')}}</label>
-                        <input type="date" readonly id="dateEnd" class="form-control" >
+                        <label for="dateEND" class="col-form-label">{{__('Date Fin d\'abonnement avec 4 gratuit : ')}}</label>
+                        <input type="date" readonly id="dateEnd" class="form-control"  name="end_date">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -117,7 +117,6 @@
             futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
             formattedDate = futureDate.toISOString().slice(0,10); 
             document.getElementById("dateEnd").value = formattedDate;
-            console.log($(this).attr('data-fournisseur'));
         })
         $('#SelService').change(function () {
            $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
@@ -129,7 +128,6 @@
                 futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
                 formattedDate = futureDate.toISOString().slice(0,10); 
                 document.getElementById("dateEnd").value = formattedDate;
-                console.log($(this).attr('data-fournisseur'));
                 $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
             } catch (error) {
                 console.log(eror.message);
