@@ -36,7 +36,7 @@
                             </h2>
                         </div>
                         <div>
-                            <button class="btn btn-primary btn-block py-3">Inscrivez-vous</button>
+                            <a class="btn btn-primary btn-block py-3" href="{{route('register')}}#prefournisseur">Inscrivez-vous</a>
                         </div>
                     </div>
                 </div>
