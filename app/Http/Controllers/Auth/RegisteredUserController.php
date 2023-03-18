@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Prefournisseur;
 use App\Models\Client;
+use App\Models\Classe;
+use App\Models\Service;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -22,7 +25,11 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $services = Service::join('classes','classes.id','=','services.id_classe')
+                            ->select('services.*','classes.type','classes.prix_monthly')
+                            ->get();
+        $classes = classe::all();
+        return view('auth.register',["services"=>$services, "classes" => $classes]);
     }
 
     /**
@@ -43,7 +50,7 @@ class RegisteredUserController extends Controller
             $pre->email = $request->email;
             $pre->telephone = $request->phone;
             $pre->statut = false;
-            $pre->optionAb = $request->options;
+            $pre->optionAb = $request->service;
             $pre->save();
             return redirect()->back()->with(['message' => 'done']);
         }else{

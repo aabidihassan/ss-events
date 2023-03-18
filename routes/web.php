@@ -29,8 +29,8 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
     return IndexController::index();
 });
-Route::get('/services', function () {
-    return view('client.services');
+Route::get('/service', function () {
+    return view('/services');
 });
 Route::get('/about', function () {
     return view('about');
@@ -53,7 +53,7 @@ Route::get('/register-fournisseur', function () {
 })->name('register-fournisseur');
 
 Route::get('/espace-fournisseur', function () {
-    return view('fournisseurs.espace-fournisseur');
+    return FournisseurController::espaceFournisseur();
 })->name('espace-fournisseur');
 
 Route::post('/check-username', [IndexController::class, 'checkUser'])->name('checkUsername');
@@ -151,13 +151,21 @@ Route::post('/administrator/prefournisseurs/accecptFournisseur', [PresController
 
 Route::get('/admin/fournisseurs/desactivate/{id}', [FournisseurController::class, 'desactivate'])->middleware(['auth']);
 Route::get('/admin/fournisseurs/activate/{id}', [FournisseurController::class, 'activate'])->middleware(['auth']);
-Route::get('/admin/services/desactivate/{id}', [ServiceController::class, 'desactivate'])->middleware(['auth']);
-Route::get('/admin/services/activate/{id}', [ServiceController::class, 'activate'])->middleware(['auth']);
 Route::get('/admin/clients/desactivate/{id}', [ClientController::class, 'desactivate'])->middleware(['auth']);
 Route::get('/admin/clients/activate/{id}', [ClientController::class, 'activate'])->middleware(['auth']);
-Route::post('/administrator/services/addService', [ServiceController::class ,'addService'])->middleware(['auth'])->name('addService');
 
-Route::post('/administrator/addClasse', [ClasseController::class ,'create'])->middleware(['auth'])->name('addClasse');
+//route classes
+Route::post('/administrator/classe/addClasse', [ClasseController::class ,'create'])->middleware(['auth'])->name('addClasse');
+Route::post('/administrator/classe/UpdateClasse', [ClasseController::class ,'update'])->middleware(['auth'])->name('updateClasse');
+Route::post('/administrator/classe/destroy', [ClasseController::class ,'destroy'])->middleware(['auth'])->name('deleteClasse');
+
+//routes services 
+Route::post('/administrator/services/addService', [ServiceController::class ,'addService'])->middleware(['auth'])->name('addService');
+Route::get('/admin/services/desactivate/{id}', [ServiceController::class, 'desactivate'])->middleware(['auth']);
+Route::get('/admin/services/activate/{id}', [ServiceController::class, 'activate'])->middleware(['auth']);
+Route::post('/administrator/services/UpdateServices', [ServiceController::class ,'update'])->middleware(['auth'])->name('updateService');
+Route::post('/administrator/services/destroy', [ServiceController::class ,'destroy'])->middleware(['auth'])->name('deleteService');
+
 Route::post('/administrator/addAbonnement', [FournisseurController::class ,'createAbonnement'])->middleware(['auth'])->name('createAbonnement');
 
 //End Routes Back office for administrator

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Fournisseur;
 use App\Models\Citie;
 use App\Models\Service;
+use App\Models\Classe;
 use App\Models\Feedback;
 use App\Models\abonnements;
 use Illuminate\Http\Request;
@@ -26,6 +27,14 @@ class FournisseurController extends Controller
                             ->groupBy('id_fournisseur')
                             ->get();
         return view('client.fournisseur', ["fournisseurs"=>$data, "services"=>$services,"cities"=>$cities,"avgsRatings" => $avgsRatings ]);
+    }
+
+    public static function espaceFournisseur(){
+        $services = Service::join('classes','classes.id','=','services.id_classe')
+                                        ->select('services.*','classes.type','classes.prix_monthly')
+                                        ->get();
+        $classes = classe::all();
+        return view('fournisseurs.espace-fournisseur', ["services"=>$services, "classes" => $classes]);
     }
 
     public function search(Request $req){

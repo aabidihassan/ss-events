@@ -135,6 +135,23 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    @isset($message)
+                        @if ($message['code'] == 0)
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{$message['msg'];}}</strong> 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @elseif($message['code'] == 1)
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{$message['msg'];}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif    
+                    @endisset
                     @yield('content')
                 </div>
 

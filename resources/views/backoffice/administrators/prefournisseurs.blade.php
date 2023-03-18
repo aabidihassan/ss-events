@@ -15,7 +15,7 @@
                         <th>Prenom</th>
                         <th>Email</th>
                         <th>Telephone</th>
-                        <th>Type Abonnement</th>
+                        <th>Service</th>
                         <th>statut</th>
                         <th>Action</th>
                     </tr>
@@ -27,7 +27,13 @@
                         <td>{{$l->prenom}}</td>
                         <td>{{$l->email}}</td>
                         <td>{{$l->telephone}}</td>
-                        <td>Offere de {{$l->optionAb}} mois </td>
+                        <td>
+                            @foreach ($services as $service)
+                            @if ($service->id == $l->optionAb)
+                             {{$service->libelle}} ({{$service->prix_monthly}} MAD)
+                            @endif
+                            @endforeach
+                        </td>
                         <td>
                             @if($l->statut) Refuse
                             @else En attent
@@ -64,7 +70,7 @@
                     <h3 id="nomF"></h3>
                     <h5 id="ditail"></h5>
                     <div class="form-group">
-                        <input type="number" min="1" max="1000" step="1"  class="form-control p-4" placeholder="Nombre des mois" name="numbreMonth"
+                        <input type="number" min="4" max="1000" step="1"  class="form-control p-4" placeholder="Nombre des mois" value="4" name="numbreMonth"
                             required data-validation-required-message="Veuillez entrer votre prenom"  id="numbreMonth"/>
                         <p class="help-block text-danger"></p>
                     </div>
@@ -110,7 +116,8 @@
             $('#id_prefournisseur').val(data.id);
             $('#nomF').html(data.nom + " " + data.prenom);
             $('#ditail').html(data.email + "<br>" + data.telephone + "<br>" );
-            $('#numbreMonth').val(data.optionAb);
+            $('#SelService').val(data.optionAb);
+            $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
             $('#staticBackdrop').modal('show');
             currentDate = new Date(); 
             var x = ($('#numbreMonth').val() *1)+4;

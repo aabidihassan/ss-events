@@ -17,7 +17,7 @@ class PresController extends Controller
     public static function getPres(){
         $prefournisseurs = Prefournisseur::all();
         $services = Service::join('classes','classes.id','=','services.id_classe')
-                                ->select('services.*','classes.*')
+                                ->select('services.*','classes.prix_monthly')
                                 ->get();
         return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs,"services"=>$services]);
     }

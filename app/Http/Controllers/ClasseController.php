@@ -78,9 +78,21 @@ class ClasseController extends Controller
      * @param  \App\Models\classe  $classe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, classe $classe)
+    public static function update(Request $req)
     {
-        //
+        $classe =  classe::find($req->id_classe);
+        $classes = classe::all();
+        if ($classe) {
+            $classe->type = $req->type;
+            $classe->prix_monthly = $req->prix;
+            $classe->save();
+            $message = ['code' => '1' , 'msg' => 'Classe bien modéfier'];
+            return redirect('/administrator/classes');
+           // return view('backoffice.administrators.classes',["classes"=>$classes, 'message'=>$message]);
+        }
+        $message = ['code' => '0' , 'msg' => 'Erruer de modéfication la classe !'];
+        return redirect('/administrator/classes');
+        //return view('backoffice.administrators.classes',["classes"=>$classes, 'message'=>$message]);
     }
 
     /**
@@ -89,8 +101,18 @@ class ClasseController extends Controller
      * @param  \App\Models\classe  $classe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(classe $classe)
+    public function destroy(Request $req)
     {
-        //
+        $classe =  classe::find($req->id_classe);
+        $classes = classe::all();
+        if ($classe) {
+            $classe->delete();
+            $message = ['code' => '1' , 'msg' => ''];
+            return redirect('/administrator/classes');
+            //return view('backoffice.administrators.classes',["classes"=>$classes, 'message'=>$message]);
+        }
+        $message = ['code' => '0' , 'msg' => 'Erruer de Suppression la classe !'];
+        return redirect('/administrator/classes');
+        //return view('backoffice.administrators.classes',["classes"=>$classes, 'message'=>$message]);
     }
 }

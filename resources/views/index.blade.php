@@ -171,54 +171,16 @@
                 <h1>Découvrez Nos Services</h1>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/traiteur.jpeg" alt="Traiteur" style="height: 230px">
-                        <a class="destination-overlay text-white text-decoration-none">
-                            <h5 class="text-white mt-2">Traiteur</h5>
-                        </a>
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid" src="services/{{$service->description}}" alt="image 404" style="height: 230px">
+                            <a class="destination-overlay text-white text-decoration-none">
+                                <h5 class="text-white mt-2">{{$service->libelle}}</h5>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/photographie.jpeg" alt="Photographie" style="height: 230px">
-                        <a class="destination-overlay text-white text-decoration-none">
-                            <h5 class="text-white mt-2">Photographie</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/musique.jpeg" alt="Musique" style="height: 230px">
-                        <a class="destination-overlay text-white text-decoration-none">
-                            <h5 class="text-white mt-2">Groupe Musical</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/assiste.jpeg" alt="Assiste marie" style="height: 230px">
-                        <a class="destination-overlay text-white text-decoration-none">
-                            <h5 class="text-white mt-2">Negafa</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/makeup.png" alt="Assiste marie" style="height: 230px">
-                        <a class="destination-overlay text-white text-decoration-none">
-                            <h5 class="text-white mt-2">Mekeup artist</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/local.jpeg" alt="Assiste marie" style="height: 230px">
-                        <a class="destination-overlay text-white text-decoration-none">
-                            <h5 class="text-white mt-2">Locals</h5>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -331,25 +293,15 @@
             </div>
         </div>
     </div>
-
     <div class="row d-flex justify-content-center align-items-center rows" id="newsletter">
-
         <div class="col-md-6">
-
-
             <div class="row">
-
-
                 <div class="text-center">
-
                     <img src="https://i.imgur.com/Dh7U4bp.png" width="250">
                     <span class="d-block mt-3">Inscrivez-vous à notre Newsletter pour ne pas manquer les nouveaux
                         arrivages, <br>
                         les promotions, et les remises de notre magasin.</span>
-
                     <div class="mx-5">
-
-
                         <form id="newsletter-form" method="post">
                             <div class="input-group mb-3 mt-4">
                                 <input type="text" name="email" class="form-control" placeholder="Enter email"
@@ -358,23 +310,12 @@
                                     id="button-addon2">Subscribe</button>
                             </div>
                         </form>
-
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
-
-
-
     </div>
-
 @stop
-
 
 @section('script')
     <script>

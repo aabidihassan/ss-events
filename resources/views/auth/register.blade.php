@@ -1,163 +1,14 @@
 @extends('layouts.pages')
 @section('containner')
 @section('title', 'Inscription')
-<style>
-    .pricingTable {
-        text-align: center;
-        background: #fff;
-        margin: 0 10px;
-        box-shadow: 0 0 10px #ababab;
-        padding-bottom: 40px;
-        border-radius: 10px;
-        color: #cad0de;
-        transform: scale(1);
-        transition: all .5s ease 0s
-    }
-
-    .pricingTable:hover {
-        transform: scale(1.05);
-        z-index: 1
-    }
-
-    .pricingTable .pricingTable-header {
-        padding: 40px 0;
-        background: #f5f6f9;
-        border-radius: 10px 10px 50% 50%;
-        transition: all .5s ease 0s
-    }
-
-    .pricingTable:hover .pricingTable-header {
-        background: #ff9624
-    }
-
-    .pricingTable .pricingTable-header i {
-        font-size: 50px;
-        color: #858c9a;
-        margin-bottom: 10px;
-        transition: all .5s ease 0s
-    }
-
-    .pricingTable .price-value {
-        font-size: 35px;
-        color: #ff9624;
-        transition: all .5s ease 0s
-    }
-
-    .pricingTable .month {
-        display: block;
-        font-size: 14px;
-        color: #cad0de
-    }
-
-    .pricingTable:hover .month,
-    .pricingTable:hover .price-value,
-    .pricingTable:hover .pricingTable-header i {
-        color: #fff
-    }
-
-    .pricingTable .heading {
-        font-size: 24px;
-        color: #ff9624;
-        margin-bottom: 20px;
-        text-transform: uppercase
-    }
-
-    .pricingTable .pricing-content ul {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 30px
-    }
-
-    .pricingTable .pricing-content ul li {
-        line-height: 30px;
-        color: #a7a8aa
-    }
-
-    .pricingTable .pricingTable-signup a {
-        display: inline-block;
-        font-size: 15px;
-        color: #fff;
-        padding: 10px 35px;
-        border-radius: 20px;
-        background: #ffa442;
-        text-transform: uppercase;
-        transition: all .3s ease 0s
-    }
-
-    .pricingTable .pricingTable-signup a:hover {
-        box-shadow: 0 0 10px #ffa442
-    }
-
-    .pricingTable.blue .heading,
-    .pricingTable.blue .price-value {
-        color: #4b64ff
-    }
-
-    .pricingTable.blue .pricingTable-signup a,
-    .pricingTable.blue:hover .pricingTable-header {
-        background: #4b64ff
-    }
-
-    .pricingTable.blue .pricingTable-signup a:hover {
-        box-shadow: 0 0 10px #4b64ff
-    }
-
-    .pricingTable.red .heading,
-    .pricingTable.red .price-value {
-        color: #ff4b4b
-    }
-
-    .pricingTable.red .pricingTable-signup a,
-    .pricingTable.red:hover .pricingTable-header {
-        background: #ff4b4b
-    }
-
-    .pricingTable.red .pricingTable-signup a:hover {
-        box-shadow: 0 0 10px #ff4b4b
-    }
-
-    .pricingTable.green .heading,
-    .pricingTable.green .price-value {
-        color: #40c952
-    }
-
-    .pricingTable.green .pricingTable-signup a,
-    .pricingTable.green:hover .pricingTable-header {
-        background: #40c952
-    }
-
-    .pricingTable.green .pricingTable-signup a:hover {
-        box-shadow: 0 0 10px #40c952
-    }
-
-    .pricingTable.blue:hover .price-value,
-    .pricingTable.green:hover .price-value,
-    .pricingTable.red:hover .price-value {
-        color: #fff
-    }
-
-    @media screen and (max-width:990px) {
-        .pricingTable {
-            margin: 0 0 20px
+    <style>
+        .selected{
+            background-color: #FA86C4 !important;
         }
-    }
-
-    .pricingTable.clicked {
-        transform: scale(1.05);
-        z-index: 1;
-    }
-
-    .pricingTable.clicked .pricingTable-header {
-        
-    }
-
-    .pricingTable.clicked .month,
-    .pricingTable.clicked .price-value,
-    .pricingTable.clicked .pricingTable-header i {
-        color: #fff;
-    }
-</style>
-
+        #offere tr :hover {
+            cursor : pointer;
+        }
+    </style>
     <!-- Contact Start -->
     <div id="client-register" class="container-fluid py-5" style="margin-top:-2%; display:none;">
         <div class="container py-5">
@@ -211,7 +62,7 @@
     </div>
 
     <!-- Contact Start -->
-    <div id="prefournisseur-register" class="container-fluid py-5" style="margin-top:-2%; display:none; ">
+    <div id="prefournisseur-register" class="container-fluid py-5" style="margin-top:-2%; display:none;">
         <div class="container py-5">
             <div class="text-center mb-1 pb-3">
                 <h2>{{__('Améliorez votre présence en ligne !')}}</h2>
@@ -251,37 +102,54 @@
                                     </div>
                                 </div>          
                                 <div class="control-group row">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary active col-md-12">
-                                            <input type="radio" name="options" value="6" id="option6month" autocomplete="off" checked> 
-                                            <div class="pricingTable green">
-                                                <div class="pricingTable-header">
-                                                    <div class="price-value"> $10.00 <span class="month">per month</span> </div>
-                                                </div>
-                                                <h3 class="heading">BUSINESS</h3>
-                                                <div class="pricing-content">
-                                                    <ul>
-                                                        <li><b>50GB</b> Disk Space</li>
-                                                        <li><b>50</b> Email Accounts</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </label>
-                                        <label class="btn btn-secondary col-md-12">
-                                          <input type="radio" name="options" value="12" id="option12month" autocomplete="off"> 
-                                          <div class="pricingTable blue">
-                                            <div class="pricingTable-header">
-                                                <div class="price-value"> $20.00 <span class="month">per month</span> </div>
-                                            </div>
-                                            <h3 class="heading">PREMIUM</h3>
-                                            <div class="pricing-content">
-                                                <ul>
-                                                    <li><b>50GB</b> Disk Space</li>
-                                                    <li><b>50</b> Email Accounts</li>
-                                                </ul>
-                                            </div>
+                                    <div class="col-md-12 ">
+                                        <h3 class="bg-light p-2 mb-3">Compare Packages</h3>
+                                        <div class="table-responsive compare-packages">
+                                            <table class="table table-bordered" id="offere">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="240px">
+                                                            Plans
+                                                            <p>Total Prices for each service</p>
+                                                        </th>
+                                                        @foreach ($classes as $classe)
+                                                            <th data-classe="{{$classe->id}}">
+                                                                {{$classe->type}}
+                                                            </th>
+                                                        @endforeach
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($services as $service)
+                                                    <tr>
+                                                        <td data-group="{{$service->id_classe}}">
+                                                            {{$service->libelle}}
+                                                            <input type="radio" name="service" value="{{$service->id}}" required style="display:none;">
+                                                        </td>
+                                                        @foreach ($classes as $classe)
+                                                            @if ($service->id_classe == $classe->id)
+                                                                <td>Yes</td>
+                                                            @else
+                                                                <td>No</td>
+                                                            @endif
+                                                        @endforeach
+                                                    </tr> 
+                                                    @endforeach
+                                                    <tr class="footerTb">
+                                                        <td>Total Prices</td>
+                                                        @foreach ($classes as $classe)
+                                                        <td>
+                                                            {{$classe->prix_monthly}} (MAD)
+                                                            <br/>
+                                                        </td>
+                                                        @endforeach
+                                                    </tr>
+                                                    <script>
+                    
+                                                    </script>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        </label>
                                     </div>
                                 </div>
                                 <input type="text" value="pre" name="type" readonly style="display: none;" required>
@@ -359,6 +227,17 @@
                 $(this).addClass("clicked");
             });
             $('.green').click();
+        });
+
+        $('#offere tbody').on('hover', 'tr', function() {
+            $(this).style();
+        });
+        $('#offere tbody').on('click', 'tr', function() {
+            if (!$(this).hasClass('footerTb')) {
+                $('#offere tbody > tr ').removeClass('selected');
+                $(this).toggleClass('selected');
+                $(this).children().eq(0).children().filter('input').attr('checked', true);
+            }
         });
             // $('#type').on('change', function(){
             //     console.log($(this).val())
