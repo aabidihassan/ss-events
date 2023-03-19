@@ -195,7 +195,7 @@
             <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
             <a href="{{route('register')}}#client" class="btn btn-primary cli">Créer un compte client</a>
             </div>
-        </div>      
+        </div>
         <div class="card">
             <img src="../../img/prestataire0.jpg" class="card-img-top" alt="Connect with Seller">
             <div class="card-body">
@@ -233,12 +233,9 @@
                                 <a class="h5 text-decoration-none" href="fournisseur/{{$fournisseur->id}}">{{ $fournisseur->raison }}</a>
                                 <div class="border-top mt-2 pt-4">
                                     <div class="d-flex justify-content-between">
-                                        <?php  $avgF = collect($avgsRatings)->where('id_fournisseur', $fournisseur->id)->first(); ?>
-                                        @if ($avgF)
-                                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{$avgF->average}}
-                                                <small>({{$avgF->count}})</small>
+                                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{$fournisseur->average_rating}}
+                                                <small>({{$fournisseur->feedbacks_count}})</small>
                                             </h6>
-                                        @endif
                                         <a href="fournisseur/{{$fournisseur->id}}" class="btn btn-sm btn-secondary ml-auto"
                                             style="width:30%; margin-top:-2%">Voir</a>
                                     </div>
