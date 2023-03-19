@@ -224,6 +224,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ url('backoffice/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ url('backoffice/js/demo/chart-bar-demo.js') }}"></script>
     <script src="{{ url('backoffice/js/demo/datatables-demo.js') }}"></script>
 
     <script>

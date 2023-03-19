@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.pages')
 @section('containner')
 @section('title', 'Services ')
 <div class="container-fluid py-5">

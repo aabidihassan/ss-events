@@ -11,6 +11,14 @@ use App\Http\Controllers\FileSystem;
 
 class ServiceController extends Controller
 {
+    public static function index(){
+        $services = Service::join('classes','classes.id','=','services.id_classe')
+                            ->select('services.*','classes.type','classes.prix_monthly')
+                            ->get();
+        $classes = classe::all();
+        return view('client/services', ["services"=>$services, "classes"=>$classes]);
+    }
+
     public static function getAll(){
         $services = Service::join('classes','classes.id','=','services.id_classe')
                             ->select('services.*','classes.type','classes.prix_monthly')

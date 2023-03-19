@@ -29,8 +29,8 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
     return IndexController::index();
 });
-Route::get('/service', function () {
-    return view('/services');
+Route::get('/aloo', function () {
+    return ServiceController::index();
 });
 Route::get('/about', function () {
     return view('about');
