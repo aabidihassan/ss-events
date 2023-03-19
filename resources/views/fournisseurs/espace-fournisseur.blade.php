@@ -13,8 +13,7 @@
                         <img src="../../img/visibility.png" />
                         <div class="card-body">
                             <h5>Augmentez votre visibilité</h5>
-                            <p>Vous présentez dans votre vitrine tous vous offres et services d'une manière attractive et
-                                persuasive</p>
+                            <p>Vous présentez dans votre vitrine tous vos offres et services d'une manière attractive, persuasive et professionnelle.</p>
                         </div>
 
                     </div>
@@ -134,17 +133,21 @@
             font-size: 20px;
             color: #ff9800;
         }
+
         .compare-packages table thead th p {
             font-size: 16px;
             font-weight: 400;
             color: #333;
         }
+
         .compare-packages table td {
             text-align: center;
         }
+
         .compare-packages table td:first-child {
             text-align: left;
         }
+
         .compare-packages table tr:last-child td {
             font-weight: bold;
             line-height: 40px;
@@ -152,53 +155,51 @@
         }
     </style>
 
-            <div class="row">
-                <div class="col-md-8 offset-md-2 mt-5">
-                    <h2 class="text-center mb-4">Decouvrir Nos Abonnements !!</h2>
-                    <div class="table-responsive compare-packages">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th width="240px">
-                                        Services
-                                        {{-- <p>Total Prices for each service</p> --}}
-                                    </th>
-                                    @foreach ($classes as $classe)
-                                        <th data-classe="{{$classe->id}}">
-                                            {{$classe->type}}
-                                        </th>
-                                    @endforeach
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($services as $service)
-                                <tr>
-                                    <td data-group="{{$service->id_classe}}">{{$service->libelle}}</td>
-                                    @foreach ($classes as $classe)
-                                        @if ($service->id_classe == $classe->id)
-                                            <td><i class="fa fa-check-circle text-success"></i></td>
-                                        @else
-                                            <td><i class="fa fa-times-circle text-danger"></i></td>
-                                        @endif
-                                    @endforeach
-                                </tr>
+    <div class="row">
+        <div class="col-md-8 offset-md-2 mt-4">
+            <h2 class="text-center mb-4">Decouvrir Nos Abonnements !!</h2>
+            <div class="table-responsive compare-packages">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="240px">
+                                Services
+                                {{-- <p>Total Prices for each service</p> --}}
+                            </th>
+                            @foreach ($classes as $classe)
+                                <th data-classe="{{ $classe->id }}">
+                                    {{ $classe->type }}
+                                </th>
+                            @endforeach
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($services as $service)
+                            <tr>
+                                <td data-group="{{ $service->id_classe }}">{{ $service->libelle }}</td>
+                                @foreach ($classes as $classe)
+                                    @if ($service->id_classe == $classe->id)
+                                        <td><i class="fa fa-check-circle text-success"></i></td>
+                                    @else
+                                        <td><i class="fa fa-times-circle text-danger"></i></td>
+                                    @endif
                                 @endforeach
-                                <tr>
-                                    <td>Total Prices</td>
-                                    @foreach ($classes as $classe)
-                                    <td>
-                                        {{$classe->prix_monthly}} (MAD)
-                                        <br/>
-                                        <a href="#{{$classe->type}}" class="btn btn-warning">Continue</a>
-                                    </td>
-                                    @endforeach
-                                </tr>
-                                <script>
-
-                                </script>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <td>Total Prices</td>
+                            @foreach ($classes as $classe)
+                                <td>
+                                    {{ $classe->prix_monthly }} (MAD)
+                                    <br />
+                                    <a href="#{{ $classe->type }}" class="btn btn-warning">Continue</a>
+                                </td>
+                            @endforeach
+                        </tr>
+                        <script></script>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
 @stop
