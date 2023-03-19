@@ -152,18 +152,16 @@
         }
     </style>
 
-    <div class="demo">
-        <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 mt-5">
-                    <h3 class="bg-light p-2 mb-3">Compare Packages</h3>
+                    <h2 class="text-center mb-4">Decouvrir Nos Abonnements !!</h2>
                     <div class="table-responsive compare-packages">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th width="240px">
-                                        Plans
-                                        <p>Total Prices for each service</p>
+                                        Services
+                                        {{-- <p>Total Prices for each service</p> --}}
                                     </th>
                                     @foreach ($classes as $classe)
                                         <th data-classe="{{$classe->id}}">
@@ -178,12 +176,12 @@
                                     <td data-group="{{$service->id_classe}}">{{$service->libelle}}</td>
                                     @foreach ($classes as $classe)
                                         @if ($service->id_classe == $classe->id)
-                                            <td>Yes</td>
+                                            <td><i class="fa fa-check-circle text-success"></i></td>
                                         @else
-                                            <td>No</td>
+                                            <td><i class="fa fa-times-circle text-danger"></i></td>
                                         @endif
                                     @endforeach
-                                </tr> 
+                                </tr>
                                 @endforeach
                                 <tr>
                                     <td>Total Prices</td>
@@ -203,6 +201,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 @stop

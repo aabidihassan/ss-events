@@ -11,6 +11,6 @@ class Fournisseur extends Model
 
     public function feedbacks()
     {
-        return $this->hasMany(Feedback::class, 'Id_fournisseur')->from('feedback');
+        return $this->hasMany(Feedback::class, 'id_fournisseur')->from('feedback');
     }
 }
