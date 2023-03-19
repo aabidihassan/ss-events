@@ -55,15 +55,16 @@
                     <div class="navbar-nav ml-auto py-0 menu">
                         <a href="/" class="nav-item nav-link" id="accueil">Accueil</a>
                         <a href="/fournisseur" class="nav-item nav-link dtf">Fournisseurs</a>
-                        <a href="/services" class="nav-item nav-link">Services</a>
+                        <a href="/service" class="nav-item nav-link">Services</a>
                         <a href="/about" class="nav-item nav-link">À propos de nous</a>
                         @if (!auth()->check())
-                            <a href="{{route('espace-fournisseur')}}" class="nav-item nav-link">Espace Prestataires</a>
+                            <a href="{{ route('espace-fournisseur') }}" class="nav-item nav-link">Espace
+                                Prestataires</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Compte</a>
                                 <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="/login" class="nav-item nav-link">Connexion</a>
-                                <a href="/register" class="nav-item nav-link">Inscription</a>
+                                    <a href="/login" class="nav-item nav-link">Connexion</a>
+                                    <a href="/register" class="nav-item nav-link">Inscription</a>
                                 </div>
                             </div>
                         @else
@@ -117,106 +118,96 @@
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Nos Pages</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Accueil</a>
-                    <a class="text-white-50 mb-2" href="/fournisseur"><i class="fa fa-angle-right mr-2"></i>Fournisseurs</a>
-                    <a class="text-white-50 mb-2" href="/about"><i class="fa fa-angle-right mr-2"></i>À propos de nous</a>
-                    <a class="text-white-50 mb-2" href="/register-fournisseur"><i class="fa fa-angle-right mr-2"></i>Espace Prestataire</a>
+                    <a class="text-white-50 mb-2" href="/fournisseur"><i
+                            class="fa fa-angle-right mr-2"></i>Fournisseurs</a>
+                    <a class="text-white-50 mb-2" href="/service"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="/about"><i class="fa fa-angle-right mr-2"></i>À propos de
+                        nous</a>
+                    <a class="text-white-50 mb-2" href="/register-fournisseur"><i
+                            class="fa fa-angle-right mr-2"></i>Espace Prestataire</a>
                     <a class="text-white-50 mb-2" href="/login"><i class="fa fa-angle-right mr-2"></i>Compte</a>
                 </div>
-            {{-- </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;"
-                            placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Sign Up</button>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+            style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="row">
+                <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-0 text-white-50">Copyright &copy; <a href="#">events.com</a>. All Rights
+                        Reserved.</a>
+                    </p>
                 </div>
-            </div> --}}
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
-        style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">Copyright &copy; <a href="#">events.com</a>. All Rights Reserved.</a>
-                </p>
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://www.linkedin.com/in/hassan-aabidi/" target="_blank">HY</a>
-                </p>
+                <div class="col-lg-6 text-center text-md-right">
+                    <p class="m-0 text-white-50">Designed by <a href="https://www.linkedin.com/in/hassan-aabidi/"
+                            target="_blank">HY</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Footer End -->
+        <!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-            class="fa fa-angle-double-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+                class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ url('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ url('lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ url('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ url('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-    </script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ url('lib/easing/easing.min.js') }}"></script>
+        <script src="{{ url('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ url('lib/tempusdominus/js/moment.min.js') }}"></script>
+        <script src="{{ url('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+        <script src="{{ url('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+        </script>
 
-    <!-- Contact Javascript File -->
-    <script src="{{ url('mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ url('mail/contact.js') }}"></script>
+        <!-- Contact Javascript File -->
+        <script src="{{ url('mail/jqBootstrapValidation.min.js') }}"></script>
+        <script src="{{ url('mail/contact.js') }}"></script>
 
-    <!-- Template Javascript -->
-    <script src="{{ url('js/main.js') }}"></script>
-    <script src="{{ url('https://code.jquery.com/jquery-3.5.1.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
-    <script>
-        $(function() {
+        <!-- Template Javascript -->
+        <script src="{{ url('js/main.js') }}"></script>
+        <script src="{{ url('https://code.jquery.com/jquery-3.5.1.js') }}"></script>
+        <script src="{{ url('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ url('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="js/google-map.js"></script>
+        <script>
+            $(function() {
 
-            var url = window.location.pathname,
-                urlRegExp = new RegExp(url.replace(/\/$/, '') +
-                "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
-            // now grab every link from the navigation
-            if (urlRegExp == '/$/') $('#accueil').addClass('active')
-            else
-                $('.menu a').each(function() {
-                    // and test its normalized href against the url pathname regexp
-                    if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
-                        $(this).addClass('active');
-                    }
-                });
+                var url = window.location.pathname,
+                    urlRegExp = new RegExp(url.replace(/\/$/, '') +
+                        "$"
+                        ); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+                // now grab every link from the navigation
+                if (urlRegExp == '/$/') $('#accueil').addClass('active')
+                else
+                    $('.menu a').each(function() {
+                        // and test its normalized href against the url pathname regexp
+                        if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
+                            $(this).addClass('active');
+                        }
+                    });
 
-        });
+            });
 
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
+            $(document).ready(function() {
+                $('#example').DataTable();
+            });
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
 
 
-    @yield('script')
+        @yield('script')
 
 </body>
 
