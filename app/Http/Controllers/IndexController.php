@@ -15,27 +15,40 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-    public static function index(){
+    public static function index()
+    {
         $cities = Citie::all();
         $services = Service::all();
-        $fournisseurs = Fournisseur::where('statut', true)->take(6)->whereNotNull('photo')->get();
-        $fournisseurIds = $fournisseurs->pluck('id')->toArray();
-        $avgsRatings = Feedback::select('id_fournisseur', DB::raw('ROUND(avg(rating),1) as average'), DB::raw('count(*) as count'))
-                                    ->whereIn('id_fournisseur',$fournisseurIds)
-                                    ->groupBy('id_fournisseur')
-                                    ->get();
-        return view('index', ["cities"=>$cities, "services"=>$services, "fournisseurs"=>$fournisseurs, "avgsRatings" => $avgsRatings]);
+
+        $fournisseurs = Fournisseur::select('fournisseurs.*')
+            ->where('statut', true)
+            ->whereNotNull('photo')
+            ->whereNotNull('raison')
+            ->whereNotNull('citie')
+            ->whereNotNull('service')
+            ->join('feedback', 'fournisseurs.id', '=', 'feedback.id_fournisseur')
+            ->groupBy('fournisseurs.id')
+            ->selectRaw('ROUND(AVG(feedback.rating), 1) AS average_rating')
+            ->withCount('feedbacks')
+            ->orderByDesc('average_rating')
+            ->take(6)
+            ->get();
+
+        return view('index', ['cities' => $cities, 'services' => $services, 'fournisseurs' => $fournisseurs]);
     }
 
     public static function adminDashboard()
     {
-        $data = Fournisseur::select(
-            DB::raw('SUM(CASE WHEN statut = 1 THEN 1 ELSE 0 END) as trueCount'),
-            DB::raw('SUM(CASE WHEN statut = 0 THEN 1 ELSE 0 END) as falseCount')
-        )->first();
-        $dataClient = Client::select('*')->get()->count();
-        $dataNewsL = NewsletterEmail::select('*')->get()->count();
-        $dataFeedback = Feedback::select('*')->get()->count();
-        return view('backoffice.administrators.dashboard',['data'=>$data, 'dataClient'=>$dataClient, 'dataNewsL'=>$dataNewsL, 'dataFeedback'=>$dataFeedback]);
+        $data = Fournisseur::select(DB::raw('SUM(CASE WHEN statut = 1 THEN 1 ELSE 0 END) as trueCount'), DB::raw('SUM(CASE WHEN statut = 0 THEN 1 ELSE 0 END) as falseCount'))->first();
+        $dataClient = Client::select('*')
+            ->get()
+            ->count();
+        $dataNewsL = NewsletterEmail::select('*')
+            ->get()
+            ->count();
+        $dataFeedback = Feedback::select('*')
+            ->get()
+            ->count();
+        return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 'dataFeedback' => $dataFeedback]);
     }
 }
