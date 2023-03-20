@@ -49,6 +49,17 @@ class IndexController extends Controller
         $dataFeedback = Feedback::select('*')
             ->get()
             ->count();
-        return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 'dataFeedback' => $dataFeedback]);
+        $countVues = Fournisseur::sum('vues');
+        $countContact = Fournisseur::sum('countContact');
+        $cities = ["Rabat", "Salé", "Agadir", "Safi", "Marrakech", "Casa"];
+        $countByCity = Client::whereIn('citie', $cities)
+                    ->select(DB::raw('COUNT(id) as count, citie'))
+                    ->groupBy('citie')
+                    ->orderBy(DB::raw('FIELD(citie, "'.implode('","', $cities).'")'))
+                    ->get();
+
+        return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 
+                                                                'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
+                                                                 "countContact" => $countContact, "countByCity" => $countByCity]);
     }
 }
