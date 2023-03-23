@@ -121,16 +121,17 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLinkFournisseur">
                             <div class="dropdown-header">Afficher Par:</div>
-                            <a class="dropdown-item" href="#">Villes</a>
-                            <a class="dropdown-item" href="#">Service</a>
+                            <a class="dropdown-item" href="#" onclick="FparVilles()">Villes</a>
+                            <a class="dropdown-item" href="#" onclick="FparServices()">Service</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="chart-bar">
                         <script>
-                            var _data_myAreaChartBarFournissuer = [20,100,50,10,5,60];
-                            var _data_libelle_cities =  ["Rabat","Salé","Agadir","Safi","Marrakech","Casa"];
+                            var _data_myAreaChartBarFournissuerVille =  {{$countFournisseurByCity}};
+                            var _data_myAreaChartBarFournissuerService = [1000,500,250,125,60,30];
+                            var _data_libelle_cities =  ["Rabat","Salé","Agadir","Safi","Marrakesh","Casablanca"];
                         </script>
                         <canvas id="myBarChartFournisseur"></canvas>
                     </div>
@@ -144,7 +145,7 @@
                 <div class="card-body">
                     <div class="chart-bar">
                         <script>
-                            var _data_myAreaChartBarClients = [@foreach ($countByCity as $item) {{$item->count}}, @endforeach];
+                            var _data_myAreaChartBarClients = {{$countByCity}};
                         </script>
                         <canvas id="myBarChartClient"></canvas>
                     </div>
@@ -156,7 +157,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Vues Par Villes</h6>
+                    <h6 class="m-0 font-weight-bold text-primary" id="titel_charts_Pie_Vue">Vues Par Villes</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkVues"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -165,8 +166,8 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLinkVues">
                             <div class="dropdown-header">Afficher Par:</div>
-                            <a class="dropdown-item" href="#">Villes</a>
-                            <a class="dropdown-item" href="#">Service</a>
+                            <a class="dropdown-item" href="#" onclick="VparVilles()">Villes</a>
+                            <a class="dropdown-item" href="#" onclick="VparServices()">Service</a>
                         </div>
                     </div>
                 </div>
@@ -174,7 +175,8 @@
                 <div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
                         <script>
-                            var _data_myPieChartVeus = [100,80,60,40,20,10];//[{{$data->trueCount;}},{{$data->falseCount;}}];
+                            var _data_myPieChartVeusService = [100,80,60,40,20,0];
+                            var _data_myPieChartVeusVille = {{$countVuesByCity}};
                         </script>
                         <canvas id="myPieChartVues"></canvas>
                     </div>
@@ -192,7 +194,7 @@
                             <i class="fas fa-circle text-warning"></i> Safi
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-danger"></i> Marrakech
+                            <i class="fas fa-circle text-danger"></i> Marrakesh
                         </span>
                         <span class="mr-2">
                             <i class="fas fa-circle text-dark"></i> Casa
@@ -204,7 +206,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Cantact Par Villes</h6>
+                    <h6 class="m-0 font-weight-bold text-primary" id="titel_charts_Pie_Contact">Cantact Par Villes</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkCantact"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -213,8 +215,8 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLinkCantact">
                             <div class="dropdown-header">Afficher Par:</div>
-                            <a class="dropdown-item" href="#">Villes</a>
-                            <a class="dropdown-item" href="#">Service</a>
+                            <a class="dropdown-item" href="#" onclick="CparVilles()">Villes</a>
+                            <a class="dropdown-item" href="#" onclick="CparServices()">Service</a>
                         </div>
                     </div>
                 </div>
@@ -222,7 +224,8 @@
                 <div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
                         <script>
-                            var _data_myPieChartCantact = [100,50,25,12,6,3];//[{{$data->trueCount;}},{{$data->falseCount;}}];
+                            var _data_myPieChartCantactVille = {{$countContactByCity}};
+                            var _data_myPieChartCantactService = [80,40,20,10,5,1];
                         </script>
                         <canvas id="myPieChartCantact"></canvas>
                     </div>
@@ -240,7 +243,7 @@
                             <i class="fas fa-circle text-warning"></i> Safi
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-danger"></i> Marrakech
+                            <i class="fas fa-circle text-danger"></i> Marrakesh
                         </span>
                         <span class="mr-2">
                             <i class="fas fa-circle text-dark"></i> Casa

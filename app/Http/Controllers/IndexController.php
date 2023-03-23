@@ -36,6 +36,24 @@ class IndexController extends Controller
 
         return view('index', ['cities' => $cities, 'services' => $services, 'fournisseurs' => $fournisseurs]);
     }
+    public static function CA($countByCity) {
+        $result = [];
+        $cities = ["Rabat", "Sale", "Agadir", "Safi", "Marrakesh", "Casablanca"];
+        foreach ($countByCity as $city) {
+            $result[$city->citie] = $city->count;
+        }
+        foreach ($cities as $city) {
+            if (!isset($result[$city])) {
+                $result[$city] = 0;
+            }
+        }
+        $countArray = [];
+        foreach ($cities as $city) {
+            $countArray[] = isset($result[$city]) ? $result[$city] : 0;
+        }
+        $row = '[' . implode(',', $countArray) . ']';
+        return $row;
+    }
 
     public static function adminDashboard()
     {
@@ -51,15 +69,37 @@ class IndexController extends Controller
             ->count();
         $countVues = Fournisseur::sum('vues');
         $countContact = Fournisseur::sum('countContact');
-        $cities = ["Rabat", "Salé", "Agadir", "Safi", "Marrakech", "Casa"];
+        $cities = ["Rabat", "Sale", "Agadir", "Safi", "Marrakesh", "Casablanca"];
         $countByCity = Client::whereIn('citie', $cities)
                     ->select(DB::raw('COUNT(id) as count, citie'))
                     ->groupBy('citie')
                     ->orderBy(DB::raw('FIELD(citie, "'.implode('","', $cities).'")'))
                     ->get();
-
+        $countByCity = IndexController::CA($countByCity);
+        $countFournisseurByCity = Fournisseur::whereIn('citie', $cities)
+                    ->select(DB::raw('COUNT(id) as count, citie'))
+                    ->groupBy('citie')
+                    ->orderBy(DB::raw('FIELD(citie, "'.implode('","', $cities).'")'))
+                    ->get();
+        $countFournisseurByCity = IndexController::CA($countFournisseurByCity);
+        $countVuesByCity = Fournisseur::whereIn('citie', $cities)
+                                    ->select(DB::raw('sum(vues) as count, citie'))
+                                    ->groupBy('citie')
+                                    ->orderBy(DB::raw('FIELD(citie, "'.implode('","', $cities).'")'))
+                                    ->get();
+        $countVuesByCity = IndexController::CA($countVuesByCity);
+        $countContactByCity = Fournisseur::whereIn('citie', $cities)
+                                    ->select(DB::raw('sum(countContact) as count, citie'))
+                                    ->groupBy('citie')
+                                    ->orderBy(DB::raw('FIELD(citie, "'.implode('","', $cities).'")'))
+                                    ->get();
+        $countContactByCity = IndexController::CA($countContactByCity);
         return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 
-                                                                'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
-                                                                 "countContact" => $countContact, "countByCity" => $countByCity]);
+                                                            'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
+                                                            'countContact' => $countContact, "countByCity" => $countByCity,
+                                                            'countFournisseurByCity' => $countFournisseurByCity,
+                                                            'countVuesByCity' => $countVuesByCity,
+                                                            'countContactByCity' => $countContactByCity]);
     }
+
 }
