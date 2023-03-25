@@ -2,6 +2,8 @@
 @section('title', 'Prestataire')
 @section('containner')
 
+<link rel="stylesheet" href="{{ asset('css/espace-prestataire.css') }}">
+
     <div class="wrapper">
         <div class="container">
             <h2 class="text-center">Améliorez votre présence en ligne !</h2>
@@ -13,7 +15,8 @@
                         <img src="../../img/visibility.png" />
                         <div class="card-body">
                             <h5>Augmentez votre visibilité</h5>
-                            <p>Vous présentez dans votre vitrine tous vos offres et services d'une manière attractive, persuasive et professionnelle.</p>
+                            <p>Vous présentez dans votre vitrine tous vos offres et services d'une manière attractive,
+                                persuasive et professionnelle.</p>
                         </div>
 
                     </div>
@@ -126,38 +129,62 @@
 
     @include('fournisseurs.inscription')
 
-    <style>
-        .compare-packages table thead th {
-            border-bottom: 2px solid #dee2e6;
-            vertical-align: middle;
-            font-size: 20px;
-            color: #ff9800;
-        }
-
-        .compare-packages table thead th p {
-            font-size: 16px;
-            font-weight: 400;
-            color: #333;
-        }
-
-        .compare-packages table td {
-            text-align: center;
-        }
-
-        .compare-packages table td:first-child {
-            text-align: left;
-        }
-
-        .compare-packages table tr:last-child td {
-            font-weight: bold;
-            line-height: 40px;
-            font-size: 20px;
-        }
-    </style>
+    <div class="demo">
+        <div class="container">
+            <h2 class="text-center mb-4">Découvrez Nos Offres !</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-6">
+                    <div class="pricingTable">
+                        <div class="pricingTable-header">
+                            <div class="price-value"> <b> Gold </b></div>
+                        </div>
+                        <div class="pricing-content mt-4">
+                            <ul>
+                                <li><b>Affichage</b> gratuit de votre annonce.</li>
+                                <li><b>Demande</b> d'information et de devis.</li>
+                                <li><b>Coordonés</b> complétes.</li>
+                                <li><b>Lien</b> vers votre site web.</li>
+                                <li><b>Recevez</b> des demandes d'information par téléphone.</li>
+                                <li><b>Utilisation</b> de la fonctionnalités Galerie photos et vidéos</li>
+                                <li><b>Dashboard</b> de suivie et gestion.</li>
+                            </ul>
+                        </div>
+                        <div class="pricingTable-signup">
+                            <a>Inscrivez-Vous</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="pricingTable green">
+                        <div class="pricingTable-header">
+                            <div class="price-value"> <b> Platinum </b></div>
+                        </div>
+                        <div class="pricing-content mt-4">
+                            <ul>
+                                <li><b>Affichage</b> gratuit de votre annonce.</li>
+                                <li><b>Demande</b> d'information et de devis.</li>
+                                <li><b>Coordonés</b> complétes.</li>
+                                <li><b>Lien</b> vers votre site web.</li>
+                                <li><b>Recevez</b> des demandes d'information par téléphone.</li>
+                                <li><b>Utilisation</b> de la fonctionnalités Galerie photos et vidéos</li>
+                                <li><b>Dashboard</b> de suivie et gestion.</li>
+                                <li><b>Position</b> téte de List.</li>
+                                <li><b>Position</b> dans les recommandations (page d'acceuil)</li>
+                                <li><b>Personalinsé</b>vos pubs</li>
+                            </ul>
+                        </div>
+                        <div class="pricingTable-signup">
+                            <a>Inscrivez-Vous</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-8 offset-md-2 mt-4">
-            <h2 class="text-center mb-4">Decouvrir Nos Abonnements !!</h2>
+            <h2 class="text-center mb-4">Découvrez Nos Abonnements !!</h2>
             <div class="table-responsive compare-packages">
                 <table class="table table-bordered">
                     <thead>
