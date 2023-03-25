@@ -27,102 +27,182 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-// Bar Chart Example
-var params = document.getElementById("myBarChartFournisseur");
-function chargeChartsFournisseur(ctx,_data_myAreaChartBarFournissuer) {
-  var maxData = Math.max(..._data_myAreaChartBarFournissuer);
-  var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: _data_libelle_cities,
-      datasets: [{
-        label: "Nombre",
-        backgroundColor: "#4e73df",
-        hoverBackgroundColor: "#2e59d9",
-        borderColor: "#4e73df",
-        data: _data_myAreaChartBarFournissuer,
+// Bar Chart Fournisseur par ville
+var ctxV = document.getElementById("myBarChartFournisseurVille");
+var maxData = Math.max(..._data_myAreaChartBarFournissuerVille);
+var myBarChart = new Chart(ctxV, {
+  type: 'bar',
+  data: {
+    labels: _data_libelle_cities,
+    datasets: [{
+      label: "Nombre",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: _data_myAreaChartBarFournissuerVille,
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 6
+        },
+        maxBarThickness : 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: maxData,
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return  number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
       }],
     },
-    options: {
-      maintainAspectRatio: false,
-      layout: {
-        padding: {
-          left: 10,
-          right: 25,
-          top: 25,
-          bottom: 0
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
         }
-      },
-      scales: {
-        xAxes: [{
-          time: {
-            unit: 'month'
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          },
-          ticks: {
-            maxTicksLimit: 6
-          },
-          maxBarThickness : 25,
-        }],
-        yAxes: [{
-          ticks: {
-            min: 0,
-            max: maxData,
-            maxTicksLimit: 5,
-            padding: 10,
-            // Include a dollar sign in the ticks
-            callback: function(value, index, values) {
-              return  number_format(value);
-            }
-          },
-          gridLines: {
-            color: "rgb(234, 236, 244)",
-            zeroLineColor: "rgb(234, 236, 244)",
-            drawBorder: false,
-            borderDash: [2],
-            zeroLineBorderDash: [2]
+      }
+    },
+  }
+});
+// Bar Chart Fournisseur par Services
+var ctxS = document.getElementById("myBarChartFournisseurService");
+var maxData = Math.max(..._data_myAreaChartBarFournissuerService);
+var myBarChart = new Chart(ctxS, {
+  type: 'bar',
+  data: {
+    labels: _data_libelle_service,
+    datasets: [{
+      label: "Nombre",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: _data_myAreaChartBarFournissuerService,
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 6
+        },
+        maxBarThickness : 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: maxData,
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return  number_format(value);
           }
-        }],
-      },
-      legend: {
-        display: false
-      },
-      tooltips: {
-        titleMarginBottom: 10,
-        titleFontColor: '#6e707e',
-        titleFontSize: 14,
-        backgroundColor: "rgb(255,255,255)",
-        bodyFontColor: "#858796",
-        borderColor: '#dddfeb',
-        borderWidth: 1,
-        xPadding: 15,
-        yPadding: 15,
-        displayColors: false,
-        caretPadding: 10,
-        callbacks: {
-          label: function(tooltipItem, chart) {
-            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-            return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
-          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
         }
-      },
-    }
-  });
-  
-}
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+        }
+      }
+    },
+  }
+});
 function FparServices() {
-  chargeChartsFournisseur(params,_data_myAreaChartBarFournissuerService);
   document.getElementById('titel_charts_bar').innerText = "Chart Fournisseurs Par Services";
+  ctxS.style.display = "block";
+  ctxV.style.display = "none";
 }
-
 function FparVilles() {
-  chargeChartsFournisseur(params,_data_myAreaChartBarFournissuerVille); 
-  document.getElementById('titel_charts_bar').innerText = "Chart Fournisseurs Par Villes";  
+  document.getElementById('titel_charts_bar').innerText = "Chart Fournisseurs Par Villes"; 
+  ctxS.style.display = "none";
+  ctxV.style.display = "block"; 
 }
-FparVilles();
 // Bar Chart Example
 var ctx = document.getElementById("myBarChartClient");
 var maxDataC = Math.max(..._data_myAreaChartBarClients);

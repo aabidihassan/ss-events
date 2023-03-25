@@ -130,10 +130,12 @@
                     <div class="chart-bar">
                         <script>
                             var _data_myAreaChartBarFournissuerVille =  {{$countFournisseurByCity}};
-                            var _data_myAreaChartBarFournissuerService = [1000,500,250,125,60,30];
+                            var _data_myAreaChartBarFournissuerService = [@foreach ($countFournisseurByService as $key => $item) {{$item}}, @endforeach];
+                            var _data_libelle_service = [@foreach ($countFournisseurByService as $key => $item) '{{$key}}', @endforeach];
                             var _data_libelle_cities =  ["Rabat","Salé","Agadir","Safi","Marrakesh","Casablanca"];
                         </script>
-                        <canvas id="myBarChartFournisseur"></canvas>
+                        <canvas id="myBarChartFournisseurVille"></canvas>
+                        <canvas id="myBarChartFournisseurService" style="display: none"></canvas>
                     </div>
                 </div>
             </div>
@@ -175,12 +177,14 @@
                 <div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
                         <script>
-                            var _data_myPieChartVeusService = [100,80,60,40,20,0];
+                            var _data_libelle_service_vues = [@foreach ($countVuesByService as $key => $item) '{{$key}}', @endforeach];
+                            var _data_myPieChartVeusService = [@foreach ($countVuesByService as $key => $item) {{$item}}, @endforeach];
                             var _data_myPieChartVeusVille = {{$countVuesByCity}};
                         </script>
-                        <canvas id="myPieChartVues"></canvas>
+                        <canvas id="myPieChartVuesVille"></canvas>
+                        <canvas id="myPieChartVuesService" style="display: none"></canvas>
                     </div>
-                    <div class="mt-4 text-center small">
+                    <div class="mt-4 text-center small" id="keys_libelle_vues">
                         <span class="mr-2">
                             <i class="fas fa-circle text-primary"></i> Rabat
                         </span>
@@ -225,11 +229,13 @@
                     <div class="chart-pie pt-4 pb-2">
                         <script>
                             var _data_myPieChartCantactVille = {{$countContactByCity}};
+                            var _data_libelle_service_Contact = [];
                             var _data_myPieChartCantactService = [80,40,20,10,5,1];
                         </script>
-                        <canvas id="myPieChartCantact"></canvas>
+                        <canvas id="myPieChartCantactVille"></canvas>
+                        <canvas id="myPieChartCantactService" style="display: none"></canvas>
                     </div>
-                    <div class="mt-4 text-center small">
+                    <div class="mt-4 text-center small" id="keys_libelle_contact">
                         <span class="mr-2">
                             <i class="fas fa-circle text-primary"></i> Rabat
                         </span>
