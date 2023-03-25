@@ -70,11 +70,22 @@ function VparServices() {
   ctxVueV.style.display = "none";
   ctxVueS.style.display = "block";
   libs.innerHTML = "";
+  let i = 0;
+  _data_libelle_service_vues.forEach(element => {
+    libs.innerHTML = libs.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
+    i++;
+  });
 }
 function VparVilles() {
   document.getElementById('titel_charts_Pie_Vue').innerText = "Chart Vues Par Villes";  
   ctxVueV.style.display = "block";
   ctxVueS.style.display = "none";
+  libs.innerHTML = "";
+  let i = 0;
+  _data_libelle_cities.forEach(element => {
+    libs.innerHTML = libs.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
+    i++;
+  });
 } 
 
 // Pie Chart Contact par ville
@@ -110,12 +121,12 @@ var myPieChart = new Chart(ctxContactV, {
 });
 // Pie Chart Contact par service
 var ctxContactS= document.getElementById("myPieChartCantactService");
-var myPieChart = new Chart(ctxContactS, {
+var myPieChartCS = new Chart(ctxContactS, {
   type: 'doughnut',
   data: {
     labels: _data_libelle_service_Contact,
     datasets: [{
-      data: _data_myPieChartCantactVille,
+      data: _data_myPieChartCantactService,
       backgroundColor: [ '#4e73df','#36b9cc','#1cc88a','#f6c23e','#e74a3b','#5a5c69'],
       hoverBackgroundColor: [ '#2e59d9','#2c9faf','#17a673','#fbbd1e','#e5301f','#333438'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -139,13 +150,26 @@ var myPieChart = new Chart(ctxContactS, {
     cutoutPercentage: 80,
   },
 }); 
+var libsC = document.getElementById("keys_libelle_contact");
 function CparServices() {
   document.getElementById('titel_charts_Pie_Contact').innerText = "Chart Contact Par Services"; 
-  ctxContactV.style.display = "block";
-  ctxContactS.style.display = "none";
+  ctxContactS.style.display = "block";
+  ctxContactV.style.display = "none";
+  libsC.innerHTML = "";
+  let i = 0;
+  _data_libelle_service_Contact.forEach(element => {
+    libsC.innerHTML = libsC.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
+    i++;
+  });
 }
 function CparVilles() {
   document.getElementById('titel_charts_Pie_Contact').innerText = "Chart Contact Par Villes";  
   ctxContactV.style.display = "block";
   ctxContactS.style.display = "none";
+  libsC.innerHTML = "";
+  let i = 0;
+  _data_libelle_cities.forEach(element => {
+    libsC.innerHTML = libsC.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
+    i++;
+  });
 }

@@ -112,6 +112,15 @@ class IndexController extends Controller
                                                 return [$item->libelle => $item->sum];
                                             })
                                             ->toArray();
+        $countContactByService = DB::table('services')
+                                            ->select('services.libelle', DB::raw('sum(fournisseurs.countContact) as sum'))
+                                            ->leftJoin('fournisseurs', 'services.libelle', '=', 'fournisseurs.service')
+                                            ->groupBy('services.libelle')
+                                            ->get()
+                                            ->mapWithKeys(function ($item) {
+                                                return [$item->libelle => $item->sum];
+                                            })
+                                            ->toArray();
         return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 
                                                             'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
                                                             'countContact' => $countContact, "countByCity" => $countByCity,
@@ -119,7 +128,8 @@ class IndexController extends Controller
                                                             'countVuesByCity' => $countVuesByCity,
                                                             'countContactByCity' => $countContactByCity,
                                                             'countFournisseurByService' => $countFournisseurByService,
-                                                            'countVuesByService' => $countVuesByService]);
+                                                            'countVuesByService' => $countVuesByService,
+                                                            'countContactByService' => $countContactByService]);
     }
 
 }
