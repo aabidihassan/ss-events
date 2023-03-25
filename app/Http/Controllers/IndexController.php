@@ -94,12 +94,32 @@ class IndexController extends Controller
                                     ->orderBy(DB::raw('FIELD(citie, "'.implode('","', $cities).'")'))
                                     ->get();
         $countContactByCity = IndexController::CA($countContactByCity);
+        $countFournisseurByService = DB::table('services')
+                                            ->select('services.libelle', DB::raw('COUNT(fournisseurs.id) as count'))
+                                            ->leftJoin('fournisseurs', 'services.libelle', '=', 'fournisseurs.service')
+                                            ->groupBy('services.libelle')
+                                            ->get()
+                                            ->mapWithKeys(function ($item) {
+                                                return [$item->libelle => $item->count];
+                                            })
+                                            ->toArray();
+        $countVuesByService = DB::table('services')
+                                            ->select('services.libelle', DB::raw('sum(fournisseurs.vues) as sum'))
+                                            ->leftJoin('fournisseurs', 'services.libelle', '=', 'fournisseurs.service')
+                                            ->groupBy('services.libelle')
+                                            ->get()
+                                            ->mapWithKeys(function ($item) {
+                                                return [$item->libelle => $item->sum];
+                                            })
+                                            ->toArray();
         return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 
                                                             'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
                                                             'countContact' => $countContact, "countByCity" => $countByCity,
                                                             'countFournisseurByCity' => $countFournisseurByCity,
                                                             'countVuesByCity' => $countVuesByCity,
-                                                            'countContactByCity' => $countContactByCity]);
+                                                            'countContactByCity' => $countContactByCity,
+                                                            'countFournisseurByService' => $countFournisseurByService,
+                                                            'countVuesByService' => $countVuesByService]);
     }
 
 }
