@@ -229,7 +229,8 @@
                     <div class="chart-pie pt-4 pb-2">
                         <script>
                             var _data_myPieChartCantactVille = {{$countContactByCity}};
-                            var _data_myPieChartCantactService = [80,40,20,10,5,1];
+                            var _data_libelle_service_Contact = [@foreach ($countContactByService as $key => $item) '{{$key}}', @endforeach];
+                            var _data_myPieChartCantactService = [@foreach ($countContactByService as $key => $item) {{$item}}, @endforeach];
                         </script>
                         <canvas id="myPieChartCantactVille"></canvas>
                         <canvas id="myPieChartCantactService" style="display: none"></canvas>

@@ -70,28 +70,22 @@ function VparServices() {
   ctxVueV.style.display = "none";
   ctxVueS.style.display = "block";
   libs.innerHTML = "";
-<<<<<<< HEAD
-=======
   let i = 0;
   _data_libelle_service_vues.forEach(element => {
     libs.innerHTML = libs.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
     i++;
   });
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
 }
 function VparVilles() {
   document.getElementById('titel_charts_Pie_Vue').innerText = "Chart Vues Par Villes";  
   ctxVueV.style.display = "block";
   ctxVueS.style.display = "none";
-<<<<<<< HEAD
-=======
   libs.innerHTML = "";
   let i = 0;
   _data_libelle_cities.forEach(element => {
     libs.innerHTML = libs.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
     i++;
   });
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
 } 
 
 // Pie Chart Contact par ville
@@ -127,20 +121,12 @@ var myPieChart = new Chart(ctxContactV, {
 });
 // Pie Chart Contact par service
 var ctxContactS= document.getElementById("myPieChartCantactService");
-<<<<<<< HEAD
-var myPieChart = new Chart(ctxContactS, {
-=======
 var myPieChartCS = new Chart(ctxContactS, {
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
   type: 'doughnut',
   data: {
     labels: _data_libelle_service_Contact,
     datasets: [{
-<<<<<<< HEAD
-      data: _data_myPieChartCantactVille,
-=======
       data: _data_myPieChartCantactService,
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
       backgroundColor: [ '#4e73df','#36b9cc','#1cc88a','#f6c23e','#e74a3b','#5a5c69'],
       hoverBackgroundColor: [ '#2e59d9','#2c9faf','#17a673','#fbbd1e','#e5301f','#333438'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -164,12 +150,6 @@ var myPieChartCS = new Chart(ctxContactS, {
     cutoutPercentage: 80,
   },
 }); 
-<<<<<<< HEAD
-function CparServices() {
-  document.getElementById('titel_charts_Pie_Contact').innerText = "Chart Contact Par Services"; 
-  ctxContactV.style.display = "block";
-  ctxContactS.style.display = "none";
-=======
 var libsC = document.getElementById("keys_libelle_contact");
 function CparServices() {
   document.getElementById('titel_charts_Pie_Contact').innerText = "Chart Contact Par Services"; 
@@ -181,19 +161,15 @@ function CparServices() {
     libsC.innerHTML = libsC.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
     i++;
   });
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
 }
 function CparVilles() {
   document.getElementById('titel_charts_Pie_Contact').innerText = "Chart Contact Par Villes";  
   ctxContactV.style.display = "block";
   ctxContactS.style.display = "none";
-<<<<<<< HEAD
-=======
   libsC.innerHTML = "";
   let i = 0;
   _data_libelle_cities.forEach(element => {
     libsC.innerHTML = libsC.innerHTML + '<span class="mr-2"><i class="fas fa-circle '+colors_libelle[i]+'"></i>'+element+'</span>';
     i++;
   });
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
 }

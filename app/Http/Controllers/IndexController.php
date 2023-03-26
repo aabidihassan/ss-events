@@ -112,8 +112,6 @@ class IndexController extends Controller
                                                 return [$item->libelle => $item->sum];
                                             })
                                             ->toArray();
-<<<<<<< HEAD
-=======
         $countContactByService = DB::table('services')
                                             ->select('services.libelle', DB::raw('sum(fournisseurs.countContact) as sum'))
                                             ->leftJoin('fournisseurs', 'services.libelle', '=', 'fournisseurs.service')
@@ -123,7 +121,6 @@ class IndexController extends Controller
                                                 return [$item->libelle => $item->sum];
                                             })
                                             ->toArray();
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
         return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 
                                                             'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
                                                             'countContact' => $countContact, "countByCity" => $countByCity,
@@ -131,12 +128,9 @@ class IndexController extends Controller
                                                             'countVuesByCity' => $countVuesByCity,
                                                             'countContactByCity' => $countContactByCity,
                                                             'countFournisseurByService' => $countFournisseurByService,
-<<<<<<< HEAD
-                                                            'countVuesByService' => $countVuesByService]);
-=======
+                                                            'countVuesByService' => $countVuesByService,
                                                             'countVuesByService' => $countVuesByService,
                                                             'countContactByService' => $countContactByService]);
->>>>>>> 78bd854b94d8c18d8ac214f5efce8f3dbbb4aa81
     }
 
 }
