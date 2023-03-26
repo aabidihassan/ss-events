@@ -60,7 +60,7 @@
                             <button class="btn btn-primary" type="submit">Creer un compte</button>
                         </div>
                         <div class="text-center mt-3">
-                            Vous etes un prestataire évenementiel ? <a href="/register-fournisseur">Référencer votre
+                            Vous etes un prestataire évenementiel ? <a href="/register#fournisseur">Référencer votre
                                 entreprise par ici!</a>
                         </div>
                     </form>
@@ -115,56 +115,6 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <div class="control-group row">
-                            <div class="col-md-12 ">
-                                <h2 class="text-center mb-3 mt-4">Choisir Votre Abonnement</h2>
-                                <div class="table-responsive compare-packages">
-                                    <table class="table table-bordered" id="offere">
-                                        <thead>
-                                            <tr>
-                                                <th width="240px">
-                                                    Services
-                                                </th>
-                                                @foreach ($classes as $classe)
-                                                    <th data-classe="{{ $classe->id }}">
-                                                        {{ $classe->type }}
-                                                    </th>
-                                                @endforeach
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($services as $service)
-                                                <tr>
-                                                    <td data-group="{{ $service->id_classe }}">
-                                                        {{ $service->libelle }}
-                                                        <input type="radio" name="service"
-                                                            value="{{ $service->id }}" required
-                                                            style="display:none;">
-                                                    </td>
-                                                    @foreach ($classes as $classe)
-                                                        @if ($service->id_classe == $classe->id)
-                                                            <td><i class="fa fa-check-circle text-success"></i></td>
-                                                        @else
-                                                            <td><i class="fa fa-times-circle text-danger"></i></td>
-                                                        @endif
-                                                    @endforeach
-                                                </tr>
-                                            @endforeach
-                                            <tr class="footerTb">
-                                                <td>Total Prices</td>
-                                                @foreach ($classes as $classe)
-                                                    <td>
-                                                        {{ $classe->prix_monthly }} (MAD)
-                                                        <br />
-                                                    </td>
-                                                @endforeach
-                                            </tr>
-                                            <script></script>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                         <input type="text" value="pre" name="type" readonly style="display: none;"
                             required>
                         <div class="mt-3">
@@ -174,8 +124,7 @@
                             <button class="btn btn-primary" id="btnSub" type="submit">Creer un compte</button>
                         </div>
                         <div class="text-center mt-3">
-                            Vous etes un prestataire évenementiel ? <a href="/register-fournisseur">Référencer votre
-                                entreprise par ici!</a>
+                            Vous etes un client ? <a href="/register#client">Chercher un prestataire par ici!</a>
                         </div>
                     </form>
                 </div>
