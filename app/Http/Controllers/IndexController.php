@@ -27,7 +27,7 @@ class IndexController extends Controller
             ->whereNotNull('citie')
             ->whereNotNull('service')
             ->join('feedback', 'fournisseurs.id', '=', 'feedback.id_fournisseur')
-            ->groupBy('fournisseurs.id')
+            ->groupBy('fournisseurs.id', 'fournisseurs.nom', 'fournisseurs.email', 'fournisseurs.telephone', 'fournisseurs.citie', 'fournisseurs.adresse', 'fournisseurs.service', 'fournisseurs.description', 'fournisseurs.photo', 'fournisseurs.created_at', 'fournisseurs.updated_at')
             ->selectRaw('ROUND(AVG(feedback.rating), 1) AS average_rating')
             ->withCount('feedbacks')
             ->orderByDesc('average_rating')
@@ -121,7 +121,7 @@ class IndexController extends Controller
                                                 return [$item->libelle => $item->sum];
                                             })
                                             ->toArray();
-        return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL, 
+        return view('backoffice.administrators.dashboard', ['data' => $data, 'dataClient' => $dataClient, 'dataNewsL' => $dataNewsL,
                                                             'dataFeedback' => $dataFeedback, "countVues" => $countVues ,
                                                             'countContact' => $countContact, "countByCity" => $countByCity,
                                                             'countFournisseurByCity' => $countFournisseurByCity,
