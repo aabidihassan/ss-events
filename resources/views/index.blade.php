@@ -290,7 +290,7 @@
             </div>
         </div>
     </div>
-    <div class="row d-flex justify-content-center align-items-center rows" id="newsletter">
+    <div class="d-flex justify-content-center align-items-center rows" id="newsletter">
         <div class="col-md-6">
             <div class="row">
                 <div class="text-center">

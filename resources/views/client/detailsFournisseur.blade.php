@@ -5,8 +5,8 @@
 <style>
     .whatsapp-button {
         position: fixed;
-        bottom: 20px;
-        right: 53px;
+        bottom: 120px;
+        right: 43px;
         text-decoration: none;
         list-style-type: none;
         position: fixed;
@@ -97,19 +97,23 @@
         $files = File::allFiles($path);
    }
 @endphp
+
+
 @if(!empty($files))
 <div class="container px-4 py-2" id="custom-cards">
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
         @foreach ($files as $file)
         <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-            <img style="width: 100%;height: 100%;object-fit: cover;" src="{{ asset('fournisseurs/' . $idFileImages[0]->id . '/' . $file->getFilename()) }}" />
+            <div class=" card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg">
+            <img style="width: 100%;height: 400px;object-fit: cover;" src="{{ asset('fournisseurs/' . $idFileImages[0]->id . '/' . $file->getFilename()) }}" />
             </div>
         </div>
         @endforeach
     </div>
 </div>
 @endif
+
+
 <div class="container mt-4">
     <h2>Comments : {{ $feedbacks->count() }}</h2>
     <hr>
@@ -117,7 +121,7 @@
         @foreach ($feedbacks as $feedback)
             <!-- Single comment -->
             <div class="row mb-4">
-                <div class="col-md-2">
+                <div class="col-md-1" style="width: 30%;">
                     <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User Profile Picture"
                         class="img-fluid rounded-circle">
                 </div>
@@ -145,12 +149,12 @@
     <form id="addCommit">
         @csrf
         <div class="form-group">
-            <label for="comment">Votre Commentaire :</label>
+            <label for="comment">Votre Avis :</label>
             <textarea class="form-control mb-2" name="commentaire" id="commentaire" rows="3"></textarea>
             <input name="rating" type="radio" class="d-none" checked value="0" id="rating_0">
             <label for="rating_1" class="hover-lb lb-1">
                 <span class="star" data-value="1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FA86C4"
                         class="bi bi-star-fill" viewBox="0 0 16 16">
                         <path
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -160,7 +164,7 @@
             <input name="rating" type="radio" class="d-none" value="1" id="rating_1">
             <label for="rating_2" class="hover-lb lb-2">
                 <span class="star" data-value="2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FA86C4"
                         class="bi bi-star-fill" viewBox="0 0 16 16">
                         <path
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -169,7 +173,7 @@
             <input name="rating" type="radio" class="d-none" value="2" id="rating_2">
             <label for="rating_3" class="hover-lb lb-3">
                 <span class="star" data-value="3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FA86C4"
                         class="bi bi-star-fill" viewBox="0 0 16 16">
                         <path
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -178,7 +182,7 @@
             <input name="rating" type="radio" class="d-none" value="3" id="rating_3">
             <label for="rating_4" class="hover-lb lb-4">
                 <span class="star" data-value="4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FA86C4"
                         class="bi bi-star-fill" viewBox="0 0 16 16">
                         <path
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -188,7 +192,7 @@
             <input name="rating" type="radio" class="d-none" value="4" id="rating_4">
             <label for="rating_5" class="hover-lb lb-5">
                 <span class="star" data-value="5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="#FA86C4"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FA86C4"
                         class="bi bi-star-fill" viewBox="0 0 16 16">
                         <path
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -198,7 +202,9 @@
             <input name="rating" type="radio" class="d-none" value="5" id="rating_5">
             <input name="fournisseur" class="d-none" readonly value="{{ $fournisseur[0]->id }}">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <center>        
+            <button type="submit" style="width: 40%;" class="btn btn-primary">Submit</button>
+        </center>
     </form>
 </div>
 <!-- Modal -->
