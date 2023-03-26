@@ -108,7 +108,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-8 col-lg-7">            
+        <div class="col-xl-8 col-lg-7">
             <!-- Bar Chart Fournisseurs -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -229,7 +229,6 @@
                     <div class="chart-pie pt-4 pb-2">
                         <script>
                             var _data_myPieChartCantactVille = {{$countContactByCity}};
-                            var _data_libelle_service_Contact = [];
                             var _data_myPieChartCantactService = [80,40,20,10,5,1];
                         </script>
                         <canvas id="myPieChartCantactVille"></canvas>
