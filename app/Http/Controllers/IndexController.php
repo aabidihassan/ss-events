@@ -27,7 +27,10 @@ class IndexController extends Controller
             ->whereNotNull('citie')
             ->whereNotNull('service')
             ->join('feedback', 'fournisseurs.id', '=', 'feedback.id_fournisseur')
-            ->groupBy('fournisseurs.id', 'fournisseurs.nom', 'fournisseurs.email', 'fournisseurs.telephone', 'fournisseurs.citie', 'fournisseurs.adresse', 'fournisseurs.service', 'fournisseurs.description', 'fournisseurs.photo', 'fournisseurs.created_at', 'fournisseurs.updated_at')
+            ->groupBy('fournisseurs.id', 'fournisseurs.nom', 'fournisseurs.prenom', 'fournisseurs.raison', 'fournisseurs.email2',
+            'fournisseurs.email', 'fournisseurs.telephone', 'fournisseurs.telephone2', 'fournisseurs.citie', 'fournisseurs.adresse',
+            'fournisseurs.vues', 'fournisseurs.fb', 'fournisseurs.insta', 'fournisseurs.whatsapp', 'fournisseurs.countContact', 'fournisseurs.statut',
+            'fournisseurs.service', 'fournisseurs.description', 'fournisseurs.photo', 'fournisseurs.created_at', 'fournisseurs.updated_at')
             ->selectRaw('ROUND(AVG(feedback.rating), 1) AS average_rating')
             ->withCount('feedbacks')
             ->orderByDesc('average_rating')
