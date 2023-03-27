@@ -144,6 +144,7 @@
         <a href="#" class="btn  load-more active" role="button" data-bs-toggle="button" aria-pressed="true">Voir
             plus >></a>
     </div>
+    @if ($allreadyAddFeed)
     <!-- Add Comment Form -->
     <h4 class="mt-4">Add Comment</h4>
     <form id="addCommit">
@@ -205,7 +206,8 @@
         <center>        
             <button type="submit" style="width: 40%;" class="btn btn-primary">Submit</button>
         </center>
-    </form>
+    </form>    
+    @endif
 </div>
 <!-- Modal -->
 <div class="modal fade" id="ModalErreur" tabindex="-1" role="dialog" aria-labelledby="ModalErreurTitle"

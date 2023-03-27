@@ -39,7 +39,16 @@ class ClientController extends Controller
                                 ->get();
         Fournisseur::where('id', $id)->increment('vues');
         $idFileImages = User::select('id')->where('type', 'fournisseur')->where('id_user',$id)->get();
-        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages ]);
+        $feeds =  Feedback::join('clients','clients.id','=','feedback.id_client')
+                            ->select('feedback.*','clients.nom','clients.prenom')
+                            ->where('id_fournisseur',$id)
+                            ->where('id_client',session('profile')->id)
+                            ->get();
+        if ($feeds->count() === 0)
+            $allreadyAddFeed = true;
+        else 
+            $allreadyAddFeed = false;
+        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages , 'allreadyAddFeed' => $allreadyAddFeed ]);
     }
 
     public static function profile(){
