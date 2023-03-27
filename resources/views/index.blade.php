@@ -60,7 +60,6 @@
     </div>
     <!-- Carousel End -->
 
-
     <!-- Booking Start -->
     <div class="container-fluid booking mt-5 pb-5">
         <div class="container pb-5">
@@ -102,7 +101,77 @@
         </div>
     </div>
 
-    <div class="container-fluid py-5" style="margin-top: -9%;">
+    <!-- Packages Start -->
+    <div class="container pt-5 pb-3 mb-4" style="margin-top : -6%">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Prestateurs</h6>
+            <h1>Notre Perfects Prestateurs</h1>
+        </div>
+        <div class="row">
+            @foreach ($fournisseurs as $fournisseur)
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-item bg-white mb-2" style="height: 410px;">
+                        <a href="fournisseur/{{ $fournisseur->id }}">
+                            <img class="img-fluid" src="fournisseurs/{{ $fournisseur->photo }}" alt=""
+                                style="height: 250px; width:100%">
+                        </a>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i
+                                        class="fa fa-map-marker-alt text-primary mr-2"></i>{{ $fournisseur->citie }}</small>
+                                <small class="m-0"><i
+                                        class="fa fa-bullseye text-primary mr-2"></i>{{ $fournisseur->service }}</small>
+                                <small class="m-0"><i
+                                        class="fa fa-eye text-primary mr-2"></i>{{ $fournisseur->vues }}</small>
+                            </div>
+                            <a class="h5 text-decoration-none"
+                                href="fournisseur/{{ $fournisseur->id }}">{{ $fournisseur->raison }}</a>
+                            <div class="border-top mt-2 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i
+                                            class="fa fa-star text-primary mr-2"></i>{{ $fournisseur->average_rating }}
+                                        <small>({{ $fournisseur->feedbacks_count }})</small>
+                                    </h6>
+                                    <a href="fournisseur/{{ $fournisseur->id }}" class="btn btn-sm btn-secondary ml-auto"
+                                        style="width:30%; margin-top:-2%">Voir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <center>
+                <a class="btn btn-primary btn-block" style="width: 40%;" href="/fournisseur">Voir plus</a>
+            </center>
+        </div>
+    </div>
+    <!-- Packages End -->
+
+    <!-- Destination Start -->
+    <div class="container-fluid py-5" style="margin-top: -6%;">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
+                <h1>Découvrez Nos Services</h1>
+            </div>
+            <div class="row">
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid" src="services/{{ $service->description }}" alt="image 404"
+                                style="height: 230px">
+                            <a class="destination-overlay text-white text-decoration-none">
+                                <h5 class="text-white mt-2">{{ $service->libelle }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Destination Start -->
+
+    <div class="container-fluid py-5" style="margin-top: -8%;">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Avantages</h6>
@@ -163,37 +232,14 @@
     </div>
 
 
-    <!-- Destination Start -->
-    <div class="container-fluid py-5" style="margin-top: -8%;">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
-                <h1>Découvrez Nos Services</h1>
-            </div>
-            <div class="row">
-                @foreach ($services as $service)
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="destination-item position-relative overflow-hidden mb-2">
-                            <img class="img-fluid" src="services/{{$service->description}}" alt="image 404" style="height: 230px">
-                            <a class="destination-overlay text-white text-decoration-none">
-                                <h5 class="text-white mt-2">{{$service->libelle}}</h5>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- Destination Start -->
-
-
-    <div class="card-group">
+    <div class="card-group mb-4">
         <div class="card">
             <img src="../../img/event.jpg" class="card-img-top" alt="Connect with Customer">
             <div class="card-body">
-            <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
-            <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis rapidement</p>
-            <a href="{{route('register')}}#client" class="btn btn-primary cli">Créer un compte client</a>
+                <h5 class="card-title">Vous souhaitez trouver un prestataire ?</h5>
+                <p class="card-text">Recherchez des lieux pour vos événements professionnels et recevez des devis
+                    rapidement</p>
+                <a href="{{ route('register') }}#client" class="btn btn-primary cli">Créer un compte client</a>
             </div>
         </div>
         <div class="card">
@@ -201,56 +247,11 @@
             <div class="card-body">
                 <h5 class="card-title">Vous etes un prestataire évenementiel ?</h5>
                 <p class="card-text">Créez votre fiche lieu et recevez vos premières demandes de devis</p>
-                <a href="{{route('register')}}#prefournisseur" class="btn btn-primary prest clickPre">Référencer mon entreprise</a>
+                <a href="{{ route('register') }}#prefournisseur" class="btn btn-primary prest clickPre">Référencer mon
+                    entreprise</a>
             </div>
         </div>
     </div>
-
-    <!-- Packages Start -->
-    <div class="container-fluid py-5" >
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Prestateurs</h6>
-                <h1>Notre Perfects Prestateurs</h1>
-            </div>
-            <div class="row">
-                @foreach ($fournisseurs as $fournisseur)
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="package-item bg-white mb-2" style="height: 410px;">
-                            <a href="fournisseur/{{$fournisseur->id}}">
-                                <img class="img-fluid" src="fournisseurs/{{ $fournisseur->photo }}" alt=""
-                                    style="height: 250px; width:100%">
-                            </a>
-                            <div class="p-4">
-                                <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i
-                                            class="fa fa-map-marker-alt text-primary mr-2"></i>{{ $fournisseur->citie }}</small>
-                                    <small class="m-0"><i
-                                            class="fa fa-bullseye text-primary mr-2"></i>{{ $fournisseur->service }}</small>
-                                    <small class="m-0"><i
-                                            class="fa fa-eye text-primary mr-2"></i>{{ $fournisseur->vues }}</small>
-                                </div>
-                                <a class="h5 text-decoration-none" href="fournisseur/{{$fournisseur->id}}">{{ $fournisseur->raison }}</a>
-                                <div class="border-top mt-2 pt-4">
-                                    <div class="d-flex justify-content-between">
-                                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{$fournisseur->average_rating}}
-                                                <small>({{$fournisseur->feedbacks_count}})</small>
-                                            </h6>
-                                        <a href="fournisseur/{{$fournisseur->id}}" class="btn btn-sm btn-secondary ml-auto"
-                                            style="width:30%; margin-top:-2%">Voir</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                <center>
-                    <a class="btn btn-primary btn-block" style="width: 40%;" href="/fournisseur">Voir plus</a>
-                </center>
-            </div>
-        </div>
-    </div>
-    <!-- Packages End -->
 
     <style>
         .border-rad {
@@ -290,7 +291,7 @@
             </div>
         </div>
     </div>
-    <div class="d-flex justify-content-center align-items-center rows" id="newsletter">
+    <div class="d-flex justify-content-center align-items-center rows" id="newsletter" style="margin-top : 5%">
         <div class="col-md-6">
             <div class="row">
                 <div class="text-center">
