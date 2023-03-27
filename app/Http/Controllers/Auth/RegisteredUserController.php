@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Prefournisseur;
 use App\Models\Client;
+use App\Models\Citie;
 use App\Models\Classe;
 use App\Models\Service;
 use App\Providers\RouteServiceProvider;
@@ -29,7 +30,8 @@ class RegisteredUserController extends Controller
                             ->select('services.*','classes.type','classes.prix_monthly')
                             ->get();
         $classes = classe::all();
-        return view('auth.register',["services"=>$services, "classes" => $classes]);
+        $cities = Citie::all();
+        return view('auth.register',["services"=>$services, "classes" => $classes, 'cities' => $cities]);
     }
 
     /**
@@ -56,6 +58,7 @@ class RegisteredUserController extends Controller
             $client = new Client;
             $client->nom = $request->nom;
             $client->telephone = $request->phone;
+            $client->citie = $request->citie;
             $client->save();
             $user = User::create([
                 'username' => $request->username,

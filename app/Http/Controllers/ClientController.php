@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Fournisseur;
 use App\Models\Feedback;
+use App\Models\Citie;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,6 +49,7 @@ class ClientController extends Controller
                             ->select('feedback.*', 'fournisseurs.raison')
                             ->get();
         $client = Client::select('*')->where('id',session('profile')->id)->get();
-        return view('client.profile', ["client" => $client->first(), "feedbacks"=>$feedbacks]);
+        $cities = Citie::all();
+        return view('client.profile', ["client" => $client->first(), "feedbacks"=>$feedbacks, 'cities' => $cities]);
     }
 }

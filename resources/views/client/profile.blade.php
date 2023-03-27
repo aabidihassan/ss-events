@@ -106,6 +106,23 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
+                                        <h6 class="mb-0">{{__('Ville')}}</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <select name="citie" class="custom-select px-4" style="height: 47px;" required="required">
+                                            <option value="" >Choisir une ville</option>
+                                            @foreach ($cities as $citie)
+                                                <option value="{{ $citie->name }}" 
+                                                @if ($citie->name == $client->citie )
+                                                    selected
+                                                @endif
+                                                >{{ $citie->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
                                         <h6 class="mb-0">Address</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">

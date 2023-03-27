@@ -53,6 +53,14 @@
                                 autocomplete="new-password" />
                             <p class="help-block text-danger"></p>
                         </div>
+                        <div class="control-group">
+                            <select name="citie" class="custom-select px-4" style="height: 47px;" required="required">
+                                <option value="" selected>Choisir une ville</option>
+                                @foreach ($cities as $citie)
+                                    <option value="{{ $citie->name }}">{{ $citie->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="mt-3">
                             Vous avez deja un compte? <a href="/login">Authentifier par ici!</a>
                         </div>

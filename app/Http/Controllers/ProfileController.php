@@ -12,7 +12,7 @@ class ProfileController extends Controller
     public static function editProfile(Request $req){
         if(auth()->user()->type=='client'){
             Client::where('id', auth()->user()->id_user)
-            ->update(['nom'=>$req->nom, 'prenom'=>$req->prenom, 'email'=>$req->email, 'telephone'=>$req->telephone, 'adresse'=>$req->adresse]);
+            ->update(['nom'=>$req->nom, 'prenom'=>$req->prenom, 'email'=>$req->email, 'telephone'=>$req->telephone, 'adresse'=>$req->adresse ,'citie'=>$req->citie]);
             $client = Client::where('id', auth()->user()->id_user)->first();
             $req->session()->put('profile', $client);
         }else{
