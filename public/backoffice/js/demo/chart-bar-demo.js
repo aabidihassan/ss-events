@@ -26,9 +26,9 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
-
-// Bar Chart Fournisseur par ville
 var ctxV = document.getElementById("myBarChartFournisseurVille");
+if (ctxV != null) {
+// Bar Chart Fournisseur par ville
 var maxData = Math.max(..._data_myAreaChartBarFournissuerVille);
 var myBarChart = new Chart(ctxV, {
   type: 'bar',
@@ -110,8 +110,10 @@ var myBarChart = new Chart(ctxV, {
     },
   }
 });
+}
 // Bar Chart Fournisseur par Services
 var ctxS = document.getElementById("myBarChartFournisseurService");
+if (ctxS != null) {
 var maxData = Math.max(..._data_myAreaChartBarFournissuerService);
 var myBarChart = new Chart(ctxS, {
   type: 'bar',
@@ -192,7 +194,8 @@ var myBarChart = new Chart(ctxS, {
       }
     },
   }
-});
+}); 
+}
 function FparServices() {
   document.getElementById('titel_charts_bar').innerText = "Chart Fournisseurs Par Services";
   ctxS.style.display = "block";
@@ -205,6 +208,7 @@ function FparVilles() {
 }
 // Bar Chart Example
 var ctx = document.getElementById("myBarChartClient");
+if (ctx!= null) {
 var maxDataC = Math.max(..._data_myAreaChartBarClients);
 var myBarChart = new Chart(ctx, {
   type: 'bar',
@@ -286,3 +290,4 @@ var myBarChart = new Chart(ctx, {
     },
   }
 });
+}

@@ -2,10 +2,16 @@
 @section('title', 'Profile')
 
 @section('content')
+<div class="alert alert-danger imgError alert-dismissible d-none" role="alert">
+    {{ __('Chaque fournisseur ne peut télécharger que 9 photos au maximum.')}}
+    <button type="button" class="close alertImg" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@if (session()->has('message'))
+<div class="alert alert-success" role="alert">{{__('Les informations sont bien enregistrées!')}}</div>
+@endif
 <div class="row">
-     @if (session()->has('message'))
-    <div class="alert alert-success" role="alert">les informations sont bien enregistrées!</div>
-    @endif
     <div class="col-xl-4 col-lg-5">
         <div class="card shadow mb-4">
             <!-- Card Body -->
@@ -254,9 +260,10 @@
                                 <img class="card-img-top"
                                     src="{{ asset('fournisseurs/' . auth()->user()->id . '/' . $file->getFilename()) }}"
                                     style="height: 200px;">
-                                <button type="button" class="btn btn-primary mt-1 ml-3 mr-3 set-profile-picture"
-                                    style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Choisir photo
-                                    de profile</button>
+                                <button type="button" class="col btn btn-primary m-1 set-profile-picture"
+                                        style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Choisir photo de profile</button>
+                                <button type="button" class="col btn btn-danger m-1 delete-profile-picture"
+                                        style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Supprimier photo</button>
                             </div>
                         @endforeach
                         </div>
@@ -284,29 +291,60 @@
 @section('script')
 <script>
     $(document).ready(function() {
+        $(".imgError").toggle();
         $('.bn-ac').removeClass('active');
         $(".bn-ac").eq(1).addClass('active');
         $('#submit-image').click(function() {
             let image = $('#image-input')[0].files[0];
             let formData = new FormData();
+            let etatAddPic = false;
             formData.append('image', image);
-
             $.ajax({
-                url: "{{ route('image.store') }}",
-                method: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
+                url: "{{ route('image.checkCount') }}",
+                method: 'GET',
                 success: function(response) {
-                    location.reload();
+                    if(response < 9) {
+                        $.ajax({
+                        url: "{{ route('image.store') }}",
+                        method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(responses) {
+                            location.reload();
+                            }
+                        });   
+                    }else{
+                        $('html, body').animate({
+                            scrollTop: $('.imgError').offset().top}, 500);
+                        $('.imgError').removeClass('d-none');
+                    }
                 }
             });
         });
-
+        $('.alertImg').click(function () {
+            $('.imgError').addClass('d-none');
+        });
         $('.set-profile-picture').click(function() {
             var image = $(this).data('image');
             $.ajax({
                 url: "{{ route('profile_picture.update') }}",
+                type: 'POST',
+                data: {
+                    image: image
+                },
+                success: function(result) {
+                    location.reload();
+                },
+                error: function(error) {
+                    alert("Erreur")
+                }
+            });
+        });
+        $('.delete-profile-picture').click(function() {
+            var image = $(this).data('image');
+            $.ajax({
+                url: "{{ route('profile_picture.delete') }}",
                 type: 'POST',
                 data: {
                     image: image

@@ -1,3 +1,5 @@
+@extends('layouts.master')
+@section('content')
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -15,7 +17,6 @@
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
-
             <!-- Email Address -->
             <div>
                 <x-input-label for="email" :value="__('Email')" />
@@ -33,3 +34,4 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+@endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Fournisseur;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -52,5 +53,23 @@ class ProfileController extends Controller
         $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
         $request->session()->put('profile', $fournisseur);
         return response()->json(['message' => 'Profile picture updated successfully']);
+    }
+    public function deleteProfilePicture(Request $request){
+    
+        $imagePath = public_path('fournisseurs/'.auth()->user()->id . "/" .$request->image);
+        if (file_exists($imagePath)) {
+            if (unlink($imagePath)) {
+                return response()->json(['message' => 'Picture delete successfully']);
+            } else {
+                return response()->json(['message' => 'Error deleting Picture']);
+            }
+        }
+        return response()->json(['message' => 'Picture does not exist']);
+    }
+    public function checkCount(Request $request)
+    {
+        $path = public_path('fournisseurs/' . auth()->user()->id);
+        $fileCount = count(File::allFiles($path));
+        return $fileCount;
     }
 }

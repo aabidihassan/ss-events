@@ -4,6 +4,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 var colors_libelle = ["text-primary","text-info","text-success","text-warning","text-danger",'text-dark']
 // Pie Chart Vues par ville
 var ctxVueV = document.getElementById("myPieChartVuesVille");
+if (ctxVueV != null) {
 var myPieChart = new Chart(ctxVueV, {
   type: 'doughnut',
   data: {
@@ -33,8 +34,10 @@ var myPieChart = new Chart(ctxVueV, {
     cutoutPercentage: 80,
   },
 });
-// Pie Chart Vues par service
+}
 var ctxVueS = document.getElementById("myPieChartVuesService");
+if (ctxVueS != null) {
+// Pie Chart Vues par service
 var myPieChart = new Chart(ctxVueS, {
   type: 'doughnut',
   data: {
@@ -64,6 +67,7 @@ var myPieChart = new Chart(ctxVueS, {
     cutoutPercentage: 80,
   },
 });
+}
 var libs = document.getElementById("keys_libelle_vues");
 function VparServices() {
   document.getElementById('titel_charts_Pie_Vue').innerText = "Chart Vues Par Services";
@@ -87,9 +91,9 @@ function VparVilles() {
     i++;
   });
 } 
-
+var ctxContactV = document.getElementById("myPieChartCantactVille");
+if (ctxContactV != null) {
 // Pie Chart Contact par ville
-var ctxContactV= document.getElementById("myPieChartCantactVille");
 var myPieChart = new Chart(ctxContactV, {
   type: 'doughnut',
   data: {
@@ -119,8 +123,10 @@ var myPieChart = new Chart(ctxContactV, {
     cutoutPercentage: 80,
   },
 });
+}
+var ctxContactS = document.getElementById("myPieChartCantactService");
+if (ctxContactS != null) {
 // Pie Chart Contact par service
-var ctxContactS= document.getElementById("myPieChartCantactService");
 var myPieChartCS = new Chart(ctxContactS, {
   type: 'doughnut',
   data: {
@@ -150,6 +156,7 @@ var myPieChartCS = new Chart(ctxContactS, {
     cutoutPercentage: 80,
   },
 }); 
+}
 var libsC = document.getElementById("keys_libelle_contact");
 function CparServices() {
   document.getElementById('titel_charts_Pie_Contact').innerText = "Chart Contact Par Services"; 

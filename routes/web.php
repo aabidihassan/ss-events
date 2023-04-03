@@ -130,6 +130,14 @@ Route::post('profile_picture/update', [ProfileController::class, 'updateProfileP
     ->middleware(['auth'])
     ->name('profile_picture.update');
 
+Route::post('profile_picture/delete', [ProfileController::class, 'deleteProfilePicture'])
+    ->middleware(['auth'])
+    ->name('profile_picture.delete');
+
+Route::get('image/checkCount', [ProfileController::class, 'checkCount'])
+    ->middleware(['auth'])
+    ->name('image.checkCount');
+
 //Routes Back office for administrator
 
 Route::get('/administrator', function () {
