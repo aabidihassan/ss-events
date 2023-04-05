@@ -246,4 +246,14 @@ Route::post('/administrator/addAbonnement', [FournisseurController::class, 'crea
     ->middleware(['auth'])
     ->name('createAbonnement');
 
+Route::get('/administrator/feedbacks/{id}', [FeedbackController::class, 'getFeedbacksFournisseur'])
+    ->middleware(['auth'])
+    ->name('feedbacksFournisseur');
+Route::post('/administrator/feedbacks/update', [FeedbackController::class, 'updateFeedback'])
+    ->middleware(['auth'])
+    ->name('updateFeedback');
+Route::get('/administrator/feedbacks/delete/{id_client}/{id_fournisseur}', [FeedbackController::class, 'deleteFeedbacks'])
+    ->middleware(['auth'])
+    ->name('deleteFeedback');
+
 //End Routes Back office for administrator

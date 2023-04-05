@@ -39,6 +39,7 @@
                             @else
                             <a class="btn btn-primary btn-Accepter" data-fournisseur="{{$l}}">Activer</a>
                             @endIf
+                            <a class="btn btn-info" href="{{ '/administrator/feedbacks/' . $l->id }}">Feefbacks</a>
                         </td>
                     </tr>
                     @endforeach
