@@ -40,7 +40,7 @@
                     <h4 class="m-0">
             @endif
             <p class="lead">Raison : {{ $fournisseur[0]->raison }}</p>
-            <p class="lead">Email : {{ $fournisseur[0]->email }}</p>
+            <p class="lead">Email : <a href="mailto:{{ $fournisseur[0]->email }}">{{ $fournisseur[0]->email }}</a></p>
             <p class="lead">Telephone : {{ $fournisseur[0]->telephone }}</p>
             <p class="lead">Ville : {{ $fournisseur[0]->citie }}</p>
             <p class="lead">Service : {{ $fournisseur[0]->service }}</p>

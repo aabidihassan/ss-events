@@ -40,11 +40,12 @@ class ServiceController extends Controller
     public function addService(Request $request)
     {
         try {
-             $data = Service::where('libelle',$request->libelle)->first();
+            $data = Service::where('libelle',$request->libelle)->first();
             $message = null;
             if ($data) {
                 $message = ['code' => '0' , 'msg' => 'Service Libelle déjà existe !'];
             }else {
+                return $_FILES['image'];
                 $service = new Service;
                 $uploaddir = 'services/';
                 $nameImg = uniqid() . '_' . basename($_FILES['image']['name']);
@@ -77,7 +78,27 @@ class ServiceController extends Controller
     public static function update(Request $req)
     {
         $service =  service::find($req->id_service);
+        $message = null;
         if ($service) {
+            if(isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
+                $uploaddir = 'services/';
+                $nameImg = uniqid() . '_' . basename($_FILES['image']['name']);
+                $uploadfile = $uploaddir . $nameImg;
+                $imageFileType = strtolower(pathinfo($uploadfile,PATHINFO_EXTENSION));
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
+                    $message = ['code' => '1' , 'msg' => 'Service à été modifé. '];
+                    $imagePath = public_path('services/' .$service->description);
+                    if (file_exists($imagePath)) {
+                        if (unlink($imagePath))
+                            $message = ['code' => '1' , 'msg' => 'Service à été modifé. '];
+                        else 
+                        $message = ['code' => '0' , 'msg' => 'Error deleting old image. '];
+                    }
+                    $service->description = $nameImg;
+                } else
+                    $message = ['code' => '0' , 'msg' => 'Erreur lors de modifé du service. '];
+            } else
+                $message = ['code' => '0' , 'msg' => 'Le champ de fichier image est requis. '];
             $service->libelle = $req->libelle;
             $service->id_classe = $req->classe;
             $service->save();

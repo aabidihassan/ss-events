@@ -104,12 +104,16 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('updateService')}}" method="post">
+            <form action="{{route('updateService')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">{{__('Libelle :')}}</label>
                         <input type="text" class="form-control" required id="libelleUp" name="libelle">
+                    </div>
+                    <div class="form-group">
+                        <label for="image-input" class="col-form-label">{{__('Image :')}}</label>
+                        <input type="file" class="file-input" placeholder="Choisir une photo" accept="image/*" name="image" id="image-input">
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">{{__('Services:')}}</label>
@@ -170,17 +174,6 @@
             $('#libelleUp').val($(this).parent().prev().prev().prev().text());
             $('#id_classe_update').val($(this).attr('data-classe'));
         });
-        /*$("#addService").on('submit', function (event) {
-            event.preventDefault();
-            var form = new FormData();
-            var image = $('#image-input')[0].files[0];
-            var libelle = $('#addLibelle').val();
-            var classe = $('#addClasse').val();
-            form.append('image', image);
-            form.append('libelle', libelle);
-            form.append('classe', classe);
-            $(this).submit();
-        });*/
     });
 </script>
 @endsection
