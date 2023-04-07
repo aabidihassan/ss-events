@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\favoirController;
 use App\Http\Controllers\AbonnementsController;
 require __DIR__ . '/auth.php';
 /*
@@ -86,7 +87,9 @@ Route::post('/editCompte', [ProfileController::class, 'editCompte'])
 Route::post('/editProfile', [ProfileController::class, 'editProfile'])
     ->middleware(['auth'])
     ->name('editProfile');
-
+Route::post('/fournisseur/addFavoir', [favoirController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('favoir');
 //End Routes for clients
 
 //Routes Back office for fournisseur

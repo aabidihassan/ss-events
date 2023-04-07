@@ -16,6 +16,7 @@
                         <th>Email</th>
                         <th>Telephone</th>
                         <th>statut</th>
+                        <th>Nb contact</th>
                         <th>Nb vues</th>
                         <th>Action</th>
                     </tr>
@@ -32,6 +33,7 @@
                             @else Desactive
                             @endIf
                         </td>
+                        <td>{{$l->countContact}}</td>
                         <td>{{$l->vues}}</td>
                         <td>
                             @if($l->statut)

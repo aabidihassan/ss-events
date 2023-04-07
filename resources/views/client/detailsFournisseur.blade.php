@@ -28,20 +28,29 @@
         transition: transform 0.2s ease-in-out;
     }
 </style>
-
 <div class="container my-2">
     <div class="row p-2 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+
             <h1 class="display-4 fw-bold lh-1"> {{ $fournisseur[0]->raison }} </h1>
+            <h4 class="addfavoir"><span>Ajouter dans ma liste favoirs</span>
+                @if ($favoir)
+                <i class="fa fa-star text-warning mr-2"></i>
+                @else
+                <i class="fa fa-star mr-2"></i>
+                @endif
+            </h4>
+            
             @if ($avgRating)
                 <h4 class="fw-bold m-0">
-                    <i class="fa fa-star text-primary mr-2"></i>{{ $avgRating->average }}
+                    <i class="fa fa-star text-primary mr-2"></i>
+                    {{ $avgRating->average }}
                     <small>({{ $avgRating->count }})</small>
                     <h4 class="m-0">
             @endif
             <p class="lead">Raison : {{ $fournisseur[0]->raison }}</p>
             <p class="lead">Email : <a href="mailto:{{ $fournisseur[0]->email }}">{{ $fournisseur[0]->email }}</a></p>
-            <p class="lead">Telephone : {{ $fournisseur[0]->telephone }}</p>
+            <p class="lead">Telephone : <a target="_blank" class="lnikIncrementCW" href="https://wa.me/{{ $fournisseur[0]->whatsapp }}?text=Hello%2C%20I%20am%20interested%20in%20your%20product.">Contact me from here</a></p>
             <p class="lead">Ville : {{ $fournisseur[0]->citie }}</p>
             <p class="lead">Service : {{ $fournisseur[0]->service }}</p>
             <p class="lead">Address : {{ $fournisseur[0]->adresse }}</p>
@@ -60,7 +69,7 @@
                 @endif
                 @if ($fournisseur[0]->whatsapp != null)
                     <li class="ms-3">
-                        <a class="text-muted"
+                        <a class="text-muted lnikIncrementCW"
                             href="https://wa.me/{{ $fournisseur[0]->whatsapp }}?text=Hello%2C%20I%20am%20interested%20in%20your%20product."
                             target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#FA86C4"
@@ -97,8 +106,6 @@
         $files = File::allFiles($path);
    }
 @endphp
-
-
 @if(!empty($files))
 <div class="container px-4 py-2" id="custom-cards">
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
@@ -355,7 +362,21 @@
                 url: '{{ route('incrementCW') }}',
                 data: {"id" : {{$fournisseur[0]->id}}},
                 success: function(response) {
-                    
+                }
+            });
+        });
+        $(".addfavoir").click(function() {
+            let addOrdelete = true;
+            if ($(this).children().eq(1).hasClass('text-warning')) {
+                $(this).children().eq(1).removeClass('text-warning');
+                addOrdelete = false;
+            }else
+                $(this).children().eq(1).addClass('text-warning');
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('favoir') }}',
+                data: {"id" : {{$fournisseur[0]->id}},"addOrdelete" : addOrdelete},
+                success: function(response) {
                 }
             });
         });

@@ -60,6 +60,9 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-card-header" href="#contact-info">Feedback Table</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-card-header" href="#favoirs">Favoirs Table</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="card-body">
@@ -157,6 +160,28 @@
                                                     <td>{{ $feedback->commentaire }}</td>
                                                     <td>{{ $feedback->dateCommit }}</td>
                                                     <td>{{ $feedback->rating }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="favoirs" class="content-body-card" style="display: none;">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" d="dataTable">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Fournisseur</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($favoirs as $favoir)
+                                                <tr>
+                                                    <td><a href="fournisseur/{{ $favoir->fournisseur_id }}">{{ $favoir->nom }} {{ $favoir->prenom }}</a></td>
+                                                    <td>{{ $favoir->created_at }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

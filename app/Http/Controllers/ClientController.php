@@ -6,6 +6,7 @@ use App\Models\Fournisseur;
 use App\Models\Feedback;
 use App\Models\Citie;
 use App\Models\User;
+use App\Models\favoir;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,12 +46,12 @@ class ClientController extends Controller
                                 ->select('feedback.*','clients.nom','clients.prenom')
                                 ->where('id_fournisseur',$id)
                                 ->where('id_client',session('profile')->id)
-                                ->get();
-        if (is_array($feeds) && count($feeds) > 0) 
-            $allreadyAddFeed = true;
-        else 
-            $allreadyAddFeed = false;
-        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),"idFileImages" => $idFileImages , 'allreadyAddFeed' => $allreadyAddFeed ]);
+                                ->exists();
+        $favoir = favoir::where('client_id',session('profile')->id)
+                        ->where('fournisseur_id',$id)->exists();
+        return view('client.detailsFournisseur', ["fournisseur"=>$data, "feedbacks" => $feedbacks,"avgRating" => $avgRating->first(),
+                                    "idFileImages" => $idFileImages , 'allreadyAddFeed' => $feeds,
+                                    'favoir' => $favoir ]);
     }
 
     public static function profile(){
@@ -59,8 +60,12 @@ class ClientController extends Controller
                             ->where('feedback.id_client', session('profile')->id)
                             ->select('feedback.*', 'fournisseurs.raison')
                             ->get();
+        $favoirs = favoir::join('fournisseurs', 'favoirs.fournisseur_id', '=', 'fournisseurs.id')
+                            ->where('favoirs.client_id', session('profile')->id)
+                            ->select('favoirs.*', 'fournisseurs.nom' , 'fournisseurs.prenom')
+                            ->get();
         $client = Client::select('*')->where('id',session('profile')->id)->get();
         $cities = Citie::all();
-        return view('client.profile', ["client" => $client->first(), "feedbacks"=>$feedbacks, 'cities' => $cities]);
+        return view('client.profile', ["client" => $client->first(), "feedbacks"=>$feedbacks, 'cities' => $cities, 'favoirs' => $favoirs]);
     }
 }
