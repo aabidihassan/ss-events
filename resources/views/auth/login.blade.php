@@ -47,6 +47,9 @@
                             <div style="margin-top:4%;">
                                 Vous n'avez pas de compte? <a href="/register">Creer un par ici!</a>
                             </div>
+                            <div style="margin-top:4%;">
+                                Vous avez oublié votre mot de passe? <a href="/forgot-password">Récupérer un par ici!</a>
+                            </div>
                             <div class="text-center" style="margin-top:4%;">
                                 <button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">S'authentifier</button>
                             </div>

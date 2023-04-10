@@ -14,6 +14,7 @@ class ProfileController extends Controller
         if(auth()->user()->type=='client'){
             Client::where('id', auth()->user()->id_user)
             ->update(['nom'=>$req->nom, 'prenom'=>$req->prenom, 'email'=>$req->email, 'telephone'=>$req->telephone, 'adresse'=>$req->adresse ,'citie'=>$req->citie]);
+            User::where('id',auth()->user()->id)->update(['email'=>$req->email]);
             $client = Client::where('id', auth()->user()->id_user)->first();
             $req->session()->put('profile', $client);
         }else{
@@ -22,6 +23,7 @@ class ProfileController extends Controller
             'citie'=>$req->citie, 'service'=>$req->service,
             'raison'=>$req->raison, 'adresse'=>$req->adresse, 'email2'=>$req->email2, 'telephone2'=>$req->telephone2, 'description'=>$req->description,
             'fb'=>$req->fb, 'whatsapp'=>$req->whatsapp, 'insta'=>$req->insta]);
+            User::where('id',auth()->user()->id)->update(['email'=>$req->email]);
             $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
             $req->session()->put('profile', $fournisseur);
         }

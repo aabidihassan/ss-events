@@ -1,37 +1,38 @@
-@extends('layouts.master')
-@section('content')
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('layouts.pages')
+@section('containner')
+@section('title', 'Réinitialisation du mot de passe')
+    <!-- Contact Start -->
+    <div class="container-fluid py-5" style="margin-top:-5%;">
+        <div class="container py-5">
+            <div class="text-center mb-1 pb-3">
+                <h2>Réinitialisation du mot de passe</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <form method="POST" action="{{ route('password.email') }}" autocomplete="off">
+                        @csrf
+                        @if($errors->get('username'))
+                            <div class="alert alert-danger" role="alert">les informations sont incorrects!!</div>
+                        @endif
+                                <div class="mb-4 text-sm text-gray-600">
+                                    {{ __('Mot de passe oublié? Aucun problème. Indiquez-nous simplement votre adresse e-mail et nous vous enverrons par e-mail un lien de réinitialisation de mot de passe qui vous permettra d\'en choisir un nouveau.') }}
+                                </div>
+                            <div class="control-group mt-4">
+                                <input type="email" class="form-control p-4" id="email" name="email" placeholder="Votre email"
+                                    required="required" data-validation-required-message="Veuillez entrer email" autocomplete="off" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center" style="margin-top:4%;">
+                                <button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">{{__('Lien de réinitialisation du mot de passe par e-mail')}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- Contact End -->
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
-@endsection
+@stop

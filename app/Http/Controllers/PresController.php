@@ -39,6 +39,7 @@ class PresController extends Controller
             $user->password = \Hash::make($user->username);
             $user->type = 'fournisseur';
             $user->id_user = $fournisseur->id;
+            $user->email =$fournisseur->email;
             $user->save();
             Prefournisseur::where('id', $req->id_prefournisseur)->delete();
             $path = public_path('fournisseurs/'.$user->id);

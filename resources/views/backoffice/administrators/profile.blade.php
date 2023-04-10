@@ -42,6 +42,10 @@
                                 autocomplete="new-password">
                         </div>
                         <div class="col text-secondary">
+                            <input type="email" class="form-control" name="email"
+                            value="{{ auth()->user()->email }}">
+                        </div>
+                        <div class="col text-secondary">
                             <input type="submit" class="btn btn-primary px-4 mt-4" value="Modifier">
                         </div>
                     </div>

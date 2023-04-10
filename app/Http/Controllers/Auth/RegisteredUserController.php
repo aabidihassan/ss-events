@@ -64,6 +64,7 @@ class RegisteredUserController extends Controller
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
                 'type' => 'client',
+                'email' => '',
                 'id_user' => $client->id
             ]);
             $request->session()->put('profile', $client);
