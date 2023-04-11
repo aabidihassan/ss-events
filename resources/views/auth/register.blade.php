@@ -12,7 +12,7 @@
 </style>
 <!-- Contact Start -->
 <div id="client-register" class="container-fluid py-5" style="margin-top:-2%; display:none;">
-    <div class="container py-5">
+    <div class="container py-3">
         <div class="text-center mb-1 pb-3">
             <h2>Créer un compte Client</h2>
         </div>
@@ -43,6 +43,13 @@
                             <input type="text" class="form-control p-4" id="username" name="username"
                                 placeholder="Nom d'utilisateur" required="required"
                                 data-validation-required-message="Veuillez entrer un nom d'utilisateur"
+                                autocomplete="off" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="email" name="email"
+                                placeholder="Email" required="required"
+                                data-validation-required-message="Veuillez entrer un email"
                                 autocomplete="off" />
                             <p class="help-block text-danger"></p>
                         </div>

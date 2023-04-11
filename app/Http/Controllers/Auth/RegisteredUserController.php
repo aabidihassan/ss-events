@@ -26,12 +26,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $services = Service::join('classes','classes.id','=','services.id_classe')
-                            ->select('services.*','classes.type','classes.prix_monthly')
-                            ->get();
-        $classes = classe::all();
         $cities = Citie::all();
-        return view('auth.register',["services"=>$services, "classes" => $classes, 'cities' => $cities]);
+        return view('auth.register',['cities' => $cities]);
     }
 
     /**
@@ -63,6 +59,7 @@ class RegisteredUserController extends Controller
             $user = User::create([
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
+                'email' => $request->email,
                 'type' => 'client',
                 'email' => '',
                 'id_user' => $client->id
