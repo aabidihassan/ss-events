@@ -12,11 +12,8 @@ use App\Http\Controllers\FileSystem;
 class ServiceController extends Controller
 {
     public static function index(){
-        $services = Service::join('classes','classes.id','=','services.id_classe')
-                            ->select('services.*','classes.type','classes.prix_monthly')
-                            ->get();
-        $classes = classe::all();
-        return view('client/services', ["services"=>$services, "classes"=>$classes]);
+        $services = Service::all();
+        return view('client/services', ["services"=>$services]);
     }
 
     public static function getAll(){
@@ -91,7 +88,7 @@ class ServiceController extends Controller
                     if (file_exists($imagePath)) {
                         if (unlink($imagePath))
                             $message = ['code' => '1' , 'msg' => 'Service à été modifé. '];
-                        else 
+                        else
                         $message = ['code' => '0' , 'msg' => 'Error deleting old image. '];
                     }
                     $service->description = $nameImg;

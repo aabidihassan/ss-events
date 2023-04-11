@@ -2,7 +2,7 @@
 @section('title', 'Prestataire')
 @section('containner')
 
-<link rel="stylesheet" href="{{ asset('css/espace-prestataire.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/espace-prestataire.css') }}">
 
     <div class="wrapper">
         <div class="container">
@@ -134,7 +134,7 @@
             <h2 class="text-center mb-4">Découvrez Nos Offres !</h2>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-6">
-                    <div class="pricingTable">
+                    <div class="pricingTable " style="height: 570px;">
                         <div class="pricingTable-header">
                             <div class="price-value"> <b> Gold </b></div>
                         </div>
@@ -149,13 +149,21 @@
                                 <li><b>Dashboard</b> de suivie et gestion.</li>
                             </ul>
                         </div>
+                        <div style="display: flex" class="justify-content-center">
+                            <select class="form-select mb-3" id="gold-select" style="width: 60%">
+                                @foreach ($services as $service)
+                                    <option value="" class="text-center">{{ $service->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="pricingTable-signup">
                             <a>Inscrivez-Vous</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <div class="pricingTable green">
+                    <div class="pricingTable green" style="height: 570px">
                         <div class="pricingTable-header">
                             <div class="price-value"> <b> Platinum </b></div>
                         </div>
@@ -173,6 +181,14 @@
                                 <li><b>Personalinsé</b>vos pubs</li>
                             </ul>
                         </div>
+                        {{-- <div style="display: flex;" class="justify-content-center">
+                            <select class="form-select mb-3" id="platinum-select" style="width: 70%">
+                                @foreach ($services as $service)
+                                    <option value="">{{ $service->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
+
                         <div class="pricingTable-signup">
                             <a>Inscrivez-Vous</a>
                         </div>
@@ -182,51 +198,4 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-8 offset-md-2 mt-4">
-            <h2 class="text-center mb-4">Découvrez Nos Abonnements !!</h2>
-            <div class="table-responsive compare-packages">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th width="240px">
-                                Services
-                                {{-- <p>Total Prices for each service</p> --}}
-                            </th>
-                            @foreach ($classes as $classe)
-                                <th data-classe="{{ $classe->id }}">
-                                    {{ $classe->type }}
-                                </th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($services as $service)
-                            <tr>
-                                <td data-group="{{ $service->id_classe }}">{{ $service->libelle }}</td>
-                                @foreach ($classes as $classe)
-                                    @if ($service->id_classe == $classe->id)
-                                        <td><i class="fa fa-check-circle text-success"></i></td>
-                                    @else
-                                        <td><i class="fa fa-times-circle text-danger"></i></td>
-                                    @endif
-                                @endforeach
-                            </tr>
-                        @endforeach
-                        <tr>
-                            <td>Total Prices</td>
-                            @foreach ($classes as $classe)
-                                <td>
-                                    {{ $classe->prix_monthly }} (MAD)
-                                    <br />
-                                    <a href="#{{ $classe->type }}" class="btn btn-warning">Continue</a>
-                                </td>
-                            @endforeach
-                        </tr>
-                        <script></script>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 @stop

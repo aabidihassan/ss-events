@@ -33,7 +33,10 @@ class ClasseController extends Controller
     {
         $classe = new classe;
         $classe->type = $req->type;
-        $classe->prix_monthly = $req->prix;
+        $classe->gold_6_months = $req->gold_6_months;
+        $classe->gold_12_months = $req->gold_12_months;
+        $classe->platinum_6_months = $req->platinum_6_months;
+        $classe->platinum_12_months = $req->platinum_12_months;
         $classe->save();
         return redirect('/administrator/classes');
     }
@@ -84,7 +87,10 @@ class ClasseController extends Controller
         $classes = classe::all();
         if ($classe) {
             $classe->type = $req->type;
-            $classe->prix_monthly = $req->prix;
+            $classe->gold_6_months = $req->gold_6_months;
+            $classe->gold_12_months = $req->gold_12_months;
+            $classe->platinum_6_months = $req->platinum_6_months;
+            $classe->platinum_12_months = $req->platinum_12_months;
             $classe->save();
             $message = ['code' => '1' , 'msg' => 'Classe bien modéfier'];
             return redirect('/administrator/classes');

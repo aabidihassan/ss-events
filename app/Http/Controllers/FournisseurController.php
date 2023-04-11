@@ -31,7 +31,7 @@ class FournisseurController extends Controller
 
     public static function espaceFournisseur(){
         $services = Service::join('classes','classes.id','=','services.id_classe')
-                                        ->select('services.*','classes.type','classes.prix_monthly')
+                                        ->select('services.*','classes.type','classes.price_6_months', 'classes.price_12_months')
                                         ->get();
         $classes = classe::all();
         return view('fournisseurs.espace-fournisseur', ["services"=>$services, "classes" => $classes]);
@@ -42,7 +42,7 @@ class FournisseurController extends Controller
             $data = Fournisseur::where('statut', true)->where('citie', $req->citie)->get();
         elseif (empty($req->citie) && isset($req->service))
             $data = Fournisseur::where('statut', true)->where('service', $req->service)->get();
-        else 
+        else
             $data = Fournisseur::where('statut', true)->where('service', $req->service)->where('citie', $req->citie)->get();
         $services = Service::all();
         $cities = Citie::all();
@@ -66,7 +66,7 @@ class FournisseurController extends Controller
         return view('backoffice.prestataires.profile', [ "fournisseur" => $fournisseur->first() ,"cities"=>$cities, "services"=>$services]);
     }
     public static function getAbonnement(){
-       $abonnements = abonnements::where('id_fournisseur',session('profile')->id)->get(); 
+       $abonnements = abonnements::where('id_fournisseur',session('profile')->id)->get();
        return view('backoffice.prestataires.abonnement',['abonnements'=>$abonnements]);
     }
 

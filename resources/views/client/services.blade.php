@@ -1,10 +1,9 @@
 @extends('layouts.pages')
 @section('containner')
 @section('title', 'Services ')
-<div class="container-fluid py-5">
-    <div class="container pt-5 pb-3">
+<div class="container-fluid py-2">
+    <div class="container pt-3 pb-3">
         <div class="text-center mb-3 pb-3">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
             <h1>Découvrez Nos Services</h1>
         </div>
         <div class="row">
