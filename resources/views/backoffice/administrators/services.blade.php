@@ -19,7 +19,6 @@
                     <tr>
                         <th>Libelle</th>
                         <th>Classe</th>
-                        <th>Statut</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -27,19 +26,9 @@
                     @foreach($services as $l)
                     <tr>
                         <td>{{$l->libelle}}</td>
-                        <td>{{$l->type}} ({{$l->prix_monthly}} MAD)</td>
+                        <td>{{$l->type}}</td>
                         <td>
-                            @if($l->statut) Actif
-                            @else Desactive
-                            @endIf
-                        </td>
-                        <td>
-                            @if($l->statut)
-                            <a href="{{ '/admin/services/desactivate/' . $l->id }}" class="btn btn-danger">Desactiver</a>
-                            @else
-                            <a href="{{ '/admin/services/activate/' . $l->id }}" class="btn btn-primary">Activer</a>
-                            @endIf
-                            <button type="button" class="btn btn-warning btn-update" data-toggle="modal" data-target="#staticBackdropUpdate" 
+                            <button type="button" class="btn btn-warning btn-update" data-toggle="modal" data-target="#staticBackdropUpdate"
                                 data-classe="{{$l->id_classe}}" data-service="{{$l->id}}">
                                 {{__('Modéfier')}}
                             </button>

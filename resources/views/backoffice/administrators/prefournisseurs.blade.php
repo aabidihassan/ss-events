@@ -15,7 +15,6 @@
                         <th>Prenom</th>
                         <th>Email</th>
                         <th>Telephone</th>
-                        <th>Service</th>
                         <th>statut</th>
                         <th>Action</th>
                     </tr>
@@ -27,13 +26,6 @@
                         <td>{{$l->prenom}}</td>
                         <td>{{$l->email}}</td>
                         <td>{{$l->telephone}}</td>
-                        <td>
-                            @foreach ($services as $service)
-                            @if ($service->id == $l->optionAb)
-                             {{$service->libelle}} ({{$service->prix_monthly}} MAD)
-                            @endif
-                            @endforeach
-                        </td>
                         <td>
                             @if($l->statut) Refuse
                             @else En attent
@@ -119,10 +111,10 @@
             $('#SelService').val(data.optionAb);
             $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
             $('#staticBackdrop').modal('show');
-            currentDate = new Date(); 
+            currentDate = new Date();
             var x = ($('#numbreMonth').val() *1)+4;
             futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
-            formattedDate = futureDate.toISOString().slice(0,10); 
+            formattedDate = futureDate.toISOString().slice(0,10);
             document.getElementById("dateEnd").value = formattedDate;
         })
         $('#SelService').change(function () {
@@ -130,10 +122,10 @@
         });
         $('#numbreMonth').change(function () {
             try {
-                currentDate = new Date(); 
+                currentDate = new Date();
                 var x = ($('#numbreMonth').val() *1)+4;
                 futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
-                formattedDate = futureDate.toISOString().slice(0,10); 
+                formattedDate = futureDate.toISOString().slice(0,10);
                 document.getElementById("dateEnd").value = formattedDate;
                 $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
             } catch (error) {

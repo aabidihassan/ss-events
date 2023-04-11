@@ -16,9 +16,7 @@ class PresController extends Controller
 {
     public static function getPres(){
         $prefournisseurs = Prefournisseur::all();
-        $services = Service::join('classes','classes.id','=','services.id_classe')
-                                ->select('services.*','classes.prix_monthly')
-                                ->get();
+        $services = Service::all();
         return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs,"services"=>$services]);
     }
 
@@ -45,7 +43,7 @@ class PresController extends Controller
             $path = public_path('fournisseurs/'.$user->id);
             if (!File::exists($path)) {
                 File::makeDirectory($path, 0777, true, true);
-            }          
+            }
 
             $abonnement = new abonnements();
             $abonnement->id_service = $req->classe;

@@ -18,7 +18,7 @@ class ServiceController extends Controller
 
     public static function getAll(){
         $services = Service::join('classes','classes.id','=','services.id_classe')
-                            ->select('services.*','classes.type','classes.prix_monthly')
+                            ->select('services.*','classes.type')
                             ->get();
         $classes = classe::all();
         return view('backoffice.administrators.services', ["services"=>$services, "classes"=>$classes]);

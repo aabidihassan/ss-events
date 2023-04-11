@@ -35,15 +35,18 @@
                                 value="{{ auth()->user()->username }}">
                         </div>
                         <div class="col text-secondary mt-4">
+                            <h6>E-Mail</h6>
+                        </div>
+                        <div class="col text-secondary">
+                            <input type="email" class="form-control" name="email"
+                            value="{{ auth()->user()->email }}">
+                        </div>
+                        <div class="col text-secondary mt-4">
                             <h6>Nouveau mot de passe</h6>
                         </div>
                         <div class="col text-secondary">
                             <input type="password" class="form-control" name="password"
                                 autocomplete="new-password">
-                        </div>
-                        <div class="col text-secondary">
-                            <input type="email" class="form-control" name="email"
-                            value="{{ auth()->user()->email }}">
                         </div>
                         <div class="col text-secondary">
                             <input type="submit" class="btn btn-primary px-4 mt-4" value="Modifier">
