@@ -17,9 +17,9 @@
                     <thead>
                         <tr>
                             <th rowspan="2">Nom</th>
-                            <th rowspan="1" colspan="2">Gold</th>
-                            <th rowspan="1" colspan="2">Platinum</th>
-                            <th rowspan="2">Action</th>
+                            <th rowspan="1" colspan="2" class="text-center">Gold</th>
+                            <th rowspan="1" colspan="2" class="text-center">Platinum</th>
+                            <th rowspan="2" class="text-center">Action</th>
                         </tr>
                         <tr>
                             <th>Prix 6 mois</th>
@@ -38,12 +38,12 @@
                                 <td>{{ $c->platinum_6_months }}</td>
                                 <td>{{ $c->platinum_12_months }}</td>
                                 <td>
-                                    <button data-classe="{{ $c->id }}" class="btn btn-danger bt-delete"
-                                        data-toggle="modal" data-target="#exampleModalCenter">Supprimer</button>
                                     <button type="button" class="btn btn-primary btn-update" data-toggle="modal"
                                         data-target="#staticBackdropUpdate" data-classe="{{ $c->id }}">
                                         {{ __('Modifier') }}
                                     </button>
+                                    <button data-classe="{{ $c->id }}" class="btn btn-danger bt-delete"
+                                        data-toggle="modal" data-target="#exampleModalCenter">Supprimer</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -59,7 +59,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">{{ __('Formulaire pour ajouter un nouveau classe') }}
+                    <h5 class="modal-title" id="staticBackdropLabel">{{ __('Nouvelle Classe') }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -73,7 +73,7 @@
                             <input type="text" class="form-control" required id="type" name="type">
                         </div>
                         <div class="form-group">
-                            <label for="prix" class="col-form-label">{{ __('Prix par 6 mois :') }}</label>
+                            <label for="prix" class="col-form-label">{{ __('Prix par 6 mois (Gold) :') }}</label>
                             <div class="input-group">
                                 <input type="number" min="1" step="1" id="gold_6_months" name="gold_6_months"
                                     class="form-control" aria-label="Amount (to the nearest dollar)">
@@ -84,10 +84,35 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="prix" class="col-form-label">{{ __('Prix par 12 mois :') }}</label>
+                            <label for="prix" class="col-form-label">{{ __('Prix par 12 mois (Gold) :') }}</label>
                             <div class="input-group">
                                 <input type="number" min="1" step="1" id="gold_12_months"
                                     name="gold_12_months" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix" class="col-form-label">{{ __('Prix par 6 mois (Platinum) :') }}</label>
+                            <div class="input-group">
+                                <input type="number" min="1" step="1" id="platinum_6_months"
+                                    name="platinum_6_months" class="form-control"
+                                    aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix"
+                                class="col-form-label">{{ __('Prix par 12 mois (Platinum) :') }}</label>
+                            <div class="input-group">
+                                <input type="number" min="1" step="1" id="platinum_12_months"
+                                    name="platinum_12_months" class="form-control"
+                                    aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
                                     <span class="input-group-text">$</span>
                                     <span class="input-group-text">0.00</span>
@@ -124,7 +149,7 @@
                             <input type="text" class="form-control" required name="type" id="type_up">
                         </div>
                         <div class="form-group">
-                            <label for="prix" class="col-form-label">{{ __('Prix par 6 mois :') }}</label>
+                            <label for="prix" class="col-form-label">{{ __('Prix par 6 mois (Gold) :') }}</label>
                             <div class="input-group">
                                 <input type="number" min="1" max="10000" step="1"
                                     id="gold_6_months_up" name="gold_6_months" class="form-control"
@@ -136,10 +161,34 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="prix" class="col-form-label">{{ __('Prix par 12 mois :') }}</label>
+                            <label for="prix" class="col-form-label">{{ __('Prix par 12 mois (Gols) :') }}</label>
                             <div class="input-group">
                                 <input type="number" min="1" max="10000" step="1"
                                     id="gold_12_months_up" name="gold_12_months" class="form-control"
+                                    aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix" class="col-form-label">{{ __('Prix par 6 mois (Platinum) :') }}</label>
+                            <div class="input-group">
+                                <input type="number" min="1" max="10000" step="1"
+                                    id="platinum_6_months_up" name="platinum_6_months" class="form-control"
+                                    aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix" class="col-form-label">{{ __('Prix par 12 mois (Platinum) :') }}</label>
+                            <div class="input-group">
+                                <input type="number" min="1" max="10000" step="1"
+                                    id="platinum_12_months_up" name="platinum_12_months" class="form-control"
                                     aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
                                     <span class="input-group-text">$</span>
@@ -194,9 +243,11 @@
             $(".bn-ac").eq(3).addClass('active');
             $('.btn-update').click(function() {
                 $('#id_class_update').val($(this).attr('data-classe'));
-                $('#type_up').val($(this).parent().prev().prev().prev().text());
-                $('#gold_6_months_up').val($(this).parent().prev().prev().text());
-                $('#gold_12_months_up').val($(this).parent().prev().text());
+                $('#type_up').val($(this).parent().prev().prev().prev().prev().prev().text());
+                $('#gold_6_months_up').val($(this).parent().prev().prev().prev().prev().text());
+                $('#gold_12_months_up').val($(this).parent().prev().prev().prev().text());
+                $('#platinum_6_months_up').val($(this).parent().prev().prev().text());
+                $('#platinum_12_months_up').val($(this).parent().prev().text());
             });
             $('.bt-delete').click(function() {
                 $('#id_class_delete').val($(this).attr('data-classe'));
