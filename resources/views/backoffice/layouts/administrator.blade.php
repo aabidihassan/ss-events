@@ -3,10 +3,31 @@
 @section('menu')
 
     <hr class="sidebar-divider">
-    <li class="nav-item bn-ac ">
-        <a class="nav-link" href="{{ route('adminProfile')}}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Profile</span></a>
+    <li class="nav-item bn-ac">
+        <a class="nav-link" href="{{ route('adminPreFournisseur')}}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Prefournisseur</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item bn-ac">
+        <a class="nav-link" href="{{ route('adminFournisseur')}}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Fournisseurs</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item bn-ac">
+        <a class="nav-link" href="{{ route('adminAbonnements')}}">
+            <i class="fas fa-database"></i>
+            <span>Abonnement</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item bn-ac">
+        <a class="nav-link" href="{{ route('fournisseur-feedback')}}">
+            <i class="fas fa-comment"></i>
+            <span>Feedbacks</span></a>
     </li>
 
     <hr class="sidebar-divider">
@@ -25,30 +46,16 @@
 
     <hr class="sidebar-divider">
     <li class="nav-item bn-ac">
-        <a class="nav-link" href="{{ route('adminFournisseur')}}">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Fournisseurs</span></a>
-    </li>
-
-    <hr class="sidebar-divider">
-    <li class="nav-item bn-ac">
-        <a class="nav-link" href="{{ route('adminAbonnements')}}">
-            <i class="fas fa-database"></i>
-            <span>Abonnement</span></a>
-    </li>   
-
-    <hr class="sidebar-divider">
-    <li class="nav-item bn-ac">
-        <a class="nav-link" href="{{ route('adminPreFournisseur')}}">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Prefournisseur</span></a>
-    </li>
-
-    <hr class="sidebar-divider">
-    <li class="nav-item bn-ac">
         <a class="nav-link" href="{{ route('adminClient')}}">
             <i class="fas fa-fw fa-users"></i>
             <span>Clients</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item bn-ac ">
+        <a class="nav-link" href="{{ route('adminProfile')}}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a>
     </li>
 
 @endsection

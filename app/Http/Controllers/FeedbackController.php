@@ -65,7 +65,7 @@ class FeedbackController extends Controller
             Feedback::where('id_fournisseur', $req->id_fournisseur)->
                         where('id_client', $req->id_client)->
                         update(['commentaire'=>$req->commentaire,'rating'=>$req->rating]);
-            return redirect('/administrator/feedbacks/'.$req->id_fournisseur);
+                        return back();
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -78,6 +78,18 @@ class FeedbackController extends Controller
                 ->where('id_client', $id_client)
                 ->delete();
             return redirect('/administrator/feedbacks/'.$req->id_fournisseur);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public static function getAllFeedbacks(){
+        try {
+            $feedbacks = Feedback::join('clients','clients.id','=','feedback.id_client')
+            ->join('fournisseurs', 'fournisseurs.id', '=', 'feedback.id_fournisseur')
+            ->select('feedback.*','clients.nom','clients.prenom', 'fournisseurs.raison')
+            ->get();
+            return view('backoffice.administrators.allfeedbacks',['feedbacks' => $feedbacks]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

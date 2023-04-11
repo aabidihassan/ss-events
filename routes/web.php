@@ -106,6 +106,9 @@ Route::get('/feedbacks', function () {
     if (auth()->user()->type == 'fournisseur') {
         return FeedbackController::getFeedbacks();
     }
+    if (auth()->user()->type == 'admin') {
+        return FeedbackController::getAllFeedbacks();
+    }
     return redirect('/');
 })
     ->middleware(['auth'])

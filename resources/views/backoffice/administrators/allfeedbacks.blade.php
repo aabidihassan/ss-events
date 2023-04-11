@@ -1,5 +1,5 @@
 @extends('backoffice.layouts.administrator')
-@section('title', 'Feedbacks de '.$fournisseur->raison)
+@section('title', 'Liste de feedbacks')
 @section('content')
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -11,6 +11,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Prestataire</th>
                         <th>Client</th>
                         <th>Date</th>
                         <th>etoiles</th>
@@ -21,6 +22,7 @@
                 <tbody>
                     @foreach ($feedbacks as $feedback)
                     <tr>
+                        <td>{{$feedback->raison}}</td>
                         <td>{{ $feedback->prenom . ' ' . $feedback->nom }}</td>
                         <td>{{ $feedback->dateCommit }}</td>
                         <td>
