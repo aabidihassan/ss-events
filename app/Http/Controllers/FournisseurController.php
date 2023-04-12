@@ -31,7 +31,7 @@ class FournisseurController extends Controller
 
     public static function espaceFournisseur(){
         $services = Service::join('classes','classes.id','=','services.id_classe')
-                                        ->select('services.*','classes.type','classes.price_6_months', 'classes.price_12_months')
+                                        ->select('services.*','classes.*')
                                         ->get();
         $classes = classe::all();
         return view('fournisseurs.espace-fournisseur', ["services"=>$services, "classes" => $classes]);

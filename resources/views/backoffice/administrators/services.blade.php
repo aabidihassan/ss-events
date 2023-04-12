@@ -153,7 +153,7 @@
 <script>
     $(document).ready(function() {
         $('.bn-ac').removeClass('active');
-        $(".bn-ac").eq(2).addClass('active');
+        $(".bn-ac").eq(5).addClass('active');
         $('.bt-delete').click(function () {
             $('#id_service_delete').val($(this).attr('data-service'));
             $('.modal-body-delete >h3').text($(this).parent().prev().prev().prev().text());

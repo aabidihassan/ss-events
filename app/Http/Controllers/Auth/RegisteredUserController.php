@@ -9,7 +9,10 @@ use App\Models\Client;
 use App\Models\Citie;
 use App\Models\Classe;
 use App\Models\Service;
+use App\Mail\WelcomeEmail;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +52,12 @@ class RegisteredUserController extends Controller
             $pre->telephone = $request->phone;
             $pre->statut = false;
             $pre->save();
+            $data = [
+                'nom' => $request->nom,
+                'prenom' => $request->prenom,
+                'content' => 'Votre demande a été soumise avec succès',
+            ];
+            Mail::to($request->email)->send(new WelcomeEmail($data,'Merci d \'avoir rejoint EVENTSKECH'));
             return redirect()->back()->with(['message' => 'done']);
         }else{
             $client = new Client;

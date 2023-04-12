@@ -98,7 +98,7 @@
 <script>
     $(document).ready(function() {
         $('.bn-ac').removeClass('active');
-        $(".bn-ac").eq(4).addClass('active');
+        $(".bn-ac").eq(2).addClass('active');
         $('.btn-Accepter').click(function () {
             data = JSON.parse($(this).attr('data-fournisseur'));
             $('#id_prefournisseur').val(data.id);

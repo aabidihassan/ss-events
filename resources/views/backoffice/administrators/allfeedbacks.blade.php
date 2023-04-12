@@ -127,6 +127,8 @@
 @section('script')
 <script>
     $(document).ready(function() {
+            $('.bn-ac').removeClass('active');
+            $(".bn-ac").eq(4).addClass('active');
        $('.updateFK').click(function() {
             data = JSON.parse($(this).attr('data-fournisseur'));
             $('#client').text(data.nom+' '+data.prenom);

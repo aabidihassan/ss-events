@@ -240,7 +240,7 @@
     <script>
         $(document).ready(function() {
             $('.bn-ac').removeClass('active');
-            $(".bn-ac").eq(3).addClass('active');
+            $(".bn-ac").eq(6).addClass('active');
             $('.btn-update').click(function() {
                 $('#id_class_update').val($(this).attr('data-classe'));
                 $('#type_up').val($(this).parent().prev().prev().prev().prev().prev().text());
