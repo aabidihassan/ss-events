@@ -262,4 +262,8 @@ Route::get('/administrator/feedbacks/delete/{id_client}/{id_fournisseur}', [Feed
     ->middleware(['auth'])
     ->name('deleteFeedback');
 
+Route::POST('/administrator/sendNewsLetter}', [IndexController::class, 'sendNewsLetter'])
+    ->middleware(['auth'])
+    ->name('sendNewsLetter');
+
 //End Routes Back office for administrator

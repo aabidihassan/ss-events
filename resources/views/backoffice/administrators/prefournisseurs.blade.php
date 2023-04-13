@@ -71,33 +71,34 @@
                     <label>Type d'abonmment :</label>
                     <div class="form-group">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeAbon" id="typeAbonGold" required>
-                            <label class="form-check-label" for="typeAbonGold">Gold</label>
+                            <input class="form-check-input" type="radio" name="typeAbon" id="Gold" value="Gold" required>
+                            <label class="form-check-label" for="Gold">Gold</label>
                             <div class="form-check d-none c-radio">
-                                <input class="form-check-input" type="radio" name="prix" id="gold6" value="gold6" disabled required>
+                                <input class="form-check-input" type="radio" name="prix" id="gold6" data-n="6" disabled required>
                                 <label class="form-check-label" for="gold6">Gold 6 Months <span id="prix_gold6"></span></label>
                             </div>
                             <div class="form-check d-none c-radio">
-                                <input class="form-check-input" type="radio" name="prix" id="gold12" value="gold12" disabled required>
+                                <input class="form-check-input" type="radio" name="prix" id="gold12" data-n="12" disabled required>
                                 <label class="form-check-label" for="gold12">Gold 12 Months <span id="prix_gold12"></span></label>
                             </div>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeAbon" id="typeAbonPlatinum" value="platinum6" required>
-                            <label class="form-check-label" for="typeAbonPlatinum">Platinum</label>
+                            <input class="form-check-input" type="radio" name="typeAbon" id="Platinum" value="Platinum" required>
+                            <label class="form-check-label" for="Platinum">Platinum</label>
                             <div class="form-check d-none c-radio">
-                                <input class="form-check-input" type="radio" name="prix" id="platinum6" disabled>
+                                <input class="form-check-input" type="radio" name="prix" id="platinum6"  data-n="6" disabled>
                                 <label class="form-check-label" for="platinum6">Platinum 6 Months <span id="prix_platinum6"></span></label>
                             </div>
                             <div class="form-check d-none c-radio">
-                                <input class="form-check-input" type="radio" name="prix" id="platinum12" value="platinum12" disabled required>
+                                <input class="form-check-input" type="radio" name="prix" id="platinum12" data-n="12" disabled required>
                                 <label class="form-check-label" for="platinum12">Platinum 12 Months <span id="prix_platinum12"></span></label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="number" id="id_prefournisseur" name="id_prefournisseur" readonly style="display: none;" required required>
+                    <input type="number" id="id_prefournisseur" name="id_prefournisseur" readonly style="display: none;" required >
+                    <input type="number" id="number_month" name="number_month" readonly style="display: none;" required >
                     <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Accepter</button>
                 </div>
@@ -122,21 +123,23 @@
         $('input[name=typeAbon]').change(function() {
             $('.c-radio').addClass('d-none')
                             .children().eq(0).attr('disabled','disabled');
-            $(this).parent().children().eq(2).removeClass('d-none')
+            $(this).parent().children().eq(2).removeClass('d-none');
             $(this).parent().children().eq(2).children().eq(0).removeAttr('disabled');
-            $(this).parent().children().eq(3).removeClass('d-none')
+            $(this).parent().children().eq(3).removeClass('d-none');
             $(this).parent().children().eq(3).children().eq(0).removeAttr('disabled');
-            
+        });
+        $('input[name=prix]').change(function() {
+            $('#number_month').val($(this).attr('data-n'));
         });
         $('#SelService').change(function () {
             data = JSON.parse($('#SelService :selected').attr('data-service'));
             $('#prix_gold6').html(data.gold_6_months);
-            $('#prix_gold12').html(data.gold_12_months);
-            $('#prix_platinum6').html(data.platinum_6_months);
-            $('#prix_platinum12').html(data.platinum_12_months);
             $('#gold6').val(data.gold_6_months);
+            $('#prix_gold12').html(data.gold_12_months);
             $('#gold12').val(data.gold_12_months);
+            $('#prix_platinum6').html(data.platinum_6_months);
             $('#platinum6').val(data.platinum_6_months);
+            $('#prix_platinum12').html(data.platinum_12_months);
             $('#platinum12').val(data.platinum_12_months);
         });
     });

@@ -100,6 +100,14 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        @if (auth()->user()->type != 'fournisseur')
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" data-toggle="modal" data-target="#sendNews" role="button"
+                                 aria-haspopup="true" aria-expanded="false">Send News Letter&nbsp;
+                                <i class="fas fa-fas fa-envelope fa-fw"></i>
+                            </a>
+                        </li>
+                        @endif
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -205,6 +213,54 @@
             </div>
         </div>
     </div>
+     <!-- send new letter Modal-->
+    <div class="modal fade" id="sendNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form id="newsletter-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Objet:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="object" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text" name="message" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send message</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="success-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="success-modal-label">Success</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Your message has been sent successfully!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('backoffice/vendor/jquery/jquery.min.js') }}"></script>
@@ -232,6 +288,24 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+        $(function() {
+            $('#newsletter-form').submit(function(event) {
+                event.preventDefault(); 
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '{{ route('sendNewsLetter') }}',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('#success-modal').modal('show'); 
+                        $('#newsletter-form')[0].reset();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
         });
     </script>
 

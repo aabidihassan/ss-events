@@ -73,6 +73,10 @@
         <p>Votre username :<strong> {{$data['content']['username']}} </strong></p>
         <p>Votre mots de passe : <strong> {{$data['content']['password']}}</strong></p>
         <p>Votre service : {{$data['content']['service']}} </p>
+        <p>Votre Type d'abonnement : {{$data['content']['abonnement']['typeAbonnemant']  }} </p>
+        <p>Date d'activation l'abonnement : {{$data['content']['abonnement']['start_date']}} </p>
+        <p>La date à laquelle l'abonnement a été expédié : {{$data['content']['abonnement']['end_date']}} </p>
+        <p>Prix  : {{$data['content']['abonnement']['prix']}} (MAD)</p>
         @else
         {{$data['content']}}
         @endif

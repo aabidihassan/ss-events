@@ -11,6 +11,9 @@ use App\Models\User;
 use App\Models\Client;
 use App\Models\Prefournisseur;
 use App\Models\NewsletterEmail;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -136,4 +139,20 @@ class IndexController extends Controller
                                                             'countContactByService' => $countContactByService]);
     }
 
+    public function sendNewsLetter(Request $req)
+    {
+        try {
+            $newsletter_emails = NewsletterEmail::all();
+            foreach ($newsletter_emails as $email) {
+                $data = [
+                    'nom' => $email->email,
+                    'prenom'=>'',
+                    'content' => $req->message
+                ];
+                Mail::to($email->email)->send(new WelcomeEmail($data,$req->object));
+            }
+        } catch (\Exception $th) {
+            
+        }
+    }
 }

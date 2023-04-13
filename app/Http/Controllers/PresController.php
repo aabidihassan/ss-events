@@ -52,8 +52,12 @@ class PresController extends Controller
             $abonnement = new abonnements();
             $abonnement->id_service = $req->service;
             $abonnement->id_fournisseur = $fournisseur->id;
+            $abonnement->number_month = $req->number_month+4;
+            $abonnement->typeAbonnemant = $req->typeAbon;
             $abonnement->start_date = Carbon::now();
-            $abonnement->end_date = $req->end_date;
+            $currentDate = Carbon::now();
+            $newDate = $currentDate->addMonths($abonnement->number_month);
+            $abonnement->end_date = $newDate;
             $abonnement->prix = $req->prix;
             $abonnement->save();
 
@@ -62,7 +66,9 @@ class PresController extends Controller
                 'prenom' => $fournisseur->prenom,
                 'content' => ['username'=>$user->username ,
                                 'password'=>$user->username,
-                                'service'=>$serviceLibelle->libelle],
+                                'service'=>$serviceLibelle->libelle,
+                                'abonnement' => $abonnement]
+                                
             ];
             Mail::to($fournisseur->email)->send(new WelcomeEmail($data,'Félicitation Votre demande été accepté'));
             return redirect('/administrator/prefournisseurs');
