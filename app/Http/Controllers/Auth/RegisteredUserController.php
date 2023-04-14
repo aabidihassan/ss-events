@@ -30,7 +30,8 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $cities = Citie::all();
-        return view('auth.register',['cities' => $cities]);
+        $services = Service::all();
+        return view('auth.register',['cities' => $cities, 'services' => $services]);
     }
 
     /**
@@ -51,6 +52,8 @@ class RegisteredUserController extends Controller
             $pre->email = $request->email;
             $pre->telephone = $request->phone;
             $pre->statut = false;
+            $pre->citie = $request->citie;
+            $pre->service = $request->service;
             $pre->save();
             $data = [
                 'nom' => $request->nom,

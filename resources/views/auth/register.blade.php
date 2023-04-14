@@ -49,8 +49,7 @@
                         <div class="control-group">
                             <input type="text" class="form-control p-4" id="email" name="email"
                                 placeholder="Email" required="required"
-                                data-validation-required-message="Veuillez entrer un email"
-                                autocomplete="off" />
+                                data-validation-required-message="Veuillez entrer un email" autocomplete="off" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
@@ -118,8 +117,8 @@
                         </div>
                         <div class="form-row">
                             <div class="control-group col-sm-6">
-                                <input type="tel" class="form-control p-4" placeholder="Telephone" name="phone"
-                                    required="required"
+                                <input type="tel" class="form-control p-4" placeholder="Telephone"
+                                    name="phone" required="required"
                                     data-validation-required-message="Veuillez entrer votre NºTelephone" />
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -128,6 +127,23 @@
                                     required="required"
                                     data-validation-required-message="Veuillez entrer votre E-Mail" />
                                 <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <select name="service" class="custom-select px-4" style="height: 47px;" required>
+                                    <option disabled selected>Choisir un service</option>
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->libelle }}">{{ $service->libelle }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <select name="citie" class="custom-select px-4" style="height: 47px;"
+                                    required="required">
+                                    <option value="" selected>Choisir une ville</option>
+                                    @foreach ($cities as $citie)
+                                        <option value="{{ $citie->name }}">{{ $citie->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <input type="text" value="pre" name="type" readonly style="display: none;"

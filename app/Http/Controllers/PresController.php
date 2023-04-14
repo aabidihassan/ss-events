@@ -18,11 +18,8 @@ use Carbon\Carbon;
 class PresController extends Controller
 {
     public static function getPres(){
-        $prefournisseurs = Prefournisseur::all();
-        $services = Service::join('classes','classes.id','=','services.id_classe')
-        ->select('services.*', 'classes.gold_6_months', 'classes.platinum_6_months', 'classes.platinum_12_months', 'classes.gold_12_months')
-        ->get();
-        return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs,"services"=>$services]);
+        $prefournisseurs = Prefournisseur::orderBy('created_at', 'desc')->get();
+        return view('backoffice.administrators.prefournisseurs', ["prefournisseurs"=>$prefournisseurs]);
     }
 
     public static function accept(Request $req){
@@ -34,8 +31,7 @@ class PresController extends Controller
             $fournisseur->email = $pre->email;
             $fournisseur->telephone = $pre->telephone;
             $fournisseur->statut = 1;
-            $serviceLibelle = Service::where('id',$req->service)->first();
-            $fournisseur->service =$serviceLibelle->libelle;
+            $fournisseur->service = $pre->service;
             $fournisseur->save();
             $user = new User();
             $user->username = $pre->nom.$pre->prenom;
@@ -68,7 +64,7 @@ class PresController extends Controller
                                 'password'=>$user->username,
                                 'service'=>$serviceLibelle->libelle,
                                 'abonnement' => $abonnement]
-                                
+
             ];
             Mail::to($fournisseur->email)->send(new WelcomeEmail($data,'Félicitation Votre demande été accepté'));
             return redirect('/administrator/prefournisseurs');
