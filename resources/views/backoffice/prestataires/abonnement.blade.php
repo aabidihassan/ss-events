@@ -20,18 +20,32 @@
             <div class="content-body-card" id="votre-bonnement">
                 <div class="row">
                     <div class="col-md-6">
-                      <h3>Subscription Status:</h3>
-                      <p>
-                        Your monthly subscription is currently <span class="text-success"><i class="fas fa-check-circle"></i> Active</span>.
-                      </p>
+                        <h3>{{__('État de l\'abonnement:')}}</h3>
+                    @php
+                        $today = strtotime('now');
+                        $hasExpired = false;
+                        foreach ($abonnements as $abonnement) {
+                            if (strtotime($abonnement->end_date) > $today) {
+                                $hasExpired = true;
+                                break;
+                            }
+                        }
+                    @endphp 
+                    <p>{{__('Votre abonnement mensuel est actuellement')}}
+                    @if ($hasExpired)
+                    <span class="text-success"><i class="fas fa-check-circle"></i> {{__('Actif')}}</span>.
+                    @else
+                    <span class="text-danger"><i class="fas fa-times-circle"></i> {{__('Désactive')}}</span>.
+                    @endif
+                    </p>
                     </div>
                     <div class="col-md-6">
-                      <h3>Payment Information:</h3>
+                      <h3>{{__('Informations de paiement:')}}</h3>
                       <p>
-                        Payment method: <i class="fab fa-cc-visa"></i> Visa ending in 1234
+                         {{__('Mode de paiement')}}: <i class="fab fa-cc-visa"></i>{{__('Null')}}
                       </p>
                       <p>
-                        Next payment due: <span class="text-primary"><i class="far fa-calendar-check"></i> March 15, 2023</span>
+                        {{__('Prochain paiement dû')}}: <span class="text-primary"><i class="far fa-calendar-check"></i> March 15, 2023</span>
                       </p>
                     </div>
                 </div>

@@ -64,15 +64,15 @@ class RegisteredUserController extends Controller
             $client->nom = $request->nom;
             $client->telephone = $request->phone;
             $client->citie = $request->citie;
+            $client->email = $request->email;
             $client->save();
-            $user = User::create([
-                'username' => $request->username,
-                'password' => Hash::make($request->password),
-                'email' => $request->email,
-                'type' => 'client',
-                'email' => '',
-                'id_user' => $client->id
-            ]);
+            $user = new User;
+            $user->username = $request->username;
+            $user->password = Hash::make($request->password);
+            $user->email = $request->email;
+            $user->type = 'client';
+            $user->id_user = $client->id;
+            $user->save();
             $request->session()->put('profile', $client);
 
             event(new Registered($user));

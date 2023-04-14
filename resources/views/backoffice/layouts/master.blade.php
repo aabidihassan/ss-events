@@ -22,7 +22,18 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ url('backoffice/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+            }
+    </style>
 </head>
 
 <body id="page-top">
@@ -260,8 +271,12 @@
             </div>
           </div>
         </div>
+    </div>
+    <div class="overlay d-hide justify-content-center align-items-center">
+        <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('backoffice/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ url('backoffice/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -297,12 +312,21 @@
                     url: '{{ route('sendNewsLetter') }}',
                     method: 'POST',
                     data: formData,
+                    beforeSend: function() {
+                        $('.overlay').show();
+                        $('.overlay').addClass('d-flex');
+                    },
                     success: function(response) {
-                        $('#success-modal').modal('show'); 
+                        $('#success-modal').modal('show');
+                        $('#sendNews').modal('hide');
                         $('#newsletter-form')[0].reset();
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);
+                    },
+                    complete: function() {
+                        $('.overlay').removeClass('d-flex');
+                        $('.overlay').hide();
                     }
                 });
             });

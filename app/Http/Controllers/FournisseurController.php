@@ -8,6 +8,9 @@ use App\Models\Classe;
 use App\Models\Feedback;
 use App\Models\abonnements;
 use Illuminate\Http\Request;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -15,7 +18,9 @@ class FournisseurController extends Controller
 {
     public static function getAll(){
         $data = Fournisseur::all();
-        $services = Service::all();
+        $services = Service::join('classes','classes.id','=','services.id_classe')
+        ->select('services.*', 'classes.gold_6_months', 'classes.platinum_6_months', 'classes.platinum_12_months', 'classes.gold_12_months')
+        ->get();
         return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data, "services"=>$services]);
     }
 
@@ -95,15 +100,29 @@ class FournisseurController extends Controller
     public static function createAbonnement(Request $req)
     {
         try {
-            Fournisseur::where('id', $req->id_prefournisseur)->update(['statut'=>1]);
-            $serviceID = Service::where('libelle',$req->service)->first();
+            Fournisseur::where('id', $req->id_fournisseur)->update(['statut'=>1]);
+            $fournisseur =  Fournisseur::where('id', $req->id_fournisseur)->first();
+            $service = Service::where('id',$req->service)->first();
             $abonnement = new abonnements();
-            $abonnement->id_service = $serviceID->id;
-            $abonnement->id_fournisseur = $req->id_prefournisseur;
+            $abonnement->id_service = $req->service;
+            $abonnement->id_fournisseur = $req->id_fournisseur;
+            $abonnement->number_month = $req->number_month;
+            $abonnement->typeAbonnemant = $req->typeAbon;
             $abonnement->start_date = Carbon::now();
-            $abonnement->end_date = $req->end_date;
-            $abonnement->number_month =  $req->numbreMonth;
+            $currentDate = Carbon::now();
+            $newDate = $currentDate->addMonths($abonnement->number_month);
+            $abonnement->end_date = $newDate;
+            $abonnement->prix = $req->prix;
             $abonnement->save();
+
+            $data = [
+                'nom' => $fournisseur->nom,
+                'prenom' => $fournisseur->prenom,
+                'content' => ['service'=> $service->libelle,
+                                'abonnement' => $abonnement]
+                                
+            ];
+            Mail::to($fournisseur->email)->send(new WelcomeEmail($data,'Votre abonnement a été renouvelé avec succès'));
             return redirect('/administrator/fournisseurs');
         } catch (\Exception $e) {
             $errorMessage = (string) $e->getMessage();

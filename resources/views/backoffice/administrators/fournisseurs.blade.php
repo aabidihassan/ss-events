@@ -50,41 +50,59 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="{{route('createAbonnement')}}" method="post">
                 @csrf
                 <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Formulaire d'acceptation fournisseur</h5>
+                <h5 class="modal-title" id="nomF">Formulaire d'acceptation fournisseur :</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                    <h3 id="nomF"></h3>
-                    <h5 id="ditail"></h5>
                     <div class="form-group">
-                        <input type="number" min="1" max="1000" step="1"  class="form-control p-4" placeholder="Nombre des mois" name="numbreMonth"
-                            required data-validation-required-message="Veuillez entrer votre prenom"  id="numbreMonth"/>
-                        <p class="help-block text-danger"></p>
+                        <label for="message-text" class="col-form-label">{{__('Services :')}}</label>
+                        <select class="form-control form-control-lg" name="service" id="SelService" required>
+                            <option value="">{{__('-- Veuillez choisir une service --')}}</option>
+                            @foreach ($services as $service)
+                            <option value="{{$service->id}}" data-service="{{$service}}">{{$service->libelle}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="input-group mb-4">
-                        <input type="number" readonly id="total" class="form-control" placeholder="{{__('Totale des frais pay : ')}}" aria-label="Amount (to the nearest MAD)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">MAD</span>
-                            <span class="input-group-text">0.00</span>
+                    <label>Type d'abonmment :</label>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeAbon" id="Gold" value="Gold" required>
+                            <label class="form-check-label" for="Gold">Gold</label>
+                            <div class="form-check d-none c-radio">
+                                <input class="form-check-input" type="radio" name="prix" id="gold6" data-n="6" disabled required>
+                                <label class="form-check-label" for="gold6">Gold 6 Months <span id="prix_gold6"></span> (MAD)</label>
+                            </div>
+                            <div class="form-check d-none c-radio">
+                                <input class="form-check-input" type="radio" name="prix" id="gold12" data-n="12" disabled required>
+                                <label class="form-check-label" for="gold12">Gold 12 Months <span id="prix_gold12"></span> (MAD)</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="dateEND" class="col-form-label" >{{__('Date Fin d\'abonnement : ')}}</label>
-                        <input type="date" readonly id="dateEnd" class="form-control" name="end_date" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeAbon" id="Platinum" value="Platinum" required>
+                            <label class="form-check-label" for="Platinum">Platinum</label>
+                            <div class="form-check d-none c-radio">
+                                <input class="form-check-input" type="radio" name="prix" id="platinum6"  data-n="6" disabled>
+                                <label class="form-check-label" for="platinum6">Platinum 6 Months <span id="prix_platinum6"></span> (MAD)</label>
+                            </div>
+                            <div class="form-check d-none c-radio">
+                                <input class="form-check-input" type="radio" name="prix" id="platinum12" data-n="12" disabled required>
+                                <label class="form-check-label" for="platinum12">Platinum 12 Months <span id="prix_platinum12"></span> (MAD)</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="number" id="id_prefournisseur" name="id_prefournisseur" readonly style="display: none;" required>
-                    <input type="text" id="libelle_service" name="service" readonly style="display: none;" required>
+                    <input type="number" id="id_fournisseur" name="id_fournisseur" readonly style="display: none;" required >
+                    <input type="number" id="number_month" name="number_month" readonly style="display: none;" required >
                     <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-primary">Accepter</button>
                 </div>
@@ -101,33 +119,39 @@
         $(".bn-ac").eq(2).addClass('active');
         $('.btn-Accepter').click(function () {
             data = JSON.parse($(this).attr('data-fournisseur'));
-            $('#id_prefournisseur').val(data.id);
-            $('#libelle_service').val(data.service);
+            $('#id_fournisseur').val(data.id);
+            $('#libelle_service').val();
+            $('#SelService').find('option:contains("'+data.service+'")').prop('selected', true);
+            $('#SelService').change();
+
             $('#nomF').html(data.nom + " " + data.prenom);
             $('#ditail').html(data.email + "<br>" + data.telephone + "<br>" +data.service );
-            $('#numbreMonth').val(data.optionAb);
             $('#staticBackdrop').modal('show');
-            currentDate = new Date(); 
-            var x = ($('#numbreMonth').val() *1);
-            futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
-            formattedDate = futureDate.toISOString().slice(0,10); 
-            document.getElementById("dateEnd").value = formattedDate;
         })
+
+        $('input[name=typeAbon]').change(function() {
+            $('.c-radio').addClass('d-none')
+                            .children().eq(0).attr('disabled','disabled');
+            $(this).parent().children().eq(2).removeClass('d-none');
+            $(this).parent().children().eq(2).children().eq(0).removeAttr('disabled');
+            $(this).parent().children().eq(3).removeClass('d-none');
+            $(this).parent().children().eq(3).children().eq(0).removeAttr('disabled');
+        });
+        $('input[name=prix]').change(function() {
+            $('#number_month').val($(this).attr('data-n'));
+        });
         $('#SelService').change(function () {
-           $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
+            data = JSON.parse($('#SelService :selected').attr('data-service'));
+            $('#prix_gold6').html(data.gold_6_months);
+            $('#gold6').val(data.gold_6_months);
+            $('#prix_gold12').html(data.gold_12_months);
+            $('#gold12').val(data.gold_12_months);
+            $('#prix_platinum6').html(data.platinum_6_months);
+            $('#platinum6').val(data.platinum_6_months);
+            $('#prix_platinum12').html(data.platinum_12_months);
+            $('#platinum12').val(data.platinum_12_months);
         });
-        $('#numbreMonth').change(function () {
-            try {
-                currentDate = new Date(); 
-                var x = ($('#numbreMonth').val() *1);
-                futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + x, currentDate.getDate());
-                formattedDate = futureDate.toISOString().slice(0,10); 
-                document.getElementById("dateEnd").value = formattedDate;
-                $('#total').val($('#SelService :selected').attr('prix')*$('#numbreMonth').val());
-            } catch (error) {
-                console.log(eror.message);
-            }
-        });
+        
     });
 </script>
 @endsection

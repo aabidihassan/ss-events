@@ -130,7 +130,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <textarea class="form-control py-3 px-4" rows="3" name="adresse" id="adresse" placeholder="Adresse"
-                                            required="required" data-validation-required-message="Veuillez entrer votre adresse">{{ $client->adresse }}</textarea>
+                                        data-validation-required-message="Veuillez entrer votre adresse">{{ $client->adresse }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mt-4">

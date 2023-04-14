@@ -70,15 +70,19 @@
       <div class="body">
         <h2>Bienvenue sur EVENTSKECH, {{ $data['nom'] }} {{ $data['prenom'] }} !</h2>
         @if (is_array($data['content']))
-        <p>Votre username :<strong> {{$data['content']['username']}} </strong></p>
-        <p>Votre mots de passe : <strong> {{$data['content']['password']}}</strong></p>
+          @if (isset($data['content']['username']))
+          <p>Votre username :<strong> {{$data['content']['username']}} </strong></p>
+          <p>Votre mots de passe : <strong> {{$data['content']['password']}}</strong></p>
+          @else
+              <h2>Votre abonnement a été renouvelé avec succès</h2>
+          @endif
         <p>Votre service : {{$data['content']['service']}} </p>
         <p>Votre Type d'abonnement : {{$data['content']['abonnement']['typeAbonnemant']  }} </p>
         <p>Date d'activation l'abonnement : {{$data['content']['abonnement']['start_date']}} </p>
         <p>La date à laquelle l'abonnement a été expédié : {{$data['content']['abonnement']['end_date']}} </p>
         <p>Prix  : {{$data['content']['abonnement']['prix']}} (MAD)</p>
         @else
-        {{$data['content']}}
+        <h3>{{$data['content']}}</h3>
         @endif
         <p>Merci d'avoir rejoint EVENTSKECH, la plateforme de référence pour trouver et organiser des événements en Maroc. Nous sommes ravis de vous compter parmi nos utilisateurs.</p>
         <p>Vous pouvez dès à présent explorer les événements à venir, ajouter des événements à votre liste de favoris, et recevoir des recommandations personnalisées en fonction de vos préférences.</p>
