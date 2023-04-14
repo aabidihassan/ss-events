@@ -46,23 +46,26 @@ class PresController extends Controller
                 File::makeDirectory($path, 0777, true, true);
             }
             $abonnement = new abonnements();
-            $abonnement->id_service = $req->service;
+            $service = Service::join('classes','classes.id','=','services.id_classe')
+            ->select('services.*', 'classes.gold_6_months', 'classes.platinum_6_months', 'classes.platinum_12_months', 'classes.gold_12_months')
+            ->where('services.libelle',$pre->service)
+            ->first();
+            $abonnement->id_service = 1;
             $abonnement->id_fournisseur = $fournisseur->id;
             $abonnement->number_month = $req->number_month+4;
-            $abonnement->typeAbonnemant = $req->typeAbon;
             $abonnement->start_date = Carbon::now();
             $currentDate = Carbon::now();
             $newDate = $currentDate->addMonths($abonnement->number_month);
             $abonnement->end_date = $newDate;
-            $abonnement->prix = $req->prix;
+            $abonnement->prix = $service[$req->prix];
             $abonnement->save();
 
             $data = [
-                'nom' => $fournisseur->nom,
-                'prenom' => $fournisseur->prenom,
-                'content' => ['username'=>$user->username ,
+                'nom' => $pre->nom,
+                'prenom' => $pre->prenom,
+                'content' => ['username'=>$user->username,
                                 'password'=>$user->username,
-                                'service'=>$serviceLibelle->libelle,
+                                'service'=>$pre->service,
                                 'abonnement' => $abonnement]
 
             ];

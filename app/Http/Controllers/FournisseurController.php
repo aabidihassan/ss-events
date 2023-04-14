@@ -107,7 +107,6 @@ class FournisseurController extends Controller
             $abonnement->id_service = $req->service;
             $abonnement->id_fournisseur = $req->id_fournisseur;
             $abonnement->number_month = $req->number_month;
-            $abonnement->typeAbonnemant = $req->typeAbon;
             $abonnement->start_date = Carbon::now();
             $currentDate = Carbon::now();
             $newDate = $currentDate->addMonths($abonnement->number_month);

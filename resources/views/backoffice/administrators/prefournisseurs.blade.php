@@ -76,13 +76,13 @@
                                 <label class="form-check-label" for="Gold">Gold</label>
                                 <div class="form-check d-none c-radio">
                                     <input class="form-check-input" type="radio" name="prix" id="gold6"
-                                        data-n="6" disabled required>
+                                        data-n="6" disabled required value="gold_6_months">
                                     <label class="form-check-label" for="gold6">Gold 6 Months <span
                                             id="prix_gold6"></span></label>
                                 </div>
                                 <div class="form-check d-none c-radio">
                                     <input class="form-check-input" type="radio" name="prix" id="gold12"
-                                        data-n="12" disabled required>
+                                        data-n="12" disabled required value="gold_12_months">
                                     <label class="form-check-label" for="gold12">Gold 12 Months <span
                                             id="prix_gold12"></span></label>
                                 </div>
@@ -93,13 +93,13 @@
                                 <label class="form-check-label" for="Platinum">Platinum</label>
                                 <div class="form-check d-none c-radio">
                                     <input class="form-check-input" type="radio" name="prix" id="platinum6"
-                                        data-n="6" disabled>
+                                        data-n="6" disabled value="platinum_6_months">
                                     <label class="form-check-label" for="platinum6">Platinum 6 Months <span
                                             id="prix_platinum6"></span></label>
                                 </div>
                                 <div class="form-check d-none c-radio">
                                     <input class="form-check-input" type="radio" name="prix" id="platinum12"
-                                        data-n="12" disabled required>
+                                        data-n="12" disabled required value="platinum_12_months">
                                     <label class="form-check-label" for="platinum12">Platinum 12 Months <span
                                             id="prix_platinum12"></span></label>
                                 </div>
