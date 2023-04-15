@@ -40,7 +40,7 @@
                 <i class="fa fa-star mr-2"></i>
                 @endif
             </h4>
-            
+
             @if ($avgRating)
                 <h4 class="fw-bold m-0">
                     <i class="fa fa-star text-primary mr-2"></i>
@@ -99,7 +99,7 @@
     </div>
 </div>
 @php
-   if(!$idFileImages->isEmpty()) 
+   if(!$idFileImages->isEmpty())
    {
         $path = public_path('fournisseurs/' .$idFileImages[0]->id . '/');
         $files = [];
@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="d-flex justify-content-between">
-                        <h5>{{ $feedback->nom }} {{ $feedback->prenom }}</h5>
+                        <h5>{{ $feedback->nom }}</h5>
                         <small class="text-muted">{{ $feedback->dateCommit }}</small>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
@@ -210,10 +210,10 @@
             <input name="rating" type="radio" class="d-none" value="5" id="rating_5">
             <input name="fournisseur" class="d-none" readonly value="{{ $fournisseur[0]->id }}">
         </div>
-        <center>        
+        <center>
             <button type="submit" style="width: 40%;" class="btn btn-primary">Submit</button>
         </center>
-    </form>    
+    </form>
     @endif
 </div>
 <!-- Modal -->

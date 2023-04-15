@@ -4,7 +4,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Liste des feedbacks par Fournisseurs</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Liste des feedbacks des Fournisseurs</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -23,7 +23,7 @@
                     @foreach ($feedbacks as $feedback)
                     <tr>
                         <td>{{$feedback->raison}}</td>
-                        <td>{{ $feedback->prenom . ' ' . $feedback->nom }}</td>
+                        <td>{{ $feedback->nom }}</td>
                         <td>{{ $feedback->dateCommit }}</td>
                         <td>
                             <div class="d-flex justify-content-between align-items-center">
@@ -131,7 +131,7 @@
             $(".bn-ac").eq(4).addClass('active');
        $('.updateFK').click(function() {
             data = JSON.parse($(this).attr('data-fournisseur'));
-            $('#client').text(data.nom+' '+data.prenom);
+            $('#client').text(data.nom);
             $('#commentaire').val(data.commentaire);
             $('#id_fournisseur').val(data.id_fournisseur);
             $('#id_client').val(data.id_client);

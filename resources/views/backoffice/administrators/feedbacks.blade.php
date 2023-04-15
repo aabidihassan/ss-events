@@ -21,7 +21,7 @@
                 <tbody>
                     @foreach ($feedbacks as $feedback)
                     <tr>
-                        <td>{{ $feedback->prenom . ' ' . $feedback->nom }}</td>
+                        <td>{{ $feedback->nom }}</td>
                         <td>{{ $feedback->dateCommit }}</td>
                         <td>
                             <div class="d-flex justify-content-between align-items-center">
@@ -127,7 +127,7 @@
     $(document).ready(function() {
        $('.updateFK').click(function() {
             data = JSON.parse($(this).attr('data-fournisseur'));
-            $('#client').text(data.nom+' '+data.prenom);
+            $('#client').text(data.nom);
             $('#commentaire').val(data.commentaire);
             $('#id_fournisseur').val(data.id_fournisseur);
             $('#id_client').val(data.id_client);
