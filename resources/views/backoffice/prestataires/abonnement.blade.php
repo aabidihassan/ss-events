@@ -58,7 +58,7 @@
                                 <th>Type</th>
                                 <th>Prix</th>
                                 <th>Nombre des mois</th>
-                                <th>Date d'ctivation</th>
+                                <th>Date d'activation</th>
                                 <th>Date d'expiration</th>
                                 <th>État d'abonnement</th>
                             </tr>

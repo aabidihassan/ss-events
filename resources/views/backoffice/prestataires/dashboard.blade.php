@@ -53,11 +53,11 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$pourcentage}}%</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$pourcentage}}%"
                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                     0
                                     <i class="fa fa-star text-primary mr-2"></i>
                                     <small>(0)</small>
-                                </div>   
+                                </div>
                             @endif
                         </div>
                         <div class="col-auto">
@@ -106,7 +106,7 @@
     <script>
         $(document).ready(function () {
             $('.bn-ac').removeClass('active');
-            $(".bn-ac").eq(0).addClass('active'); 
+            $(".bn-ac").eq(0).addClass('active');
         });
     </script>
 @endsection

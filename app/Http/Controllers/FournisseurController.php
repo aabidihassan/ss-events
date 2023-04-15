@@ -81,10 +81,17 @@ class FournisseurController extends Controller
                                 ->groupBy('id_fournisseur')
                                 ->where('id_fournisseur',session('profile')->id)
                                 ->get();
-        $fournisseur = Fournisseur::select('*')
-                                ->where('id',session('profile')->id)
-                                ->get();
-        return view('backoffice.prestataires.dashboard', ["fournisseur" => $fournisseur->first(),"avgRating"=>$avgRating]);
+        $fournisseur = Fournisseur::where('id',session('profile')->id)->get();
+        $abonnement = abonnements::where('id_fournisseur', session('profile')->id)
+                                    ->where('end_date', '>', date('Y-m-d'))->first();
+        if ($abonnement) {
+            $total_days = (strtotime($abonnement->end_date) - strtotime($abonnement->date_start)) / (60 * 60 * 24);
+            $days_consumed = (strtotime(date('Y-m-d')) - strtotime($abonnement->date_start)) / (60 * 60 * 24);
+            $percentage_consumed = number_format((($days_consumed / $total_days) * 100), 1);
+        } else {
+            $percentage_consumed = 0;
+        }
+        return view('backoffice.prestataires.dashboard', ["fournisseur" => $fournisseur->first(),"avgRating"=>$avgRating, 'pourcentage'=>$percentage_consumed]);
     }
 
     public static function incrementContactWhatsApp(Request $req){
@@ -119,7 +126,7 @@ class FournisseurController extends Controller
                 'prenom' => $fournisseur->prenom,
                 'content' => ['service'=> $service->libelle,
                                 'abonnement' => $abonnement]
-                                
+
             ];
             Mail::to($fournisseur->email)->send(new WelcomeEmail($data,'Votre abonnement a été renouvelé avec succès'));
             return redirect('/administrator/fournisseurs');
