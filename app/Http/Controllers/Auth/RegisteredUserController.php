@@ -55,6 +55,13 @@ class RegisteredUserController extends Controller
             $pre->citie = $request->citie;
             $pre->service = $request->service;
             $pre->save();
+            $user = new User;
+            $user->username = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->email = $request->email;
+            $user->type = 'pre';
+            $user->id_user = $pre->id;
+            $user->save();
             $data = [
                 'nom' => $request->nom,
                 'prenom' => $request->prenom,

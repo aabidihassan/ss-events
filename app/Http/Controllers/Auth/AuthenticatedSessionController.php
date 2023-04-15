@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Client;
 use App\Models\Fournisseur;
+use App\Models\Prefournisseur;
+use App\Models\Service;
 use App\Models\Citie;
 
 class AuthenticatedSessionController extends Controller
@@ -35,14 +37,21 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if(auth()->user()->type == 'client'){
-            $client = Client::where('id', auth()->user()->id_user)->first();
-            $request->session()->put('profile', $client);
-        }elseif(auth()->user()->type == 'fournisseur'){
-            $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
-            $request->session()->put('profile', $fournisseur);
-            $cities = Citie::all();
-            $request->session()->put('cities', $cities);
+        switch(auth()->user()->type){
+            case "client" :
+                $client = Client::where('id', auth()->user()->id_user)->first();
+                $request->session()->put('profile', $client);
+                break;
+
+            case "fournisseur":
+                $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
+                $request->session()->put('profile', $fournisseur);
+                break;
+
+            case "pre":
+                $pre = Prefournisseur::where('id', auth()->user()->id_user)->first();
+                $request->session()->put('profile', $pre);
+                break;
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

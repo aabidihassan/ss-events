@@ -77,6 +77,9 @@ Route::get('/dashboard', function () {
     if (auth()->user()->type == 'admin') {
         return redirect('/administrator');
     }
+    if (auth()->user()->type == 'pre') {
+        return view('backoffice.prefournisseurs.dashboard');
+    }
     return FournisseurController::mydash();
 })
     ->middleware(['auth', 'verified'])
@@ -116,6 +119,9 @@ Route::get('/feedbacks', function () {
 Route::get('/profile', function () {
     if (auth()->user()->type == 'fournisseur') {
         return FournisseurController::getProfile();
+    }
+    if (auth()->user()->type == 'pre') {
+        return ProfileController::preProfile();
     }
     return redirect('/');
 })

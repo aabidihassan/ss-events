@@ -35,13 +35,8 @@ class PresController extends Controller
             $fournisseur->citie = $pre->citie;
             $fournisseur->service = $pre->service;
             $fournisseur->save();
-            $user = new User();
-            $user->username = $pre->nom.$pre->prenom;
-            $user->password = \Hash::make($user->username);
-            $user->type = 'fournisseur';
-            $user->id_user = $fournisseur->id;
-            $user->email =$fournisseur->email;
-            $user->save();
+            User::where('id_user', $req->id_prefournisseur)->update(['type'=>'fournisseur', 'id_user'=>$fournisseur->id]);
+            $user = User::where('id_user', $fournisseur->id)->first();
             Prefournisseur::where('id', $req->id_prefournisseur)->delete();
             $path = public_path('fournisseurs/'.$user->id);
             if (!File::exists($path)) {

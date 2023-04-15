@@ -111,7 +111,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        @if (auth()->user()->type != 'fournisseur')
+                        @if (auth()->user()->type == 'admin')
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle text-dark" href="#" data-toggle="modal" data-target="#sendNews" role="button"
                                  aria-haspopup="true" aria-expanded="false">Send News Letter&nbsp;
@@ -125,7 +125,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if (auth()->user()->type == 'fournisseur')
+                                @if (auth()->user()->type == 'fournisseur' || auth()->user()->type == 'pre')
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                         {{ session('profile')->nom . ' ' . session('profile')->prenom }}</span>
                                     <img class="img-profile rounded-circle"
@@ -157,7 +157,7 @@
                     @isset($message)
                         @if ($message['code'] == 0)
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>{{$message['msg'];}}</strong> 
+                            <strong>{{$message['msg'];}}</strong>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -169,7 +169,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        @endif    
+                        @endif
                     @endisset
                     @yield('content')
                 </div>
@@ -306,7 +306,7 @@
         });
         $(function() {
             $('#newsletter-form').submit(function(event) {
-                event.preventDefault(); 
+                event.preventDefault();
                 var formData = $(this).serialize();
                 $.ajax({
                     url: '{{ route('sendNewsLetter') }}',

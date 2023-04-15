@@ -30,19 +30,19 @@
                                 break;
                             }
                         }
-                    @endphp 
+                    @endphp
                     <p>{{__('Votre abonnement mensuel est actuellement')}}
                     @if ($hasExpired)
                     <span class="text-success"><i class="fas fa-check-circle"></i> {{__('Actif')}}</span>.
                     @else
-                    <span class="text-danger"><i class="fas fa-times-circle"></i> {{__('Désactive')}}</span>.
+                    <span class="text-danger"><i class="fas fa-times-circle"></i> {{__('Terminé')}}</span>.
                     @endif
                     </p>
                     </div>
                     <div class="col-md-6">
                       <h3>{{__('Informations de paiement:')}}</h3>
                       <p>
-                         {{__('Mode de paiement')}}: <i class="fab fa-cc-visa"></i>{{__('Null')}}
+                         {{__('Mode de paiement')}}: <i class="fas fa-money-bill mr-1"></i>{{__('Cash')}}
                       </p>
                       <p>
                         {{__('Prochain paiement dû')}}: <span class="text-primary"><i class="far fa-calendar-check"></i> March 15, 2023</span>
@@ -81,7 +81,7 @@
                                             } else {
                                                 echo '<span class="text-danger"><i class="fas fa-times-circle"></i> Désactive</span>';
                                             }
-                                        @endphp 
+                                        @endphp
                                     </td>
                                 </tr>
                             @endforeach

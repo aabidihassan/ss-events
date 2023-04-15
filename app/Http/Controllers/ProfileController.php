@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Fournisseur;
+use App\Models\Prefournisseur;
+use App\Models\Citie;
+use App\Models\Service;
 use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
@@ -57,7 +60,7 @@ class ProfileController extends Controller
         return response()->json(['message' => 'Profile picture updated successfully']);
     }
     public function deleteProfilePicture(Request $request){
-    
+
         $imagePath = public_path('fournisseurs/'.auth()->user()->id . "/" .$request->image);
         if (file_exists($imagePath)) {
             if (unlink($imagePath)) {
@@ -73,5 +76,11 @@ class ProfileController extends Controller
         $path = public_path('fournisseurs/' . auth()->user()->id);
         $fileCount = count(File::allFiles($path));
         return $fileCount;
+    }
+
+    public static function preProfile(){
+        $cities = Citie::all();
+        $services = Service::all();
+        return view('backoffice.prefournisseurs.profile', ["services"=>$services, "cities"=>$cities]);
     }
 }

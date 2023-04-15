@@ -10,6 +10,12 @@
         cursor: pointer;
     }
 </style>
+
+@if (session()->has('message'))
+    <div class="alert alert-success text-center m-2" role="alert">les informations sont bien enregistrées, on
+        va vous communiquer par la suite!</div>
+@endif
+
 <!-- Contact Start -->
 <div id="client-register" class="container-fluid py-5" style="margin-top:-2%; display:none;">
     <div class="container py-3">
@@ -22,10 +28,6 @@
                     <div id="success"></div>
                     <form method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
-                        @if (session()->has('message'))
-                            <div class="alert alert-success" role="alert">les informations sont bien enregistrées, on
-                                va vous communiquer par la suite!</div>
-                        @endif
                         <input type="text" value="client" hidden />
                         <div class="control-group">
                             <input type="text" class="form-control p-4" placeholder="Nom complet" name="nom"
@@ -96,10 +98,6 @@
                     <div id="success"></div>
                     <form method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
-                        @if (session()->has('message'))
-                            <div class="alert alert-success" role="alert">les informations sont bien enregistrées, on
-                                va vous communiquer par la suite!</div>
-                        @endif
                         <input type="text" value="client" hidden />
                         <div class="form-row mt-3">
                             <div class="control-group col-sm-6">
@@ -124,8 +122,14 @@
                             </div>
                             <div class="control-group col-sm-6">
                                 <input type="email" class="form-control p-4" placeholder="E-Mail" name="email"
-                                    required="required"
+                                    required="required" autocomplete="off"
                                     data-validation-required-message="Veuillez entrer votre E-Mail" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="password" class="form-control p-4" placeholder="Mot de passe" name="password"
+                                    required="required" autocomplete="off"
+                                    data-validation-required-message="Veuillez entrer un mot de passe" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group col-sm-6">

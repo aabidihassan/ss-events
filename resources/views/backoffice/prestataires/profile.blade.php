@@ -157,12 +157,8 @@
                                 <h6 class="mb-0">Ville</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <select name="citie" class="form-control" id="dropdown">
-                                    <option disabled selected>Choisir une ville</option>
-                                    @foreach($cities as $citie)
-                                    <option value="{{ $citie->name }}" {{ $fournisseur->citie == $citie->name ? 'selected' : '' }}>{{ $citie->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" placeholder="Ville" name="citie"
+                                    value="{{ $fournisseur->citie }}" @disabled(true)>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -170,12 +166,8 @@
                                 <h6 class="mb-0">Service</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <select name="service" class="form-control" id="dropdown">
-                                    <option disabled selected>Choisir un service</option>
-                                    @foreach($services as $service)
-                                    <option value="{{ $service->libelle }}" {{ $fournisseur->service == $service->libelle ? 'selected' : '' }}>{{ $service->libelle }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" placeholder="Service" name="service"
+                                    value="{{ $fournisseur->service }}" @disabled(true)>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -313,7 +305,7 @@
                         success: function(responses) {
                             location.reload();
                             }
-                        });   
+                        });
                     }else{
                         $('html, body').animate({
                             scrollTop: $('.imgError').offset().top}, 500);
