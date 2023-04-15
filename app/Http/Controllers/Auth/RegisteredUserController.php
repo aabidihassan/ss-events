@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Prefournisseur;
+use App\Models\Fournisseur;
 use App\Models\Client;
 use App\Models\Citie;
 use App\Models\Classe;
@@ -46,6 +47,12 @@ class RegisteredUserController extends Controller
     {
 
         if($request->type == 'pre'){
+            $user = new User;
+            $user->username = $request->username;
+            $user->password = Hash::make($request->password);
+            $user->email = $request->email;
+            $user->type = 'fournisseur';
+            $user->save();
             $pre = new Prefournisseur;
             $pre->nom = $request->nom;
             $pre->prenom = $request->prenom;
@@ -54,14 +61,20 @@ class RegisteredUserController extends Controller
             $pre->statut = false;
             $pre->citie = $request->citie;
             $pre->service = $request->service;
+            $pre->id_user = $user->id;
             $pre->save();
+            $request->session()->put('profile', new Fournisseur);
             $data = [
                 'nom' => $request->nom,
                 'prenom' => $request->prenom,
                 'content' => 'Votre demande a été soumise avec succès',
             ];
             Mail::to($request->email)->send(new WelcomeEmail($data,'Merci d \'avoir rejoint EVENTSKECH'));
-            return redirect()->back()->with(['message' => 'done']);
+            event(new Registered($user));
+
+            Auth::login($user);
+
+            return redirect(RouteServiceProvider::HOME);
         }else{
             $client = new Client;
             $client->nom = $request->nom;

@@ -129,6 +129,20 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" id="username" name="username"
+                                    placeholder="Nom d'utilisateur" required="required"
+                                    data-validation-required-message="Veuillez entrer un nom d'utilisateur"
+                                    autocomplete="off" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="password" class="form-control p-4" id="password" name="password"
+                                    placeholder="Mot de passe" required="required"
+                                    data-validation-required-message="Veuillez entrer un mot de passe"
+                                    autocomplete="new-password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
                                 <select name="service" class="custom-select px-4" style="height: 47px;" required>
                                     <option disabled selected>Choisir un service</option>
                                     @foreach ($services as $service)

@@ -39,7 +39,11 @@ class AuthenticatedSessionController extends Controller
             $client = Client::where('id', auth()->user()->id_user)->first();
             $request->session()->put('profile', $client);
         }elseif(auth()->user()->type == 'fournisseur'){
-            $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
+            if (isset(auth()->user()->id_user))
+                $fournisseur = Fournisseur::where('id', auth()->user()->id_user)->first();
+            else{
+                $fournisseur = new Fournisseur;
+            }
             $request->session()->put('profile', $fournisseur);
             $cities = Citie::all();
             $request->session()->put('cities', $cities);

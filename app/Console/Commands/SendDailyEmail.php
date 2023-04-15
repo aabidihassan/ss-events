@@ -35,7 +35,18 @@ class SendDailyEmail extends Command
     {
         try {
 
-            $fournisseursDes = Fournisseur::join('abonnements', 'abonnements.id_fournisseur', '=', 'fournisseurs.id')
+            $data = [
+                'nom' => 'test',
+                'prenom' => 'test',
+                'content' =>[
+                    "Nous espérons que cette notification vous trouve en bonne santé. Nous souhaitons vous informer que votre abonnement auprès de notre entreprise arrivera à expiration dans les 15 prochains jours.",
+                    "Nous souhaitons vous rappeler que lorsque votre abonnement expire, vous n\'aurez plus accès aux avantages et aux services inclus dans votre abonnement. Si vous souhaitez continuer à bénéficier de ces avantages et services, nous vous invitons à renouveler votre abonnement avant la date d\'expiration.",
+                    "Nous tenons à vous remercier pour votre confiance et votre fidélité envers notre entreprise. Nous apprécions votre soutien continu et nous sommes impatients de continuer à vous offrir des services de qualité supérieure.",
+                    "Si vous avez des questions concernant votre abonnement ou si vous souhaitez renouveler votre abonnement, veuillez contacter notre service clientèle dès que possible. Nous serons heureux de vous aider à renouveler votre abonnement et à répondre à toutes vos questions"
+                ] 
+            ];
+            Mail::to('mqamyouness18@gmail.com')->send(new ExpiredSubscription($data, 'test test'));
+            /*$fournisseursDes = Fournisseur::join('abonnements', 'abonnements.id_fournisseur', '=', 'fournisseurs.id')
                 ->whereDate('abonnements.end_date', '=', Carbon::now()->format('Y-m-d'))
                 ->select('fournisseurs.id', 'fournisseurs.nom', 'fournisseurs.prenom', 'fournisseurs.email')
                 ->get();
@@ -71,7 +82,7 @@ class SendDailyEmail extends Command
                     ] 
                 ];
                 Mail::to($f->email)->send(new ExpiredSubscription($data, 'Avis d\'expiration d\'abonnement dans 15 jours pour '.$f->nom));
-            }
+            }*/
         } catch (\Exception $th) {
             
         }

@@ -35,13 +35,8 @@ class PresController extends Controller
             $fournisseur->citie = $pre->citie;
             $fournisseur->service = $pre->service;
             $fournisseur->save();
-            $user = new User();
-            $user->username = $pre->nom.$pre->prenom;
-            $user->password = \Hash::make($user->username);
-            $user->type = 'fournisseur';
-            $user->id_user = $fournisseur->id;
-            $user->email =$fournisseur->email;
-            $user->save();
+            User::where('id', $pre->id_user)->update(['id_user'=>$fournisseur->id]);
+            $user = User::where('id', $pre->id_user)->first();
             Prefournisseur::where('id', $req->id_prefournisseur)->delete();
             $path = public_path('fournisseurs/'.$user->id);
             if (!File::exists($path)) {
@@ -61,12 +56,10 @@ class PresController extends Controller
             $abonnement->end_date = $newDate;
             $abonnement->prix = $service[$req->prix];
             $abonnement->save();
-
             $data = [
                 'nom' => $fournisseur->nom,
                 'prenom' => $fournisseur->prenom,
-                'content' => ['username'=>$user->username,
-                                'password'=>$user->username,
+                'content' => ['first'=> true,
                                 'service'=>$service->libelle,
                                 'abonnement' => $abonnement]
 

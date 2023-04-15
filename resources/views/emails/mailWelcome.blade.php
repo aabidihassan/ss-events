@@ -70,11 +70,10 @@
       <div class="body">
         <h2>Bienvenue sur EVENTSKECH, {{ $data['nom'] }} {{ $data['prenom'] }} !</h2>
         @if (is_array($data['content']))
-          @if (isset($data['content']['username']))
-          <p>Votre username :<strong> {{$data['content']['username']}} </strong></p>
-          <p>Votre mots de passe : <strong> {{$data['content']['password']}}</strong></p>
+          @if (isset($data['content']['first']))
+          <h2>Votre abonnement a été avec succès</h2>
           @else
-              <h2>Votre abonnement a été renouvelé avec succès</h2>
+          <h2>Votre abonnement a été renouvelé avec succès</h2>
           @endif
         <p>Votre service : {{$data['content']['service']}} </p>
         <p>Votre Type d'abonnement : {{$data['content']['abonnement']['typeAbonnemant']  }} </p>

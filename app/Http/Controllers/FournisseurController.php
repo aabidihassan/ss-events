@@ -67,8 +67,13 @@ class FournisseurController extends Controller
     public static function getProfile(){
         $cities = Citie::all();
         $services = Service::all();
-        $fournisseur = Fournisseur::select('*')->where('id',session('profile')->id)->get();
-        return view('backoffice.prestataires.profile', [ "fournisseur" => $fournisseur->first() ,"cities"=>$cities, "services"=>$services]);
+        $fournisseur = Fournisseur::select('*')->where('id',session('profile')->id)->first();
+        if(!$fournisseur)
+        {
+            $fournisseur = new Fournisseur;
+            $fournisseur->photo = "";
+        }
+        return view('backoffice.prestataires.profile', [ "fournisseur" => $fournisseur,"cities"=>$cities, "services"=>$services]);
     }
     public static function getAbonnement(){
        $abonnements = abonnements::where('id_fournisseur',session('profile')->id)->get();
@@ -83,8 +88,14 @@ class FournisseurController extends Controller
                                 ->get();
         $fournisseur = Fournisseur::select('*')
                                 ->where('id',session('profile')->id)
-                                ->get();
-        return view('backoffice.prestataires.dashboard', ["fournisseur" => $fournisseur->first(),"avgRating"=>$avgRating]);
+                                ->first();
+        if(!$fournisseur)
+        {
+            $fournisseur = new Fournisseur;
+            $fournisseur->vues = 0;
+            $fournisseur->photo = "";
+        }
+        return view('backoffice.prestataires.dashboard', ["fournisseur" => $fournisseur,"avgRating"=>$avgRating]);
     }
 
     public static function incrementContactWhatsApp(Request $req){

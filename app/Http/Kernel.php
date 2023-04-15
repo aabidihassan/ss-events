@@ -68,9 +68,4 @@ class Kernel extends HttpKernel
     protected $commands = [
         Commands\SendDailyEmail::class,
     ];
-
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('send:daily-email')->dailyAt('17:00')->timezone('Africa/Casablanca');
-    }
 }

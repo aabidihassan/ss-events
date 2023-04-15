@@ -154,6 +154,14 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    @if ((auth()->user()->id_user == null) && (auth()->user()->type == 'fournisseur'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{__('Votre demande est en cours de traitement')}}</strong> 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     @isset($message)
                         @if ($message['code'] == 0)
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">

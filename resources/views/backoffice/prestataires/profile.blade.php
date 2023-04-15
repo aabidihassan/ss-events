@@ -13,6 +13,7 @@
 @endif
 <div class="row">
     <div class="col-xl-4 col-lg-5">
+        @isset (auth()->user()->id_user)
         <div class="card shadow mb-4">
             <!-- Card Body -->
             <div class="card-body">
@@ -29,6 +30,7 @@
                 </div>
             </div>
         </div>
+        @endisset
         <div class="card shadow mb-4">
             <!-- Card Body -->
             <div class="card-body">
@@ -59,6 +61,7 @@
         </div>
     </div>
     <!-- Conetnet -->
+    @isset (auth()->user()->id_user)
     <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
             <!-- Card -->
@@ -255,17 +258,19 @@
                     <div class="content-body-card"  id="galerie" class="align-items-center text-center" style="display: none;">
                         <h5 class="text-center mt-4">Galerie</h5>
                         <div class="card-body row" id="mydiv">
+                        @if (File::exists(public_path('fournisseurs/' . auth()->user()->id . '/')))
                         @foreach (File::allFiles(public_path('fournisseurs/' . auth()->user()->id . '/')) as $file)
-                            <div class="card p-1" style="width: 14rem;">
-                                <img class="card-img-top"
-                                    src="{{ asset('fournisseurs/' . auth()->user()->id . '/' . $file->getFilename()) }}"
-                                    style="height: 200px;">
-                                <button type="button" class="col btn btn-primary m-1 set-profile-picture"
-                                        style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Choisir photo de profile</button>
-                                <button type="button" class="col btn btn-danger m-1 delete-profile-picture"
-                                        style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Supprimier photo</button>
-                            </div>
+                        <div class="card p-1" style="width: 14rem;">
+                            <img class="card-img-top"
+                                src="{{ asset('fournisseurs/' . auth()->user()->id . '/' . $file->getFilename()) }}"
+                                style="height: 200px;">
+                            <button type="button" class="col btn btn-primary m-1 set-profile-picture"
+                                    style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Choisir photo de profile</button>
+                            <button type="button" class="col btn btn-danger m-1 delete-profile-picture"
+                                    style="font-size : 10px;" data-image="{{ $file->getFilename() }}">Supprimier photo</button>
+                        </div>
                         @endforeach
+                        @endif
                         </div>
                         <div class="card-body row">
                             <div class="row mb-3">
@@ -284,7 +289,8 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>      
+    @endisset
 </div>
 @stop
 
