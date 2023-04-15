@@ -24,6 +24,7 @@ class PresController extends Controller
 
     public static function accept(Request $req){
         try {
+
             $pre = Prefournisseur::where('id', $req->id_prefournisseur)->first();
             $fournisseur = new Fournisseur();
             $fournisseur->nom = $pre->nom;
@@ -51,7 +52,7 @@ class PresController extends Controller
             ->select('services.*', 'classes.gold_6_months', 'classes.platinum_6_months', 'classes.platinum_12_months', 'classes.gold_12_months')
             ->where('services.libelle',$pre->service)
             ->first();
-            $abonnement->id_service = 1;
+            $abonnement->id_service = $service->id;
             $abonnement->id_fournisseur = $fournisseur->id;
             $abonnement->number_month = $req->number_month+4;
             $abonnement->start_date = Carbon::now();
@@ -62,11 +63,11 @@ class PresController extends Controller
             $abonnement->save();
 
             $data = [
-                'nom' => $pre->nom,
-                'prenom' => $pre->prenom,
+                'nom' => $fournisseur->nom,
+                'prenom' => $fournisseur->prenom,
                 'content' => ['username'=>$user->username,
                                 'password'=>$user->username,
-                                'service'=>$pre->service,
+                                'service'=>$service->libelle,
                                 'abonnement' => $abonnement]
 
             ];
