@@ -39,7 +39,7 @@ class FeedbackController extends Controller
         $user = Auth::user();
         $feedbacks = Feedback::join('clients', 'feedback.id_client', '=', 'clients.id')
                             ->where('feedback.id_fournisseur', $user->id_user)
-                            ->select('feedback.*', 'clients.prenom', 'clients.nom')
+                            ->select('feedback.*', 'clients.nom')
                             ->get();
 
         return view('backoffice.prestataires.feedbacks', compact('feedbacks'));
@@ -49,7 +49,7 @@ class FeedbackController extends Controller
     {
         try {
             $feedbacks = Feedback::join('clients','clients.id','=','feedback.id_client')
-            ->select('feedback.*','clients.nom','clients.prenom')
+            ->select('feedback.*','clients.nom')
             ->where('id_fournisseur',$id)
             ->get();
             $fournisseur = Fournisseur::where('id', $id)->first();
@@ -87,7 +87,7 @@ class FeedbackController extends Controller
         try {
             $feedbacks = Feedback::join('clients','clients.id','=','feedback.id_client')
             ->join('fournisseurs', 'fournisseurs.id', '=', 'feedback.id_fournisseur')
-            ->select('feedback.*','clients.nom','clients.prenom', 'fournisseurs.raison')
+            ->select('feedback.*','clients.nom', 'fournisseurs.raison')
             ->get();
             return view('backoffice.administrators.allfeedbacks',['feedbacks' => $feedbacks]);
         } catch (\Exception $e) {
