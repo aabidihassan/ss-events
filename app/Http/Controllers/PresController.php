@@ -31,6 +31,7 @@ class PresController extends Controller
             $fournisseur->email = $pre->email;
             $fournisseur->telephone = $pre->telephone;
             $fournisseur->statut = 1;
+            $fournisseur->citie = $pre->citie;
             $fournisseur->service = $pre->service;
             $fournisseur->save();
             $user = new User();

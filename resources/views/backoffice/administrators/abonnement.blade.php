@@ -11,7 +11,6 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Type</th>
                         <th>Prix</th>
                         <th>Nombre des mois</th>
                         <th>Date d'ctivation</th>
@@ -22,7 +21,6 @@
                 <tbody>
                     @foreach($abonnements as $abo)
                         <tr>
-                            <td>{{$abo->typeAbonnemant}}</td>
                             <td>{{$abo->prix}}</td>
                             <td>{{$abo->number_month}}</td>
                             <td>{{$abo->start_date}}</td>
