@@ -36,6 +36,7 @@ class WelcomeEmail extends Mailable
     public function build()
     {
         return $this->view('emails.mailWelcome', ['data' => $this->data])
+            ->from('labos.management@gmail.com', 'EVENTSKECH')
             ->subject($this->subject);
     }
 }

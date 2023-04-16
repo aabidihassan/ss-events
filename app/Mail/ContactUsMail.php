@@ -34,6 +34,7 @@ class ContactUsMail extends Mailable
     public function build()
     {
         return $this->view('emails.mail', ['data' => $this->data])
+            ->from('labos.management@gmail.com', 'EVENTSKECH')
             ->subject('New Contact Form Submission');
     }
 }

@@ -36,6 +36,7 @@ class ExpiredSubscription extends Mailable
     public function build()
     {
         return $this->view('emails.expiredSubscription', ['data' => $this->data])
+            ->from('labos.management@gmail.com', 'EVENTSKECH')
             ->subject($this->subject);
     }
 }

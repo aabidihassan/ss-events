@@ -64,13 +64,4 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
-
-    protected $commands = [
-        Commands\SendDailyEmail::class,
-    ];
-
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('send:daily-email')->dailyAt('17:00')->timezone('Africa/Casablanca');
-    }
 }
