@@ -34,7 +34,6 @@ class SendDailyEmail extends Command
     public function handle()
     {
         try {
-            $this->output->writeln('Email sent successfully.');
             $fournisseursDes = Fournisseur::join('abonnements', 'abonnements.id_fournisseur', '=', 'fournisseurs.id')
                 ->whereDate('abonnements.end_date', '=', Carbon::now()->format('Y-m-d'))
                 ->select('fournisseurs.id', 'fournisseurs.nom', 'fournisseurs.prenom', 'fournisseurs.email')

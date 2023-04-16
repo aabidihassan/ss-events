@@ -241,7 +241,7 @@
         $(document).ready(function() {
             $('.bn-ac').removeClass('active');
             $(".bn-ac").eq(6).addClass('active');
-            $('.btn-update').click(function() {
+            $('#dataTable').on('click', '.btn-update', function() {
                 $('#id_class_update').val($(this).attr('data-classe'));
                 $('#type_up').val($(this).parent().prev().prev().prev().prev().prev().text());
                 $('#gold_6_months_up').val($(this).parent().prev().prev().prev().prev().text());

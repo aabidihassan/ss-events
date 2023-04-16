@@ -125,7 +125,7 @@
 @section('script')
 <script>
     $(document).ready(function() {
-       $('.updateFK').click(function() {
+        $('#dataTable').on('click', '.updateFK', function() {
             data = JSON.parse($(this).attr('data-fournisseur'));
             $('#client').text(data.nom);
             $('#commentaire').val(data.commentaire);

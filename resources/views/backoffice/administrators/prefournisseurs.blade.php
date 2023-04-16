@@ -48,7 +48,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
@@ -131,7 +130,7 @@
             });
             $('.bn-ac').removeClass('active');
             $(".bn-ac").eq(1).addClass('active');
-            $('.btn-Accepter').click(function() {
+            $('#dataTable').on('click', '.btn-Accepter', function() {
                 data = JSON.parse($(this).attr('data-fournisseur'));
                 $('#id_prefournisseur').val(data.id);
                 $('#staticBackdrop').modal('show');

@@ -127,9 +127,9 @@
 @section('script')
 <script>
     $(document).ready(function() {
-            $('.bn-ac').removeClass('active');
-            $(".bn-ac").eq(4).addClass('active');
-       $('.updateFK').click(function() {
+        $('.bn-ac').removeClass('active');
+        $(".bn-ac").eq(4).addClass('active');
+        $('#dataTable').on('click', '.updateFK', function() {
             data = JSON.parse($(this).attr('data-fournisseur'));
             $('#client').text(data.nom);
             $('#commentaire').val(data.commentaire);

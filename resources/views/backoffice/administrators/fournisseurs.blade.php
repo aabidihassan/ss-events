@@ -39,7 +39,7 @@
                             @if($l->statut)
                             <a href="{{ '/admin/fournisseurs/desactivate/' . $l->id }}" class="btn btn-danger">Desactiver</a>
                             @else
-                            <a class="btn btn-primary btn-Accepter" data-fournisseur="{{$l}}">Activer</a>
+                            <a class="btn btn-primary btn-Accepter" data-fournisseur="{{$l}}" data-target="#staticBackdrop">Activer</a>
                             @endIf
                             <a class="btn btn-info" href="{{ '/administrator/feedbacks/' . $l->id }}">Feefbacks</a>
                         </td>
@@ -57,7 +57,7 @@
             <form action="{{route('createAbonnement')}}" method="post">
                 @csrf
                 <div class="modal-header">
-                <h5 class="modal-title" id="nomF">Formulaire d'acceptation fournisseur :</h5>
+                <h5 class="modal-title" id="nomF">Formulaire d'acceptation fournisseur : </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -117,17 +117,17 @@
     $(document).ready(function() {
         $('.bn-ac').removeClass('active');
         $(".bn-ac").eq(2).addClass('active');
-        $('.btn-Accepter').click(function () {
+
+        $('#dataTable').on('click', '.btn-Accepter', function() {
             data = JSON.parse($(this).attr('data-fournisseur'));
             $('#id_fournisseur').val(data.id);
+            $('#nomF').html($('#nomF').html() + " " + data.nom + " " + data.prenom);
+            $('#ditail').html(data.email + "<br>" + data.telephone + "<br>" +data.service );
             $('#libelle_service').val();
             $('#SelService').find('option:contains("'+data.service+'")').prop('selected', true);
             $('#SelService').change();
-
-            $('#nomF').html(data.nom + " " + data.prenom);
-            $('#ditail').html(data.email + "<br>" + data.telephone + "<br>" +data.service );
             $('#staticBackdrop').modal('show');
-        })
+        });
 
         $('input[name=typeAbon]').change(function() {
             $('.c-radio').addClass('d-none')
