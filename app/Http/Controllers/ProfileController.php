@@ -83,4 +83,25 @@ class ProfileController extends Controller
         $services = Service::all();
         return view('backoffice.prefournisseurs.profile', ["services"=>$services, "cities"=>$cities]);
     }
+
+    public static function editComptePer(Request $req){
+        if($req->password==''){
+            User::where('id', auth()->user()->id)
+            ->update(['email'=>$req->email]);
+        }else{
+            $req->password = \Hash::make($req->password);
+            User::where('id', auth()->user()->id)
+            ->update(['email'=>$req->email, 'password'=>$req->password]);
+        }
+        \Auth::user()->update(['email'=>$req->email]);
+        return redirect()->back()->with(['message' => 'done']);
+    }
+
+    public static function editProfilePer(Request $req){
+        Prefournisseur::where('id', session('profile')->id)
+            ->update(['nom'=>$req->nom, 'prenom'=>$req->prenom, 'telephone'=>$req->telephone, 'service'=>$req->service ,'citie'=>$req->citie]);
+        $Prefournisseur = Prefournisseur::where('id', session('profile')->id)->first();
+        $req->session()->put('profile', $Prefournisseur);
+        return redirect()->back()->with(['message' => 'done']);
+    }
 }

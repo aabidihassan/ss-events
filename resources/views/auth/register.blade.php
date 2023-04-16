@@ -126,7 +126,7 @@
                                     data-validation-required-message="Veuillez entrer votre E-Mail" />
                                 <p class="help-block text-danger"></p>
                             </div>
-                            <div class="control-group col-sm-6">
+                            <div class="control-group col-sm-12">
                                 <input type="password" class="form-control p-4" placeholder="Mot de passe" name="password"
                                     required="required" autocomplete="off"
                                     data-validation-required-message="Veuillez entrer un mot de passe" />

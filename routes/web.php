@@ -95,6 +95,15 @@ Route::post('/fournisseur/addFavoir', [favoirController::class, 'create'])
     ->name('favoir');
 //End Routes for clients
 
+// rOUTES FOR PREFOURNISSEUR
+Route::post('/editComptePer', [ProfileController::class, 'editComptePer'])
+    ->middleware(['auth'])
+    ->name('editComptePer');
+Route::post('/editProfilePer', [ProfileController::class, 'editProfilePer'])
+    ->middleware(['auth'])
+    ->name('editProfilePer');
+//
+
 //Routes Back office for fournisseur
 
 Route::get('/back', function () {
