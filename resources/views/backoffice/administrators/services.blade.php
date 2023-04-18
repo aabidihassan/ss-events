@@ -160,7 +160,7 @@
         });
         $('#dataTable').on('click', '.btn-update', function() {
             $('#id_service_update').val($(this).attr('data-service'));
-            $('#libelleUp').val($(this).parent().prev().prev().prev().text());
+            $('#libelleUp').val($(this).parent().prev().prev().text());
             $('#id_classe_update').val($(this).attr('data-classe'));
         });
     });

@@ -26,7 +26,7 @@ require __DIR__ . '/auth.php';
 */
 
 // Routes Public
-
+//Auth::routes(['verify'=>true]);
 Route::get('/', function () {
     return IndexController::index();
 });
@@ -81,8 +81,7 @@ Route::get('/dashboard', function () {
         return view('backoffice.prefournisseurs.dashboard');
     }
     return FournisseurController::mydash();
-})
-    ->middleware(['auth', 'verified'])
+})->middleware(['auth', 'verified'])
     ->name('dashboard');
 Route::post('/editCompte', [ProfileController::class, 'editCompte'])
     ->middleware(['auth'])
@@ -198,9 +197,16 @@ Route::get('/administrator/fournisseurs', function () {
         return FournisseurController::getAll();
     }
     return redirect('/');
-})
-    ->middleware(['auth'])
+})->middleware(['auth'])
     ->name('adminFournisseur');
+
+Route::get('/administrator/fournisseursActive', function () {
+    if (auth()->user()->type == 'admin') {
+        return FournisseurController::getAllFournisseurReActive();
+    }
+    return redirect('/');
+})->middleware(['auth'])
+    ->name('adminFournisseurReActive');
 Route::get('/administrator/clients', function () {
     if (auth()->user()->type == 'admin') {
         return ClientController::getAll();

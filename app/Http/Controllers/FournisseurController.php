@@ -17,13 +17,29 @@ use Carbon\Carbon;
 class FournisseurController extends Controller
 {
     public static function getAll(){
-        $data = Fournisseur::all();
+        $data = Fournisseur::select('fournisseurs.*', 'abonnements.end_date')
+        ->join('abonnements', function($join) {
+            $join->on('abonnements.id_fournisseur', '=', 'fournisseurs.id')
+                 ->whereRaw('abonnements.end_date = (select max(end_date) from abonnements where id_fournisseur = fournisseurs.id) ');
+        })
+        ->whereDate('abonnements.end_date', '>',  Carbon::now())
+        ->get();
+        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data]);
+    }
+    public static function getAllFournisseurReActive(){
+        $end15Date = Carbon::now()->addDays(15)->format('Y-m-d');
+        $data = Fournisseur::select('fournisseurs.*', 'abonnements.end_date')
+        ->join('abonnements', function($join) {
+            $join->on('abonnements.id_fournisseur', '=', 'fournisseurs.id')
+                 ->whereRaw('abonnements.end_date = (select max(end_date) from abonnements where id_fournisseur = fournisseurs.id) ');
+        })
+        ->whereDate('abonnements.end_date', '<',  $end15Date)
+        ->get();
         $services = Service::join('classes','classes.id','=','services.id_classe')
         ->select('services.*', 'classes.gold_6_months', 'classes.platinum_6_months', 'classes.platinum_12_months', 'classes.gold_12_months')
         ->get();
-        return view('backoffice.administrators.fournisseurs', ["fournisseurs"=>$data, "services"=>$services]);
+        return view('backoffice.administrators.fournisseursActive', ["fournisseurs"=>$data, "services"=>$services]);
     }
-
     public static function index(){
         $data = Fournisseur::where('statut', true)->get();
         $services = Service::all();
@@ -110,12 +126,15 @@ class FournisseurController extends Controller
             Fournisseur::where('id', $req->id_fournisseur)->update(['statut'=>1]);
             $fournisseur =  Fournisseur::where('id', $req->id_fournisseur)->first();
             $service = Service::where('id',$req->service)->first();
+            $currentDate = Carbon::now();
+            if (isset($req->date_start)) {
+                $currentDate = Carbon::parse($req->date_start);
+            }
             $abonnement = new abonnements();
             $abonnement->id_service = $req->service;
             $abonnement->id_fournisseur = $req->id_fournisseur;
             $abonnement->number_month = $req->number_month;
-            $abonnement->start_date = Carbon::now();
-            $currentDate = Carbon::now();
+            $abonnement->start_date = $currentDate;
             $newDate = $currentDate->addMonths($abonnement->number_month);
             $abonnement->end_date = $newDate;
             $abonnement->prix = $req->prix;

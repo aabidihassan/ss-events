@@ -10,10 +10,21 @@
     </li>
 
     <hr class="sidebar-divider">
+    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item bn-ac">
-        <a class="nav-link" href="{{ route('adminFournisseur')}}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
             <i class="fas fa-fw fa-users"></i>
-            <span>Fournisseurs</span></a>
+            <span>Fournisseurs</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="{{ route('adminFournisseur')}}">Fournisseurs Active</a>
+                <a class="collapse-item" href="{{ route('adminFournisseurReActive')}}">Fournisseurs has abon dés</a>
+            </div>
+        </div>
     </li>
 
     <hr class="sidebar-divider">
