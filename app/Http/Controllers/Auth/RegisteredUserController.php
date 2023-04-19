@@ -68,6 +68,11 @@ class RegisteredUserController extends Controller
                 'content' => 'Votre demande a été soumise avec succès',
             ];
             Mail::to($request->email)->send(new WelcomeEmail($data,'Merci d \'avoir rejoint EVENTSKECH'));
+
+            $request->session()->put('profile', $pre);
+            event(new Registered($user));
+            Auth::login($user);
+            
             return redirect()->back()->with(['message' => 'done']);
         }else{
             $client = new Client;
